@@ -133,24 +133,7 @@ layout: compress
       </div>
       <div class="col-sm-8 col-offset-1 main-layout">
         {{ content }}
-      </div>
-      <div class="right-condition">
-         <div class="search" id="js-search">
-            <input type="text" placeholder="输入搜索内容" class="form-control" id="js-search__input">
-            <ul class="search__results" id="js-search__results"></ul>
-          </div>
-          <hr />
-          <ul class="sidebar-nav">
-            <strong>Navigation</strong>
-            <li><a href="/">Home</a></li>
-            {% for i in site.urls %}
-              <li><a class="about" href="{{ i.url }}">{{ i.text }}</a></li>
-            {% endfor %}
-          </ul>
-      </div>
-      <!-- end /.col-sm-8 -->
-      <div class="col-sm-12">
-          <footer>
+        <footer>
           &copy; {{ site.author }}
           {% if site.github %}
             - <a href="{{ site.github }}">{{ site.github }}</a> - Powered by Jekyll.
@@ -161,6 +144,21 @@ layout: compress
           </div>
         </footer>
       </div>
+      <div class="right-condition">
+         <div class="search" id="js-search">
+            <input type="text" placeholder="输入搜索内容" class="form-control" id="js-search__input">
+            <ul class="search__results" id="js-search__results"></ul>
+          </div>
+          <hr />
+          <ul class="sidebar-nav">
+            <strong>Navigation</strong>
+            <li><a href="/">主页</a></li>
+            {% for i in site.urls %}
+              <li><a class="about" href="{{ i.url }}">{{ i.text }}</a></li>
+            {% endfor %}
+          </ul>
+      </div>
+      <!-- end /.col-sm-8 -->
     </div>
     <!-- end /.container -->
 
