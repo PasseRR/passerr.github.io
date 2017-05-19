@@ -1,8 +1,8 @@
-title: Stack Problems
+title: 文章列表
 description: My Personal Stack Problems
-author: Agus Makmun
-github: https://github.com/agusmakmun
-about: I am freelance developer. Currently doing more in backend, focused in Python and Django.
+author: PasseRR
+github: https://github.com/PasseRR
+about: I'm a javaer.
 disqus_shortname: stackproblems
 google_analytics: UA-XXXXXXXX-Y
 avatar_url: /static/img/avatar.jpg
@@ -19,13 +19,13 @@ social:
     - icon: fa-facebook
       link: "#"
     - icon: fa-twitter
-      link: "https://twitter.com/agusmakmun6"
+      link: "#"
     - icon: fa-linkedin
-      link: "https://www.linkedin.com/in/summonagus"
-    - icon: fa-stack-exchange
+      link: "#"
+    - icon: fa-weibo
       link: "#"
     - icon: fa-github
-      link: "https://github.com/agusmakmun"
+      link: "https://github.com/PasseRR"
 
 share:
   twitter_username: agusmakmun6
@@ -36,13 +36,11 @@ urls:
       url: /about/
     - text: My Projects
       url: /projects/
-    - text: XML Feed
-      url: /feed.xml
 
-url: "https://agusmakmun.github.io"
+url: "https://passerr.github.io"
 baseurl: ""
 paginate: 20
-per_page: 20
+per_page: 16
 paginate_path: "/page/:num/"
 markdown: kramdown
 gems:
