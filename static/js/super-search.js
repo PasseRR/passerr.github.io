@@ -103,7 +103,9 @@
         var currentResultHash, d;
 
         currentInputValue = (searchInputEl.value + '').toLowerCase();
-        if (!currentInputValue || currentInputValue.length < 3) {
+        // if (!currentInputValue || currentInputValue.length < 3) {
+        // 中文搜索 去掉length限制
+        if (!currentInputValue) {
             lastSearchResultHash = '';
             searchResultsEl.classList.add('is-hidden');
             return;
