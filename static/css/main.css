@@ -172,7 +172,7 @@ div.col-sm-3 img.profile-avatar {
 }
 @media (min-width: 1024px) {
   .right-condition {
-    position: absolute;
+    position: fixed;
     right: 10px;
     max-width: 255px;
   }
