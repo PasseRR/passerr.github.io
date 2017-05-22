@@ -8,7 +8,7 @@ input#js-search__input {
   font-family: "Roboto Condensed", Arial, sans-serif;
 }
 .is-active .search__input {
-  transform: translateY(0);
+  /*transform: translateY(0);*/
 }
 .search__results {
   list-style: none;
@@ -19,7 +19,7 @@ input#js-search__input {
 }
 .search__results.is-hidden {
   opacity: 0;
-  transform: translateY(-1vh);
+  /*transform: translateY(-1vh);*/
   display: none;
 }
 .search__results > li {
