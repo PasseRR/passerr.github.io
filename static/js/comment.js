@@ -3,7 +3,6 @@ var issuesHTML;
 
 $(document).ready(function () {
     var user = $('meta[name="author"]').attr("content");
-    var title = $("meta[property='og:title']").attr("content");
     blogListURL = 'https://api.github.com/repos/' + user + '/' + user + '.github.io/contents/blog';
     issuesList = 'https://api.github.com/repos/' + user + '/' + user + '.github.io/issues';
     issuesHTML = 'https://github.com/' + user + '/' + user + '.github.io/issues'
@@ -11,8 +10,16 @@ $(document).ready(function () {
 
     $("#commentsList").removeAttr('data_comments_url');
     $("#tips").html("我们不会获取您的用户名和密码,评论直接通过 HTTPS 与 Github API交互,<br>如果您开启了两步验证,请在博客的<a  target=\"_blank\" href=\"" + issuesHTML + "\">Github issues</a>下添加 Comment");
-    setCommentURL(issuesList, title);
+    setCommentURL(issuesList, getTitle());
 });
+
+function getTitle() {
+    var publishTime = $("meta[property='article:published_time']").attr("content");
+    console.info(publishTime);
+    var title = $("meta[property='og:title']").attr("content");
+    console.info(title);
+    return publishTime + title;
+}
 
 
 function setCommentURL(issuesList, blogName) {
@@ -72,8 +79,7 @@ function login() {
 }
 
 function subComment() {
-    var title = $("meta[property='og:title']").attr("content");
-    console.info(title);
+    var title = getTitle();
     var USERNAME = $("#txt_username").val();
     var PASSWORD = document.getElementById("txt_password").value; //
     // 未开启评论
@@ -92,7 +98,7 @@ function subComment() {
             },
             data: createIssueJson,
             success: function () {
-                console.log('开启评论成功:' + title);
+                // console.log('开启评论成功:' + title);
                 //重新遍历issue list
                 setCommentURL(issuesList, title);
             }
@@ -104,7 +110,7 @@ function subComment() {
         var issueURL = $("#commentsList").attr("data_comments_url");
         var comment = $("#comment_txt").val();
         var commentJson = "{\"body\": \"" + comment + "\"}";
-        console.log(comment);
+        // console.log(comment);
         if (comment == "") {
             alert("评论不能为空");
             return;
