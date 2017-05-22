@@ -12,25 +12,23 @@ categories: [others]
 
 # 目录
 1. jekyll基本目录结构  
-<pre>
-.   
-├── _config.yml 配置文件  
-├── _drafts 草稿  
-|  ├── begin-with-the-crazy-ideas.textile  
-|  └── on-simplicity-in-technology.markdown  
-├── _includes 可以重用的页面  
-|  ├── footer.html  
-|  └── header.html  
-├── _layouts 模版  
-|  ├── default.html  
-|  └── post.html  
-├── _posts 文章md或者markdown格式  
-|  ├── 2007-10-29-why-every-programmer-should-play-nethack.md  
-|  └── 2009-04-26-barcamp-boston-4-roundup.markdown  
-├── _data   
-|  └── members.yml 本地数据  
-└── index.html 首页  
-</pre>    
+`.`   
+`├── _config.yml 配置文件`  
+`├── _drafts 草稿`  
+`|  ├── begin-with-the-crazy-ideas.textile`  
+`|  └── on-simplicity-in-technology.markdown`  
+`├── _includes 可以重用的页面`  
+`|  ├── footer.html`  
+`|  └── header.html`  
+`├── _layouts 模版`  
+`|  ├── default.html`  
+`|  └── post.html`  
+`├── _posts 文章md或者markdown格式`  
+`|  ├── 2007-10-29-why-every-programmer-should-play-nethack.md`  
+`|  └── 2009-04-26-barcamp-boston-4-roundup.markdown`  
+`├── _data`  
+`|  └── members.yml 本地数据`  
+`└── index.html 首页`  
 2. 文档  
 [官网文档](http://jekyll.com.cn/docs/home/)
 
