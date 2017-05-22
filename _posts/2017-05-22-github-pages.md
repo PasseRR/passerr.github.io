@@ -30,7 +30,7 @@ categories: [others]
 ├── _data   
 |  └── members.yml 本地数据  
 └── index.html 首页  
-</pre>
+</pre>    
 2. 文档  
 [官网文档](http://jekyll.com.cn/docs/home/)
 
