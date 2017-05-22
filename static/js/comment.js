@@ -2,8 +2,7 @@ var issuesList;
 var issuesHTML;
 
 $(document).ready(function () {
-    var user = $('meta[name="author"]');
-    console.info(user);
+    var user = $('meta[name="author"]').attr("content");
     blogListURL = 'https://api.github.com/repos/' + user + '/' + user + '.github.io/contents/blog';
     issuesList = 'https://api.github.com/repos/' + user + '/' + user + '.github.io/issues';
     issuesHTML = 'https://github.com/' + user + '/' + user + '.github.io/issues'
@@ -72,7 +71,8 @@ function login() {
 }
 
 function subComment() {
-    var title = $("meta[property='og:title']");
+    var title = $("meta[property='og:title']").attr("content");
+    console.info(title);
     var USERNAME = $("#txt_username").val();
     var PASSWORD = document.getElementById("txt_password").value; //
     // 未开启评论
