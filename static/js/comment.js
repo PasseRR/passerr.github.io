@@ -17,7 +17,7 @@ $(document).ready(function () {
 function getTitle() {
     var publishTime = $("meta[property='article:published_time']").attr("content");
     var title = $("meta[property='og:title']").attr("content");
-    return publishTime.substring(0, 11) + " " + title;
+    return publishTime.substring(0, 10) + " " + title;
 }
 
 
