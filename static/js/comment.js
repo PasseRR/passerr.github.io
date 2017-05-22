@@ -129,6 +129,8 @@ function subComment() {
                 if (title != null) {
                     setCommentURL(issuesList, title);
                 }
+
+                $("#comment_txt").val('');
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("账号密码错误,或者开启了两步验证");
