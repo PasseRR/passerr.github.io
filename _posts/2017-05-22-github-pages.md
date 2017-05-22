@@ -12,7 +12,7 @@ categories: [others]
 
 # 目录
 1. jekyll基本目录结构  
->.
+>.   
 >├── _config.yml 配置文件  
 >├── _drafts 草稿  
 >|   ├── begin-with-the-crazy-ideas.textile  
