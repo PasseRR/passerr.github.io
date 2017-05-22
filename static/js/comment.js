@@ -1,3 +1,4 @@
+// fork from https://github.com/YangHanqing/yanghanqing.github.io
 var issuesList;
 var issuesHTML;
 
@@ -15,10 +16,8 @@ $(document).ready(function () {
 
 function getTitle() {
     var publishTime = $("meta[property='article:published_time']").attr("content");
-    console.info(publishTime);
     var title = $("meta[property='og:title']").attr("content");
-    console.info(title);
-    return publishTime + title;
+    return publishTime.substring(0, 11) + " " + title;
 }
 
 
