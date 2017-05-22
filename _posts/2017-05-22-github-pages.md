@@ -33,4 +33,4 @@ categories: [others]
 [官网文档](http://jekyll.com.cn/docs/home/)
 
 # 发布新文章
-在_posts目录下新增一片文章，push到仓库等github部署完，就可以看到属于你的个人博客了。
+在_posts目录下新增一篇文章，push到仓库等github部署完，就可以看到属于你的个人博客了。
