@@ -12,6 +12,7 @@ categories: [others]
 
 # 目录
 1. jekyll基本目录结构  
+<pre>
 .   
 ├── _config.yml 配置文件  
 ├── _drafts 草稿  
@@ -29,6 +30,7 @@ categories: [others]
 ├── _data   
 |  └── members.yml 本地数据  
 └── index.html 首页  
+</pre>
 2. 文档  
 [官网文档](http://jekyll.com.cn/docs/home/)
 
