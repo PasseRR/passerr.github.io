@@ -16,16 +16,16 @@ collections:
     permalink: /project/:path/
 
 social:
+    - icon: fa-github
+      link: "https://github.com/PasseRR"
+    - icon: fa-weibo
+      link: "http://weibo.com/u/1015039932"
     - icon: fa-facebook
       link: "#"
     - icon: fa-twitter
       link: "#"
     - icon: fa-linkedin
       link: "#"
-    - icon: fa-weibo
-      link: "#"
-    - icon: fa-github
-      link: "https://github.com/PasseRR"
 
 share:
   twitter_username: agusmakmun6
