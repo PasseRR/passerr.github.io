@@ -1,18 +1,21 @@
 // fork from https://github.com/YangHanqing/yanghanqing.github.io
-var issuesList;
-var issuesHTML;
-
 $(document).ready(function () {
-    var user = $('meta[name="author"]').attr("content");
-    blogListURL = 'https://api.github.com/repos/' + user + '/' + user + '.github.io/contents/blog';
-    issuesList = 'https://api.github.com/repos/' + user + '/' + user + '.github.io/issues';
-    issuesHTML = 'https://github.com/' + user + '/' + user + '.github.io/issues'
-    readmeURL = 'https://raw.githubusercontent.com/' + user + '/' + user + '.github.io/master/About Me.md';
+    var user = getUser();
+    var issuesHTML = 'https://github.com/' + user + '/' + user + '.github.io/issues'
 
     $("#commentsList").removeAttr('data_comments_url');
     $("#tips").html("我们不会获取您的用户名和密码,评论直接通过 HTTPS 与 Github API交互,<br>如果您开启了两步验证,请在博客的<a  target=\"_blank\" href=\"" + issuesHTML + "\">Github issues</a>下添加 Comment");
-    setCommentURL(issuesList, getTitle());
+    setCommentURL(getIssuesUrl(), getTitle());
 });
+
+function getUser() {
+    return $('meta[name="author"]').attr("content");
+}
+
+function getIssuesUrl() {
+    var user = getUser();
+    return 'https://api.github.com/repos/' + user + '/' + user + '.github.io/issues';
+}
 
 function getTitle() {
     var publishTime = $("meta[property='article:published_time']").attr("content");
@@ -90,7 +93,7 @@ function subComment() {
         var createIssueJson = "{\"title\": \"" + title + "\"}";
         $.ajax({
             type: "POST",
-            url: issuesList,
+            url: getIssuesUrl(),
             dataType: 'json',
             async: false,
             headers: {
@@ -100,7 +103,7 @@ function subComment() {
             success: function () {
                 // console.log('开启评论成功:' + title);
                 //重新遍历issue list
-                setCommentURL(issuesList, title);
+                setCommentURL(getIssuesUrl(), title);
             }
         });
     }
@@ -128,7 +131,7 @@ function subComment() {
             success: function () {
                 // 更新评论区
                 if (title != null) {
-                    setCommentURL(issuesList, title);
+                    setCommentURL(getIssuesUrl(), title);
                 }
 
                 $("#comment_txt").val('');
