@@ -67,7 +67,8 @@ function setComment(commentURL) {
                 "</p></div></li>";
 
             var new_obj = $(commentHtml);
-            $('#commentsList').append(new_obj);
+            // 评论倒叙
+            $('#commentsList').prepend(new_obj);
         }
     });
 
