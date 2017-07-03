@@ -7,7 +7,7 @@ categories: [db]
 # 问题及环境
 1.有两张数据库表exception_invoice_status_log和invoice_exception_status，其中exception_invoice_status_log数据量10w左右，invoice_exception_status数据量可以忽略   
 2.两张表数据库结构如下   
-{% highlight postgresql %}
+```mysql
 CREATE TABLE IF NOT EXISTS exception_invoice_status_log(
   invoice_status_log_id BIGINT,
   exception_status_id BIGINT,
@@ -20,20 +20,20 @@ CREATE TABLE IF NOT EXISTS invoice_exception_status(
   name VARCHAR(20) NOT NULL,
   CONSTRAINT pk_invoice_exception_status PRIMARY KEY (id)
 );
-{% endhighlight %}
+```
 3.现有数据库查询如下，查询效率非常低下   
-{% highlight postgresql %}
+```mysql
 SELECT ies.name
   FROM exception_invoice_status_log eisl LEFT JOIN invoice_exception_status ies
     ON (eisl.invoice_status_log_id = 1000 AND eisl.exception_status_id = ies.id)
 ORDER BY eisl.exception_status_id;
-{% endhighlight %}
+```
 # 原因分析
 1.先分析查询语句   
 ![EXPLAIN_LEFT_JOIN](/images/2017-07-03/explain_left_join.png)   
 发现LEFT JOIN的条件并没有走索引 而是过滤条件   
 2.将LEFT JOIN修改为JOIN分析   
-```postgresql
+```mysql
 SELECT ies.name
   FROM exception_invoice_status_log eisl, invoice_exception_status ies
  WHERE eisl.invoice_status_log_id = 1000 
