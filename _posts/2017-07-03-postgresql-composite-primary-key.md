@@ -33,13 +33,13 @@ ORDER BY eisl.exception_status_id;
 ![EXPLAIN_LEFT_JOIN](/images/2017-07-03/explain_left_join.png)   
 发现LEFT JOIN的条件并没有走索引 而是过滤条件   
 2.将LEFT JOIN修改为JOIN分析   
-{% highlight postgresql %}
+```postgresql
 SELECT ies.name
   FROM exception_invoice_status_log eisl, invoice_exception_status ies
  WHERE eisl.invoice_status_log_id = 1000 
    AND eisl.exception_status_id = ies.id
 ORDER BY eisl.exception_status_id;
-{% endhighlight %}
+```
 ![EXPLAIN_JOIN](/images/2017-07-03/explain_join.png)   
 发现使用JOIN后查询条件走的是主键索引
 
