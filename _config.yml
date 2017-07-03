@@ -9,7 +9,8 @@ avatar_url: /static/img/avatar.jpg
 
 enableTags: true
 tagarray: []
-pygments: true
+highlighter: pygments
+mardown: redcarpet
 
 collections:
   project:
