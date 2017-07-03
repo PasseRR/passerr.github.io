@@ -36,7 +36,7 @@ ORDER BY eisl.exception_status_id;
 发现LEFT JOIN的条件并没有走索引 而是过滤条件   
 2.将LEFT JOIN修改为JOIN分析   
 
-{% highlight mysql %}
+{% highlight python %}
 SELECT ies.name
   FROM exception_invoice_status_log eisl, invoice_exception_status ies
  WHERE eisl.invoice_status_log_id = 1000 
