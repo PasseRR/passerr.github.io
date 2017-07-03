@@ -7,7 +7,7 @@ categories: [db]
 # 问题及环境
 1.有两张数据库表exception_invoice_status_log和invoice_exception_status，其中exception_invoice_status_log数据量10w左右，invoice_exception_status数据量可以忽略   
 2.两张表数据库结构如下   
-{% highlight postgresql %}
+{% highlight sql %}
 CREATE TABLE IF NOT EXISTS exception_invoice_status_log(
   invoice_status_log_id BIGINT,
   exception_status_id BIGINT,
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS invoice_exception_status(
 {% endhighlight %}
 3.现有数据库查询如下，查询效率非常psql低下   
 
-{% highlight mysql %}
+{% highlight sql %}
 SELECT ies.name
   FROM exception_invoice_status_log eisl LEFT JOIN invoice_exception_status ies
     ON (eisl.invoice_status_log_id = 1000 AND eisl.exception_status_id = ies.id)
