@@ -22,17 +22,20 @@ CREATE TABLE IF NOT EXISTS invoice_exception_status(
 );
 ```
 3.现有数据库查询如下，查询效率非常低下   
-```mysql
+
+{% highlight postgresql %}
 SELECT ies.name
   FROM exception_invoice_status_log eisl LEFT JOIN invoice_exception_status ies
     ON (eisl.invoice_status_log_id = 1000 AND eisl.exception_status_id = ies.id)
 ORDER BY eisl.exception_status_id;
-```
+{% endhighlight %}
+
 # 原因分析
 1.先分析查询语句   
 ![EXPLAIN_LEFT_JOIN](/images/2017-07-03/explain_left_join.png)   
 发现LEFT JOIN的条件并没有走索引 而是过滤条件   
 2.将LEFT JOIN修改为JOIN分析   
+
 {% highlight mysql %}
 SELECT ies.name
   FROM exception_invoice_status_log eisl, invoice_exception_status ies
@@ -40,6 +43,7 @@ SELECT ies.name
    AND eisl.exception_status_id = ies.id
 ORDER BY eisl.exception_status_id;
 {% endhighlight %}
+
 ![EXPLAIN_JOIN](/images/2017-07-03/explain_join.png)   
 发现使用JOIN后查询条件走的是主键索引
 
