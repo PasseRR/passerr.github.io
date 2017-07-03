@@ -7,7 +7,6 @@ disqus_shortname: stackproblems
 google_analytics: UA-XXXXXXXX-Y
 avatar_url: /static/img/avatar.jpg
 
-highlighter: pygments
 enableTags: true
 tagarray: []
 
@@ -41,7 +40,10 @@ baseurl: ""
 paginate: 15
 per_page: 15
 paginate_path: "/page/:num/"
+
+highlighter: pygments
 markdown: kramdown
+
 gems:
   - jekyll-paginate
   - jekyll-gist

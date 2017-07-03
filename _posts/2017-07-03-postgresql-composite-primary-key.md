@@ -21,9 +21,9 @@ CREATE TABLE IF NOT EXISTS invoice_exception_status(
   CONSTRAINT pk_invoice_exception_status PRIMARY KEY (id)
 );
 ```
-3.现有数据库查询如下，查询效率非常低下   
+3.现有数据库查询如下，查询效率非常psql低下   
 
-{% highlight postgresql %}
+{% highlight psql %}
 SELECT ies.name
   FROM exception_invoice_status_log eisl LEFT JOIN invoice_exception_status ies
     ON (eisl.invoice_status_log_id = 1000 AND eisl.exception_status_id = ies.id)
