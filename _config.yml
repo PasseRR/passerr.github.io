@@ -9,6 +9,7 @@ avatar_url: /static/img/avatar.jpg
 
 enableTags: true
 tagarray: []
+pygments: true
 
 collections:
   project:
