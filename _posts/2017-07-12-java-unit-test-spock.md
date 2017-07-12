@@ -76,7 +76,6 @@ def cleanup() {
 {% endhighlight %}
 * Feature methods
 {% highlight groovy %}
-@Unroll
 // 动态方法名
 @Unroll
 def "addPerson:(idCardNo->#idCardNo, sex->#sex, name->#name), expect:#result"() {
