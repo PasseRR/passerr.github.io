@@ -1,0 +1,114 @@
+---
+layout: post
+title:  "使用Spock完成单元测试"
+date:   2017-07-12 13:32:57 +0800
+categories: [java]
+---
+# 前言
+1.单元测试是什么?   
+引用自维基百科:   
+```
+单元测试（英语：Unit Testing）又称为模块测试, 是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。
+```
+2.关于单元测试   
+java单元测试用的比较多的如jUnit,testng等。单元测试代码总是充斥着各种when(),any(),return(),加上java本身就是一秒啰嗦的语言,使得写单元测试成为了一件体力活。不同的人写出来的单元测试也是五花八门：      
+* 直接使用Main函数   
+* 不使用Assert而使用Sysout.out.println()   
+* 一个单元测试函数几百行   
+最终使得单元测试代码难以阅读、维护与理解,如同鸡肋一般食之无味弃之可惜.
+3.单元测试的难点      
+难写出简单、优雅、易维护、易理解的单元测试代码.   
+![实际单元测试](/images/2017-07-12/unit_test.png)  
+
+# 关于Spock
+1.什么是Spock?   
+引用自[Spock官网](http://spockframework.org/):   
+```
+Spock is a testing and specification framework for Java and Groovy applications. What makes it stand out from the crowd is its beautiful and highly expressive specification language. Thanks to its JUnit runner, Spock is compatible with most IDEs, build tools, and continuous integration servers. Spock is inspired from JUnit, RSpec, jMock, Mockito, Groovy, Scala, Vulcans, and other fascinating life forms.
+```
+2.groovy   
+Spock是基于[groovy](http://www.groovy-lang.org/)的,语法和java很接近,没有java那么啰嗦,可以完全用java语法编写groovy代码.   
+
+# 实战
+1.依赖   
+maven:   
+{% highlight xml %}
+<dependency>
+    <groupId>org.spockframework</groupId>
+    <artifactId>spock-core</artifactId>
+    <version>1.0-groovy-2.4</version>
+    <scope>test</scope>
+</dependency>
+<!-- if use spring -->
+<dependency>
+    <groupId>org.spockframework</groupId>
+    <artifactId>spock-spring</artifactId>
+    <version>1.0-groovy-2.4</version>
+    <scope>test</scope>
+</dependency>
+{% endhighlight %}
+gradle:   
+{% highlight groovy %}  
+dependencies{
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+    testCompile "org.spockframework:spock-spring:1.0-groovy-2.4"
+}
+{% endhighlight %}
+2.Spock和其他测试框架的比较   
+* 用jUnit写的单元测试代码   
+{% highlight java %}
+@Test
+public void addPerson() {
+    // 正常添加
+    PersonVo personVo = PersonVo.builder()
+        .idCardNo("1345")
+        .name("Jack")
+        .sex("male")
+        .build();
+    Assert.assertTrue(this.personService.addPerson(personVo));
+    // 名字重复
+    personVo = PersonVo.builder()
+        .idCardNo("1346")
+        .name("Jack")
+        .sex("male")
+        .build();
+    Assert.assertFalse(this.personService.addPerson(personVo));
+    // idCardNo重复
+    personVo = PersonVo.builder()
+        .idCardNo("1345")
+        .name("Jack Chen")
+        .sex("male")
+        .build();
+    Assert.assertFalse(this.personService.addPerson(personVo));
+}
+{% endhighlight %}
+* 使用Spock编写同样的单元测试
+{% highlight groovy %}
+@Unroll
+def "addPerson:(idCardNo->#idCardNo, sex->#sex, name->#name), expect:#result"() {
+    // 前置条件 同setup
+    given:
+    def personVo = PersonVo.builder()
+        .idCardNo(idCardNo)
+        .name(name)
+        .sex(sex)
+        .build()
+
+    // 预期
+    expect:
+    result == this.personService.addPerson(personVo)
+
+    // 条件
+    where:
+    // 数据定义方法一
+    // |用来分隔输入 ||用来分隔输出
+    idCardNo | name   | sex      || result
+    "5101"   | "Jack" | "male"   || true
+    // idCardNo重复
+    "5101"   | "John" | "male"   || false
+    // name重复
+    "5102"   | "Jack" | "male"   || false
+    "123456" | "Lucy" | "female" || true
+}
+{% endhighlight %}
+在去除啰嗦冗余的语法过后,单元测试代码是否看起来更清晰、更容易阅读、更优雅?   
