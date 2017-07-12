@@ -194,4 +194,5 @@ def "addPerson:(idCardNo->#idCardNo, sex->#sex, name->#name), expect:#result"() 
 }
 {% endhighlight %}
 在去除啰嗦冗余的语法过后,单元测试代码是否看起来更清晰、更容易阅读、更优雅?   
-
+4.测试结果   
+![测试结果](/images/2017-07-12/test_result.png)  
