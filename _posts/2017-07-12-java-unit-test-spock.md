@@ -56,7 +56,88 @@ dependencies{
     testCompile "org.spockframework:spock-spring:1.0-groovy-2.4"
 }
 {% endhighlight %}
-2.Spock和其他测试框架的比较   
+2.Spock中的概念
+* Specification   
+测试类都必须继承Specification类   
+* Fixture Methods   
+{% highlight groovy %}
+// 每个spec前置
+def setupSpec() {
+}
+// 每个spec后置
+def cleanupSpec() {
+}
+// 每个方法前置
+def setup() {
+}
+// 每个方法后置
+def cleanup() {
+}
+{% endhighlight %}
+* Feature methods
+{% highlight groovy %}
+@Unroll
+// 动态方法名
+@Unroll
+def "addPerson:(idCardNo->#idCardNo, sex->#sex, name->#name), expect:#result"() {
+}
+// 固定方法名
+def addPerson(){
+}
+{% endhighlight %}
+* setup/given Blocks   
+在这个block中会放置与这个测试函数相关的初始化程序   
+{% highlight groovy %}
+given: // 也可以写作setup 
+def stack = new Stack()
+def elem = "push me"
+{% endhighlight %}
+* when and then Blocks   
+{% highlight groovy %}
+when:
+stack.push(elem)  
+
+then:
+!stack.empty
+stack.size() == 1
+stack.peek() == elem
+{% endhighlight %}
+* expect Blocks   
+when and then Blocks例子可以替换为:   
+{% highlight groovy %}
+given:
+def stack = new Stack()
+def elem = "push me"
+stack.push(elem)
+expect:
+stack.empty == false
+stack.size() == 1
+stack.peek() == elem
+{% endhighlight %}
+* where Blocks   
+做测试时最复杂的事情之一就是准备测试数据，尤其是要测试边界条件、测试异常分支等，这些都需要在测试之前规划好数据.   
+{% highlight groovy %}
+def "maximum of two numbers"() {
+    expect:
+    // exercise math method for a few different inputs
+    Math.max(1, 3) == 3
+    Math.max(7, 4) == 7
+    Math.max(0, 0) == 0
+}
+
+// 可以替换为
+def "maximum of two numbers"() {
+    expect:
+    Math.max(a, b) == c
+
+    where:
+    a | b || c
+    3 | 5 || 5
+    7 | 0 || 7
+    0 | 0 || 0
+}
+{% endhighlight %}
+3.Spock和其他测试框架的比较   
 * 用jUnit写的单元测试代码   
 {% highlight java %}
 @Test
@@ -114,3 +195,4 @@ def "addPerson:(idCardNo->#idCardNo, sex->#sex, name->#name), expect:#result"() 
 }
 {% endhighlight %}
 在去除啰嗦冗余的语法过后,单元测试代码是否看起来更清晰、更容易阅读、更优雅?   
+
