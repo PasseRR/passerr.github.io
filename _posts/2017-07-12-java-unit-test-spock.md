@@ -15,7 +15,7 @@ java单元测试用的比较多的如jUnit,testng等。单元测试代码总是�
 * 直接使用Main函数   
 * 不使用Assert而使用Sysout.out.println()   
 * 一个单元测试函数几百行   
-最终使得单元测试代码难以阅读、维护与理解,如同鸡肋一般食之无味弃之可惜.
+最终使得单元测试代码难以阅读、维护与理解,如同鸡肋一般食之无味弃之可惜.   
 3.单元测试的难点      
 难写出简单、优雅、易维护、易理解的单元测试代码.   
 ![实际单元测试](/images/2017-07-12/unit_test.png)  
@@ -31,7 +31,7 @@ Spock是基于[groovy](http://www.groovy-lang.org/)的,语法和java很接近,�
 
 # 实战
 1.依赖   
-maven:   
+* maven   
 {% highlight xml %}
 <dependency>
     <groupId>org.spockframework</groupId>
@@ -47,7 +47,7 @@ maven:
     <scope>test</scope>
 </dependency>
 {% endhighlight %}
-gradle:   
+* gradle   
 {% highlight groovy %}  
 dependencies{
     testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
