@@ -32,8 +32,6 @@ share:
   fb_appid: 1749788565247320
 
 urls:
-    - text: Gitbook
-      url: /gitbook/
     - text: 关于
       url: /about/
 

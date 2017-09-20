@@ -3,12 +3,19 @@ layout: default
 permalink: /gitbook/
 ---
 
-<!--1. [设计模式](/DesignPatternsBook) »-->
-<ol class="posts">
-    {% for book in site.data.gitbooks %}
-    <li>
-        <a href="{{ book.url }}">{{ book.name }}</a> &raquo;
-        <i><span>{{ book.date | date_to_string }}</span></i>
-    </li>
-    {% endfor %}
-</ol>
+<header class="post-header">
+    <h1 class="post-title">Gitbook</h1>
+</header>
+
+<div class="post-content">
+    <hr/>
+    <ol class="posts">
+        {% for book in site.data.gitbooks %}
+        <li>
+            <a href="{{ book.url }}" target="_blank">{{ book.name }}</a> &raquo;
+            <i><span>{{ book.date | date_to_string }}</span></i>
+        </li>
+        {% endfor %}
+    </ol>
+    <hr/>
+</div>
