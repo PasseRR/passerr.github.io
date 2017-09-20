@@ -16,24 +16,24 @@ collections:
     permalink: /project/:path/
 
 social:
-    - icon: fa-github
-      link: "https://github.com/PasseRR"
-    - icon: fa-weibo
-      link: "http://weibo.com/u/1015039932"
-    - icon: fa-facebook
-      link: "#"
-    - icon: fa-twitter
-      link: "#"
-    - icon: fa-linkedin
-      link: "#"
+  - icon: fa-github
+    link: "https://github.com/PasseRR"
+  - icon: fa-weibo
+    link: "http://weibo.com/u/1015039932"
+  - icon: fa-facebook
+    link: "#"
+  - icon: fa-twitter
+    link: "#"
+  - icon: fa-linkedin
+    link: "#"
 
 share:
   twitter_username: agusmakmun6
   fb_appid: 1749788565247320
 
 urls:
-    - text: 关于
-      url: /about/
+  - text: 关于
+    url: /about/
 
 url: "https://passerr.github.io"
 baseurl: ""
