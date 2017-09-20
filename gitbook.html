@@ -1,0 +1,14 @@
+---
+layout: default
+permalink: /gitbook/
+---
+
+<!--1. [设计模式](/DesignPatternsBook) »-->
+<ol class="posts">
+    {% for book in site.data.gitbooks %}
+    <li>
+        <a href="{{ book.url }}">{{ book.name }}</a> &raquo;
+        <i><span>{{ book.date | date_to_string }}</span></i>
+    </li>
+    {% endfor %}
+</ol>
