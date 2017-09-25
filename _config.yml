@@ -40,7 +40,7 @@ per_page: 15
 paginate_path: "/page/:num/"
 
 highlighter: rouge
-markdown: redcarpet
+#markdown: redcarpet
 redcarpet:
   extensions:
     - fenced_code_blocks
