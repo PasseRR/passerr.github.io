@@ -42,7 +42,9 @@ per_page: 15
 paginate_path: "/page/:num/"
 
 highlighter: pygments
-markdown: kramdown
+markdown: redcarpet
+redcarpet:
+    extensions: ["tables"]
 
 gems:
   - jekyll-paginate
