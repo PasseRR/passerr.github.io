@@ -6,9 +6,8 @@ categories: [java]
 ---
 # 前言
 1.单元测试是什么?   
-```
-单元测试（英语：Unit Testing）又称为模块测试, 是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。   ----引用自维基百科
-```
+> 单元测试（英语：Unit Testing）又称为模块测试, 是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。   ----引用自[维基百科](https://zh.wikipedia.org/wiki/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95)  
+
 2.关于单元测试   
 java单元测试用的比较多的如jUnit,testng等。单元测试代码总是充斥着各种when(),any(),return(),加上java本身就是一秒啰嗦的语言,使得写单元测试成为了一件体力活。不同的人写出来的单元测试也是五花八门：      
 
@@ -23,10 +22,8 @@ java单元测试用的比较多的如jUnit,testng等。单元测试代码总是�
 
 # 关于Spock
 1.什么是Spock?   
-引用自[Spock官网](http://spockframework.org/):   
-```
-Spock is a testing and specification framework for Java and Groovy applications. What makes it stand out from the crowd is its beautiful and highly expressive specification language. Thanks to its JUnit runner, Spock is compatible with most IDEs, build tools, and continuous integration servers. Spock is inspired from JUnit, RSpec, jMock, Mockito, Groovy, Scala, Vulcans, and other fascinating life forms.
-```
+> Spock is a testing and specification framework for Java and Groovy applications. What makes it stand out from the crowd is its beautiful and highly expressive specification language. Thanks to its JUnit runner, Spock is compatible with most IDEs, build tools, and continuous integration servers. Spock is inspired from JUnit, RSpec, jMock, Mockito, Groovy, Scala, Vulcans, and other fascinating life forms. ----自[Spock官网](http://spockframework.org/)  
+  
 2.groovy   
 Spock是基于[groovy](http://www.groovy-lang.org/)的,语法和java很接近,没有java那么啰嗦,可以完全用java语法编写groovy代码.   
 
