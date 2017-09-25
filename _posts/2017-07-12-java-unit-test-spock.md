@@ -22,7 +22,7 @@ java单元测试用的比较多的如jUnit,testng等。单元测试代码总是�
 
 # 关于Spock
 1.什么是Spock?   
-> Spock is a testing and specification framework for Java and Groovy applications. What makes it stand out from the crowd is its beautiful and highly expressive specification language. Thanks to its JUnit runner, Spock is compatible with most IDEs, build tools, and continuous integration servers. Spock is inspired from JUnit, RSpec, jMock, Mockito, Groovy, Scala, Vulcans, and other fascinating life forms. ------自[Spock官网](http://spockframework.org/)  
+> Spock is a testing and specification framework for Java and Groovy applications. What makes it stand out from the crowd is its beautiful and highly expressive specification language. Thanks to its JUnit runner, Spock is compatible with most IDEs, build tools, and continuous integration servers. Spock is inspired from JUnit, RSpec, jMock, Mockito, Groovy, Scala, Vulcans, and other fascinating life forms. ------引用自[Spock官网](http://spockframework.org/)  
   
 2.groovy   
 Spock是基于[groovy](http://www.groovy-lang.org/)的,语法和java很接近,没有java那么啰嗦,可以完全用java语法编写groovy代码.   
