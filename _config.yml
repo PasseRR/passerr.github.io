@@ -44,7 +44,7 @@ paginate_path: "/page/:num/"
 highlighter: pygments
 markdown: redcarpet
 redcarpet:
-    extensions: ["tables"]
+  extensions: ["fenced_code_blocks", "autolink", "tables", "strikethrough"]
 
 gems:
   - jekyll-paginate
