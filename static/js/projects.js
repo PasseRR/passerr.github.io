@@ -1,6 +1,6 @@
 (function ($) {
     $(document).ready(function () {
-        $("table").addClass("ink-table alternating hover bordered");
+        // $("table").addClass("ink-table alternating hover bordered");
         $(document).on('click', '.tag-filter', function () {
             var $this = $(this);
 
