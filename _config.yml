@@ -42,15 +42,18 @@ per_page: 15
 paginate_path: "/page/:num/"
 
 highlighter: pygments
-#markdown: redcarpet
-#redcarpet:
-#  extensions: ["fenced_code_blocks", "autolink", "tables", "strikethrough"]
-markdown: kramdown
-kramdown:
-    input: GFM
+markdown: redcarpet
+redcarpet:
+  extensions:
+    - fenced_code_blocks
+    - autolink
+    - tables
+    - strikethrough
+
 gems:
   - jekyll-paginate
   - jekyll-gist
+  - redcarpet
 
 compress_html:
   clippings: all
