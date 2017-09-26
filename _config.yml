@@ -25,9 +25,9 @@ social:
   - icon: fa-linkedin
     link: "#"
 
-share:
-  twitter_username: agusmakmun6
-  fb_appid: 1749788565247320
+#share:
+#  twitter_username: agusmakmun6
+#  fb_appid: 1749788565247320
 
 urls:
   - text: 关于
