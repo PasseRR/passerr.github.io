@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /gitbook/
+permalink: /ebook/
 ---
 
 <header class="post-header">
@@ -10,7 +10,7 @@ permalink: /gitbook/
 <div class="post-content">
     <hr/>
     <ol class="posts">
-        {% for book in site.data.gitbooks %}
+        {% for book in site.data.ebook %}
         <li>
             <a href="{{ book.url }}" target="_blank">{{ book.name }}</a> &raquo;
             <i><span>{{ book.date | date_to_string }}</span></i>
