@@ -11,7 +11,7 @@ categories: [java]
 > 测试系统功能——创建回归测试检验软件功能和用户需求。支持自动录制动作和自动生成 .Net、Java、Perl等不同语言的测试脚本。
 
 # 依赖
-1. maven  
+1.maven  
 
 {% highlight xml %}
 <dependency>
@@ -21,7 +21,7 @@ categories: [java]
 </dependency>
 {% endhighlight %}
 
-2. gradle  
+2.gradle  
 
 {% highlight groovy %}
 compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.14.0'
