@@ -66,75 +66,75 @@ java -jar selenium-server-standalone-3.141.59.jar -role node -hub http://localho
 {% endhighlight %}
 
 <figure>
-  <figcaption>hub.json</figcaption>
-  {% highlight json %}
-  	{
-	  "port": 4444,
-	  "newSessionWaitTimeout": -1,
-	  "servlets": [],
-	  "capabilityMatcher": "org.openqa.grid.internal.utils.DefaultCapabilityMatcher",
-	  "throwOnCapabilityNotPresent": true,
-	  "nodePolling": 5000,
-	  "cleanUpCycle": 5000,
-	  "timeout": 60,
-	  "browserTimeout": 60,
-	  "maxSession": 10,
-	  "jettyMaxThreads": -1
-	}
-  {% endhighlight %}
+<figcaption>hub.json</figcaption>
+{% highlight json %}
+{
+  "port": 4444,
+  "newSessionWaitTimeout": -1,
+  "servlets": [],
+  "capabilityMatcher": "org.openqa.grid.internal.utils.DefaultCapabilityMatcher",
+  "throwOnCapabilityNotPresent": true,
+  "nodePolling": 5000,
+  "cleanUpCycle": 5000,
+  "timeout": 60,
+  "browserTimeout": 60,
+  "maxSession": 10,
+  "jettyMaxThreads": -1
+}
+{% endhighlight %}
 </figure>
 
 <figure>
-  <figcaption>node.json</figcaption>
-  {% highlight json %}
-  	{
-	  "capabilities": [
-		{
-		  "browserName": "firefox",
-		  "marionette": true,
-		  "maxInstances": 1,
-		  "seleniumProtocol": "WebDriver"
-		},
-		{
-		  "browserName": "chrome",
-		  "maxInstances": 3,
-		  "platform": "WINDOWS",
-		  "webdriver.chrome.driver": "D:\\javaproject\\oATFWeb\\External\\chromedriver2.4.1.exe",
-		  "seleniumProtocol": "WebDriver"
-		},
-		{
-		  "browserName": "internet explorer",
-		  "platform": "WINDOWS",
-		  "maxInstances": 1,
-		  "seleniumProtocol": "WebDriver"
-		},
-		{
-		  "browserName": "safari",
-		  "technologyPreview": false,
-		  "platform": "MAC",
-		  "maxInstances": 1,
-		  "seleniumProtocol": "WebDriver"
-		}
-	  ],
-	  "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
-	  "maxSession": 5,
-	  "port": 5555,
-	  "register": true,
-	  "registerCycle": 5000,
-	  "hub": "http://10.12.1.140:4444",
-	  "nodeStatusCheckTimeout": 5000,
-	  "nodePolling": 5000,
-	  "role": "node",
-	  "unregisterIfStillDownAfter": 60000,
-	  "downPollingLimit": 2,
-	  "debug": false,
-	  "servlets": [],
-	  "withoutServlets": [],
-	  "custom": {},
-	  "browserTimeout": 60,
-	  "timeout": 60
+<figcaption>node.json</figcaption>
+{% highlight json %}
+{
+  "capabilities": [
+	{
+	  "browserName": "firefox",
+	  "marionette": true,
+	  "maxInstances": 1,
+	  "seleniumProtocol": "WebDriver"
+	},
+	{
+	  "browserName": "chrome",
+	  "maxInstances": 3,
+	  "platform": "WINDOWS",
+	  "webdriver.chrome.driver": "D:\\javaproject\\oATFWeb\\External\\chromedriver2.4.1.exe",
+	  "seleniumProtocol": "WebDriver"
+	},
+	{
+	  "browserName": "internet explorer",
+	  "platform": "WINDOWS",
+	  "maxInstances": 1,
+	  "seleniumProtocol": "WebDriver"
+	},
+	{
+	  "browserName": "safari",
+	  "technologyPreview": false,
+	  "platform": "MAC",
+	  "maxInstances": 1,
+	  "seleniumProtocol": "WebDriver"
 	}
-  {% endhighlight %}
+  ],
+  "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+  "maxSession": 5,
+  "port": 5555,
+  "register": true,
+  "registerCycle": 5000,
+  "hub": "http://10.12.1.140:4444",
+  "nodeStatusCheckTimeout": 5000,
+  "nodePolling": 5000,
+  "role": "node",
+  "unregisterIfStillDownAfter": 60000,
+  "downPollingLimit": 2,
+  "debug": false,
+  "servlets": [],
+  "withoutServlets": [],
+  "custom": {},
+  "browserTimeout": 60,
+  "timeout": 60
+}
+{% endhighlight %}
 </figure>
 
 3.结果  
