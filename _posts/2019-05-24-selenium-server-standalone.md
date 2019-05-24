@@ -137,4 +137,5 @@ java -jar selenium-server-standalone-3.141.59.jar -role node -hub http://localho
   {% endhighlight %}
 </figure>
 
-
+3.结果  
+访问http://hub.ip:port/grid/console可以看到node的详细配置
