@@ -9,3 +9,7 @@
 - name: JDK8特性
   url: /jdk8-features
   date: 2019-05-20
+
+- name: JDK9特性
+  url: /jdk9-features
+  date: 2020-04-11
