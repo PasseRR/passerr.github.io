@@ -1,1 +1,42 @@
+title: PasseRR's Blog
+description: My Personal Blog
+author: PasseRR
+github: https://github.com/PasseRR
+about: I'm a javaer.
+email: xie__hai@sina.com
+avatar_url: https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/static/img/avatar.jpg
+
+enableTags: true
+tagarray: []
+
+collections:
+  project:
+    output: true
+    permalink: /project/:path/
+
+url: "https://passerr.github.io"
+baseurl: ""
+paginate: 15
+per_page: 15
+paginate_path: "/page/:num/"
+
+highlighter: rouge
+#markdown: redcarpet
+redcarpet:
+  extensions:
+    - fenced_code_blocks
+    - autolink
+    - tables
+    - strikethrough
+
+gems:
+  - jekyll-paginate
+  - jekyll-gist
+  - redcarpet
+
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+
 remote_theme: PasseRR/jekyll-blog-theme
