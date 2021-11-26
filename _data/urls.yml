@@ -2,10 +2,10 @@
 - text: 博客
   url: /
 - text: 博客分类
-  url: /category/others
+  url: /category/others.html
 - text: 电子书
-  url: /ebook
+  url: /ebook.html
 - text: 开源
-  url: /open-source
+  url: /open-source.html
 - text: 关于
-  url: /about/
+  url: /about.html
