@@ -2,7 +2,7 @@
 layout: post
 title:  "Github Pages搭建个人博客"
 date:   2017-05-22 10:42:34 +0800
-categories: [others]
+categories: [others, js, css]
 ---
 # 准备工作
 1. 创建一个新的仓库，名为：你的github帐号.github.com，创建后的样子   

@@ -1,6 +1,6 @@
 ---
 layout: posts_by_category
-categories: database
+categories: css
 title: css样式
 permalink: /category/css.html
 ---
