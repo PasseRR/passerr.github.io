@@ -1,6 +1,6 @@
 ---
 layout: posts_by_category
-categories: db
-title: Db
-permalink: /category/db
+categories: database
+title: 数据库
+permalink: /category/database.html
 ---

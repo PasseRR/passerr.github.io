@@ -1,6 +1,6 @@
 ---
 layout: posts_by_category
 categories: others
-title: Others
+title: 其他
 permalink: /category/others
 ---

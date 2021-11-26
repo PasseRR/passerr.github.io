@@ -2,7 +2,7 @@
 layout: post
 title:  "Postgresql联合主键left join查询"
 date:   2017-07-03 14:15:46 +0800
-categories: [db]
+categories: [database]
 ---
 # 问题及环境
 1.有两张数据库表exception_invoice_status_log和invoice_exception_status，其中exception_invoice_status_log数据量10w左右，invoice_exception_status数据量可以忽略   
