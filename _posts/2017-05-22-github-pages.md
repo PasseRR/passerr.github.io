@@ -28,9 +28,11 @@ categories: [others, js, css]
 `|  └── 2009-04-26-barcamp-boston-4-roundup.markdown`  
 `├── _data`  
 `|  └── members.yml 本地数据`  
-`└── index.html 首页`  
+`└── index.html 首页`
+
 2. 文档  
 [官网文档](http://jekyll.com.cn/docs/home/)
+[模版语言](https://shopify.github.io/liquid/)
 
 # 发布新文章
 在_posts目录下新增一篇文章，push到仓库等github部署完，就可以看到属于你的个人博客了。
