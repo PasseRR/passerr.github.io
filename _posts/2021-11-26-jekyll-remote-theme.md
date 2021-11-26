@@ -2,7 +2,7 @@
 layout: post
 title:  jekyll远程主题
 date:   2021-11-26 17:18:14 +0800
-categories: [others, css, js]
+categories: [others, style, js]
 ---
 
 ## 前提

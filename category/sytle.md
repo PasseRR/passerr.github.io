@@ -1,6 +1,6 @@
 ---
 layout: posts_by_category
 categories: css
-title: css样式
-permalink: /category/css.html
+title: 样式
+permalink: /category/style.html
 ---
