@@ -10,9 +10,8 @@ collections:
 
 url: "https://passerr.github.io"
 baseurl: ""
-paginate: 15
-per_page: 15
-paginate_path: "/page/:num/"
+paginate: 18
+paginate_path: "/blogs/:num.html"
 
 highlighter: rouge
 redcarpet:
