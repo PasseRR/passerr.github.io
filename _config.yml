@@ -34,4 +34,6 @@ compress_html:
   comments: ["<!-- ", " -->"]
   endings: all
 
+message_board_issue_id: 4
+
 remote_theme: PasseRR/jekyll-blog-theme
