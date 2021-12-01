@@ -14,7 +14,6 @@ CREATE TABLE IF NOT EXISTS exception_invoice_status_log(
   CONSTRAINT pk_eisl_invoice_status_id_exception_status_id PRIMARY KEY(invoice_status_log_id, exception_status_id),
   CONSTRAINT fk_eisl_exception_status_id FOREIGN KEY(exception_status_id) REFERENCES invoice_exception_status(id)
 );
-
 CREATE TABLE IF NOT EXISTS invoice_exception_status(
   id INT NOT NULL,
   name VARCHAR(20) NOT NULL,
