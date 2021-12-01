@@ -7,7 +7,7 @@
   url: /ebook.html
 - text: 开源
   url: /open-source.html
-- text: 留言板
-  url: /message-board.html
+#- text: 留言板
+#  url: /message-board.html
 - text: 关于
   url: /about.html
