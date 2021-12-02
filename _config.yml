@@ -38,7 +38,7 @@ bmob-rest-key: 3f399f018571ea78c9bc3245c58a8c0e
 
 # google分析衡量id
 ga: G-1L1DPX3PFD
-# 百度统计
+# 百度统计id
 hm: 712de58e89ed55d7c9e9bbd30ad340cd
 
 plugins:
