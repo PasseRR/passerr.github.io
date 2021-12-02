@@ -36,6 +36,7 @@ remote_theme: PasseRR/jekyll-blog-theme
 # 留言板配置
 bmob-app-id: e71fdd8d5b1f139b1da542a1e3a2ad09
 bmob-rest-key: 3f399f018571ea78c9bc3245c58a8c0e
+bmob-message-table: message
 
 # google分析gtag
 ga: G-1L1DPX3PFD
