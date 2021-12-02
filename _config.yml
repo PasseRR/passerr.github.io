@@ -10,6 +10,7 @@ collections:
 
 url: "https://passerr.github.io"
 baseurl: ""
+permalink: /:year/:month/:day/:name:output_ext
 paginate: 18
 paginate_path: "/blogs/:num.html"
 
