@@ -36,9 +36,9 @@ remote_theme: PasseRR/jekyll-blog-theme
 bmob-app-id: e71fdd8d5b1f139b1da542a1e3a2ad09
 bmob-rest-key: 3f399f018571ea78c9bc3245c58a8c0e
 
-# google分析衡量id
+# google分析gtag
 ga: G-1L1DPX3PFD
-# 百度统计id
+# 百度统计hm
 hm: 712de58e89ed55d7c9e9bbd30ad340cd
 
 plugins:
