@@ -1,6 +1,6 @@
 ---
 layout: posts_by_category
 categories: bash
-title: Bash类
-permalink: /category/bash.html
+title: Bash、Shell、Bat类
+permalink: /category/script.html
 ---
