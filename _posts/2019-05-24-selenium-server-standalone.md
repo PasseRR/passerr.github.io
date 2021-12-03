@@ -5,15 +5,15 @@ date:   2019-05-24 11:07:14 +0800
 categories: [java]
 ---
 
-# 下载selenium服务端
+## 下载selenium服务端
 [下载](https://docs.seleniumhq.org/download/)
 
-# 下载浏览器驱动
+## 下载浏览器驱动
 [Chrome](http://chromedriver.storage.googleapis.com/index.html)  
 [FireFox](https://github.com/mozilla/geckodriver/releases/)  
 [IE](http://selenium-release.storage.googleapis.com/index.html)  
 
-# 服务端启动
+## 服务端启动
 1.服务启动命令  
 
 {% highlight bat %}
@@ -43,25 +43,25 @@ public class WebDriverConfig {
 }
 {% endhighlight %}
 
-# selenium grid
+## selenium grid
 > 通过-role hub/-role node来指定是hub还是node，hub至少应该有一个node节点，node节点通过http://ip:port/grid/register/注册至hub。
 > 客户端通过hub连接，hub将请求转发至node节点执行。
 
 1.参数配置方式  
 
 {% highlight bat %}
-# 启动hub
+## 启动hub
 java -jar selenium-server-standalone-3.141.59.jar -role hub -maxSession 10 -port 4444
-# 启动node
+## 启动node
 java -jar  -"Dwebdriver.chrome.driver=C:\\tools\\driver\\chromedriver.exe" selenium-server-standalone-3.141.59.jar -role node  -hub http://localhost:4444/grid/register -port 4445
 {% endhighlight %}
 
 2.配置文件方式
 
 {% highlight bat %}
-# 启动hub
+## 启动hub
 java -jar selenium-server-standalone-3.141.59.jar -role hub -hubConfig hub.json
-# 启动node
+## 启动node
 java -jar selenium-server-standalone-3.141.59.jar -role node -hub http://localhost:4444/grid/register -nodeConfig node.json
 {% endhighlight %}
 
