@@ -34,5 +34,5 @@ categories: [others, js, style]
 [官网文档](http://jekyll.com.cn/docs/home/)
 [模版语言](https://shopify.github.io/liquid/)
 
-# 发布新文章
+## 发布新文章
 在_posts目录下新增一篇文章，push到仓库等github部署完，就可以看到属于你的个人博客了。
