@@ -41,7 +41,7 @@ jobs:
             git@gitee.com:PasseRR/JavaLeetCode.git
           # 这里的GITEE_KEY修改为你的密钥名称
           ssh_private_key:
-            ${{ secrets.GITEE_KEY }}
+            ${{ "{{" }} secrets.GITEE_KEY }}
 ```
 
 然后，每次在github push代码就会自动同步到gitee了。
