@@ -15,7 +15,6 @@ categories: [ci]
 ## 3.在Github仓库设置私钥
 在要同步的仓库下「Settings」 -> 「Secrets」 -> 「Actions」-> 「New repository secret」，复制
 `id_rsa`内容添加新私钥，并设置一个密钥名称，以`GITEE_KEY`为例。
-
 ![Github密钥](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/images/2021-12-06/private-key.png)
 
 ## 4.设置同步任务
@@ -45,3 +44,4 @@ jobs:
 ```
 
 然后，每次在github push代码就会自动同步到gitee了。
+![同步成功](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/images/2021-12-06/sync.png)
