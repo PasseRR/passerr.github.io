@@ -1,6 +1,6 @@
 ---
 layout: posts_by_category
 categories: js
-title: Javascript类
+title: Javascript
 permalink: /category/js.html
 ---
