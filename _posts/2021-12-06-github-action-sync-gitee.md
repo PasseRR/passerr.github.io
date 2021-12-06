@@ -10,7 +10,7 @@ categories: [ci]
 
 ## 2.配置Gitee SSH公钥
 「个人设置」->「安全设置」->「SSH公钥」，复制`id_rsa.pub`内容添加新公钥
-![Gitee公钥](https://images.gitee.com/uploads/images/2018/0814/171907_3f7f8fd6_551147.png)
+![Gitee公钥](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/images/2021-12-06/public-key.png)
 
 ## 3.在Github仓库设置私钥
 在要同步的仓库下「Settings」 -> 「Secrets」 -> 「Actions」-> 「New repository secret」，复制
