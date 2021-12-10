@@ -8,7 +8,6 @@ collections:
     output: true
     permalink: /project/:path/
 
-url: "https://passerr.github.io"
 baseurl: ""
 permalink: /:name:output_ext
 paginate: 18
@@ -32,6 +31,12 @@ compress_html:
   comments: ["<!-- ", " -->"]
   endings: all
 
+tipue_search:
+  include:
+    pages: true
+  exclude:
+    files: [ 404.md, search.md ]
+
 remote_theme: PasseRR/jekyll-blog-theme
 
 # 留言板配置
@@ -44,6 +49,8 @@ ga: G-1L1DPX3PFD
 # 百度统计hm
 hm: 712de58e89ed55d7c9e9bbd30ad340cd
 
+url: "https://www.xiehai.win"
 plugins:
   - jekyll-remote-theme
   - jekyll-paginate
+  - jekyll-sitemap

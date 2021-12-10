@@ -9,5 +9,7 @@
   url: /open-source.html
 - text: 留言板
   url: /messages-board.html
+- text: 搜索
+  url: /search.html
 - text: 关于
   url: /about.html
