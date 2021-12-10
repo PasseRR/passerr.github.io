@@ -25,6 +25,7 @@ gems:
   - jekyll-paginate
   - jekyll-gist
   - redcarpet
+  - jekyll-sitemap
 
 compress_html:
   clippings: all
