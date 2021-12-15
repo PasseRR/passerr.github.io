@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Postgresql联合主键left join查询"
-date:   2017-07-03 14:15:46 +0800
 categories: [database]
 ---
 ## 问题及环境

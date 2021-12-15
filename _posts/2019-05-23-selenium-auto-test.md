@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Java基于Selenium本地Chrome驱动自动化测试"
-date:   2019-05-23 13:57:50 +0800
 categories: [java]
 ---
 ## Selenium

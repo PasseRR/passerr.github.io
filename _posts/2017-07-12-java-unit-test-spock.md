@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "使用Spock完成单元测试"
-date:   2017-07-12 13:32:57 +0800
 categories: [java]
 ---
 ## 前言

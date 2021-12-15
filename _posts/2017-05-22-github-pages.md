@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Github Pages搭建个人博客"
-date:   2017-05-22 10:42:34 +0800
 categories: [others, js, style]
 ---
 ## 准备工作

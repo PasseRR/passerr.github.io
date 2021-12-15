@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Selenium远程驱动服务搭建"
-date:   2019-05-24 11:07:14 +0800
 categories: [java]
 ---
 
