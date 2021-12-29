@@ -33,7 +33,7 @@ categories: [md, others]
     <tr>
         <td>(圆角)</td>
         <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 id1(圆角)
@@ -44,7 +44,7 @@ id1(圆角)
 <tr>
         <td>([圆边])</td>
         <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 id1([圆边])
@@ -55,7 +55,7 @@ id1([圆边])
 <tr>
 <td>[[子程序]]</td>
 <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 id1[[子程序]]
@@ -67,7 +67,7 @@ id1[[子程序]]
 <tr>
 <td>((圆形))</td>
 <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 id1((圆形))
@@ -79,7 +79,7 @@ id1((圆形))
 <tr>
 <td>[(圆柱体)]</td>
 <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 id1[(圆柱体)]
@@ -91,7 +91,7 @@ id1[(圆柱体)]
 <tr>
 <td>>不对称的]</td>
 <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 id1>不对称的]
@@ -103,7 +103,7 @@ id1>不对称的]
 <tr>
 <td>{菱形}</td>
 <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 id1{菱形}
@@ -115,7 +115,7 @@ id1{菱形}
 <tr>
 <td>{{'{{'}}六边形}}</td>
 <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 id1{{'{{'}}六边形}}
@@ -127,7 +127,7 @@ id1{{'{{'}}六边形}}
 <tr>
 <td>[/平行四边形/]</td>
 <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 id1[/平行四边形/]
@@ -139,7 +139,7 @@ id1[/平行四边形/]
 <tr>
 <td>[/梯形\]</td>
 <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 id1[/梯形\]
@@ -167,7 +167,7 @@ id1[/梯形\]
 <tr>
 <td>--直线---</td>
 <td>
-<pre>
+<pre class="highlight">
 <code>
 flowchart LR
 A --- B
@@ -177,7 +177,7 @@ E ---|直线| F
 </pre>
 </td>
 <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 A --- B
@@ -190,7 +190,7 @@ E ---|直线| F
 <tr>
 <td>--箭头直线--></td>
 <td>
-<pre>
+<pre class="highlight">
 <code>
 flowchart LR
 A --> B
@@ -200,7 +200,7 @@ E -->|箭头直线| F
 </pre>
 </td>
 <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 A --> B
@@ -213,7 +213,7 @@ E -->|箭头直线| F
 <tr>
 <td>==粗直线===</td>
 <td>
-<pre>
+<pre class="highlight">
 <code>
 flowchart LR
 A === B
@@ -223,7 +223,7 @@ E ===|直线| F
 </pre>
 </td>
 <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 A === B
@@ -236,7 +236,7 @@ E ===|直线| F
 <tr>
 <td>==粗箭头直线==></td>
 <td>
-<pre>
+<pre class="highlight">
 <code>
 flowchart LR
 A ==> B
@@ -246,7 +246,7 @@ E ==>|粗箭头直线| F
 </pre>
 </td>
 <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 A ==> B
@@ -259,7 +259,7 @@ E ==>|粗箭头直线| F
 <tr>
 <td>-.虚线.-</td>
 <td>
-<pre>
+<pre class="highlight">
 <code>
 flowchart LR
 A -.- B
@@ -269,7 +269,7 @@ E -.-|虚线| F
 </pre>
 </td>
 <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 A -.- B
@@ -282,7 +282,7 @@ E -.-|虚线| F
 <tr>
 <td>-.箭头虚线.-></td>
 <td>
-<pre>
+<pre class="highlight">
 <code>
 flowchart LR
 A -.-> B
@@ -292,7 +292,7 @@ E -.->|箭头虚线| F
 </pre>
 </td>
 <td>
-<pre>
+<pre class="highlight">
 <code class="language-mermaid">
 flowchart LR
 A -.-> B
@@ -378,6 +378,7 @@ flowchart LR
   A --> TOP --> B
   B1 --> B2
 ```
+
 ```mermaid
 flowchart LR
   subgraph TOP
