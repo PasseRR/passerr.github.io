@@ -11,78 +11,77 @@ categories: [java]
 
 ## 依赖
 1.maven  
-
-{% highlight xml %}
+```xml
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
     <version>3.14.0</version>
 </dependency>
-{% endhighlight %}
+```
 
 2.gradle  
-
-{% highlight groovy %}
+```groovy
 compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.14.0'
-{% endhighlight %}
+```
 
 ## 元素定位
 有如下一段html，现在要模拟点击搜索按钮
 
-{% highlight html %}
+```html
 <button id="searchButton" aria-label="Google Search" name="btnK" class="gbqfba">
-	<span id="gbqfsa">Google Search</span>
+    <span id="gbqfsa">Google Search</span>
 </button>
-{% endhighlight %}
+```
 
 1.By.name()  
 > 通过dom元素的name属性定位元素
 
-{% highlight java %}
+```java
 driver.findElement(By.name("btnK")).click();
-{% endhighlight %}
+```
 
 2.By.id()  
 > 通过dom元素的id属性定位元素
 
-{% highlight java %}
+```java
 driver.findElement(By.id("searchButton")).click();
-{% endhighlight %}
+```
 
 3.By.tagName()
 > 该方法可以通过元素的标签名称来查找元素。该方法跟之前两个方法的区别是，这个方法搜索到的元素通常不止一个，所以一般建议结合使用findElements方法来使用。比如我们现在要查找页面上有多少个button，就可以用button这个tagName来进行查找，代码如下
 
-{% highlight java %}
+```java
 List<WebElement> buttons = driver.findElements(By.tagName("button"));
-System.out.println(buttons.size());  //打印出button的个数
+//打印出button的个数
+System.out.println(buttons.size());  
 buttons.get(0).click();
-{% endhighlight %}
+```
 
 4.By.className()
 > className属性是利用元素的css样式表所引用的伪类名称来进行元素查找的方法。对于任何HTML页面的元素来说，一般程序员或页面设计师会给元素直接赋予一个样式属性或者利用css文件里的伪类来定义元素样式，使元素在页面上显示时能够更加美观。
 
-{% highlight java %}
+```java
 driver.findElement(By.className("buttonStyle")).click();
-{% endhighlight %}
+```
 
 5.By.linkText()
 > 这个方法比较直接，即通过超文本链接上的文字信息来定位元素，这种方式一般专门用于定位页面上的超文本链接。
 
-{% highlight java %}
+```java
 driver.findElement(By.linkText("About Google")).click();
-{% endhighlight %}
+```
 
 6.By.partialLinkText()
 > 这个方法是上一个方法的扩展。当你不能准确知道超链接上的文本信息或者只想通过一些关键字进行匹配时，可以使用这个方法来通过部分链接文字进行匹配。
 
-{% highlight java %}
+```java
 driver.findElement(By.partialLinkText("About Google")).click();
-{% endhighlight %}
+```
 
 7.By.xpath()
 > 这个方法是非常强大的元素查找方式，使用这种方法几乎可以定位到页面上的任意元素。在正式开始使用XPath进行定位前，我们先了解下什么是XPath。XPath是XML Path的简称，由于HTML文档本身就是一个标准的XML页面，所以我们可以使用XPath的语法来定位页面元素。
 
-{% highlight java %}
+```java
 // 查询表单J_login_form下id为J_password的密码框
 driver.findElement(By.xpath("//*[@id='J_login_form']/dl/dt/input[@id='J_password']"));
 // 上面示例也可以写为
@@ -100,7 +99,7 @@ driver.findElement(By.xpath("//*[text()='退出']"));
 // 选取元素之后的元素 following-sibling
 // 选取id为button的元素之前的a标签
 driver.findElement(By.xpath("//*[@id=\"button\"]/preceding-sibling::a"));
-{% endhighlight %}
+```
 
 8.By.cssSelector()
 > cssSelector这种元素定位方式跟xpath比较类似，但执行速度较快，而且各种浏览器对它的支持都相当到位，所以功能也是蛮强大的。
@@ -109,12 +108,12 @@ driver.findElement(By.xpath("//*[@id=\"button\"]/preceding-sibling::a"));
 > 定位id为flrs下的a元素，可以写成 #flrs > a  注：相当于xpath语法的//div[@id='flrs']/a
 > 定位id为flrs下的href属性值为/forexample/about.html的元素，可以写成： #flrs > a[href="/forexample/about.html"]
 
-{% highlight java %}
+```java
 // 选取id为J_login_form的表单dl>dt元素下id为J_password的input元素
 driver.findElement(By.cssSelector("#J_login_form>dl>dt>input[id='J_password']"));
 // 选取button class为btn btn_big btn_submit的元素
 driver.findElement(By.cssSelector("button.btn.btn_big.btn_submit"))
-{% endhighlight %}
+```
 
 ## Java代码
 1.驱动下载  
@@ -122,7 +121,7 @@ driver.findElement(By.cssSelector("button.btn.btn_big.btn_submit"))
 
 2.驱动配置  
 
-{% highlight java %}
+```java
 @Configuration
 public class WebDriverConfig {
     @Bean(destroyMethod = "quit")
@@ -147,12 +146,12 @@ public class WebDriverConfig {
         return new ChromeDriver(options);
     }
 }
-{% endhighlight %}
+```
 
 3.编写测试脚本  
 > 考虑为web系统，所有功能都会涉及登录，把登录提取到父类中  
 
-{% highlight java %}
+```java
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class BaseSpec {
@@ -229,19 +228,19 @@ public class BaseSpec {
         timeUnit.sleep(time);
     }
 }
-{% endhighlight %}
+```
 
 4.自动化登录测试  
 
-{% highlight java %}
-public class StudentRegisterSpec extends BaseSpec {
-	@Test
+```java
+public class StudentRegisterSpec extends BaseSpec { 
+    @Test
     public void login() {
         // 登录
         super.login();
     }
 }
-{% endhighlight %}
+```
 
 5.其他
 > 其他业务测试可以通过扩展BaseSpec进行业务测试

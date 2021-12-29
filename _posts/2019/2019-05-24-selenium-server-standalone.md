@@ -15,13 +15,13 @@ categories: [java]
 ## 服务端启动
 1.服务启动命令  
 
-{% highlight bat %}
+```shell
 java -jar selenium-server-standalone-3.141.59.jar
-{% endhighlight %}
+```
 
 2.客户端代码  
 
-{% highlight java %}
+```java
 @Configuration
 public class WebDriverConfig {
     @Bean(destroyMethod = "quit")
@@ -40,7 +40,7 @@ public class WebDriverConfig {
         return new RemoteWebDriver(new URL("http://192.168.2.86:4444/wd/hub"), options);
     }
 }
-{% endhighlight %}
+```
 
 ## selenium grid
 > 通过-role hub/-role node来指定是hub还是node，hub至少应该有一个node节点，node节点通过http://ip:port/grid/register/注册至hub。
@@ -48,25 +48,24 @@ public class WebDriverConfig {
 
 1.参数配置方式  
 
-{% highlight bat %}
+```shell
 ## 启动hub
 java -jar selenium-server-standalone-3.141.59.jar -role hub -maxSession 10 -port 4444
 ## 启动node
 java -jar  -"Dwebdriver.chrome.driver=C:\\tools\\driver\\chromedriver.exe" selenium-server-standalone-3.141.59.jar -role node  -hub http://localhost:4444/grid/register -port 4445
-{% endhighlight %}
+```
 
 2.配置文件方式
 
-{% highlight bat %}
+```shell
 ## 启动hub
 java -jar selenium-server-standalone-3.141.59.jar -role hub -hubConfig hub.json
 ## 启动node
 java -jar selenium-server-standalone-3.141.59.jar -role node -hub http://localhost:4444/grid/register -nodeConfig node.json
-{% endhighlight %}
+```
 
-<figure>
-<figcaption>hub.json</figcaption>
-{% highlight json %}
+- hub.json
+```json
 {
   "port": 4444,
   "newSessionWaitTimeout": -1,
@@ -80,12 +79,10 @@ java -jar selenium-server-standalone-3.141.59.jar -role node -hub http://localho
   "maxSession": 10,
   "jettyMaxThreads": -1
 }
-{% endhighlight %}
-</figure>
+```
 
-<figure>
-<figcaption>node.json</figcaption>
-{% highlight json %}
+- node.json
+```json
 {
   "capabilities": [
 	{
@@ -133,8 +130,7 @@ java -jar selenium-server-standalone-3.141.59.jar -role node -hub http://localho
   "browserTimeout": 60,
   "timeout": 60
 }
-{% endhighlight %}
-</figure>
+```
 
 3.结果  
 访问http://hub.ip:port/grid/console可以看到node的详细配置
