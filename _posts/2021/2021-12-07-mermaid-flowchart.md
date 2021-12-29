@@ -2,7 +2,7 @@
 layout: post
 title:  Mermaid之流程图(flowchart)
 mermaid: true
-categories: [js, others]
+categories: [md, others]
 ---
 ## 参考
 
