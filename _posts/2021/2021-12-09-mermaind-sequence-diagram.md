@@ -5,11 +5,12 @@ mermaid: true
 categories: [md, others]
 ---
 
-## 参考
+## 序列图
 
-[官网](https://mermaidjs.github.io/)
+它通过描述对象之间发送消息的时间顺序显示多个对象之间的动态协作。它可以表示用例的行为顺序，当执行一个用例行为时，
+时序图中的每条消息对应了一个类操作或状态机中引起转换的触发事件。
 
-[源码库](https://github.com/knsv/mermaid)
+[mermaid sequenceDiagram文档](https://mermaid-js.github.io/mermaid/#/sequenceDiagram){:target="_blank"}
 
 ## 连接线
 

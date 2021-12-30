@@ -4,13 +4,18 @@ title:  Mermaid之流程图(flowchart)
 mermaid: true
 categories: [md, others]
 ---
-## 参考
 
-[官网](https://mermaidjs.github.io/)
+## 流程图
 
-[源码库](https://github.com/knsv/mermaid)
+流程图是对过程、算法、流程的一种图像表示，在技术设计、交流及商业简报等领域有广泛的应用。
+通常用一些图框来表示各种类型的操作，在框内写出各个步骤，然后用带箭头的线把它们连接起来，
+以表示执行的先后顺序。用图形表示算法，直观形象，易于理解。有时候也被称之为输入-输出图。
+顾名思义，就是用来直观地描述一个工作过程的具体步骤。这种过程既可以是生产线上的工艺流程，
+也可以是完成一项任务所必需的管理过程。
 
-## 流程图方向
+[mermaid flowchart文档](https://mermaid-js.github.io/mermaid/#/flowchart){:target="_blank"}
+
+## 图例方向
     
 |关键字|描述|
 |:---|:---|
