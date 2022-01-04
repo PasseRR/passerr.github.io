@@ -17,7 +17,7 @@ java单元测试用的比较多的如jUnit,testng等。单元测试代码总是�
 最终使得单元测试代码难以阅读、维护与理解,如同鸡肋一般食之无味弃之可惜.   
 3.单元测试的难点      
 难写出简单、优雅、易维护、易理解的单元测试代码.   
-![实际单元测试](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/images/2017-07-12/unit_test.png)  
+![实际单元测试](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/images/2017/07-12/unit_test.png)  
 
 ## 关于Spock
 1.什么是Spock?   
@@ -201,4 +201,4 @@ when and then Blocks例子可以替换为:
   
 在去除啰嗦冗余的语法过后,单元测试代码是否看起来更清晰、更容易阅读、更优雅?   
 4.测试结果   
-![测试结果](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/images/2017-07-12/test_result.png)  
+![测试结果](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/images/2017/07-12/test_result.png)  
