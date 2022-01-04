@@ -438,14 +438,14 @@ class Dog {
 Dog --|> Mammal
 Dog --> Dog
 
-%% 鸟类继承动物，并且鸟有一双翅膀
+%% 鸟类继承动物，并且鸟有0至2只翅膀
 class Wing
 class Bird {
     +Wing left
     +Wing right
     +fly()* void
 }
-Bird "1" o-- "2" Wing
+Bird "1" *-- "0..2" Wing
 Bird --|> Animal
 
 %% 鸟群
@@ -455,5 +455,5 @@ class BirdCluster {
     +lineup() void
 }
 
-BirdCluster "1" *-- "n" Bird
+BirdCluster "1" o-- "n" Bird
 ```
