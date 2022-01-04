@@ -15,6 +15,8 @@ categories: [md, others]
 
 [mermaid flowchart文档](https://mermaid-js.github.io/mermaid/#/flowchart){:target="_blank"}
 
+mermaid关键字`flowchart`
+
 ## 图例方向
     
 |关键字|描述|

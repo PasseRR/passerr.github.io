@@ -13,6 +13,8 @@ categories: [md, others]
 
 [mermaid classDiagram](https://mermaid-js.github.io/mermaid/#/classDiagram){:target="_blank"}
 
+mermaid关键字`classDiagram`
+
 ## 访问修饰符
 
 |符号|作用域|含义|
