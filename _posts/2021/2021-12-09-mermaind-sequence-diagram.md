@@ -199,7 +199,7 @@ sequenceDiagram
 
 <table>
 <tr>
-<td width="50%">
+<td style="width: 50%">
 <pre>
 sequenceDiagram
     actor A as Alice
@@ -227,7 +227,7 @@ sequenceDiagram
 
 <table>
 <tr>
-<td width="50%">
+<td style="width: 50%">
 <pre>
 sequenceDiagram
     A ->> B: I'm A
@@ -255,7 +255,7 @@ sequenceDiagram
 
 <table>
 <tr>
-<td width="50%">
+<td style="width: 50%">
 <pre>
 sequenceDiagram
     Alice->>Bob: Hello Bob, how are you?
@@ -287,7 +287,7 @@ sequenceDiagram
 
 <table>
 <tr>
-<td width="50%">
+<td style="width: 50%">
 <pre>
 sequenceDiagram
     actor C as 顾客
@@ -321,7 +321,7 @@ sequenceDiagram
 
 <table>
 <tr>
-<td width="50%">
+<td style="width: 50%">
 <pre>
 sequenceDiagram
     Alice->>John: Hello John, how are you?
