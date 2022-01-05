@@ -153,14 +153,18 @@ Fly: +fly() void
 
 <table>
 <tr>
-<th style="width: 15%">关系</th>
-<th style="width: 25%">描述</th>
-<th style="width: 25%">代码</th>
+<th style="width: 8%">关系</th>
+<th style="width: 7%">左值</th>
+<th style="width: 7%">右值</th>
+<th style="width: 21%">描述</th>
+<th>代码</th>
 <th>效果</th>
 </tr>
 
 <tr>
-<td>继承<br/><b>--|></b>或<b><|--</b></td>
+<td>继承</td>
+<td><code class="language-plaintext highlighter-rouge"><|--</code></td>
+<td><code class="language-plaintext highlighter-rouge">--|></code></td>
 <td>类继承另一个类或接口继承另一个接口</td>
 <td>
 <pre>
@@ -179,7 +183,9 @@ Child --|> Parent
 </tr>
 
 <tr>
-<td>实现<br/><b>..|></b>或<b><|..</b></td>
+<td>实现</td>
+<td><code class="language-plaintext highlighter-rouge"><|..</code></td>
+<td><code class="language-plaintext highlighter-rouge">..|></code></td>
 <td>类实现接口</td>
 <td>
 <pre>
@@ -204,7 +210,9 @@ Child ..|> Parent
 </tr>
 
 <tr>
-<td>关联<br/><b>--></b>或<b><--</b></td>
+<td>关联</td>
+<td><code class="language-plaintext highlighter-rouge"><--</code></td>
+<td><code class="language-plaintext highlighter-rouge">--></code></td>
 <td>表示一种<code class="language-plaintext highlighter-rouge">拥有</code>关系，A类作为了B类的成员变量，若B类也使用了A类作为成员变量则为双向关联</td>
 <td>
 <pre>
@@ -237,7 +245,9 @@ Driver --> Car
 </tr>
 
 <tr>
-<td>依赖<br/><b>..></b>或<b><..</b></td>
+<td>依赖</td>
+<td><code class="language-plaintext highlighter-rouge"><..</code></td>
+<td><code class="language-plaintext highlighter-rouge">..></code></td>
 <td>表示一种<code class="language-plaintext highlighter-rouge">使用</code>关系，参数依赖、局部变量、静态方法/变量依赖</td>
 <td>
 <pre>
@@ -268,7 +278,9 @@ Driver ..> Car
 </tr>
 
 <tr>
-<td>聚合<br/><b>--o</b>或<b>o--</b></td>
+<td>聚合</td>
+<td><code class="language-plaintext highlighter-rouge">o--</code></td>
+<td><code class="language-plaintext highlighter-rouge">--o</code></td>
 <td>聚合是一种强关联关系，在代码语法上与关联无法区分</td>
 <td>
 <pre>
@@ -301,20 +313,22 @@ Driver "1" o-- "1" Car
 </tr>
 
 <tr>
-<td>组合<br/><b>--*</b>或<b>*--</b></td>
+<td>组合</td>
+<td><code class="language-plaintext highlighter-rouge">*--</code></td>
+<td><code class="language-plaintext highlighter-rouge">--*</code></td>
 <td>组合也是一种强关联关系，比聚合关系还要强</td>
 <td>
 <pre>
 classDiagram
 direction LR
-Company "1" *-- "N" Department
+Company "1" *-- "N" Dept
 </pre>
 </td>
 <td>
 <pre><code class="language-mermaid">
 classDiagram
 direction LR
-Company "1" *-- "N" Department
+Company "1" *-- "N" Dept
 </code></pre>
 </td>
 </tr>
