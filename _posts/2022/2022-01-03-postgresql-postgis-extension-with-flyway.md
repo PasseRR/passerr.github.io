@@ -65,7 +65,7 @@ COMMENT ON COLUMN "project"."modified_datetime" IS '修改时间';
 
 **扩展问题**：若当`postgis`未安装于`public`模式，上述sql脚本同样会执行不通过，会出现相同问题。
 
-## 解决方案
+## 初步解决方案
 1.安装`postgis`于`public`模式，若已安装于其他模式，移动扩展至`public`模式
 
 ```sql
@@ -101,13 +101,68 @@ CREATE TABLE "project"
 ```
 
 3.存在问题
+
 会导致在非`public`模式下访问postgis的函数时都必须加上`public`模式。
 
-4.连接配置修改`currentSchema`参数
+## 最终解决方案
+1.添加创建`postgis脚本`
 
-> Specify the schema (or several schema separated by commas) to be set in the search-path. This schema will be used to resolve unqualified object names used in statements over this connection.
+```sql
+BEGIN;
+DO
+$$
+    DECLARE
+        -- 插件是否可以修改
+        "v_locatable" BOOLEAN;
+        -- 插件安装schema
+        "v_schema"    VARCHAR;
+    BEGIN
+        -- 安装插件
+        CREATE EXTENSION IF NOT EXISTS "postgis" WITH SCHEMA "public";
+
+        -- 查询插件安装的schema
+        SELECT "pn"."nspname"
+        INTO "v_schema"
+        FROM "pg_extension" "pe"
+                 LEFT JOIN "pg_namespace" "pn" ON "pe"."extnamespace" = "pn"."oid"
+        WHERE "pe"."extname" = 'postgis';
+
+        -- 安装schema非public
+        IF "v_schema" != 'public' THEN
+            -- 查询插件是否可以修改
+            SELECT "extrelocatable" INTO "v_locatable" FROM "pg_extension" WHERE "extname" = 'postgis';
+
+            -- 设置插件可以修改
+            IF NOT "v_locatable" THEN
+                UPDATE "pg_extension"
+                SET "extrelocatable" = TRUE
+                WHERE "extname" = 'postgis';
+            END IF;
+
+            -- 修改插件schema为public
+            ALTER EXTENSION "postgis" SET SCHEMA "public";
+
+            -- 还原修改
+            IF NOT "v_locatable" THEN
+                UPDATE "pg_extension"
+                SET "extrelocatable" = FALSE
+                WHERE "extname" = 'postgis';
+            END IF;
+        END IF;
+    END
+$$ LANGUAGE "plpgsql";
+-- 事务提交
+COMMIT;
+```
+
+2.修改连接配置参数`currentSchema`
+
+> [官网说明](https://jdbc.postgresql.org/documentation/head/connect.html)  
+> Specify the schema (or several schema separated by commas) to be set in the search-path. 
+> This schema will be used to resolve unqualified object names used in statements over this connection.  
 
 根据官方参数定义，可以设置`currentSchema`参数为多个schema，将`public`添加到currentSchema中。
+在代码中访问`public`模式下的函数或者扩展的数据类型就不需要要public模式了。
 
 ```yml
 spring:
