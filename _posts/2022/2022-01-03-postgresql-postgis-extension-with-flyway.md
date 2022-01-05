@@ -66,54 +66,53 @@ COMMENT ON COLUMN "project"."modified_datetime" IS '修改时间';
 **扩展问题**：若当`postgis`未安装于`public`模式，上述sql脚本同样会执行不通过，会出现相同问题。
 
 ## 解决方案
+1.安装`postgis`于`public`模式，若已安装于其他模式，移动扩展至`public`模式
 
-1. 安装`postgis`于`public`模式，若已安装于其他模式，移动扩展至`public`模式
+```sql
+-- 安装插件
+CREATE EXTENSION IF NOT EXISTS "postgis" WITH SCHEMA "public";
 
-    ```sql
-    -- 安装插件
-    CREATE EXTENSION IF NOT EXISTS "postgis" WITH SCHEMA "public";
-    
-    -- 设置插件位置可以修改
-    UPDATE "pg_extension"
-    SET "extrelocatable" = TRUE
-    WHERE "extname" = 'postgis';
-    
-    -- 修改插件到public模式
-    ALTER EXTENSION "postgis" SET SCHEMA "public";
-    ```
+-- 设置插件位置可以修改
+UPDATE "pg_extension"
+SET "extrelocatable" = TRUE
+WHERE "extname" = 'postgis';
 
-2. 指定`GEOMETRY`类型的模式为`public`
+-- 修改插件到public模式
+ALTER EXTENSION "postgis" SET SCHEMA "public";
+```
 
-    ```sql
-    DROP TABLE IF EXISTS "project";
-    CREATE TABLE "project"
-    (
-        "id"                VARCHAR(32)       NOT NULL PRIMARY KEY,
-        "name"              VARCHAR(128)      NULL,
-        "address"           VARCHAR(512)      NULL,
-        "location"          "public".GEOMETRY NULL,
-        "initial_view"      VARCHAR(256)      NULL,
-        "description"       VARCHAR(256)      NULL,
-        "creator"           VARCHAR(32)       NULL,
-        "created_datetime"  TIMESTAMP         NULL,
-        "modifier"          VARCHAR(32)       NULL,
-        "modified_datetime" TIMESTAMP         NULL
-    );
-    ```
-3. 存在问题
+2.指定`GEOMETRY`类型的模式为`public`
 
-    会导致在非`public`模式下访问postgis的函数时都必须加上`public`模式。
+```sql
+DROP TABLE IF EXISTS "project";
+CREATE TABLE "project"
+(
+    "id"                VARCHAR(32)       NOT NULL PRIMARY KEY,
+    "name"              VARCHAR(128)      NULL,
+    "address"           VARCHAR(512)      NULL,
+    "location"          "public".GEOMETRY NULL,
+    "initial_view"      VARCHAR(256)      NULL,
+    "description"       VARCHAR(256)      NULL,
+    "creator"           VARCHAR(32)       NULL,
+    "created_datetime"  TIMESTAMP         NULL,
+    "modifier"          VARCHAR(32)       NULL,
+    "modified_datetime" TIMESTAMP         NULL
+);
+```
 
-4. 连接配置修改`currentSchema`参数
+3.存在问题
+会导致在非`public`模式下访问postgis的函数时都必须加上`public`模式。
 
-    > Specify the schema (or several schema separated by commas) to be set in the search-path. This schema will be used to resolve unqualified object names used in statements over this connection.
-    
-    根据官方参数定义，可以设置`currentSchema`参数为多个schema，将`public`添加到currentSchema中。
-    
-    ```yml
-    spring:
-      datasource:
-        url: jdbc:postgresql://localhost:6543/database?currentSchema=yourSchema,public
-    ```
+4.连接配置修改`currentSchema`参数
 
-    最后移除所有`GEOMETRY`的~~`public`~~模式，问题解决。
+> Specify the schema (or several schema separated by commas) to be set in the search-path. This schema will be used to resolve unqualified object names used in statements over this connection.
+
+根据官方参数定义，可以设置`currentSchema`参数为多个schema，将`public`添加到currentSchema中。
+
+```yml
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:6543/database?currentSchema=yourSchema,public
+```
+
+最后移除所有`GEOMETRY`的~~`public`~~模式，问题解决。
