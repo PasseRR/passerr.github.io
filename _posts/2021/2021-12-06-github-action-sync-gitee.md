@@ -2,6 +2,7 @@
 layout: post
 title:  利用github action自动同步代码到gitee
 categories: [ci]
+last_modified_at: 2022-01-06
 ---
 
 ## 1.生成ssh密钥对

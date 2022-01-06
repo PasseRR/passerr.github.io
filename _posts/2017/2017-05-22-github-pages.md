@@ -2,6 +2,7 @@
 layout: post
 title:  "Github Pages搭建个人博客"
 categories: [md, js, style, others]
+last_modified_at: 2022-01-06
 ---
 ## 准备工作
 1. 创建一个新的仓库，名为：你的github帐号.github.com，创建后的样子   
