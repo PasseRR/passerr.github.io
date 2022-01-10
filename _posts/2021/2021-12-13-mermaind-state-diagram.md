@@ -11,7 +11,7 @@ last_modified_at: 2022-01-06
 
 [mermaid stateDiagram](https://mermaid-js.github.io/mermaid/#/stateDiagram){:target="_blank"}
 
-mermaid关键字`sequenceDiagram`或`sequenceDiagram-v2`
+mermaid关键字`stateDiagram`或`stateDiagram-v2`
 
 ## 方向
 
