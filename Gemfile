@@ -7,4 +7,3 @@ gem 'jemoji'
 gem 'webrick'
 gem 'jekyll-paginate'
 gem "jekyll-remote-theme"
-gem "jekyll-sitemap"

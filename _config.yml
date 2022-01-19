@@ -65,4 +65,3 @@ url: "https://www.xiehai.win"
 plugins:
   - jekyll-remote-theme
   - jekyll-paginate
-  - jekyll-sitemap
