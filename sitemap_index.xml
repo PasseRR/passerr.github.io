@@ -5,11 +5,12 @@ layout: nil
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
         <loc>{{site.url}}/sitemap.xml</loc>
+        <lastmod>{{ '2019-05-06' | date_to_xmlschema }}</lastmod>
     </sitemap>
-    {% for i in site.data.ebook %}
+    {% for it in site.data.ebook %}
     <sitemap>
-        <loc>{{site.url}}{{i.url}}/sitemap.xml</loc>
-        <lastmod>{{ i.date}}</lastmod>
+        <loc>{{site.url}}{{it.url}}/sitemap.xml</loc>
+        <lastmod>{{ it.date | date_to_xmlschema}}</lastmod>
     </sitemap>
     {% endfor %}
 </sitemapindex>
