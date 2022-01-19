@@ -9,6 +9,7 @@ layout: nil
     {% for i in site.data.ebook %}
     <sitemap>
         <loc>{{site.url}}{{i.url}}/sitemap.xml</loc>
+        <lastmod>{{ i.date}}</lastmod>
     </sitemap>
     {% endfor %}
 </sitemapindex>

@@ -10,7 +10,7 @@ layout: nil
     <url>
         <loc>{{ doc.url | replace:'/index.html','/' | absolute_url | xml_escape }}</loc>
         {% if doc.last_modified_at or doc.date %}
-        <lastmod>{{ doc.last_modified_at | default: doc.date | date_to_xmlschema }}</lastmod>
+        <lastmod>{{ doc.last_modified_at | default: doc.date}}</lastmod>
         {% endif %}
     </url>
     {% endfor %}
@@ -21,7 +21,7 @@ layout: nil
     <url>
         <loc>{{ page.url | replace:'/index.html','/' | absolute_url | xml_escape }}</loc>
         {% if page.last_modified_at %}
-        <lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
+        <lastmod>{{ page.last_modified_at}}</lastmod>
         {% endif %}
     </url>
     {% endfor %}
@@ -30,14 +30,14 @@ layout: nil
     {% for file in static_files %}
     <url>
         <loc>{{ file.path | replace:'/index.html','/' | absolute_url | xml_escape }}</loc>
-        <lastmod>{{ file.modified_time | date_to_xmlschema }}</lastmod>
+        <lastmod>{{ file.modified_time}}</lastmod>
     </url>
     {% endfor %}
     
     {% for it in site.data.ebook %}
     <url>
         <loc>{{ it.url | replace:'/index.html','/' | absolute_url | xml_escape }}</loc>
-        <lastmod>{{ it.date | date_to_xmlschema }}</lastmod>
+        <lastmod>{{ it.date}}</lastmod>
     </url>
     {% endfor %}
 </urlset>
