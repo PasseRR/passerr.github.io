@@ -1,0 +1,4 @@
+---
+layout: nil
+---
+Sitemap: {{ site.url }}/sitemap_index.xml
