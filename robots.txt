@@ -2,3 +2,16 @@
 layout: nil
 ---
 Sitemap: {{ site.url }}/sitemap_index.xml
+
+{% assign collections = site.collections | where_exp:'collection','collection.output != false' -%}
+{%- for collection in collections -%}
+{%- assign docs = collection.docs | where_exp:'doc','doc.noindex == true' -%}
+{%- for doc in docs -%}
+Disallow: {{ doc.url }}
+{%- endfor -%}
+{%- endfor -%}
+
+{%- assign pages = site.html_pages | where_exp:'doc','doc.noindex == true' -%}
+{%- for page in pages -%}
+Disallow: {{ page.url }}
+{% endfor %}
