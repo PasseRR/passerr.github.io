@@ -1,5 +1,6 @@
 ---
 ---
+User-agent: *
 Sitemap: {{ site.url }}/sitemap_index.xml
 
 {% assign collections = site.collections | where_exp:'collection','collection.output != false' -%}
