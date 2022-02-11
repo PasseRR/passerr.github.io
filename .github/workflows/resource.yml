@@ -25,8 +25,8 @@ jobs:
       # 百度url提交
       - name: Submit Baidu Urls
         run: >
-          curl -s -d '${{ join(steps.sitemaps.outputs.urls, '\n') }}'
-          'https://data.zz.baidu.com/urls?site=https://www.xiehai.win&token=${{ secrets.BAIDU_KEY }}'
+          curl -X POST -s -d '${{ join(steps.sitemaps.outputs.urls, '\n') }}'
+          'http://data.zz.baidu.com/urls?site=https://www.xiehai.win&token=${{ secrets.BAIDU_KEY }}'
       # 必应url提交
       - name: Submit Bing Urls
         run: >
