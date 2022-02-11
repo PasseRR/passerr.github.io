@@ -30,7 +30,11 @@ jobs:
       # 必应url提交
       - name: Submit Bing Urls
         run: >
-          origin="${{ env.urls }}"
+          origin=$(<<EOF 
+          
+          ${{ env.urls }}
+          
+          )
           
           urls=$(echo -e $origin | awk '{x[i++]=$0} END{for (j=0; j<i;) print "\""x[j++]"\"" (j==i?"":",")}')
           
