@@ -16,11 +16,11 @@ jobs:
         name: Fetch Sitemap Files
         run: |
           urls=''
-          curl -s https://www.xiehai.win/sitemap_index.xml | grep -oP "(?<=<loc>)[^<]+" | while read line
+          for line in $(curl -s https://www.xiehai.win/sitemap_index.xml | grep -oP "(?<=<loc>)[^<]+")
           do
-            urls+=$(curl -s ${line} | grep -oP "(?<=<loc>)[^<]+" | awk '{print ""$0"\n"}')
+            urls+=$(curl -s ${line} | grep -oP "(?<=<loc>)[^<]+")
           done
-          echo '::set-output name=urls::$urls'
+          echo "::set-output name=urls::${urls}"
           
       # 百度url提交 | awk '{print "\""$0"\","}'
       - name: Submit Baidu Urls
