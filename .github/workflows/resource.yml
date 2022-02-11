@@ -20,7 +20,7 @@ jobs:
           do
             urls+=$(curl -s ${line} | grep -oP "(?<=<loc>)[^<]+" | awk '{print ""$0"\n"}')
           done
-          echo '::set-output name=urls::${urls}'
+          echo '::set-output name=urls::$urls'
           
       # 百度url提交 | awk '{print "\""$0"\","}'
       - name: Submit Baidu Urls
