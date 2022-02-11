@@ -15,22 +15,22 @@ jobs:
       - id: sitemaps
         name: Fetch Sitemap Files
         run: |
-          urls=''
+          echo "urls<<EOF" >> $GITHUB_ENV
           for line in $(curl -s https://www.xiehai.win/sitemap_index.xml | grep -oP "(?<=<loc>)[^<]+")
-          do
-            urls+=$(curl -s ${line} | grep -oP "(?<=<loc>)[^<]+")
-          done
-          echo "::set-output name=urls::${urls}"
+            do
+              echo "$(curl -s ${line} | grep -oP "(?<=<loc>)[^<]+")" >> $GITHUB_ENV
+            done
+          echo "EOF" >> $GITHUB_ENV
           
       # 百度url提交 | awk '{print "\""$0"\","}'
       - name: Submit Baidu Urls
         run: >
-          curl -X POST -s -d '${{ join(steps.sitemaps.outputs.urls, '\n') }}'
+          curl -X POST -s -d '${{ env.urls }}'
           'http://data.zz.baidu.com/urls?site=https://www.xiehai.win&token=${{ secrets.BAIDU_KEY }}'
       # 必应url提交
       - name: Submit Bing Urls
         run: >
           curl -H 'Content-Type: application/json; charset=utf-8' -X POST -s -d 
-          '{"siteUrl": "https://www.xiehai.win", "urlList": [${{ toJson(steps.sitemaps.outputs.urls) }}]}' 
+          '{"siteUrl": "https://www.xiehai.win", "urlList": [${{ toJson(env.urls) }}]}' 
           'https://www.bing.com//webmaster/api.svc/json/SubmitUrlbatch?apikey=${{ secrets.BING_KEY }}'
         
