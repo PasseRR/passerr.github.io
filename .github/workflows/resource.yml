@@ -30,7 +30,7 @@ jobs:
       # 必应url提交
       - name: Submit Bing Urls
         run: >
-          jsonUrls=`echo -e ${{ env.urls }} | awk '{x[i++]=$0} END{for (j=0; j<i;) print "\""x[j++]"\"" (j==i?"":",")}'`
+          jsonUrls=`echo -e "${{ env.urls }}" | awk '{x[i++]=$0} END{for (j=0; j<i;) print "\""x[j++]"\"" (j==i?"":",")}'`
           
           curl -H 'Content-Type: application/json; charset=utf-8' -X POST -s -d 
           '{"siteUrl": "https://www.xiehai.win", "urlList": ['$jsonUrls']}' 
