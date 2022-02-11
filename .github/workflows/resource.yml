@@ -19,7 +19,7 @@ jobs:
           do
             curl -s ${line} | grep -oP "(?<=<loc>)[^<]+" | while read url
             do
-              echo "::set-output name={urls}::${url}"
+              echo "::set-output name=urls::${url}"
             done
           done
       # 百度url提交
