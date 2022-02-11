@@ -35,6 +35,7 @@ jobs:
           ${{ env.urls }}
           
           EOF
+          
           )
           
           urls=`echo -e $origin | awk '{x[i++]=$0} END{for (j=0; j<i;) print "\""x[j++]"\"" (j==i?"":",")}'`
