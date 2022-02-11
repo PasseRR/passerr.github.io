@@ -1,0 +1,31 @@
+name: Resource Submit CI
+
+on:
+  push:
+    branches:
+      - master
+  # 每天定时索引
+  schedule:
+    - cron: '0 23 * * *'
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    steps:
+      - id: sitemaps
+        name: Fetch Sitemap Files
+        run: |
+          curl -s https://www.xiehai.win/sitemap_index.xml | grep -oP "(?<=<loc>)[^<]+" | while read line
+          do
+            curl -s ${line} | grep -oP "(?<=<loc>)[^<]+" | while read url
+            do
+              echo "::set-output ${url}"
+            done
+          done
+      - name: Submit Baidu Urls
+        run: |
+          curl -s -d ${{ join(steps.sitemaps.outputs.*, '\n') }} https://data.zz.baidu.com/urls?site=https://www.xiehai.win&token=${{ secrets.BAIDU_KEY }}
+      - name: Submit Bing Urls
+        run: |
+          curl -s -d {"siteUrl": "https://www.xiehai.win", "urlList": [${{ join(steps.sitemaps.outputs.*, ',\n') }}]} https://www.bing.com//webmaster/api.svc/json/SubmitUrlbatch?apikey=${{ secrets.BING_KEY }}
+        
