@@ -14,6 +14,7 @@ Gitlab不能随意升级，需要按照官方[升级路线](https://docs.gitlab.
 这是官方给出的，如果不按此路线进行升级可能会出现未知异常，其他版本升级请参照官方升级路线。
 
 ## 升级方法
+
 1. [Linux包安装](https://docs.gitlab.com/ee/update/package/){:target="_blank"}
 2. 源代码安装
 3. Docker安装
@@ -80,6 +81,10 @@ ps: 若没有完全的把握升级，建议使用一台备用服务器做升级�
 
 ## 升级过程
 ### [配置yum源](https://packages.gitlab.com/gitlab/gitlab-ce/install#manual-rpm){:target="_blank"}
+
+```shell
+curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+```
 
 ### 升级过程
 
