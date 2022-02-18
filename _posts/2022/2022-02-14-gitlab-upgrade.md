@@ -8,8 +8,8 @@ last_modified_at: 2022-02-14
 
 ## 概述
 Gitlab不能随意升级，需要按照官方[升级路线](https://docs.gitlab.com/ee/update/index.html#upgrade-paths){:target="_blank"}进行。
-比如当前Gitlab版本为`10.0.0`，要升级到最新版本`14.2.6`，那么升级路径如下：  
-10.0.0 -> 10.8.7 -> 11.11.8 -> 12.0.12 -> 12.1.17 -> 12.10.14 -> 13.0.14 -> 13.1.11 -> 13.8.8 -> 13.12.15 -> 14.0.11 -> 14.1.8 -> 14.2.6
+比如当前Gitlab版本为`10.0.0`，要升级到最新版本`14.7.3`，那么升级路径如下：  
+10.0.0 -> 10.8.7 -> 11.11.8 -> 12.0.12 -> 12.1.17 -> 12.10.14 -> 13.0.14 -> 13.1.11 -> 13.8.8 -> 13.12.15 -> 14.0.11 -> 14.1.8 -> 14.7.3
 
 这是官方给出的，如果不按此路线进行升级可能会出现未知异常，其他版本升级请参照官方升级路线。
 
@@ -63,8 +63,15 @@ sudo gitlab-ctl stop sidekiq
 # Verify
 sudo gitlab-ctl status
 
+# 目录权限 确保根目录有git用户权限
+chown git /root
+chown git:git /var/opt/gitlab/backups/11493107454_2018_04_25_10.6.4-ce_gitlab_backup.tar
+
 # 恢复命令
+# 12.1之后版本
 sudo gitlab-backup restore BACKUP=11493107454_2018_04_25_10.6.4-ce
+# 12.1及之前版本
+gitlab-rake gitlab:backup:restore BACKUP=1644908390_2022_02_15_10.0.0
 ```
 
 2.恢复gitlab-secrets.json
@@ -89,19 +96,31 @@ curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script
 ### 升级过程
 
 ```shell
+# 以下版本每次升级成功后需要手动执行reconfigure
+# 每次升级成功保证能正常访问才进行下一个版本升级
+gitlab-ctl reconfigure
 # 每次升级建议都做升级检查及备份对应版本
 yum install -y gitlab-ce-10.8.7
 yum install -y gitlab-ce-11.11.8
 yum install -y gitlab-ce-12.0.12
 yum install -y gitlab-ce-12.1.17
+
+# 从以下版本开始 无需再执行reconfigure 升级包里面会自动执行
 yum install -y gitlab-ce-12.10.14
 yum install -y gitlab-ce-13.0.14
 yum install -y gitlab-ce-13.1.11
 yum install -y gitlab-ce-13.8.8
-yum install -y gitlab-ce-13.12.15
+yum install -y gitlab-ce-13.12.12
 yum install -y gitlab-ce-14.0.11
 yum install -y gitlab-ce-14.1.8
-yum install -y gitlab-ce-14.2.6
+
+yum install -y gitlab-ce-14.7.3
+# 若db升级失败 手动执行以下命令
+gitlab-rake gitlab:background_migrations:finalize[CopyColumnUsingBackgroundMigrationJob,push_event_payloads,event_id,'[["event_id"]\, ["event_id_convert_to_bigint"]]']
+gitlab-rake gitlab:background_migrations:finalize[CopyColumnUsingBackgroundMigrationJob,events,id,'[["id"]\, ["id_convert_to_bigint"]]']
+gitlab-rake gitlab:background_migrations:finalize[CopyColumnUsingBackgroundMigrationJob,ci_stages,id,'[["id"]\, ["id_convert_to_bigint"]]']
+gitlab-rake gitlab:background_migrations:finalize[CopyColumnUsingBackgroundMigrationJob,taggings,id,'[["id"\, "taggable_id"]\, ["id_convert_to_bigint"\, "taggable_id_convert_to_bigint"]]']
+gitlab-ctl reconfigure
 ```
 
 ## 升级前后检查
