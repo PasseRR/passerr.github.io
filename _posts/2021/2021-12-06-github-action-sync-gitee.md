@@ -2,7 +2,7 @@
 layout: post
 title:  利用github action自动同步代码到gitee
 categories: [ci]
-last_modified_at: 2022-01-06
+last_modified_at: 2022-02-21
 ---
 
 ## 1.生成ssh密钥对
@@ -10,12 +10,12 @@ last_modified_at: 2022-01-06
 
 ## 2.配置Gitee SSH公钥
 「个人设置」->「安全设置」->「SSH公钥」，复制`id_rsa.pub`内容添加新公钥
-![Gitee公钥](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/images/2021/12-06/public-key.png)
+![Gitee公钥](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/asserts/2021/12-06/public-key.png)
 
 ## 3.在Github仓库设置私钥
 在要同步的仓库下「Settings」 -> 「Secrets」 -> 「Actions」-> 「New repository secret」，复制
 `id_rsa`内容添加新私钥，并设置一个密钥名称，以`GITEE_KEY`为例。
-![Github密钥](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/images/2021/12-06/private-key.png)
+![Github密钥](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/asserts/2021/12-06/private-key.png)
 
 ## 4.设置同步任务
 在仓库下新建`.github/workflows/main.yml`文件或者直接通过Actions `new workflow`，选择`set up a workflow yourself`。
@@ -44,4 +44,4 @@ jobs:
 ```
 
 然后，每次在github push代码就会自动同步到gitee了。
-![同步成功](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/images/2021/12-06/sync.png)
+![同步成功](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/asserts/2021/12-06/sync.png)

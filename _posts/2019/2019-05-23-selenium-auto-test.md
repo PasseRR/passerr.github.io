@@ -2,7 +2,7 @@
 layout: post
 title:  "Java基于Selenium本地Chrome驱动自动化测试"
 categories: [java]
-last_modified_at: 2022-01-06
+last_modified_at: 2022-02-21
 ---
 ## Selenium
 > Selenium是一个用于Web应用程序测试的工具。Selenium测试直接运行在浏览器中，就像真正的用户在操作一样。
@@ -247,7 +247,7 @@ public class StudentRegisterSpec extends BaseSpec {
 > 其他业务测试可以通过扩展BaseSpec进行业务测试
 
 6.登录自动测试示例
-![登录](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/images/2019/05-23/login.gif)
+![登录](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/asserts/2019/05-23/login.gif)
 
 ## 结论
 需要在系统比较稳定的时候用于自动回归测试，会产生数据，需要准备一个纯净环境专门用于自动化测试。
