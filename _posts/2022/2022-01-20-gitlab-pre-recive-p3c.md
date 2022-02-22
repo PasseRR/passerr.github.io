@@ -129,7 +129,7 @@ mkdir pre-receive.d
     ```
    
 4. 自动创建检测标识文件钩子(**目前暂时没有想到其他更好的解决方案，如果你有，请你联系我**)
-`/opt/gitlab/embedded/service/gitlab-rails/file_hooks`目录下创建`add_pre_check_on_project_create.rb`钩子文件，
+`/opt/gitlab/embedded/service/gitlab-rails/file_hooks`目录下创建`add_pre_check_on_project_create.rb`[钩子文件](/asserts/2022/01-20/add_pre_check_on_project_create.rb){:target="_blank"}，根据需要设定规则，
 每当项目创建时，会自动提交一个新的.pre-check文件到仓库
 
     ```ruby
