@@ -3,7 +3,7 @@ layout: post
 title:  Gitlab集成P3C代码规约检测
 mermaid: true
 categories: [ci, operation]
-last_modified_at: 2022-01-20
+last_modified_at: 2022-02-22
 ---
 
 ## 前言
@@ -48,7 +48,12 @@ last_modified_at: 2022-01-20
 gitaly['custom_hooks_dir'] = "/opt/gitlab/embedded/service/gitlab-shell/hooks"
 ```
 
-2. 添加`custom_hooks_dir`目录
+2. 重新配置Gitlab服务
+```shell
+gitlab-ctl reconfigure
+```
+
+4. 添加`custom_hooks_dir`目录
 ```shell
 cd /opt/gitlab/embedded/service/gitlab-shell
 mkdir hooks
@@ -62,7 +67,7 @@ mv p3c-pmd-2.1.1-jar-with-dependencies.jar .
 mkdir pre-receive.d
 ```
 
-3. 创建代码检测钩子脚本p3c-pre-inspect.sh
+3. 在pre-receive.d目录下创建代码检测钩子脚本p3c-pre-inspect.sh
 
     ```shell
     #!/bin/sh
