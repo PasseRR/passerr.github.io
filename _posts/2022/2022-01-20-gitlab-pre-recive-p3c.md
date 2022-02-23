@@ -128,9 +128,10 @@ mkdir pre-receive.d
     chmod 777 p3c-pre-inspect.sh
     ```
    
-4. 自动创建检测标识文件钩子(**目前暂时没有想到其他更好的解决方案，如果你有，请你联系我**)
+4. 自动创建检测标识文件钩子
 `/opt/gitlab/embedded/service/gitlab-rails/file_hooks`目录下创建`add_pre_check_on_project_create.rb`[钩子文件](/asserts/2022/01-20/add_pre_check_on_project_create.rb){:target="_blank"}，根据需要设定规则，
-每当项目创建时，会自动提交一个新的.pre-check文件到仓库
+每当项目创建时，会自动提交一个新的.pre-check文件到仓库，当前使用的是web api提交标识文件到仓库，
+不知道是否存在钩子之类的后置操作，**目前暂时没有想到其他更好的解决方案，如果你有，请你联系我**。
 
     ```ruby
     #!/opt/gitlab/embedded/bin/ruby
