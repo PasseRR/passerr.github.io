@@ -30,7 +30,7 @@ jobs:
       # 必应url提交
       - name: Submit Bing Urls
         run: >
-          origin=$(<<EOF 
+          origin=$(cat <<-EOF 
           
           ${{ env.urls }}
           
