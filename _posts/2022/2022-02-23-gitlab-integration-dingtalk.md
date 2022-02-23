@@ -12,6 +12,8 @@ last_modified_at: 2022-02-23
 extends对应任务实现的before_script和after_script就可以实现消息通知机制。
 
 ## 消息通知模板定义
+[钉钉消息链接说明](https://open.dingtalk.com/document/orgapp-server/message-link-description){:target="_blank"}
+
 在gitlab中新建仓库，名为`gitlab/gitlab-ci`，仓库中添加文件`dingtalk.yml`模板文件，内容如下：
 
 ```yaml
@@ -22,15 +24,17 @@ extends对应任务实现的before_script和after_script就可以实现消息通
       - $access_token
   variables:
     # 公网gitlab地址
-    public_host: "https://your-gitlab-host.com"
+    public_host: "http://192.168.235.131"
   # 发送ci开始消息
   before_script:
     - |
+      project_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}" "" || true)"
+      job_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}" "" || true)"
       text=$(cat <<-END
         **CI任务<font color=\"#FF9900\">启动</font>通知**\n
         ID: **${CI_JOB_ID}**\n
         任务: **${CI_JOB_NAME}**\n
-        项目: **[${CI_PROJECT_PATH}](${public_host}/${CI_PROJECT_PATH})**\n
+        项目: **[${CI_PROJECT_PATH}](dingtalk://dingtalkclient/page/link?url=${project_url##/?}&pc_slide=false)**\n
         分支: **${CI_DEFAULT_BRANCH}**\n
         执行人: **${GITLAB_USER_NAME}**
       END
@@ -42,7 +46,7 @@ extends对应任务实现的before_script和after_script就可以实现消息通
               "text": "${text}", 
               "btnOrientation": "0", 
               "singleTitle" : "任务详情",
-              "singleURL" : "${public_host}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}"
+              "singleURL" : "dingtalk://dingtalkclient/page/link?url=${job_url##/?}&pc_slide=false"
           },
           "msgtype": "actionCard"
         }
@@ -53,6 +57,8 @@ extends对应任务实现的before_script和after_script就可以实现消息通
   # 发送ci结束消息
   after_script:
     - |
+      project_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}" "" || true)"
+      job_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}" "" || true)"
       title="CI任务执行失败通知"
       status="执行失败"
       color="#FF3333"
@@ -67,7 +73,7 @@ extends对应任务实现的before_script和after_script就可以实现消息通
         **CI任务<font color=\"${color}\">${status}</font>通知**\n
         ID: **${CI_JOB_ID}**\n
         任务: **${CI_JOB_NAME}**\n
-        项目: **[${CI_PROJECT_PATH}](${public_host}/${CI_PROJECT_PATH})**\n
+        项目: **[${CI_PROJECT_PATH}](dingtalk://dingtalkclient/page/link?url=${project_url##/?}&pc_slide=false)**\n
         分支: **${CI_DEFAULT_BRANCH}**\n
         执行人: **${GITLAB_USER_NAME}**\n
         耗时: **$[seconds/60]分$[seconds%60]秒**
@@ -80,7 +86,7 @@ extends对应任务实现的before_script和after_script就可以实现消息通
               "text": "${text}", 
               "btnOrientation": "0", 
               "singleTitle" : "任务详情",
-              "singleURL" : "${public_host}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}"
+              "singleURL" : "dingtalk://dingtalkclient/page/link?url=${job_url##/?}&pc_slide=false"
           },
           "msgtype": "actionCard"
         }
