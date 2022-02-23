@@ -12,7 +12,7 @@ last_modified_at: 2022-02-23
 extends对应任务实现的before_script和after_script就可以实现消息通知机制。
 
 ## 消息通知模板定义
-在gitlab中新建仓库，加入名为`gitlab/gitlab-ci`，仓库中添加文件`dingtalk.yml`模板文件，内容如下：
+在gitlab中新建仓库，名为`gitlab/gitlab-ci`，仓库中添加文件`dingtalk.yml`模板文件，内容如下：
 
 ```yaml
 .dingtalk:
