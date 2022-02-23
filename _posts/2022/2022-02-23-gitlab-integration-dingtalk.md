@@ -52,8 +52,8 @@ extends对应任务实现的before_script和after_script就可以实现消息通
         }
       END
       )
-      curl -H 'Content-Type: application/json; charset=utf-8' -X POST https://oapi.dingtalk.com/robot/send?access_token=${access_token} -d "${data}"
-      echo "send dingtalk before message finished"
+      curl -s -H 'Content-Type: application/json; charset=utf-8' -X POST https://oapi.dingtalk.com/robot/send?access_token=${access_token} -d "${data}"
+      echo -e "\nsend dingtalk before message finished"
   # 发送ci结束消息
   after_script:
     - |
@@ -92,8 +92,8 @@ extends对应任务实现的before_script和after_script就可以实现消息通
         }
       END
       )
-      curl -H 'Content-Type: application/json; charset=utf-8' -X POST https://oapi.dingtalk.com/robot/send?access_token=${access_token} -d "${data}"
-      echo "send dingtalk after message finished"
+      curl -s -H 'Content-Type: application/json; charset=utf-8' -X POST https://oapi.dingtalk.com/robot/send?access_token=${access_token} -d "${data}"
+      echo -e "\nsend dingtalk after message finished"
 ```
 
 ## 钉钉机群机器人添加
