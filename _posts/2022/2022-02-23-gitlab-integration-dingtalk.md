@@ -17,69 +17,21 @@ extends对应任务实现的before_script和after_script就可以实现消息通
 在gitlab中新建仓库，名为`gitlab/gitlab-ci`，仓库中添加文件`dingtalk.yml`模板文件，内容如下：
 
 ```yaml
-.dingtalk:
-  # 仅当钉钉群token存在时才发送消息
-  only:
-    variables:
-      - $access_token
-  variables:
-    # 公网gitlab地址
-    public_host: "http://192.168.235.131"
-  # 发送ci开始消息
-  before_script:
-    - |
-      project_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}" "" || true)"
-      job_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}" "" || true)"
-      text=$(cat <<-END
-        **CI任务<font color=\"#FF9900\">启动</font>通知**\n
-        ID: **${CI_JOB_ID}**\n
-        任务: **${CI_JOB_NAME}**\n
-        项目: **[${CI_PROJECT_PATH}](dingtalk://dingtalkclient/page/link?url=${project_url##/?}&pc_slide=false)**\n
-        分支: **${CI_DEFAULT_BRANCH}**\n
-        执行人: **${GITLAB_USER_NAME}**
-      END
-      )
-      data=$(cat <<-END
-        {
-          "actionCard": {
-              "title": "CI任务启动通知", 
-              "text": "${text}", 
-              "btnOrientation": "0", 
-              "singleTitle" : "任务详情",
-              "singleURL" : "dingtalk://dingtalkclient/page/link?url=${job_url##/?}&pc_slide=false"
-          },
-          "msgtype": "actionCard"
-        }
-      END
-      )
-      curl -s -H 'Content-Type: application/json; charset=utf-8' -X POST https://oapi.dingtalk.com/robot/send?access_token=${access_token} -d "${data}"
-      echo -e "\nsend dingtalk before message finished"
-  # 发送ci结束消息
-  after_script:
-    - |
-      project_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}" "" || true)"
-      job_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}" "" || true)"
-      title="CI任务执行失败通知"
-      status="执行失败"
-      color="#FF3333"
-      if [ "${CI_JOB_STATUS}" = "success" ]; then
-        title="CI任务执行成功通知"
-        status="执行成功"
-        color="#33CC00"
-      fi
-      start_time=`date -d ${CI_JOB_STARTED_AT} "+%Y-%m-%d %H:%M:%S"`
-      seconds=$(($(date +%s) - $(date +%s -d "${start_time}")))
-      text=$(cat <<-END
-        **CI任务<font color=\"${color}\">${status}</font>通知**\n
-        ID: **${CI_JOB_ID}**\n
-        任务: **${CI_JOB_NAME}**\n
-        项目: **[${CI_PROJECT_PATH}](dingtalk://dingtalkclient/page/link?url=${project_url##/?}&pc_slide=false)**\n
-        分支: **${CI_DEFAULT_BRANCH}**\n
-        执行人: **${GITLAB_USER_NAME}**\n
-        耗时: **$[seconds/60]分$[seconds%60]秒**
-      END
-      )
-      data=$(cat <<-END
+# 检测钉钉消息发送access_token是否存在
+# url编码项目地址及任务地址
+.access_token: &access_token
+  - |
+    if [ -z $access_token ];then
+      exit 0
+    fi
+  - |
+    project_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}" "" || true)"
+    job_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}" "" || true)"
+
+# 钉钉消息发送http Anchors
+.send_request: &send_request
+  - |
+    data=$(cat <<-END
         {
           "actionCard": {
               "title": "${title}", 
@@ -90,10 +42,58 @@ extends对应任务实现的before_script和after_script就可以实现消息通
           },
           "msgtype": "actionCard"
         }
-      END
-      )
-      curl -s -H 'Content-Type: application/json; charset=utf-8' -X POST https://oapi.dingtalk.com/robot/send?access_token=${access_token} -d "${data}"
-      echo -e "\nsend dingtalk after message finished"
+    END)
+  - >
+    curl -s -H 'Content-Type: application/json; charset=utf-8' 
+    -X POST https://oapi.dingtalk.com/robot/send?access_token=${access_token} -d "${data}"
+
+# 消息发送模板任务
+.dingtalk:
+  variables:
+    # 公网gitlab地址
+    public_host: "http://192.168.235.131"
+  # 发送ci开始消息
+  before_script:
+    - *access_token
+    - |
+      text=$(cat <<-END
+        **CI任务<font color=\"#FF9900\">启动</font>通知**\n
+        ID: **${CI_JOB_ID}**\n
+        任务: **${CI_JOB_NAME}**\n
+        项目: **[${CI_PROJECT_PATH}](dingtalk://dingtalkclient/page/link?url=${project_url##/?}&pc_slide=false)**\n
+        分支: **${CI_DEFAULT_BRANCH}**\n
+        执行人: **${GITLAB_USER_NAME}**
+      END)
+      title="CI任务启动通知"
+    - *send_request
+  # 发送ci结束消息
+  after_script:
+    - *access_token
+    # 区分任务状态
+    - |
+      title="CI任务执行失败通知"
+      status="执行失败"
+      color="#FF3333"
+      if [ "${CI_JOB_STATUS}" = "success" ]; then
+        title="CI任务执行成功通知"
+        status="执行成功"
+        color="#33CC00"
+      fi
+    # 耗时秒
+    - |
+      start_time=`date -d ${CI_JOB_STARTED_AT} "+%Y-%m-%d %H:%M:%S"`
+      seconds=$(($(date +%s) - $(date +%s -d "${start_time}")))
+    - |
+      text=$(cat <<-END
+        **CI任务<font color=\"${color}\">${status}</font>通知**\n
+        ID: **${CI_JOB_ID}**\n
+        任务: **${CI_JOB_NAME}**\n
+        项目: **[${CI_PROJECT_PATH}](dingtalk://dingtalkclient/page/link?url=${project_url##/?}&pc_slide=false)**\n
+        分支: **${CI_DEFAULT_BRANCH}**\n
+        执行人: **${GITLAB_USER_NAME}**\n
+        耗时: **$[seconds/60]分$[seconds%60]秒**
+      END)
+    - *send_request
 ```
 
 ## 钉钉机群机器人添加
