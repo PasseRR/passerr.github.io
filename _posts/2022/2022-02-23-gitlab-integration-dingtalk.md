@@ -18,18 +18,19 @@ extends对应任务实现的before_script和after_script就可以实现消息通
 
 ```yaml
 # 检测钉钉消息发送access_token是否存在
-# url编码项目地址及任务地址
 .access_token: &access_token
   - |
     if [ -z $access_token ];then
-      exit 0
+      echo "使用钉钉消息发送必须配置access_token变量"
+      exit 1
     fi
-  - |
-    project_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}" "" || true)"
-    job_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}" "" || true)"
 
 # 钉钉消息发送http Anchors
 .send_request: &send_request
+  # url编码项目地址及任务地址
+  - |
+    project_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}" "" || true)"
+    job_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}" "" || true)"
   - |
     data=$(cat <<-END
         {
