@@ -21,7 +21,7 @@ extends对应任务实现的before_script和after_script就可以实现消息通
 .access_token: &access_token
   - |
     if [ -z $access_token ];then
-      echo "使用钉钉消息发送必须配置access_token变量"
+      echo -e "\e[31m使用钉钉消息发送必须配置access_token变量"
       exit 1
     fi
 
