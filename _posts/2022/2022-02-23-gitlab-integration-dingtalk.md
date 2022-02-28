@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  Gitlab CI/CD集成钉钉消息通知模板
-mermaid: true
 categories: [ci]
 last_modified_at: 2022-02-23
 ---

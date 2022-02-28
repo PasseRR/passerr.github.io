@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  Gitlab跨版本升级计划
-mermaid: true
 categories: [operation]
 last_modified_at: 2022-02-14
 ---

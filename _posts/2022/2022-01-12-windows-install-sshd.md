@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  Windows安装sshd服务
-mermaid: true
 categories: [ci, operation]
 last_modified_at: 2022-01-12
 ---
