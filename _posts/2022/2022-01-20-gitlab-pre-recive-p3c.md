@@ -141,7 +141,7 @@ mkdir pre-receive.d
     
     ARGS = JSON.parse($stdin.read)
     # 仅当项目创建时才添加.pre-check文件
-    unless ARGS['event_name'] == 'project_create'
+    if ARGS['event_name'] == 'project_create'
         # 设置对应gitlab服务端口
         uri = URI.parse("http://localhost/api/v4/projects/#{ARGS['project_id']}/repository/files/#{URI::encode('.pre-check')}")
         
