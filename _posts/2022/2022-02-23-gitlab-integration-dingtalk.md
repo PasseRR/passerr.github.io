@@ -16,20 +16,24 @@ extends对应任务实现的before_script和after_script就可以实现消息通
 在gitlab中新建仓库，名为`gitlab/gitlab-ci`，仓库中添加文件`dingtalk.yml`模板文件，内容如下：
 
 ```yaml
+# 钉钉消息发送模版任务
+# 必须变量
+# D_ACCESS_TOKEN 群机器人token
+
 # 检测钉钉消息发送access_token是否存在
 .access_token: &access_token
   - |
-    if [ -z $access_token ];then
-      echo -e "\e[31m使用钉钉消息发送必须配置access_token变量"
+    if [ -z $D_ACCESS_TOKEN ];then
+      echo "使用钉钉消息发送必须配置D_ACCESS_TOKEN变量"
       exit 1
     fi
+    # url编码项目地址及任务地址
+  - |
+    project_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${gitlab_public_host}/${CI_PROJECT_PATH}" "" || true)"
+    job_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${gitlab_public_host}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}" "" || true)"
 
 # 钉钉消息发送http Anchors
 .send_request: &send_request
-  # url编码项目地址及任务地址
-  - |
-    project_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}" "" || true)"
-    job_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${public_host}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}" "" || true)"
   - |
     data=$(cat <<-END
         {
@@ -45,13 +49,13 @@ extends对应任务实现的before_script和after_script就可以实现消息通
     END)
   - >
     curl -s -H 'Content-Type: application/json; charset=utf-8' 
-    -X POST https://oapi.dingtalk.com/robot/send?access_token=${access_token} -d "${data}"
+    -X POST https://oapi.dingtalk.com/robot/send?access_token=${D_ACCESS_TOKEN} -d "${data}"
 
 # 消息发送模板任务
 .dingtalk:
   variables:
     # 公网gitlab地址
-    public_host: "http://192.168.235.131"
+    gitlab_gitlab_public_host: "http://117.139.13.157:9000"
   # 发送ci开始消息
   before_script:
     - *access_token
@@ -113,7 +117,7 @@ include:
 # 对应值为刚刚复制的access_token
 # 全局变量 若需要每个任务发送不同的钉钉群 将变量定义在job中
 variables:
-  access_token: your-dingtalk-access-token
+  D_ACCESS_TOKEN: your-dingtalk-access-token
 
 测试任务:
   stage: build
