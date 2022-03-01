@@ -21,3 +21,10 @@ gitlab-runner register
 # 启动runner
 gitlab-runner start
 ```
+
+## 配置ssh
+```shell
+su gitlab-runner
+# 复制/home/gitlab-runner/.ssh/id_rsa.pub内容为Deploy Keys
+ssh-keygen
+```
