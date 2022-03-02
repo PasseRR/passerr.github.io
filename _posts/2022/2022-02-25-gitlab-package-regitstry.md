@@ -16,7 +16,7 @@ gitlab_rails['packages_storage_path'] = "/mnt/packages"
 
 2. 仓库开启Package Registry
 
-    仓库 -> Settings -> General -> Visibility, project features, permissions -> 开启Packages
+    仓库/分组 -> Settings -> General -> Visibility, project features, permissions -> 开启Packages
 
 ## 准备工作
 gitlab支持每个仓库独立的Package管理，但是便于package查找，按照`maven`和`npm`类别，分别创建两个仓库管理对应的包。
