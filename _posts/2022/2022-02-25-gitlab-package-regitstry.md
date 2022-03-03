@@ -115,6 +115,8 @@ npm config set -- '//YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_a
 ```shell
 # 发布包
 npm publish
+# 发布测试版本
+npm publish --tag=beta
 # 安装包
 npm install
 ```
