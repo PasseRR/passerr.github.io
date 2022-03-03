@@ -27,6 +27,17 @@ gitlab支持每个仓库独立的Package管理，但是便于package查找，按
     Settings -> Access Token -> 选择scope中的`api` -> 生成token并复制
 3. 分别创建`maven-packages`和`npm-packages`两个仓库，并记录对应的项目id
 
+## 配置说明
+
+以下配置中需要替换的地方
+
+|名称|描述|
+|:---|:---|
+|**YOUR.GITLAB.COM**|你的gitlab地址|
+|**PROJECT_NAME**|项目名称|
+|**PROJECT_ID**|npm对应项目id|
+|**YOUR_ACCESS_TOKEN**|对应项目/分组的access_token|
+
 ## maven
 1. settings.xml配置
     ```xml
@@ -51,11 +62,11 @@ gitlab支持每个仓库独立的Package管理，但是便于package查找，按
     <distributionManagement>
         <repository>
             <id>gitlab-maven</id>
-            <url>http://your.gitlab.com/api/v4/projects/$PROJECT_ID/packages/maven</url>
+            <url>http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/maven</url>
         </repository>
         <snapshotRepository>
             <id>gitlab-maven</id>
-            <url>http://your.gitlab.com/api/v4/projects/$PROJECT_ID/packages/maven</url>
+            <url>http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/maven</url>
         </snapshotRepository>
     </distributionManagement>
     
@@ -63,21 +74,12 @@ gitlab支持每个仓库独立的Package管理，但是便于package查找，按
     <repositories>
         <repository>
             <id>gitlab-maven</id>
-            <url>http://your.gitlab.com/api/v4/projects/$PROJECT_ID/packages/maven</url>
+            <url>http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/maven</url>
         </repository>
     </repositories>
     ```
 
 ## npm
-
-以下配置中需要替换的地方
-
-|名称|描述|
-|:---|:---|
-|**YOUR.GITLAB.COM**|你的gitlab地址|
-|**PROJECT_NAME**|项目名称|
-|**PROJECT_ID**|npm对应项目id|
-|**YOUR_ACCESS_TOKEN**|对应项目/分组的access_token|
 
 1. registry配置(两种方案)
 - 使用`.npmrc`配置文件
