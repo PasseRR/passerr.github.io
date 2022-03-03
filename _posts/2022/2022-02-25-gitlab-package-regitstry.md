@@ -69,4 +69,52 @@ gitlab支持每个仓库独立的Package管理，但是便于package查找，按
     ```
 
 ## npm
-待完成
+
+以下配置中需要替换的地方
+
+|名称|描述|
+|:---|:---|
+|**YOUR.GITLAB.COM**|你的gitlab地址|
+|**PROJECT_NAME**|项目名称|
+|**PROJECT_ID**|npm对应项目id|
+|**YOUR_ACCESS_TOKEN**|对应项目/分组的access_token|
+
+1. registry配置(两种方案)
+- 使用`.npmrc`配置文件
+```text
+//YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_authToken=YOUR_ACCESS_TOKEN
+@PROJECT_NAME:registry=http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/
+```
+- 使用命令行配置
+```shell
+# 设置所有PROJECT_NAME下的包对应的registry的url
+npm config set @PROJECT_NAME:registry http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/
+# 设置安装包地址
+npm config set -- '//YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_authToken' "YOUR_ACCESS_TOKEN"
+```
+
+2. package.json示例
+```json
+{
+  "name": "@PROJECT_NAME/test1",
+  "version": "1.0.0",
+  "description": "description",
+  "main": "index.js",
+  "dependencies": {
+          "@PROJECT_NAME/test": "^1.0.0"
+  },
+  "scripts": {
+          "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "author",
+  "license": "ISC"
+}
+```
+
+4. 发布/安装
+```shell
+# 发布包
+npm publish
+# 安装包
+npm install
+```
