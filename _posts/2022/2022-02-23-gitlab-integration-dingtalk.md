@@ -18,85 +18,95 @@ extends对应任务实现的before_script和after_script就可以实现消息通
 ```yaml
 # 钉钉消息发送模版任务
 # 必须变量
-# D_ACCESS_TOKEN 群机器人token
+# DINGTALK_ACCESS_TOKEN 群机器人token
 
+variables:
+  # 钉钉markdown换行符 必须\n且前后跟两个空格(shell 转义)
+  V_BR: "\ \ \\n\ \ "
+
+# 消息发送准备工作
 # 检测钉钉消息发送access_token是否存在
-.access_token: &access_token
+.prepare: &prepare
+  # token检验
   - |
-    if [ -z $D_ACCESS_TOKEN ];then
-      echo "使用钉钉消息发送必须配置D_ACCESS_TOKEN变量"
+    if [ -z $DINGTALK_ACCESS_TOKEN ]; then
+      echo "使用钉钉消息发送必须配置DINGTALK_ACCESS_TOKEN变量"
       exit 1
     fi
-    # url编码项目地址及任务地址
+  # url编码项目地址及任务地址
   - |
-    project_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${gitlab_public_host}/${CI_PROJECT_PATH}" "" || true)"
-    job_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${gitlab_public_host}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}" "" || true)"
+    project_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${GITLAB_URL}/${CI_PROJECT_PATH}/-/tree/${CI_BUILD_REF_NAME}" "" || true)"
+    job_url="$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${GITLAB_URL}/${CI_PROJECT_PATH}/-/jobs/${CI_JOB_ID}" "" || true)"
 
 # 钉钉消息发送http Anchors
 .send_request: &send_request
+  # Markdown消息内容
   - |
-    data=$(cat <<-END
-        {
-          "actionCard": {
-              "title": "${title}", 
-              "text": "${text}", 
-              "btnOrientation": "0", 
-              "singleTitle" : "任务详情",
-              "singleURL" : "dingtalk://dingtalkclient/page/link?url=${job_url##/?}&pc_slide=false"
-          },
-          "msgtype": "actionCard"
-        }
-    END)
+    V_TEXT="**CI任务<font color=\\\"${V_COLOR}\\\">${V_STATUS}</font>通知**${V_BR}\
+    任务ID: **${CI_JOB_ID}**${V_BR}\
+    任务名: **${CI_JOB_NAME}**${V_BR}\
+    项目: **${CI_PROJECT_PATH}**${V_BR}\
+    分支: **${CI_BUILD_REF_NAME}**${V_BR}\
+    执行人: **${GITLAB_USER_NAME}**${V_EXTRA}\
+    "
+  # 钉钉消息发送json报文
+  - |
+    V_JSON="{
+      \"actionCard\": {\
+            \"title\": \"${V_TITLE}\",\
+            \"text\": \"${V_TEXT}\", \
+            \"btnOrientation\": \"1\",\
+            \"btns\": [{\
+               \"title\": \"查看项目\",
+               \"actionURL\": \"dingtalk://dingtalkclient/page/link?url=${project_url##/?}&pc_slide=false\"
+             }, {\
+              \"title\": \"查看任务\",
+              \"actionURL\": \"dingtalk://dingtalkclient/page/link?url=${job_url##/?}&pc_slide=false\"
+            }]\
+        },\
+        \"msgtype\": \"actionCard\"\
+    }"
   - >
-    curl -s -H 'Content-Type: application/json; charset=utf-8' 
-    -X POST https://oapi.dingtalk.com/robot/send?access_token=${D_ACCESS_TOKEN} -d "${data}"
+    curl -s -H 'Content-Type: application/json; charset=utf-8' -X POST 
+    https://oapi.dingtalk.com/robot/send?access_token=${DINGTALK_ACCESS_TOKEN} -d "${V_JSON}" -w "\n"
 
 # 消息发送模板任务
 .dingtalk:
-  variables:
-    # 公网gitlab地址
-    gitlab_gitlab_public_host: "http://117.139.13.157:9000"
   # 发送ci开始消息
   before_script:
-    - *access_token
+    - *prepare
     - |
-      text=$(cat <<-END
-        **CI任务<font color=\"#FF9900\">启动</font>通知**\n
-        ID: **${CI_JOB_ID}**\n
-        任务: **${CI_JOB_NAME}**\n
-        项目: **[${CI_PROJECT_PATH}](dingtalk://dingtalkclient/page/link?url=${project_url##/?}&pc_slide=false)**\n
-        分支: **${CI_DEFAULT_BRANCH}**\n
-        执行人: **${GITLAB_USER_NAME}**
-      END)
-      title="CI任务启动通知"
+      V_COLOR="#FF9900"
+      V_STATUS="启动"
+      V_TITLE="CI任务启动通知"
     - *send_request
+
   # 发送ci结束消息
   after_script:
-    - *access_token
-    # 区分任务状态
+    - *prepare
+    # 不同任务状态设置不同消息标题、颜色
     - |
-      title="CI任务执行失败通知"
-      status="执行失败"
-      color="#FF3333"
-      if [ "${CI_JOB_STATUS}" = "success" ]; then
-        title="CI任务执行成功通知"
-        status="执行成功"
-        color="#33CC00"
-      fi
-    # 耗时秒
+      case $CI_JOB_STATUS in
+        success)
+          V_TITLE="CI任务执行成功通知"
+          V_STATUS="执行成功"
+          V_COLOR="#33CC00"
+          ;;
+        failed)
+          V_TITLE="CI任务执行失败通知"
+          V_STATUS="执行失败"
+          V_COLOR="#FF3333"
+          ;;
+        *)
+          echo "不支持job状态${CI_JOB_STATUS}"
+          exit 1
+          ;;
+      esac
+    # 执行耗时计算
     - |
       start_time=`date -d ${CI_JOB_STARTED_AT} "+%Y-%m-%d %H:%M:%S"`
       seconds=$(($(date +%s) - $(date +%s -d "${start_time}")))
-    - |
-      text=$(cat <<-END
-        **CI任务<font color=\"${color}\">${status}</font>通知**\n
-        ID: **${CI_JOB_ID}**\n
-        任务: **${CI_JOB_NAME}**\n
-        项目: **[${CI_PROJECT_PATH}](dingtalk://dingtalkclient/page/link?url=${project_url##/?}&pc_slide=false)**\n
-        分支: **${CI_DEFAULT_BRANCH}**\n
-        执行人: **${GITLAB_USER_NAME}**\n
-        耗时: **$[seconds/60]分$[seconds%60]秒**
-      END)
+      V_EXTRA="${V_BR}耗时: **$[seconds/60]分$[seconds%60]秒**"
     - *send_request
 ```
 
