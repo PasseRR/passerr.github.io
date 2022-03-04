@@ -40,7 +40,7 @@ ORDER BY "eisl"."exception_status_id"
 ## 原因分析
 
 1.先分析查询语句   
-![EXPLAIN_LEFT_JOIN](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/asserts/2017/07-03/explain_left_join.png)   
+![EXPLAIN_LEFT_JOIN](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2017/07-03/explain_left_join.png)   
 发现LEFT JOIN的条件并没有走索引 而是过滤条件
 
 2.将LEFT JOIN修改为JOIN分析
@@ -54,7 +54,7 @@ WHERE "eisl"."invoice_status_log_id" = 1000
 ORDER BY "eisl"."exception_status_id"
 ```
 
-![EXPLAIN_JOIN](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/asserts/2017/07-03/explain_join.png)   
+![EXPLAIN_JOIN](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2017/07-03/explain_join.png)   
 发现使用JOIN后查询条件走的是主键索引
 
 ## 结论

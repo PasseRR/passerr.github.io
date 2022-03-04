@@ -143,6 +143,6 @@ variables:
 ```
 
 ## 效果
-![启动](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/asserts/2022/02-23/start.jpg)
-![成功](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/asserts/2022/02-23/success.jpg)
-![失败](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/asserts/2022/02-23/failed.jpg)
+![启动](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2022/02-23/start.jpg)
+![成功](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2022/02-23/success.jpg)
+![失败](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2022/02-23/failed.jpg)
