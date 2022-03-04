@@ -2,7 +2,7 @@
 layout: post
 title:  "使用Spock完成单元测试"
 categories: [java]
-last_modified_at: 2022-02-21
+last_modified_at: 2022-03-04
 ---
 ## 前言
 1.单元测试是什么?   
@@ -28,7 +28,7 @@ java单元测试用的比较多的如jUnit,testng等。单元测试代码总是�
 Spock是基于[groovy](http://www.groovy-lang.org/)的,语法和java很接近,没有java那么啰嗦,可以完全用java语法编写groovy代码.   
 
 ## 实战
-1.依赖   
+#### 依赖   
 * maven   
     ```xml
     <dependency>
@@ -54,7 +54,7 @@ Spock是基于[groovy](http://www.groovy-lang.org/)的,语法和java很接近,�
     }
     ```
 
-2.Spock中的概念
+#### Spock中的概念
 * Specification   
 测试类都必须继承Specification类   
 
@@ -141,7 +141,7 @@ when and then Blocks例子可以替换为:
     }
     ```
 
-3.Spock和其他测试框架的比较   
+#### Spock和其他测试框架的比较   
 * 用jUnit写的单元测试代码   
     ```java
     @Test
@@ -201,5 +201,5 @@ when and then Blocks例子可以替换为:
     ```
   
 在去除啰嗦冗余的语法过后,单元测试代码是否看起来更清晰、更容易阅读、更优雅?   
-4.测试结果   
+#### 测试结果   
 ![测试结果](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2017/07-12/test_result.png)  
