@@ -30,6 +30,7 @@ jobs:
       # 必应url提交
       - name: Submit Bing Urls
         run: >
+          echo ${{ env.urls }}
           jsonUrls=`echo -e '${{ env.urls }}' | awk '{x[i++]=$0} END{for (j=0; j<i;) print "\\\""x[j++]"\\\"" (j==i?"":",")}'`
           
           echo "$jsonUrls"
