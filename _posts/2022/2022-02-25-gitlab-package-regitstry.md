@@ -34,7 +34,7 @@ gitlab支持每个仓库独立的Package管理，但是便于package查找，按
 |名称|描述|
 |:---|:---|
 |**YOUR.GITLAB.COM**|你的gitlab地址|
-|**PROJECT_NAME**|项目名称|
+|**YOUR_SCOPE_NAME**|npm scope名称|
 |**PROJECT_ID**|npm对应项目id|
 |**YOUR_ACCESS_TOKEN**|对应项目/分组的access_token|
 
@@ -85,12 +85,12 @@ gitlab支持每个仓库独立的Package管理，但是便于package查找，按
 - 使用`.npmrc`配置文件
 ```text
 //YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_authToken=YOUR_ACCESS_TOKEN
-@PROJECT_NAME:registry=http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/
+@YOUR_SCOPE_NAME:registry=http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/
 ```
 - 使用命令行配置
 ```shell
-# 设置所有PROJECT_NAME下的包对应的registry的url
-npm config set @PROJECT_NAME:registry http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/
+# 设置所有YOUR_SCOPE_NAME下的包对应的registry的url
+npm config set @YOUR_SCOPE_NAME:registry http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/
 # 设置安装包地址
 npm config set -- '//YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_authToken' "YOUR_ACCESS_TOKEN"
 ```
@@ -98,12 +98,12 @@ npm config set -- '//YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_a
 2. package.json示例
 ```json
 {
-  "name": "@PROJECT_NAME/test1",
+  "name": "@YOUR_SCOPE_NAME/test1",
   "version": "1.0.0",
   "description": "description",
   "main": "index.js",
   "dependencies": {
-          "@PROJECT_NAME/test": "^1.0.0"
+          "@OTHER_SCOPE_NAME/test": "^1.0.0"
   },
   "scripts": {
           "test": "echo \"Error: no test specified\" && exit 1"
@@ -112,6 +112,8 @@ npm config set -- '//YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_a
   "license": "ISC"
 }
 ```
+
+3. 若gitlab上存放了多个scope的依赖，每个scope都需要配置一次registry地址
 
 4. 发布/安装
 ```shell
