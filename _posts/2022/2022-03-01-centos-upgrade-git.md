@@ -14,6 +14,8 @@ fatal: The remote end hung up unexpectedly
 
 ## 升级过程
 ```shell
+# 安装依赖
+yum install -yum gcc zlib-devel
 # 下载源代码
 wget https://github.com/git/git/archive/refs/tags/v2.35.0.tar.gz
 tar zxvf v2.35.0.tar.gz
