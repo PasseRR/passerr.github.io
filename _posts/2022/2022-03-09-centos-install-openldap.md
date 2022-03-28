@@ -11,7 +11,7 @@ last_modified_at: 2022-03-09
 ## 安装LDAP
 
 ```shell
-yum -y install openldap compat-openldap openldap-clients openldap-servers openldap-servers-sql openldap-devel
+yum install -y openldap openldap-clients openldap-servers
 # 启动服务
 systemctl start slapd
 # 开启自启动
@@ -25,7 +25,7 @@ netstat -antup | grep -i 389
 1. 创建跟目录密码
     ```shell
     # 记录生成的密码
-    slappasswd -h {SSHA} -s ldppassword
+    slappasswd -h {SSHA} -s your_password
     ```
    
 2. 配置root dn及密码
