@@ -69,6 +69,29 @@ netstat -antup | grep -i 389
     cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
     chown ldap:ldap /var/lib/ldap/*
     ```
-5. 使用LDAP客户端登录验证
+
+5. 添加cosine和nis LDAP模式
+    ```shell
+    ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
+    ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif 
+    ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
+    ```
+
+6. 初始化domain及管理员dn
+    ```shell
+    dn: dc=51cto,dc=com
+    dc: 51cto
+    objectClass: top
+    objectClass: domain
+   
+    dn: cn=ldapadm ,dc=51cto,dc=com
+    objectClass: organizationalRole
+    cn: ldapadm
+    description: LDAP Manager
+    # 将以上内容保存为base.ldif
+    ldapadd -x -W -D "cn=ldapadm,dc=51cto,dc=com" -f base.ldif
+    ```
+
+7. 使用LDAP客户端登录验证
 
     至此，LDAP安装配置完成
