@@ -64,7 +64,11 @@ last_modified_at: 2022-03-11
 
     需要保证ldap中uid为为钉钉用户API中的`userId`，非LDAP用户需要自行扫码绑定钉钉帐号
 
-4. 重新配置gitlab生效
+4. 将已有用户和ldap用户绑定
+
+    将已有用户邮箱修改为ldap中的邮箱地址，然后ldap可正常登陆，原有用户也可以进行标准登陆，且支持钉钉扫码
+
+5. 重新配置gitlab生效
     ```shell
     gitlab-ctl reconfigure
     ```
