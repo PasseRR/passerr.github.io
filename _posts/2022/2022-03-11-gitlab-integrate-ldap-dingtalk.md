@@ -49,6 +49,8 @@ last_modified_at: 2022-03-11
 1. 创建钉钉应用，记录`appKey`和`appSecret`
 2. 修改`gitlab.rb`配置
     ```ruby
+    # 自动链接ldap用户
+    gitlab_rails['omniauth_auto_link_ldap_user'] = true
     gitlab_rails['omniauth_providers'] = [
         {
           name: "dingtalk",
