@@ -37,6 +37,7 @@ gems:
   - jekyll-gist
   - redcarpet
   - jekyll-sitemap
+  - jekyll-relative-links
 
 compress_html:
   clippings: all
