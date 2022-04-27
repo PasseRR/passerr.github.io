@@ -44,6 +44,10 @@ compress_html:
   comments: ["<!-- ", " -->"]
   endings: all
 
+relative_links:
+  enabled:     true
+  collections: true
+
 tipue_search:
   include:
     pages: true
