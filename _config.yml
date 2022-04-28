@@ -10,7 +10,7 @@ collections:
 
 baseurl: ""
 permalink: /:name:output_ext
-paginate: 18
+paginate: 20
 paginate_path: "/blogs/:num.html"
 
 # markdown render engine.
