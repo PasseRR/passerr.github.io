@@ -95,4 +95,6 @@ AJS.toInit(function(){
 </script>
 #end
 ```
+使用[html宏](https://community.atlassian.com/t5/Boise-discussions/Widget-Wednesday-Floating-TOC-in-Confluence/m-p/1095431#M22)实现
+
 ![toc](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2022/05-10/toc.gif)
