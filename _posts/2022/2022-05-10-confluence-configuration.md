@@ -98,3 +98,38 @@ AJS.toInit(function(){
 使用[html宏](https://community.atlassian.com/t5/Boise-discussions/Widget-Wednesday-Floating-TOC-in-Confluence/m-p/1095431#M22)实现
 
 ![toc](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2022/05-10/toc.gif)
+
+## 3. 右侧导航插件(Easy Heading Macro)【推荐】
+[Easy Heading Macro](https://marketplace.atlassian.com/apps/1221271/easy-heading-macro-floating-table-of-contents?tab=overview&hosting=server){:target="_blank"}
+
+离线插件下载[easy-heading-free-2.2.1.jar](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2022/05-10/easy-heading-free-2.2.1.jar)，上传插件安装就可以使用
+
+插件可以使用wiki全局配置、按照空间配置、按照页面配置自由选择
+
+- 配置wiki
+  ```wiki
+  {easy-heading-free:selector=h1,h2,h3,h4,h5,h6|navigationTitle=目录|navigationExpandOption=expand-all-by-default}
+  ```
+- 全局配置  
+  设置 -> 外观 -> 边栏/页眉及页脚，在页脚中添加**配置wiki**脚本
+- 空间配置
+  空间管理 -> 外观 -> 侧边栏,页眉和页脚，在页脚中添加**配置wiki**脚本
+- 页面配置
+  创建页面 -> 插入更多内容 -> 其他宏 -> 导航 -> Easy Heading Free
+- 配置参数说明
+  
+  |参数名|默认值|描述|
+  |:---|:---|:---|
+  |enabled|true|是否启用宏|
+  |selector|h1,h2,h3|从h1到h6，标题选择器，逗号分隔|
+  |navigationExpandOption|expand-all-by-default|展开方式，可选值expand-all-by-default、collapse-all-by-default、collapse-all-but-headings-1、collapse-all-but-headings-1-2、collapse-all-but-headings-1-3、collapse-all-but-headings-1-4、disable-expand-collapse|
+  |titleExpandClickable|false|点击标题自动展开目录|
+  |useNavigation|true|是否浮动目录|
+  |useNavigationHiddenMode|false|首次进入目录是否隐藏|
+  |wrapNavigationText|false|若标题超过限定长度是否自动截断，false截断，true不截断|
+  |navigationTitle|Table of Content|目录名称|
+  |navigationWidth|230|目录宽度|
+  |navigationIndent|10|标题目录不同级别的缩进|
+  |disableNavLinksUnder|0|当标题少于多少个时目录不可用|
+
+![easy](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2022/05-10/easy.gif)
