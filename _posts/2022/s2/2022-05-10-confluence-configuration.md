@@ -135,3 +135,9 @@ AJS.toInit(function(){
   |disableNavLinksUnder|0|当标题少于多少个时目录不可用|
 
 ![plugin](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2022/05-10/plugin.gif)
+
+## 4. confluence多个地址访问时提示Your URL doesn't match
+confluence只能设置一个基础url，当confluence通过内网或外网ip访问时，每当访问任意页面时会提示Your URL doesn't match，
+为了避免这种情况，通过修改`Confluence Base URL Plugin`插件配置。
+
+设置 -> 插件管理 -> 系统 -> Confluence Base URL Plugin -> 禁用模块`Base URL plugin filter`
