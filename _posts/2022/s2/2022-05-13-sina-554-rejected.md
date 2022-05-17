@@ -26,3 +26,5 @@ last_modified_at: 2022-05-13
 Please remove my ip address xxx.xxx.xxx.xxx, the domain name is xxx.com, 
 I promise we don't send any spam, thank you. 
 ```
+
+黑名单移除后，再重试邮件发送，成功了。
