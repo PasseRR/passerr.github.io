@@ -410,22 +410,22 @@ chmod 700 /usr/local/vmail
   FLUSH PRIVILEGES;
   ```
 2. php配置
-```properties
-# 时区
-date.timezone = Asia/Shanghai
-# 已安装MySQL对应的sock文件
-pdo_mysql.default_socket=/data/mysql/tmp/mysql.asock
-# post限制
-post_max_size = 1024M
-# 文件上传限制
-upload_max_filesize = 100M
-max_execution_time = 1200
-max_input_time = 1200
-memory_limit = 1024M
-
-# 根据文件上传大小调整socket连接超时时间 单位秒
-default_socket_timeout=300
-```
+    ```properties
+    # 时区
+    date.timezone = Asia/Shanghai
+    # 已安装MySQL对应的sock文件
+    pdo_mysql.default_socket=/data/mysql/tmp/mysql.asock
+    # post限制
+    post_max_size = 1024M
+    # 文件上传限制
+    upload_max_filesize = 100M
+    max_execution_time = 1200
+    max_input_time = 1200
+    memory_limit = 1024M
+    
+    # 根据文件上传大小调整socket连接超时时间 单位秒
+    default_socket_timeout=300
+    ```
 3. roundcube初始化
     访问http://host/installer/index.php配置
     初始化完成后，修改权限禁止初始化页面访问
