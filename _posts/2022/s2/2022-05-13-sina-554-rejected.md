@@ -7,7 +7,7 @@ last_modified_at: 2022-05-13
 
 ## 问题描述
 自己搭建的邮箱服务器，发送邮件到新浪邮箱，结果被拒收了。
-![554](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2022/05-13/554.png)
+![554]({{ site.cdn }}/assets/2022/05-13/554.png)
 
 ## 发送邮件到新浪服务器基本条件
 1. 邮件系统的出口有多个IP的需要做反向解析

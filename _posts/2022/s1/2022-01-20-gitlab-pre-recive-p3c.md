@@ -13,7 +13,7 @@ last_modified_at: 2022-02-22
 ## 阿里规约准备
 1. 编译最新p3c-pmd模块获得[pmd包](/assets/2022/01-20/p3c-pmd-2.1.1-jar-with-dependencies.jar){:target="_blank"}
 
-2. 编写[规则集xml文件](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2022/01-20/ali-p3c.xml){:target="_blank"}，根据需要设定规则
+2. 编写[规则集xml文件]({{ site.cdn }}/assets/2022/01-20/ali-p3c.xml){:target="_blank"}，根据需要设定规则
 
     ```xml
     <?xml version="1.0"?>
@@ -182,4 +182,4 @@ java -version
 ```
 
 ## 验证钩子
-![图片](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2022/01-20/hook.png)
+![图片]({{ site.cdn }}/assets/2022/01-20/hook.png)

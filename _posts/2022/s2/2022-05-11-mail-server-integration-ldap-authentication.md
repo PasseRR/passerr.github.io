@@ -18,7 +18,7 @@ last_modified_at: 2022-05-11
 |[apache2](https://httpd.apache.org/){:target="_blank"}|web服务器|
 |[OpenLdap](https://www.openldap.org/){:target="_blank"}|用户目录|
 
-![架构图](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2022/05-11/architecture.png)
+![架构图]({{ site.cdn }}/assets/2022/05-11/architecture.png)
 
 ## 服务安装
 ### dovecot
@@ -430,7 +430,7 @@ chmod 700 /usr/local/vmail
     访问http://host/installer/index.php配置
     初始化完成后，修改权限禁止初始化页面访问
 
-    ![roundcube](https://cdn.jsdelivr.net/gh/PasseRR/passerr.github.io/assets/2022/05-11/roundcube.gif)
+    ![roundcube]({{ site.cdn }}/assets/2022/05-11/roundcube.gif)
     ```shell
     chmod -R 600 /var/www/html/installer/
     ```
