@@ -17,6 +17,7 @@ last_modified_at: 2022-05-13
     ```bat
     nslookup -q=txt a.com
     ```
+
 ## 邮件服务器在线检测
 1. [SPF及DKIM检测](https://www.appmaildev.com/cn/dkim){:target="_blank"}
 2. [邮件服务器评分](https://www.mail-tester.com/){:target="_blank"}
