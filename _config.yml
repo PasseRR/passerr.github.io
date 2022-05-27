@@ -68,9 +68,9 @@ hm: 712de58e89ed55d7c9e9bbd30ad340cd
 
 url: "https://www.xiehai.win"
 # 主题静态资源cdn前缀
-#theme-cdn: https://fastly.jsdelivr.net/gh/PasseRR/jekyll-blog-theme
+theme-cdn: https://fastly.jsdelivr.net/gh/PasseRR/jekyll-blog-theme
 # 博客静态资源cdn前缀
-#cdn: https://fastly.jsdelivr.net/gh/PasseRR/passerr.github.io
+cdn: https://fastly.jsdelivr.net/gh/PasseRR/passerr.github.io
 plugins:
   - jekyll-remote-theme
   - jekyll-paginate
