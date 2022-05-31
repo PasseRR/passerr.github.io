@@ -7,6 +7,14 @@
     {
       "source": "/jdk-features/:match*",
       "destination": "https://jdk-features.vercel.app/:match*"
+    },
+    {
+      "source": "/JavaLeetCode/:match*",
+      "destination": "https://java-leet-code.vercel.app/:match*"
+    },
+    {
+      "source": "/Java-Example/:match*",
+      "destination": "https://java-example.vercel.app//:match*"
     }
   ]
 }
