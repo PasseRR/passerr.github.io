@@ -1,10 +1,6 @@
 {
   "rewrites": [
     {
-      "source": "/:match*/",
-      "destination": "/:match*"
-    },
-    {
       "source": "/DesignPatterns/:match*",
       "destination": "https://design-patterns-nine.vercel.app/:match*"
     },
@@ -19,6 +15,12 @@
     {
       "source": "/Java-Example/:match*",
       "destination": "https://java-example.vercel.app/:match*"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:match*/",
+      "destination": "/:match*"
     }
   ]
 }
