@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/DesignPatterns/:match*",
+      "destination": "https://design-patterns-nine.vercel.app/:match*"
+    },
+    {
+      "source": "/jdk-features/:match*",
+      "destination": "https://jdk-features.vercel.app/:match*"
+    }
+  ]
+}
