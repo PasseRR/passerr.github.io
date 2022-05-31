@@ -14,7 +14,7 @@
     },
     {
       "source": "/Java-Example/:match*",
-      "destination": "https://java-example.vercel.app//:match*"
+      "destination": "https://java-example.vercel.app/:match*"
     }
   ]
 }
