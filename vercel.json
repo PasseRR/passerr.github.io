@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/:match*/",
+      "destination": "/:match*"
+    },
+    {
       "source": "/DesignPatterns/:match*",
       "destination": "https://design-patterns-nine.vercel.app/:match*"
     },
