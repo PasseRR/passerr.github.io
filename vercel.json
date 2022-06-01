@@ -20,5 +20,8 @@
       "source": "/Java-Example/:match*",
       "destination": "https://java-example.vercel.app/:match*"
     }
-  ]
+  ],
+  "github": {
+    "silent": true
+  }
 }

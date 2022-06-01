@@ -34,7 +34,7 @@ vercel针对个人是免费的，团队是收费的。
     使用vercel托管博客，vercel快速导入Github的博客项目，每次push自动发布，而且速度比使用jsdelivr还快，
     关键是免费，这简直是白嫖党的福音，又能开心的写博客了
 
-## 从Github Pages迁移到vercel
+## 部署Github上的站点到vercel
 1. 注册vercel账号，直接使用Github Oauth
 2. 添加Github账户，懒的话导全部仓库，否则选择静态网站相关的仓库
     
