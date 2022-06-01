@@ -141,3 +141,38 @@ confluence只能设置一个基础url，当confluence通过内网或外网ip访�
 为了避免这种情况，通过修改`Confluence Base URL Plugin`插件配置。
 
 设置 -> 插件管理 -> 系统 -> Confluence Base URL Plugin -> 禁用模块`Base URL plugin filter`
+
+## 5. [CVE-2021-26084漏洞修复](https://confluence.atlassian.com/doc/confluence-security-advisory-2021-08-25-1077906215.html){:target="_blank"}
+CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤如下
+1. 关闭confluence
+2. 下载[cve-2021-26084-update.sh]({{ site.cdn }}/assets/2022/05-10/cve-2021-26084-update.sh)脚本
+3. 修改脚本中的`INSTALLATION_DIRECTORY`为你的confluence安装目录并保存
+4. 修改脚本执行权限
+    
+    ```shell
+    chmod 700 cve-2021-26084-update.sh
+    ```
+5. 切换用户为confluence安装用户
+
+    ```shell
+    ls -l /opt/atlassian/confluence | grep bin
+    # drwxr-xr-x 3 root root 4096 Aug 18 17:07 bin
+    
+    # In this first example, we change to the 'root' user
+    # to run the workaround script
+    
+    sudo su root
+    ls -l /opt/atlassian/confluence | grep bin
+    drwxr-xr-x 3 confluence confluence 4096 Aug 18 17:07 bin
+    
+    # In this second example, we need to change to the 'confluence' user
+    # to run the workaround script
+    
+    sudo su confluence
+    ```
+6. 执行cve-2021-26084-update.sh脚本
+
+    ```shell
+    ./cve-2021-26084-update.sh
+    ```
+7. 重启confluence
