@@ -163,7 +163,7 @@ CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤
     
     sudo su root
     ls -l /opt/atlassian/confluence | grep bin
-    drwxr-xr-x 3 confluence confluence 4096 Aug 18 17:07 bin
+    # drwxr-xr-x 3 confluence confluence 4096 Aug 18 17:07 bin
     
     # In this second example, we need to change to the 'confluence' user
     # to run the workaround script
