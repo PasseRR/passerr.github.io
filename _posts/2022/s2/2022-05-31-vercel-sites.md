@@ -39,7 +39,7 @@ vercel针对个人是免费的，团队是收费的。
 2. 添加Github账户，懒的话导全部仓库，否则选择静态网站相关的仓库
     
     ![github]({{ site.cdn }}/assets/2022/05-31/github.png)
-3. 导入Github仓库，配置模版(根据静态网站框架，我这里选的jekyll)，在选择站点目录，
+3. 导入Github仓库，配置模版(根据静态网站框架，我这里选的jekyll)，再选择站点目录，
     ![import]({{ site.cdn }}/assets/2022/05-31/import.png)
     ![import]({{ site.cdn }}/assets/2022/05-31/configure.png)
 4. 等待Deployments执行完成
