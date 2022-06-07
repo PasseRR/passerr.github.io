@@ -15,7 +15,7 @@ last_modified_at: 2022-05-31
 1. 将所有站点导入**vercel**
 2. [将vercel多个项目配置为一个域名](https://vercel.com/support/articles/how-can-i-serve-multiple-projects-under-a-single-domain){:target="_blank"}，在主站点根目录添加`vercel.json`
 
-    ```json
+    ```javascript
     {
         // 路径重写
         "rewrites": [
