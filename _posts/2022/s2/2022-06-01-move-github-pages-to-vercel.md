@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  Github Pages迁移到vercel
-mermaid: true
 categories: [md, others]
 last_modified_at: 2022-05-31
 ---
