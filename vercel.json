@@ -21,6 +21,18 @@
       "destination": "https://java-example.vercel.app/:match*"
     }
   ],
+  "redirects": [
+    {
+      "source": "http://xiehai.zone/:match*",
+      "destination": "https://xiehai.zone/:match*",
+      "statusCode": 301
+    },
+    {
+      "source": "http://www.xiehai.zone/:match*",
+      "destination": "https://www.xiehai.zone/:match*",
+      "statusCode": 301
+    }
+  ],
   "github": {
     "silent": true
   }
