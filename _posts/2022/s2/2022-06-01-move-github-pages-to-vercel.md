@@ -52,7 +52,7 @@ last_modified_at: 2022-05-31
 4. 删除github的域名或者直接删除CNAME文件
 5. 等待dns缓存过期，访问新的域名就可以看到基于vercel的新站点了
 
-P.S. github子站点会存在一个上下文路径，以`PasseRR/DesignPatterns`为例，上下文路径为`DesignPatterns`，
+**P.S.** github子站点会存在一个上下文路径，以`PasseRR/DesignPatterns`为例，上下文路径为`DesignPatterns`，
 但在vercel中是独立站点，需要去掉上下文路径，添加路径重写配置文件(vercel.json)如下：
 ```json
 {
