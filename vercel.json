@@ -21,16 +21,6 @@
       "destination": "https://java-example.vercel.app/:match*"
     }
   ],
-  "redirects": [
-    {
-      "source": "http://xiehai.zone/:match*",
-      "destination": "https://xiehai.zone/:match*"
-    },
-    {
-      "source": "http://www.xiehai.zone/:match*",
-      "destination": "https://www.xiehai.zone/:match*"
-    }
-  ],
   "github": {
     "silent": true
   }
