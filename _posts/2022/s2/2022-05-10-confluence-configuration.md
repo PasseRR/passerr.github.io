@@ -176,3 +176,26 @@ CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤
     ./cve-2021-26084-update.sh
     ```
 7. 重启confluence
+
+## 6. confluence文件预览乱码
+
+假设Confluence安装目录为`/opt/atlassian/confluence`，应用数据目录为`/var/atlassian/application-data/confluence`
+1. 将windows`C:\Windows\Fonts`目录下的字体文件复制到`/opt/atlassian/confluence/fonts`目录
+2. 修改`/opt/atlassian/confluence/bin/setenv.sh`文件
+
+    ```shell
+    # vi /opt/atlassian/confluence/bin/setenv.sh
+    CATALINA_OPTS="-Dconfluence.document.conversion.fontpath=/opt/atlassian/confluence/fonts/ ${CATALINA_OPTS}"
+    ```
+
+3. 删除应用临时预览文件
+    
+    ```shell
+    cd /var/atlassian/application-data/confluence
+    rm -rf viewfile/*
+    rm -rf shared-home/dcl-document/*
+    rm -rf shared-home/dcl-document_hd/*
+    rm -rf shared-home/dcl-thumbnail/*
+    ```
+
+4. 重启Confluence
