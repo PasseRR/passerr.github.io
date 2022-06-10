@@ -34,7 +34,6 @@ gitlab支持每个仓库独立的Package管理，但是便于package查找，按
 |名称|描述|
 |:---|:---|
 |**YOUR.GITLAB.COM**|你的gitlab地址|
-|**YOUR_SCOPE_NAME**|npm scope名称|
 |**PROJECT_ID**|npm对应项目id|
 |**YOUR_ACCESS_TOKEN**|对应项目/分组的access_token|
 
@@ -85,12 +84,12 @@ gitlab支持每个仓库独立的Package管理，但是便于package查找，按
 - 使用`.npmrc`配置文件
 ```text
 //YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_authToken=YOUR_ACCESS_TOKEN
-@YOUR_SCOPE_NAME:registry=http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/
+registry=http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/
 ```
 - 使用命令行配置
 ```shell
-# 设置所有YOUR_SCOPE_NAME下的包对应的registry的url
-npm config set @YOUR_SCOPE_NAME:registry http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/
+# 设置registry的url
+npm config set registry http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/
 # 设置安装包地址
 npm config set -- '//YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_authToken' "YOUR_ACCESS_TOKEN"
 ```
@@ -98,7 +97,7 @@ npm config set -- '//YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_a
 2. package.json示例
 ```json
 {
-  "name": "@YOUR_SCOPE_NAME/test1",
+  "name": "@scope/test1",
   "version": "1.0.0",
   "description": "description",
   "main": "index.js",
@@ -123,4 +122,13 @@ npm publish
 npm publish --tag=beta
 # 安装包
 npm install
+```
+
+**P.S.** 如果gitlab是外网，可能会出现`npm install`的时候从内网获取的问题，需要修改gitlab.rb配置
+
+```ruby
+# 默认nginx监听端口为解析external_url中的端口
+external_url 'http://YOUR.GITLAB.COM:9000'
+# 若需要设置nginx为固定端口则添加如下配置 局域网可以通过80端口访问 外网可以根据域名+端口访问
+nginx['listen_port'] = 80
 ```
