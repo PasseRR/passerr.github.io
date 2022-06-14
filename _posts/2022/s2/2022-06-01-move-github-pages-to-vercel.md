@@ -11,10 +11,10 @@ last_modified_at: 2022-05-31
 主站点的CNAME为`www.xiehai.win`
 
 ## 迁移过程
-1. 将所有站点导入**vercel**
+1. 将所有站点从github[导入](2022-05-31-vercel-sites.md){:target="_blank"}**vercel**
 2. [将vercel多个项目配置为一个域名](https://vercel.com/support/articles/how-can-i-serve-multiple-projects-under-a-single-domain){:target="_blank"}，在主站点根目录添加`vercel.json`
 
-    ```json5
+    ```js
     {
       // 路径重写
       "rewrites": [
@@ -51,7 +51,7 @@ last_modified_at: 2022-05-31
 
     github子站点会存在一个上下文路径，以`PasseRR/DesignPatterns`为例，上下文路径为`DesignPatterns`， 
     但在vercel中是独立站点，需要去掉上下文路径，添加路径重写配置文件(vercel.json)如下
-    ```json5
+    ```js
     {
       "rewrites": [
         {
