@@ -92,21 +92,22 @@ gitlab支持每个仓库独立的Package管理，但是便于package查找，按
 # 设置所有YOUR_SCOPE_NAME下的包对应的registry的url
 npm config set @YOUR_SCOPE_NAME:registry http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/
 # 设置安装包地址
-npm config set -- '//YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_authToken' "YOUR_ACCESS_TOKEN"
+npm config set -- //YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_authToken YOUR_ACCESS_TOKEN
 ```
 
 2. package.json示例
-```json
+```js
 {
   "name": "@YOUR_SCOPE_NAME/test1",
   "version": "1.0.0",
   "description": "description",
   "main": "index.js",
   "dependencies": {
-          "@OTHER_SCOPE_NAME/test": "^1.0.0"
+      // OTHER_SCOPE_NAME需要额外配置
+      "@OTHER_SCOPE_NAME/test": "^1.0.0"
   },
   "scripts": {
-          "test": "echo \"Error: no test specified\" && exit 1"
+      "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "author",
   "license": "ISC"
