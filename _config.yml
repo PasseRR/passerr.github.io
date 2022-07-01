@@ -71,6 +71,7 @@ url: "https://www.xiehai.zone"
 #theme-cdn: https://gcore.jsdelivr.net/gh/PasseRR/jekyll-blog-theme
 # 博客静态资源cdn前缀
 #cdn: https://gcore.jsdelivr.net/gh/PasseRR/passerr.github.io
+
 plugins:
   - jekyll-remote-theme
   - jekyll-paginate
