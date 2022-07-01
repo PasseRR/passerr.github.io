@@ -63,6 +63,8 @@ bmob-message-table: message
 
 # google分析gtag
 ga: G-1L1DPX3PFD
+# 百度统计hm
+hm: 6fcc00740d8cd30d91522810ec50075d
 
 url: "https://www.xiehai.zone"
 # 主题静态资源cdn前缀
