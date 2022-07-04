@@ -1,0 +1,26 @@
+name: 必应IndexNow
+
+on: workflow_dispatch
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    steps:
+      # 遍历sitemap文件中的url
+      - id: sitemaps
+        name: Fetch Sitemap Files
+        run: |
+          echo "urls<<EOF" >> $GITHUB_ENV
+          for line in $(curl -s https://www.xiehai.zone/sitemap_index.xml | grep -oP "(?<=<loc>)[^<]+")
+            do
+              echo "$(curl -s ${line} | grep -oP "(?<=<loc>)[^<]+")" >> $GITHUB_ENV
+            done
+          echo "EOF" >> $GITHUB_ENV
+      # 必应url提交
+      - name: Submit Bing Urls
+        run: >
+          jsonUrls=`echo -e '${{ env.urls }}' | sed ':label;N;s/\n/\\",\\"/;b label'`
+          
+          curl -H 'Content-Type: application/json; charset=utf-8' -X POST -s -d 
+          "{\"host\": \"https://www.xiehai.zone\", \"urlList\": [\"$jsonUrls\"], \"key\":\"08af7ed479d0460c810d966bb247b9fb\", \"keyLocation\":\"https://www.xiehai.zone/08af7ed479d0460c810d966bb247b9fb.txt\"}" 
+          'https://www.bing.com/indexnow'

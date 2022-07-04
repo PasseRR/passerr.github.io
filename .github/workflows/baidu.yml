@@ -1,4 +1,4 @@
-name: Resource Submit CI
+name: 百度站长URL提交
 
 on: workflow_dispatch
 #  push:
@@ -27,11 +27,3 @@ jobs:
         run: >
           curl -X POST -s -d '${{ env.urls }}'
           'http://data.zz.baidu.com/urls?site=https://www.xiehai.zone&token=${{ secrets.BAIDU_KEY }}'
-      # 必应url提交
-      - name: Submit Bing Urls
-        run: >
-          jsonUrls=`echo -e '${{ env.urls }}' | sed ':label;N;s/\n/\\",\\"/;b label'`
-          
-          curl -H 'Content-Type: application/json; charset=utf-8' -X POST -s -d 
-          "{\"siteUrl\": \"https://www.xiehai.zone\", \"urlList\": [\"$jsonUrls\"]}" 
-          'https://www.bing.com//webmaster/api.svc/json/SubmitUrlbatch?apikey=${{ secrets.BING_KEY }}'
