@@ -182,4 +182,7 @@ java -version
 ```
 
 ## 验证钩子
-![图片]({{ site.cdn }}/assets/2022/01-20/hook.png)
+
+[![图片][1]][1]{:target="_blank"}
+
+[1]: {{ site.cdn }}/assets/2022/01-20/hook.png

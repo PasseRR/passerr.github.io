@@ -68,6 +68,8 @@ last_modified_at: 2022-05-31
 
 5. 配置主站域名，若是个新域名，将旧域名重定向到新域名
 
-    ![域名]({{ site.cdn }}/assets/2022/06-01/domain.png)
+    [![域名][1]][1]{:target="_blank"}
 6. 删除github的域名或者直接删除CNAME文件
 7. 等待dns缓存过期，访问新的域名就可以看到基于vercel的新站点了
+
+[1]: {{ site.cdn }}/assets/2022/06-01/domain.png "域名"

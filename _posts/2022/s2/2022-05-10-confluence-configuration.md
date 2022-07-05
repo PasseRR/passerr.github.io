@@ -34,7 +34,7 @@ AJS.toInit(function(){
 //]]>
 </script>
 ```
-![top]({{ site.cdn }}/assets/2022/05-10/top.gif)
+[![1]][1]{:target="_blank"}
 
 ## 2. 右侧浮动导航宏
 设置 -> 用户宏 -> 创建用户宏，然后在编辑器中插入创建的宏。
@@ -97,7 +97,7 @@ AJS.toInit(function(){
 ```
 使用[html宏](https://community.atlassian.com/t5/Boise-discussions/Widget-Wednesday-Floating-TOC-in-Confluence/m-p/1095431#M22)实现
 
-![toc]({{ site.cdn }}/assets/2022/05-10/toc.gif)
+[![2]][2]{:target="_blank"}
 
 ## 3. 右侧导航插件(Easy Heading Macro)【推荐】
 [Easy Heading Macro](https://marketplace.atlassian.com/apps/1221271/easy-heading-macro-floating-table-of-contents?tab=overview&hosting=server){:target="_blank"}
@@ -134,7 +134,7 @@ AJS.toInit(function(){
   |navigationExpandOption|expand-all-by-default|导航目录展开方式，可选值expand-all-by-default、collapse-all-by-default、collapse-all-but-headings-1、collapse-all-but-headings-1-2、collapse-all-but-headings-1-3、collapse-all-but-headings-1-4、disable-expand-collapse|
   |disableNavLinksUnder|0|当标题少于多少个时目录不可用|
 
-![plugin]({{ site.cdn }}/assets/2022/05-10/plugin.gif)
+[![3]][3]{:target="_blank"}
 
 ## 4. confluence多个地址访问时提示Your URL doesn't match
 confluence只能设置一个基础url，当confluence通过内网或外网ip访问时，每当访问任意页面时会提示Your URL doesn't match，
@@ -199,3 +199,7 @@ CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤
     ```
 
 4. 重启Confluence
+
+[1]: {{ site.cdn }}/assets/2022/05-10/top.gif
+[2]: {{ site.cdn }}/assets/2022/05-10/toc.gif
+[3]: {{ site.cdn }}/assets/2022/05-10/plugin.gif

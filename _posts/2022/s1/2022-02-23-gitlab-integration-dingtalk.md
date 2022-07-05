@@ -143,6 +143,11 @@ variables:
 ```
 
 ## 效果
-![启动]({{ site.cdn }}/assets/2022/02-23/start.jpg)
-![成功]({{ site.cdn }}/assets/2022/02-23/success.jpg)
-![失败]({{ site.cdn }}/assets/2022/02-23/failed.jpg)
+
+[![启动][1]][1]{:target="_blank"}
+[![成功][2]][2]{:target="_blank"}
+[![失败][3]][3]{:target="_blank"}
+
+[1]: {{ site.cdn }}/assets/2022/02-23/start.jpg
+[2]: {{ site.cdn }}/assets/2022/02-23/success.jpg
+[3]: {{ site.cdn }}/assets/2022/02-23/failed.jpg
