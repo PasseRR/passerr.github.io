@@ -5,8 +5,10 @@ categories: [md, js, style, others]
 last_modified_at: 2022-02-21
 ---
 ## 准备工作
-1. 创建一个新的仓库，名为：你的github帐号.github.com，创建后的样子   
-![新建仓库]({{ site.cdn }}/assets/2017/05-22/repository.png)   
+1. 创建一个新的仓库，名为：你的github帐号.github.com，创建后的样子
+
+[![新建仓库][1]][1]{:target="_blank"}
+
 2. 到[Jekyll Themes](http://jekyllthemes.org/)选择一个喜欢的主题，push到个人仓库   
 本博客clone自[agusmakmun](https://github.com/agusmakmun/agusmakmun.github.io)
 
@@ -36,3 +38,5 @@ last_modified_at: 2022-02-21
 
 ## 发布新文章
 在_posts目录下新增一篇文章，push到仓库等github部署完，就可以看到属于你的个人博客了。
+
+[1]: {{ site.cdn }}/assets/2017/05-22/repository.png

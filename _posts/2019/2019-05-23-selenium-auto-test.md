@@ -247,7 +247,10 @@ public class StudentRegisterSpec extends BaseSpec {
 > 其他业务测试可以通过扩展BaseSpec进行业务测试
 
 6.登录自动测试示例
-![登录]({{ site.cdn }}/assets/2019/05-23/login.gif)
+
+[![登录][1]][1]{:target="_blank"}
 
 ## 结论
 需要在系统比较稳定的时候用于自动回归测试，会产生数据，需要准备一个纯净环境专门用于自动化测试。
+
+[1]: {{ site.cdn }}/assets/2019/05-23/login.gif

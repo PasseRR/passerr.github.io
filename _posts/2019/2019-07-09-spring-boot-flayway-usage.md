@@ -18,17 +18,17 @@ last_modified_at: 2019-07-09
 但在实际的实施过程中，通常会因为疏忽、遗漏、脚本管理不规范导致数据库升级错误，
 从而导致耗费更多的人力去维护数据库脚本、保证数据库的顺利升级。
 
-![migrate]({{ site.cdn }}/assets/2019/07-09/migrate.png)
+[![migrate][1]][1]{:target="_blank"}
 
 ## Flyway如何保证数据迁移过程?
 每个迁移版本使用sql定义，版本前缀`V`，版本号以小数点`.`或单个下划线`_`分隔，版本描述间隔两个下划线`__`。
 如下图：
 
-![sqls]({{ site.cdn }}/assets/2019/07-09/sqls.jpg)
+[![sqls][2]][2]{:target="_blank"}
 
 脚本在数据库执行时，默认会将版本执行记录存放在表`flyway_schema_history`中，如下：
 
-![schema]({{ site.cdn }}/assets/2019/07-09/schema.png)
+[![schema][3]][3]{:target="_blank"}
 
 |列名|描述|
 |:---|:---|
@@ -50,7 +50,7 @@ last_modified_at: 2019-07-09
 ## 在SpringBoot中快速集成
 `spring-boot-autoconfigure`中已经集成Flyway的自动配置，只需引入flyway-core就可以使用。
 
-![flyway]({{ site.cdn }}/assets/2019/07-09/flyway.png)
+[![flyway][4]][4]{:target="_blank"}
 
 maven引用
 ```xml
@@ -62,3 +62,7 @@ maven引用
 
 若需要扩展使用`org.springframework.boot.autoconfigure.flyway.FlywayConfigurationCustomizer`，然后在`resources/db/migration`目录下编写的sql脚本开始体验吧！
 
+[1]: {{ site.cdn }}/assets/2019/07-09/migrate.png
+[2]: {{ site.cdn }}/assets/2019/07-09/sqls.png
+[3]: {{ site.cdn }}/assets/2019/07-09/schema.png
+[4]: {{ site.cdn }}/assets/2019/07-09/flyway.png
