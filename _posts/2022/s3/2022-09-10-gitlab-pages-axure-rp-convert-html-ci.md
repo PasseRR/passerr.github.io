@@ -43,7 +43,12 @@ last_modified_at: 2022-09-10
     ```
 
 ## 编写gitlab-ci脚本
-1. pages任务
+1. 开启gitlab pages， 修改gitlab.rb配置，重启gitlab服务
+    ```ruby
+    pages_external_url "http://yourdomain.com"
+    gitlab_pages['enable'] = true
+    ```
+3. pages任务
     ```yaml
     pages:
       variables:
@@ -69,7 +74,7 @@ last_modified_at: 2022-09-10
         paths:
           - public
     ```
-2. windows钉钉消息发送脚本
+4. windows钉钉消息发送脚本
 
     ```yaml
     # 钉钉消息发送http Anchors
@@ -126,7 +131,7 @@ last_modified_at: 2022-09-10
         Invoke-WebRequest -Uri "https://oapi.dingtalk.com/robot/send?access_token=$DINGTALK_ACCESS_TOKEN"
         -Method Post -ContentType "application/json; charset=utf-8" -Body "$V_JSON" -UseBasicParsing
     ```
-3. 结合钉钉消息效果
+5. 结合钉钉消息效果
 
     [![][3]][3]{:target="_blank"}
 
