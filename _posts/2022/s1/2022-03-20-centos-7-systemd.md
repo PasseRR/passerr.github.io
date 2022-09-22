@@ -48,7 +48,7 @@ last_modified_at: 2022-03-20
 service配置包含三个部分`Unit`、`Service`、`Install`
 ，字段表格中加粗的字段均可以多次出现配置，[参考](https://www.freedesktop.org/software/systemd/man/systemd.unit.html)
 
-### Unit
+### Unit段
 
 区块通常是配置文件的第一个区块，用来定义 Unit 的元数据，以及配置与其他 Unit 的关系。它的主要字段如下。
 
@@ -68,7 +68,7 @@ service配置包含三个部分`Unit`、`Service`、`Install`
 |**Condition***|当前服务必须满足给定条件，否则不运行|
 |**Assert***|当前服务必须满足给定条件，否则启动失败|
 
-### Service
+### Service段
 
 service块配置，记录服务信息，环境变量、启动方式、工作目录等
 
@@ -116,7 +116,7 @@ service块配置，记录服务信息，环境变量、启动方式、工作目�
 - **on-abort** 非正常的退出信号
 - **on-watchdog** 看门狗超时
 
-### Install
+### Install段
 
 用来定义如何启动，以及是否开机启动。
 
@@ -143,3 +143,4 @@ service块配置，记录服务信息，环境变量、启动方式、工作目�
 |查看所有开机启动服务|systemctl list-unit-files|
 |查看服务依赖|systemctl list-dependencies 服务名[.service]|
 |重新加载服务配置|systemctl daemon-reload|
+|查看服务日志|journalctl -u 服务名[.service]|
