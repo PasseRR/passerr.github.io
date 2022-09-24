@@ -44,8 +44,8 @@ last_modified_at: 2022-09-10
     [参照官方文档](https://github.com/microsoft/WinAppDriver/blob/master/Docs/RunningOnRemoteMachine.md)使用[QRes.exe]({{ site.cdn }}/assets/2022/09-10/qres.zip)，
     创建logout-rdp.cmd文件如下
     ```cmd
-    C:\Windows\System32\tscon.exe RDP-Tcp#37 /dest:console
-    C:\qres\QRes.exe \x 1920 \y 1080
+    for /f "skip=1 tokens=3" %%s in ('query user %USERNAME%') do (C:\Windows\System32\tscon.exe %%s /dest:console 
+    C:\qres\QRes.exe /x 1920 /y 1080)
     ```
 ## 编写gitlab-ci脚本
 1. 开启gitlab pages， 修改gitlab.rb配置，重启gitlab服务
