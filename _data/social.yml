@@ -2,15 +2,13 @@
 - icon: fa-github
   link: "https://github.com/PasseRR"
   name: github
+- icon: icon-gitee
+  link: "https://gitee.com/PasseRR"
+  name: gitee
+- icon: icon-leetcode
+  link: "https://leetcode.cn/u/passerr/"
+  name: leetcode
 - icon: fa-weibo
   link: "https://weibo.com/u/1015039932"
   name: weibo
-- icon: fa-facebook
-  link: "#"
-  name: facebook
-- icon: fa-twitter
-  link: "#"
-  name: twitter
-- icon: fa-linkedin
-  link: "#"
-  name: linkedin
+  
