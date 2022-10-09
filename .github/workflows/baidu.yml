@@ -1,12 +1,13 @@
 name: 百度站长URL提交
 
-on: workflow_dispatch
+on: 
 #  push:
 #    branches:
 #      - master
   # 每天定时索引
-#  schedule:
-#    - cron: '0 23 * * *'
+  workflow_dispatch: 
+  schedule:
+    - cron: '0 0 23 1/2 * ?'
 
 jobs:
   bot:
