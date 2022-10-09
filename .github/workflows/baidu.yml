@@ -1,11 +1,21 @@
 name: 百度站长URL提交
 
-on: 
-#  push:
-#    branches:
-#      - master
+on:
+  #  push:
+  #    branches:
+  #      - master
   # 每天定时索引
-  workflow_dispatch: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
   schedule:
     - cron: '0 0 23 1/2 * ?'
 
