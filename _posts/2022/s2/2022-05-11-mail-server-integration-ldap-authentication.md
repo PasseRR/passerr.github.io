@@ -62,7 +62,7 @@ pear install Auth_SASL Net_SMTP Net_IDNA2-0.1.1 Mail_Mime
 ```
 
 ### roundcube
-[参考官方安装](https://github.com/roundcube/roundcubemail/wiki/Installation) {:target="_blank"}
+[参考官方安装](https://github.com/roundcube/roundcubemail/wiki/Installation){:target="_blank"}
 
 ```shell
 # 下载安装包
