@@ -7,6 +7,7 @@ on:
   # 每天定时索引
   # workflow_dispatch: 
   # 定时提交百度url 每两天执行一次
+  # https://crontab.guru/
   schedule:
     - cron: '0 0 1/2 * *'
 
