@@ -19,6 +19,7 @@ last_modified_at: 2022-09-10
     ```
 
 ## windows服务器配置
+
 由于WinAppDriver需要检测ui元素，所以必须有一个用户持有显示器，并且保证用户session存在。
 
 1. 开启WinAppDriver服务
@@ -47,7 +48,9 @@ last_modified_at: 2022-09-10
     for /f "skip=1 tokens=3" %%s in ('query user %USERNAME%') do (C:\Windows\System32\tscon.exe %%s /dest:console 
     C:\qres\QRes.exe /x 1920 /y 1080)
     ```
+
 ## 编写gitlab-ci脚本
+
 1. 开启gitlab pages， 修改gitlab.rb配置，重启gitlab服务
     ```ruby
     pages_external_url "http://yourdomain.com"
