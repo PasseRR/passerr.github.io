@@ -247,14 +247,14 @@ flyway对数据库的支持扩展主要在包[org.flywaydb.core.internal.databas
 
 - LowerOracleSchema
 
-```java
-// 代码跟org.flywaydb.core.internal.database.oracle.OracleSchema一样 只是修改了泛型类型
-class LowerOracleSchema extends Schema<LowerOracleDatabase, LowerOracleTable> {
-    protected LowerOracleSchema(JdbcTemplate jdbcTemplate, LowerOracleDatabase database, String name) {
-        super(jdbcTemplate, database, name);
+    ```java
+    // 代码跟org.flywaydb.core.internal.database.oracle.OracleSchema一样 只是修改了泛型类型
+    class LowerOracleSchema extends Schema<LowerOracleDatabase, LowerOracleTable> {
+        protected LowerOracleSchema(JdbcTemplate jdbcTemplate, LowerOracleDatabase database, String name) {
+            super(jdbcTemplate, database, name);
+        }
     }
-}
-```
+    ```
 
 - LowerOracleTable
 
