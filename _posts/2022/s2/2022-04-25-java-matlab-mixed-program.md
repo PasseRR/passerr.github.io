@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  java和matlab混合编程问题
+title:  Java和Matlab混合编程问题
 categories: [java]
 last_modified_at: 2022-04-26
 ---

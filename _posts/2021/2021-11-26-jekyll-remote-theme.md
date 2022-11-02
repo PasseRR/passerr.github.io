@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  jekyll远程主题
+title:  Jekyll远程主题
 categories: [others, style, js]
 last_modified_at: 2022-01-06
 ---
