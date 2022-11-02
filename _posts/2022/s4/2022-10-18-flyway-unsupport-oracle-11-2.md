@@ -2,7 +2,7 @@
 layout: post
 title:  Flyway不支持低版本Oracle数据库适配(非重新编译flyway)
 mermaid: true
-categories: [java]
+categories: [java, database]
 last_modified_at: 2022-10-18
 ---
 
