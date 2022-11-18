@@ -7,7 +7,7 @@ last_modified_at: 2022-01-06
 
 <style>
     .book {
-        width: 150px;
+        width: 149px;
         height: 200px;
         margin: 10px 20px 15px 20px;
         border-radius: 10px;
@@ -19,7 +19,7 @@ last_modified_at: 2022-01-06
         height: 150px;
         font-size: 16px;
         font-weight: bold;
-        line-height: 160px;
+        padding-top: 75px;
         color: #3fa757;
         word-break: break-word;
     }
@@ -34,13 +34,13 @@ last_modified_at: 2022-01-06
 <div class="post-content">
     {% assign size = site.data.ebook.size %}
     {% for book in site.data.ebook %}
-        {% assign mod = forloop.index0 | modulo: 4 %}
+        {% assign mod = forloop.index0 | modulo: 5 %}
         {% assign mod1 = mod | plus: 1 %}
         {% if mod == 0 %}
         <div class="row">
         {% endif %}
         <a href="{{ book.url }}" target="_blank">
-            <div class="book col-sm-3">
+            <div class="book col-sm-2">
                 <div class="book-info">
                     <span>{{ book.name }}</span>
                 </div>
@@ -49,7 +49,7 @@ last_modified_at: 2022-01-06
                 </div>
             </div>
         </a>
-        {% if mod1 == 4 %}
+        {% if mod1 == 5 %}
         </div>
         {% endif %}
     {% endfor %}
