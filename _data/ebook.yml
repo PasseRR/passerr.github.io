@@ -14,3 +14,7 @@
 - name: JDK各版本特性
   url: /jdk-features
   date: 2020-01-24
+  
+- name: 常用中间件安装及使用手册
+  url: /middleware
+  date: 2022-11-18
