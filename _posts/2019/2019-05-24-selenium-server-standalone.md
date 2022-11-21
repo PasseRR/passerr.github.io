@@ -15,13 +15,13 @@ toc: true
 [IE](http://selenium-release.storage.googleapis.com/index.html)  
 
 ## 服务端启动
-1.服务启动命令  
+### 服务启动命令  
 
 ```shell
 java -jar selenium-server-standalone-3.141.59.jar
 ```
 
-2.客户端代码  
+### 客户端代码  
 
 ```java
 @Configuration
@@ -48,7 +48,7 @@ public class WebDriverConfig {
 > 通过-role hub/-role node来指定是hub还是node，hub至少应该有一个node节点，node节点通过http://ip:port/grid/register/注册至hub。
 > 客户端通过hub连接，hub将请求转发至node节点执行。
 
-1.参数配置方式  
+### 参数配置方式  
 
 ```shell
 ## 启动hub
@@ -57,7 +57,7 @@ java -jar selenium-server-standalone-3.141.59.jar -role hub -maxSession 10 -port
 java -jar  -"Dwebdriver.chrome.driver=C:\\tools\\driver\\chromedriver.exe" selenium-server-standalone-3.141.59.jar -role node  -hub http://localhost:4444/grid/register -port 4445
 ```
 
-2.配置文件方式
+### 配置文件方式
 
 ```shell
 ## 启动hub
@@ -134,5 +134,5 @@ java -jar selenium-server-standalone-3.141.59.jar -role node -hub http://localho
 }
 ```
 
-3.结果  
+### 结果  
 访问http://hub.ip:port/grid/console可以看到node的详细配置

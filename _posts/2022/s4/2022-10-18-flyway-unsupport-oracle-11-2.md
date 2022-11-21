@@ -65,110 +65,110 @@ Process finished with exit code 1
 flyway对数据库的支持扩展主要在包[org.flywaydb.core.internal.database](https://github.com/flyway/flyway/tree/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database){:target="_blank"}中，
 其中涉及对数据库类型校验、数据库版本支持校验。
  
-- [DatabaseTypeRegister](https://github.com/flyway/flyway/blob/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/DatabaseTypeRegister.java){:target="_blank"}  
+### [DatabaseTypeRegister](https://github.com/flyway/flyway/blob/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/DatabaseTypeRegister.java){:target="_blank"}  
 
-    数据库类型支持主要是通过`DatabaseTypeRegister`注册器实现
+数据库类型支持主要是通过`DatabaseTypeRegister`注册器实现
 
-    ```java
-    public class DatabaseTypeRegister {
-        private static final Log LOG = LogFactory.getLog(DatabaseTypeRegister.class);
-        // 注册的数据库类型列表
-        private static final List<DatabaseType> registeredDatabaseTypes = new ArrayList<>();
-        // 是否注册
-        private static boolean hasRegisteredDatabaseTypes = false;
+```java
+public class DatabaseTypeRegister {
+    private static final Log LOG = LogFactory.getLog(DatabaseTypeRegister.class);
+    // 注册的数据库类型列表
+    private static final List<DatabaseType> registeredDatabaseTypes = new ArrayList<>();
+    // 是否注册
+    private static boolean hasRegisteredDatabaseTypes = false;
+
+    private static void registerDatabaseTypes() {
+        // 注册支持的数据库类型
+        synchronized (registeredDatabaseTypes) {
+            if (hasRegisteredDatabaseTypes) {
+                return;
+            }
+
+            registeredDatabaseTypes.clear();
+            
+            registeredDatabaseTypes.add(new SynapseDatabaseType());
+
+            registeredDatabaseTypes.add(new CockroachDBDatabaseType());
+            registeredDatabaseTypes.add(new RedshiftDatabaseType());
+            registeredDatabaseTypes.add(new MariaDBDatabaseType());
+
+            registeredDatabaseTypes.add(new DB2DatabaseType());
+            registeredDatabaseTypes.add(new DerbyDatabaseType());
+            registeredDatabaseTypes.add(new FirebirdDatabaseType());
+            registeredDatabaseTypes.add(new H2DatabaseType());
+            registeredDatabaseTypes.add(new HSQLDBDatabaseType());
+            registeredDatabaseTypes.add(new InformixDatabaseType());
+            registeredDatabaseTypes.add(new MySQLDatabaseType());
+            // 这里可以看到oracle数据库类型支持
+            registeredDatabaseTypes.add(new OracleDatabaseType());
+            registeredDatabaseTypes.add(new PostgreSQLDatabaseType());
+            registeredDatabaseTypes.add(new SAPHANADatabaseType());
+            registeredDatabaseTypes.add(new SnowflakeDatabaseType());
+            registeredDatabaseTypes.add(new SQLiteDatabaseType());
+            registeredDatabaseTypes.add(new SQLServerDatabaseType());
+            registeredDatabaseTypes.add(new SybaseASEJTDSDatabaseType());
+            registeredDatabaseTypes.add(new SybaseASEJConnectDatabaseType());
+
+            registeredDatabaseTypes.add(new TestContainersDatabaseType());
+
+            hasRegisteredDatabaseTypes = true;
+        }
+    }
+
+    // 其他方法省略
+
     
-        private static void registerDatabaseTypes() {
-            // 注册支持的数据库类型
-            synchronized (registeredDatabaseTypes) {
-                if (hasRegisteredDatabaseTypes) {
-                    return;
-                }
-    
-                registeredDatabaseTypes.clear();
-                
-                registeredDatabaseTypes.add(new SynapseDatabaseType());
-    
-                registeredDatabaseTypes.add(new CockroachDBDatabaseType());
-                registeredDatabaseTypes.add(new RedshiftDatabaseType());
-                registeredDatabaseTypes.add(new MariaDBDatabaseType());
-    
-                registeredDatabaseTypes.add(new DB2DatabaseType());
-                registeredDatabaseTypes.add(new DerbyDatabaseType());
-                registeredDatabaseTypes.add(new FirebirdDatabaseType());
-                registeredDatabaseTypes.add(new H2DatabaseType());
-                registeredDatabaseTypes.add(new HSQLDBDatabaseType());
-                registeredDatabaseTypes.add(new InformixDatabaseType());
-                registeredDatabaseTypes.add(new MySQLDatabaseType());
-                // 这里可以看到oracle数据库类型支持
-                registeredDatabaseTypes.add(new OracleDatabaseType());
-                registeredDatabaseTypes.add(new PostgreSQLDatabaseType());
-                registeredDatabaseTypes.add(new SAPHANADatabaseType());
-                registeredDatabaseTypes.add(new SnowflakeDatabaseType());
-                registeredDatabaseTypes.add(new SQLiteDatabaseType());
-                registeredDatabaseTypes.add(new SQLServerDatabaseType());
-                registeredDatabaseTypes.add(new SybaseASEJTDSDatabaseType());
-                registeredDatabaseTypes.add(new SybaseASEJConnectDatabaseType());
-    
-                registeredDatabaseTypes.add(new TestContainersDatabaseType());
-    
-                hasRegisteredDatabaseTypes = true;
+    // 核心方法 通过JDBC连接判断是否适配的数据库类型支持
+    public static DatabaseType getDatabaseTypeForConnection(Connection connection) {
+        // 没有注册 先注册一次
+        if (!hasRegisteredDatabaseTypes) {
+            registerDatabaseTypes();
+        }
+
+        DatabaseMetaData databaseMetaData = JdbcUtils.getDatabaseMetaData(connection);
+        String databaseProductName = JdbcUtils.getDatabaseProductName(databaseMetaData);
+        String databaseProductVersion = JdbcUtils.getDatabaseProductVersion(databaseMetaData);
+
+        // 数据库类型选择
+        for (DatabaseType type : registeredDatabaseTypes) {
+            // 根据数据库名称确定是否匹配数据库类型
+            if (type.handlesDatabaseProductNameAndVersion(databaseProductName, databaseProductVersion, connection)) {
+                return type;
             }
         }
+
+        throw new FlywayException("Unsupported Database: " + databaseProductName);
+    }
+}
+```
+
+### [OracleDatabaseType](https://github.com/flyway/flyway/blob/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/oracle/OracleDatabaseType.java#L89-L91){:target="_blank"}
+
+```java
+public class OracleDatabaseType extends DatabaseType {
+    @Override
+    public boolean handlesDatabaseProductNameAndVersion(String databaseProductName, String databaseProductVersion, Connection connection) {
+          // jdbc meta里面的数据库名称前缀判断
+          return databaseProductName.startsWith("Oracle");
+    }
+}
+```
   
-        // 其他方法省略
-    
-        
-        // 核心方法 通过JDBC连接判断是否适配的数据库类型支持
-        public static DatabaseType getDatabaseTypeForConnection(Connection connection) {
-            // 没有注册 先注册一次
-            if (!hasRegisteredDatabaseTypes) {
-                registerDatabaseTypes();
-            }
-    
-            DatabaseMetaData databaseMetaData = JdbcUtils.getDatabaseMetaData(connection);
-            String databaseProductName = JdbcUtils.getDatabaseProductName(databaseMetaData);
-            String databaseProductVersion = JdbcUtils.getDatabaseProductVersion(databaseMetaData);
-    
-            // 数据库类型选择
-            for (DatabaseType type : registeredDatabaseTypes) {
-                // 根据数据库名称确定是否匹配数据库类型
-                if (type.handlesDatabaseProductNameAndVersion(databaseProductName, databaseProductVersion, connection)) {
-                    return type;
-                }
-            }
-    
-            throw new FlywayException("Unsupported Database: " + databaseProductName);
-        }
-    }
-    ```
+### [OracleDatabase](https://github.com/flyway/flyway/blob/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/oracle/OracleDatabase.java#L80-L87){:target="_blank"}
 
-- [OracleDatabaseType](https://github.com/flyway/flyway/blob/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/oracle/OracleDatabaseType.java#L89-L91){:target="_blank"}
-
-    ```java
-    public class OracleDatabaseType extends DatabaseType {
-        @Override
-        public boolean handlesDatabaseProductNameAndVersion(String databaseProductName, String databaseProductVersion, Connection connection) {
-              // jdbc meta里面的数据库名称前缀判断
-              return databaseProductName.startsWith("Oracle");
-        }
+```java
+public class OracleDatabase extends Database<OracleConnection> {
+    @Override
+    public final void ensureSupported() {
+        // 版本低于10 flyway所有产品都不支持
+        ensureDatabaseIsRecentEnough("10");
+        // 版本低于12.2 只有Teams支持
+        ensureDatabaseNotOlderThanOtherwiseRecommendUpgradeToFlywayEdition("12.2", org.flywaydb.core.internal.license.Edition.ENTERPRISE);
+        // 版本高于19.0 建议升级flyway 警告日志
+        recommendFlywayUpgradeIfNecessary("19.0");
     }
-    ```
-  
-- [OracleDatabase](https://github.com/flyway/flyway/blob/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/oracle/OracleDatabase.java#L80-L87){:target="_blank"}
-
-    ```java
-    public class OracleDatabase extends Database<OracleConnection> {
-        @Override
-        public final void ensureSupported() {
-            // 版本低于10 flyway所有产品都不支持
-            ensureDatabaseIsRecentEnough("10");
-            // 版本低于12.2 只有Teams支持
-            ensureDatabaseNotOlderThanOtherwiseRecommendUpgradeToFlywayEdition("12.2", org.flywaydb.core.internal.license.Edition.ENTERPRISE);
-            // 版本高于19.0 建议升级flyway 警告日志
-            recommendFlywayUpgradeIfNecessary("19.0");
-        }
-    }
-    ```
+}
+```
 
 由这些可知，如果在11.2的Oracle语法没有变动的情况下，我们只需更改数据库支持版本范围就可以了，但是，
 `OracleDatabase`中的`ensureSupported`方法是final的，不可以override，这个就比较恶心了，只能复制他的代码，构建自己的类型支持。
@@ -176,99 +176,99 @@ flyway对数据库的支持扩展主要在包[org.flywaydb.core.internal.databas
 ## 重写支持低版本数据库扩展
 参考[官方对oracle数据库支持的目录](https://github.com/flyway/flyway/tree/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/oracle){:target="_blank"}结构重写
 
-- LowerOracleDatabaseType
+### LowerOracleDatabaseType
 
-    ```java
-    class LowerOracleDatabaseType extends OracleDatabaseType {
-        @Override
-        public Database<?> createDatabase(Configuration configuration, JdbcConnectionFactory jdbcConnectionFactory,
-                                          StatementInterceptor statementInterceptor) {
-            OracleDatabase.enableTnsnamesOraSupport();
-            return new LowerOracleDatabase(configuration, jdbcConnectionFactory, statementInterceptor);
-        }
-    
-        @Override
-        public boolean handlesDatabaseProductNameAndVersion(String databaseProductName, String databaseProductVersion,
-                                                            Connection connection) {
-            // 必须满足是oracle数据库
-            if (!super.handlesDatabaseProductNameAndVersion(databaseProductName, databaseProductVersion, connection)) {
-                return false;
-            }
-    
-            DatabaseMetaData metaData = JdbcUtils.getDatabaseMetaData(connection);
-            try {
-                return
-                    // 版本小于等于12.2则满足条件
-                    !MigrationVersion.fromVersion(
-                            metaData.getDatabaseMajorVersion() + "." + metaData.getDatabaseMinorVersion()
-                        )
-                        .isAtLeast("12.2");
-            } catch (Exception e) {
-                log.error(e.getMessage(), e);
-            }
-    
+```java
+class LowerOracleDatabaseType extends OracleDatabaseType {
+    @Override
+    public Database<?> createDatabase(Configuration configuration, JdbcConnectionFactory jdbcConnectionFactory,
+                                      StatementInterceptor statementInterceptor) {
+        OracleDatabase.enableTnsnamesOraSupport();
+        return new LowerOracleDatabase(configuration, jdbcConnectionFactory, statementInterceptor);
+    }
+
+    @Override
+    public boolean handlesDatabaseProductNameAndVersion(String databaseProductName, String databaseProductVersion,
+                                                        Connection connection) {
+        // 必须满足是oracle数据库
+        if (!super.handlesDatabaseProductNameAndVersion(databaseProductName, databaseProductVersion, connection)) {
             return false;
         }
+
+        DatabaseMetaData metaData = JdbcUtils.getDatabaseMetaData(connection);
+        try {
+            return
+                // 版本小于等于12.2则满足条件
+                !MigrationVersion.fromVersion(
+                        metaData.getDatabaseMajorVersion() + "." + metaData.getDatabaseMinorVersion()
+                    )
+                    .isAtLeast("12.2");
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+
+        return false;
     }
-    ```
+}
+```
 
-- LowerOracleDatabase
+### LowerOracleDatabase
 
-    ```java
-    class LowerOracleDatabase extends Database<LowerOracleConnection> {
-        private static final String ORACLE_NET_TNS_ADMIN = "oracle.net.tns_admin";
+```java
+class LowerOracleDatabase extends Database<LowerOracleConnection> {
+    private static final String ORACLE_NET_TNS_ADMIN = "oracle.net.tns_admin";
+
+    public LowerOracleDatabase(Configuration configuration,
+                               JdbcConnectionFactory jdbcConnectionFactory,
+                               StatementInterceptor statementInterceptor) {
+        super(configuration, jdbcConnectionFactory, statementInterceptor);
+    }
+
+    // 其他代码跟org.flywaydb.core.internal.database.oracle.OracleDatabase一样
     
-        public LowerOracleDatabase(Configuration configuration,
-                                   JdbcConnectionFactory jdbcConnectionFactory,
-                                   StatementInterceptor statementInterceptor) {
-            super(configuration, jdbcConnectionFactory, statementInterceptor);
-        }
-  
-        // 其他代码跟org.flywaydb.core.internal.database.oracle.OracleDatabase一样
-        
-        @Override
-        public void ensureSupported() {
-            // 数据库类型中判断版本必须小于等于12.2
-            // 这里确保高于10 
-            ensureDatabaseIsRecentEnough("10");
-        }
+    @Override
+    public void ensureSupported() {
+        // 数据库类型中判断版本必须小于等于12.2
+        // 这里确保高于10 
+        ensureDatabaseIsRecentEnough("10");
     }
-    ```
+}
+```
 
-- LowerOracleConnection
+### LowerOracleConnection
 
-    ```java
-    // 代码跟org.flywaydb.core.internal.database.oracle.OracleConnection一样 只是修改了泛型类型
-    class LowerOracleConnection extends Connection<LowerOracleDatabase> {
-        protected LowerOracleConnection(LowerOracleDatabase database, java.sql.Connection connection) {
-            super(database, connection);
-        }
+```java
+// 代码跟org.flywaydb.core.internal.database.oracle.OracleConnection一样 只是修改了泛型类型
+class LowerOracleConnection extends Connection<LowerOracleDatabase> {
+    protected LowerOracleConnection(LowerOracleDatabase database, java.sql.Connection connection) {
+        super(database, connection);
     }
-    ```
+}
+```
 
-- LowerOracleSchema
+### LowerOracleSchema
 
-    ```java
-    // 代码跟org.flywaydb.core.internal.database.oracle.OracleSchema一样 只是修改了泛型类型
-    class LowerOracleSchema extends Schema<LowerOracleDatabase, LowerOracleTable> {
-        protected LowerOracleSchema(JdbcTemplate jdbcTemplate, LowerOracleDatabase database, String name) {
-            super(jdbcTemplate, database, name);
-        }
+```java
+// 代码跟org.flywaydb.core.internal.database.oracle.OracleSchema一样 只是修改了泛型类型
+class LowerOracleSchema extends Schema<LowerOracleDatabase, LowerOracleTable> {
+    protected LowerOracleSchema(JdbcTemplate jdbcTemplate, LowerOracleDatabase database, String name) {
+        super(jdbcTemplate, database, name);
     }
-    ```
+}
+```
 
-- LowerOracleTable
+### LowerOracleTable
 
-    ```java
-    // 代码跟org.flywaydb.core.internal.database.oracle.OracleTable一样 只是修改了泛型类型
-    class LowerOracleTable extends Table<LowerOracleDatabase, LowerOracleSchema> {
-        LowerOracleTable(JdbcTemplate jdbcTemplate,
-                         LowerOracleDatabase database,
-                         LowerOracleSchema schema, String name) {
-            super(jdbcTemplate, database, schema, name);
-        }
+```java
+// 代码跟org.flywaydb.core.internal.database.oracle.OracleTable一样 只是修改了泛型类型
+class LowerOracleTable extends Table<LowerOracleDatabase, LowerOracleSchema> {
+    LowerOracleTable(JdbcTemplate jdbcTemplate,
+                     LowerOracleDatabase database,
+                     LowerOracleSchema schema, String name) {
+        super(jdbcTemplate, database, schema, name);
     }
-    ```
+}
+```
 
 ## 将自定义的扩展注册到flyway中
 
@@ -277,119 +277,119 @@ flowchart LR
 A(定义扩展接口) --> B(自定义数据库类型实现扩展) --> C(在flyway自动配置之前注册)
 ```
 
-- 定义扩展接口
+### 定义扩展接口
 
-    ```java
-    public abstract class DatabaseTypeSupportExpander {
-        /**
-         * 数据库类型适配改造过程
-         */
-        public abstract void doAdapt();
-    
-        /**
-         * 移除现有的类型
-         * @param predicate {@link Predicate}
-         */
-        protected static void removeDatabaseType(Predicate<? super DatabaseType> predicate) {
-            getDatabaseTypes().removeIf(predicate);
-        }
-    
-        /**
-         * 新增数据库类型支持
-         * @param databaseType {@link DatabaseType}
-         */
-        protected static void addDatabaseType(DatabaseType databaseType) {
-            // 优先级排高
-            getDatabaseTypes().add(0, databaseType);
-        }
-    
-        /**
-         * 获得flyway支持的数据库类型 若未进行初始化先初始化
-         * @return {@link List}
-         */
-        @SuppressWarnings("unchecked")
-        private static List<DatabaseType> getDatabaseTypes() {
-            boolean hasRegisteredDatabaseTypes = (boolean) DatabaseTypeSupportExpander.getFieldValue(
-                "hasRegisteredDatabaseTypes");
-            // 没有注册类型
-            if (!hasRegisteredDatabaseTypes) {
-                synchronized (DatabaseTypeSupportExpander.class) {
-                    DatabaseTypeSupportExpander.invokeRegisteredDatabaseTypes();
-                }
-            }
-    
-            return (List<DatabaseType>) DatabaseTypeSupportExpander.getFieldValue("registeredDatabaseTypes");
-        }
-    
-        /**
-         * 执行数据库类型注册
-         */
-        private static void invokeRegisteredDatabaseTypes() {
-            try {
-                Method method = DatabaseTypeRegister.class.getDeclaredMethod("registerDatabaseTypes");
-                if (!method.isAccessible()) {
-                    method.setAccessible(true);
-                }
-    
-                method.invoke(null);
-            } catch (Exception e) {
-                // 忽略我的异常类型
-                throw new MaginaException(e);
+```java
+public abstract class DatabaseTypeSupportExpander {
+    /**
+     * 数据库类型适配改造过程
+     */
+    public abstract void doAdapt();
+
+    /**
+     * 移除现有的类型
+     * @param predicate {@link Predicate}
+     */
+    protected static void removeDatabaseType(Predicate<? super DatabaseType> predicate) {
+        getDatabaseTypes().removeIf(predicate);
+    }
+
+    /**
+     * 新增数据库类型支持
+     * @param databaseType {@link DatabaseType}
+     */
+    protected static void addDatabaseType(DatabaseType databaseType) {
+        // 优先级排高
+        getDatabaseTypes().add(0, databaseType);
+    }
+
+    /**
+     * 获得flyway支持的数据库类型 若未进行初始化先初始化
+     * @return {@link List}
+     */
+    @SuppressWarnings("unchecked")
+    private static List<DatabaseType> getDatabaseTypes() {
+        boolean hasRegisteredDatabaseTypes = (boolean) DatabaseTypeSupportExpander.getFieldValue(
+            "hasRegisteredDatabaseTypes");
+        // 没有注册类型
+        if (!hasRegisteredDatabaseTypes) {
+            synchronized (DatabaseTypeSupportExpander.class) {
+                DatabaseTypeSupportExpander.invokeRegisteredDatabaseTypes();
             }
         }
-    
-        /**
-         * 获得{@link DatabaseTypeRegister}静态字段值
-         * @param name 字段名
-         * @return 字段值
-         */
-        private static Object getFieldValue(String name) {
-            try {
-                Field field = DatabaseTypeRegister.class.getDeclaredField(name);
-                if (!field.isAccessible()) {
-                    field.setAccessible(true);
-                }
-    
-                return field.get(null);
-            } catch (Exception e) {
-                // 忽略我的异常类型
-                throw new MaginaException(e);
+
+        return (List<DatabaseType>) DatabaseTypeSupportExpander.getFieldValue("registeredDatabaseTypes");
+    }
+
+    /**
+     * 执行数据库类型注册
+     */
+    private static void invokeRegisteredDatabaseTypes() {
+        try {
+            Method method = DatabaseTypeRegister.class.getDeclaredMethod("registerDatabaseTypes");
+            if (!method.isAccessible()) {
+                method.setAccessible(true);
             }
+
+            method.invoke(null);
+        } catch (Exception e) {
+            // 忽略我的异常类型
+            throw new MaginaException(e);
         }
     }
-    ```
 
-- 自定义数据库类型实现扩展
+    /**
+     * 获得{@link DatabaseTypeRegister}静态字段值
+     * @param name 字段名
+     * @return 字段值
+     */
+    private static Object getFieldValue(String name) {
+        try {
+            Field field = DatabaseTypeRegister.class.getDeclaredField(name);
+            if (!field.isAccessible()) {
+                field.setAccessible(true);
+            }
 
-    ```java
-    @Component
-    class LowerOracleSupportExpander extends DatabaseTypeSupportExpander {
-        @Override
-        public void doAdapt() {
-            DatabaseTypeSupportExpander.addDatabaseType(new LowerOracleDatabaseType());
+            return field.get(null);
+        } catch (Exception e) {
+            // 忽略我的异常类型
+            throw new MaginaException(e);
         }
     }
-    ```
+}
+```
+
+### 自定义数据库类型实现扩展
+
+```java
+@Component
+class LowerOracleSupportExpander extends DatabaseTypeSupportExpander {
+    @Override
+    public void doAdapt() {
+        DatabaseTypeSupportExpander.addDatabaseType(new LowerOracleDatabaseType());
+    }
+}
+```
   
-- 在flyway自动配置之前注册
+### 在flyway自动配置之前注册
 
-    ```java
-    @Configuration(proxyBeanMethods = false)
-    @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-    @RequiredArgsConstructor
-    // 在flyway自动配置之前初始化
-    @AutoConfigureBefore(FlywayAutoConfiguration.class)
-    @Slf4j
-    class MaginaFlywayConfigurer implements FlywayMigrationStrategy {
-        ObjectProvider<List<DatabaseTypeSupportExpander>> expanderProvider;
-    
-        @PostConstruct
-        void init() {
-            // 初始化扩展
-            this.expanderProvider.ifAvailable(expanders -> expanders.forEach(DatabaseTypeSupportExpander::doAdapt));
-        }
+```java
+@Configuration(proxyBeanMethods = false)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@RequiredArgsConstructor
+// 在flyway自动配置之前初始化
+@AutoConfigureBefore(FlywayAutoConfiguration.class)
+@Slf4j
+class MaginaFlywayConfigurer implements FlywayMigrationStrategy {
+    ObjectProvider<List<DatabaseTypeSupportExpander>> expanderProvider;
+
+    @PostConstruct
+    void init() {
+        // 初始化扩展
+        this.expanderProvider.ifAvailable(expanders -> expanders.forEach(DatabaseTypeSupportExpander::doAdapt));
     }
-    ```
+}
+```
 
 以上，通过反射的方式实现了对flyway数据库的扩展支持，类似的，项目中遇到了使用达梦数据库，flyway同样不支持，
 考虑到达梦类似Oracle数据库，通过上面的方式很快就实现了对达梦数据库的支持。

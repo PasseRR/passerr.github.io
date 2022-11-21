@@ -64,6 +64,6 @@ maven引用
 若需要扩展使用`org.springframework.boot.autoconfigure.flyway.FlywayConfigurationCustomizer`，然后在`resources/db/migration`目录下编写的sql脚本开始体验吧！
 
 [1]: {{ site.cdn }}/assets/2019/07-09/migrate.png
-[2]: {{ site.cdn }}/assets/2019/07-09/sqls.png
+[2]: {{ site.cdn }}/assets/2019/07-09/sqls.jpg
 [3]: {{ site.cdn }}/assets/2019/07-09/schema.png
 [4]: {{ site.cdn }}/assets/2019/07-09/flyway.png

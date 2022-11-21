@@ -36,19 +36,19 @@ vercel针对个人是免费的，团队是收费的。
     关键是免费，这简直是白嫖党的福音，又能开心的写博客了
 
 ## 部署Github上的站点到vercel
-1. 注册vercel账号，直接使用Github Oauth
-2. 添加Github账户，懒的话导全部仓库，否则选择静态网站相关的仓库
+### 1. 注册vercel账号，直接使用Github Oauth
+### 2. 添加Github账户，懒的话导全部仓库，否则选择静态网站相关的仓库
     
-    [![github][1]][1]{:target="_blank"}
-3. 导入Github仓库，配置模版(根据静态网站框架，我这里选的jekyll)，再选择站点目录
+[![github][1]][1]{:target="_blank"}
+### 3. 导入Github仓库，配置模版(根据静态网站框架，我这里选的jekyll)，再选择站点目录
 
-    [![import][2]][2]{:target="_blank"}
-    [![import][3]][3]{:target="_blank"}
-4. 等待Deployments执行完成
+[![import][2]][2]{:target="_blank"}
+[![import][3]][3]{:target="_blank"}
+### 4. 等待Deployments执行完成
 
-   [![deploy][4]][4]{:target="_blank"}
-5. 在Overview中点击visit预览，就可以看到你的网站信息了
-6. 如果有多个站点，重复2-5步即可
+[![deploy][4]][4]{:target="_blank"}
+### 5. 在Overview中点击visit预览，就可以看到你的网站信息了
+### 6. 如果有多个站点，重复2-5步即可
 
 [1]: {{ site.cdn }}/assets/2022/05-31/github.png "github"
 [2]: {{ site.cdn }}/assets/2022/05-31/import.png "import"
