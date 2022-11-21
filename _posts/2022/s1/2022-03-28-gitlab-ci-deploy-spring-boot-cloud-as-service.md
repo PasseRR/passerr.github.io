@@ -3,6 +3,7 @@ layout: post
 title:  Gitlab CI以服务化的方式部署SpringBoot/SpringCloud
 categories: [operation]
 last_modified_at: 2022-03-28
+toc: true
 ---
 
 ## 前言

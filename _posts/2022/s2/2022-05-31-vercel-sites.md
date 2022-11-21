@@ -3,6 +3,7 @@ layout: post
 title:  基于vercel搭建博客
 categories: [md, others]
 last_modified_at: 2022-05-31
+toc: true
 ---
 
 ## 什么是[vercel](https://vercel.com){:target="_blank"}

@@ -3,6 +3,7 @@ layout: post
 title:  "Flyway在SpringBoot中的使用"
 categories: [java]
 last_modified_at: 2019-07-09
+toc: true
 ---
 
 ## 什么是[Flyway](https://flywaydb.org/){:target="_blank"}

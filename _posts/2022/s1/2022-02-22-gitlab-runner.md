@@ -3,6 +3,7 @@ layout: post
 title:  Gitlab安装Gitlab Runner
 categories: [ci]
 last_modified_at: 2022-03-01
+toc: true
 ---
 
 ## 更新yum源

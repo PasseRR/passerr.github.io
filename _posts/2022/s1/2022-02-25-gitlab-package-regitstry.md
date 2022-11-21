@@ -3,6 +3,7 @@ layout: post
 title:  Gitlab Package Registry搭建maven及npm私服
 categories: [ci]
 last_modified_at: 2022-02-25
+toc: true
 ---
 
 ## 开启Package Registry

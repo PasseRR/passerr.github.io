@@ -3,6 +3,7 @@ layout: post
 title:  CentOs升级Git版本
 categories: [operation]
 last_modified_at: 2022-03-01
+toc: true
 ---
 
 ## gitlab-ci报错

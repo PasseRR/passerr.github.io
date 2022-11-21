@@ -3,6 +3,7 @@ layout: post
 title:  "Java基于Selenium本地Chrome驱动自动化测试"
 categories: [java]
 last_modified_at: 2022-02-21
+toc: true
 ---
 ## Selenium
 > Selenium是一个用于Web应用程序测试的工具。Selenium测试直接运行在浏览器中，就像真正的用户在操作一样。

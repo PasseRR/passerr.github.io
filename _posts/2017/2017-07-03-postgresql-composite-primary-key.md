@@ -3,6 +3,7 @@ layout: post
 title:  "Postgresql联合主键left join查询"
 categories: [database]
 last_modified_at: 2022-02-21
+toc: true
 ---
 
 ## 问题及环境

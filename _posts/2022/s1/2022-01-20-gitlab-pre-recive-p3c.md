@@ -3,6 +3,7 @@ layout: post
 title:  Gitlab集成P3C代码规约检测
 categories: [ci, operation]
 last_modified_at: 2022-02-22
+toc: true
 ---
 
 ## 前言

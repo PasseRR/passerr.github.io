@@ -3,6 +3,7 @@ layout: post
 title:  Gitlab跨版本升级计划
 categories: [operation]
 last_modified_at: 2022-02-14
+toc: true
 ---
 
 ## 概述

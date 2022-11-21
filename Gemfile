@@ -8,3 +8,4 @@ gem 'webrick'
 gem 'jekyll-paginate'
 gem "jekyll-remote-theme"
 gem "jekyll-relative-links"
+gem 'jekyll-toc'

@@ -3,6 +3,7 @@ layout: post
 title:  Confluence常用配置
 categories: [operation]
 last_modified_at: 2022-04-15
+toc: true
 ---
 
 ## 1. Confluence页面添加返回顶部

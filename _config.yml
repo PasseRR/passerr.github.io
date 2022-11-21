@@ -79,3 +79,4 @@ plugins:
   - jekyll-remote-theme
   - jekyll-paginate
   - jekyll-relative-links
+  - jekyll-toc

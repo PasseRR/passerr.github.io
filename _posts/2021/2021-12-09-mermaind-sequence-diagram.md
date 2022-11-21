@@ -4,6 +4,7 @@ title:  Mermaid之序列图(sequenceDiagram)
 mermaid: true
 categories: [md, others]
 last_modified_at: 2022-01-06
+toc: true
 ---
 
 ## 序列图

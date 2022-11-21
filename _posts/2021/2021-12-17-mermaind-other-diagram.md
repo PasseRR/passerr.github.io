@@ -4,6 +4,7 @@ title:  Mermaid之其他图
 mermaid: true
 categories: [md, others]
 last_modified_at: 2022-01-06
+toc: true
 ---
 
 ## ER图

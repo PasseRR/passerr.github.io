@@ -3,6 +3,7 @@ layout: post
 title:  Gitlab集成ldap登录及钉钉扫码登录
 categories: [operation]
 last_modified_at: 2022-03-11
+toc: true
 ---
 
 ## 集成LDAP
