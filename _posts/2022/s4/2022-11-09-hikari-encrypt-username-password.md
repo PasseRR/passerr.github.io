@@ -293,7 +293,7 @@ public class ProtectedHikariDataSource implements DataSource {
 class CipherConfigurer implements WebMvcConfigurer {
     /**
     * 构造方法初始化数据库连接加密配置
-    * @param hikariDataSource               {@link HikariDataSource}
+    * @param hikariDataSource         {@link HikariDataSource}
     * @param databaseCipherProperties {@link DatabaseCipherProperties}
     * @since 1.1.0
     */
