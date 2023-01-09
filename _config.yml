@@ -55,7 +55,6 @@ tipue_search:
     files: [ 404.md, search.md ]
 
 remote_theme: PasseRR/jekyll-blog-theme
-exclude: [ vendor ]
 
 # trello 留言板
 # key
