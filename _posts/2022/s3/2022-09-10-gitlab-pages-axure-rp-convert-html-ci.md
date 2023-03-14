@@ -57,6 +57,9 @@ C:\qres\QRes.exe /x 1920 /y 1080)
 ```ruby
 pages_external_url "http://yourdomain.com"
 gitlab_pages['enable'] = true
+
+# 若要控制pages权限是否公开还是只能项目成员可见
+gitlab_pages['access_control'] = true
 ```
 
 ### 2. pages任务
