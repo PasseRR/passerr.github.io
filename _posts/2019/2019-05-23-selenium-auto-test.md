@@ -2,7 +2,7 @@
 layout: post
 title:  "Java基于Selenium本地Chrome驱动自动化测试"
 categories: [java]
-last_modified_at: 2022-02-21
+last_modified_at: 2023-03-20
 toc: true
 ---
 ## Selenium

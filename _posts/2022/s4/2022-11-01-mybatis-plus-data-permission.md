@@ -2,7 +2,7 @@
 layout: post
 title:  Mybatis Plus基于注解的数据权限
 categories: [java]
-last_modified_at: 2022-11-01
+last_modified_at: 2023-03-20
 toc: true
 ---
 
