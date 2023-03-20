@@ -159,9 +159,10 @@ COMMIT;
 
 2.修改连接配置参数`currentSchema`
 
-> [官网说明](https://jdbc.postgresql.org/documentation/head/connect.html)  
+> [官网说明](https://jdbc.postgresql.org/documentation/head/connect.html){:target="_blank"}  
 > Specify the schema (or several schema separated by commas) to be set in the search-path. 
 > This schema will be used to resolve unqualified object names used in statements over this connection.  
+{: .block-tip }
 
 根据官方参数定义，可以设置`currentSchema`参数为多个schema，将`public`添加到currentSchema中。
 在代码中访问`public`模式下的函数或者扩展的数据类型就不需要要public模式了。

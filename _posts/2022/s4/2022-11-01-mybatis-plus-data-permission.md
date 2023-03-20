@@ -357,6 +357,8 @@ public interface OrderMapper extends BaseMapper<Order> {
 
 多租户、动态的数据权限都可以通过这种方式实现，只要能拼sql，剩下的工作我相信你都会了，只是需要多熟悉下jsqlparser的API用法。
 
-**PS**：在结合[PageHelper](https://github.com/pagehelper/Mybatis-PageHelper){:target="_blank"}做带有数据权限的分页时遇到过一个问题，
-jsqlparser版本过低导致分页的`LIMIT`和`OFFSET`两个关键字位置不一样导致分页不生效，
-处理方法更新PageHelper使得和MP的jsqlparser的版本一致。
+> 在结合[PageHelper](https://github.com/pagehelper/Mybatis-PageHelper){:target="_blank"}
+> 做带有数据权限的分页时遇到过一个问题，
+> jsqlparser版本过低导致分页的`LIMIT`和`OFFSET`两个关键字位置不一样导致分页不生效，
+> 处理方法更新PageHelper使得和MP的jsqlparser的版本一致。
+{: .block-warning }

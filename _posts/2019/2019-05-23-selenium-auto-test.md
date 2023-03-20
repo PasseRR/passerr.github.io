@@ -245,7 +245,9 @@ public class StudentRegisterSpec extends BaseSpec {
 ```
 
 5.其他
+
 > 其他业务测试可以通过扩展BaseSpec进行业务测试
+{: .block-tip }
 
 6.登录自动测试示例
 

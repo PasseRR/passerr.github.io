@@ -100,6 +100,7 @@ npm config set -- //YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_au
 ```
 
 > 若gitlab上存放了多个scope的依赖，每个scope都需要配置一次registry地址
+{: .block-danger }
 
 ### package.json示例
 ```js
