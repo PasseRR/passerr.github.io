@@ -99,6 +99,8 @@ npm config set @YOUR_SCOPE_NAME:registry http://YOUR.GITLAB.COM/api/v4/projects/
 npm config set -- //YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_authToken YOUR_ACCESS_TOKEN
 ```
 
+> **注意**
+> 
 > 若gitlab上存放了多个scope的依赖，每个scope都需要配置一次registry地址
 {: .block-danger }
 

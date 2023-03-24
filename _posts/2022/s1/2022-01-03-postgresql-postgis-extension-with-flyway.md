@@ -160,6 +160,7 @@ COMMIT;
 2.修改连接配置参数`currentSchema`
 
 > [官网说明](https://jdbc.postgresql.org/documentation/head/connect.html){:target="_blank"}  
+> 
 > Specify the schema (or several schema separated by commas) to be set in the search-path. 
 > This schema will be used to resolve unqualified object names used in statements over this connection.  
 {: .block-tip }
