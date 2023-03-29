@@ -21,8 +21,8 @@
       "destination": "https://java-example.vercel.app/:match*"
     },
     {
-      "source": "/middleware/:match*",
-      "destination": "https://middleware-six.vercel.app/:match*"
+      "source": "/arthas/:match*",
+      "destination": "https://arthas-doc.vercel.app/:match*"
     }
   ],
   "github": {

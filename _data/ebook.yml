@@ -15,6 +15,6 @@
   url: /jdk-features
   date: 2020-01-24
   
-- name: 常用中间件安装及使用手册
-  url: /middleware
+- name: Arthas手册
+  url: /arthas
   date: 2022-11-18
