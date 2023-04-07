@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Mybatis Plus基于注解的数据权限
+title:  MyBatis Plus基于注解的数据权限
 categories: [java]
 last_modified_at: 2023-03-20
 toc: true
@@ -12,35 +12,35 @@ toc: true
 
 ### 1. 部门表(department)
 
-|字段|含义|
-|:---|:---|
-|`id`|部门id|
-|name|部门名称|
-|parent_id|部门父id|
-|full_id_path|部门id全路径(用于查询下属部门)|
+| 字段           | 含义                |
+|:-------------|:------------------|
+| `id`         | 部门id              |
+| name         | 部门名称              |
+| parent_id    | 部门父id             |
+| full_id_path | 部门id全路径(用于查询下属部门) |
 
 ### 2. 用户表(user)
 
-|字段|含义|
-|:---|:---|
-|`id`|用户id|
-|code|用户帐号|
-|name|用户姓名|
+| 字段   | 含义   |
+|:-----|:-----|
+| `id` | 用户id |
+| code | 用户帐号 |
+| name | 用户姓名 |
 
 ### 3. 用户部门关系表(user_department)
 
-|字段|含义|
-|:---|:---|
-|`user_id`|用户id|
-|`department_id`|部门id|
+| 字段              | 含义   |
+|:----------------|:-----|
+| `user_id`       | 用户id |
+| `department_id` | 部门id |
 
 ### 4. 业务订单表(order)
 
-|字段|含义|
-|:---|:---|
-|id|订单id|
-|amount|订单金额|
-|department_id|所属部门|
+| 字段            | 含义   |
+|:--------------|:-----|
+| id            | 订单id |
+| amount        | 订单金额 |
+| department_id | 所属部门 |
 
 忽略以上表字段的严谨性，假如用户需求为：`根据登录用户所在部门(可能为多个)查询所在部门(或所有在部门及下级部门)的订单列表`，
 倘若只有一个这样的需求，你可能只需要用order关联user_department就可以了，
