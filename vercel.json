@@ -23,6 +23,10 @@
     {
       "source": "/arthas/:match*",
       "destination": "https://arthas-doc.vercel.app/:match*"
+    },
+    {
+      "source": "/middleware/arthas/:match*",
+      "destination": "https://arthas-doc.vercel.app/:match*"
     }
   ],
   "github": {
