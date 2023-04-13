@@ -3,6 +3,7 @@ layout: post
 title:  Java双亲委托模型
 categories: [java]
 last_modified_at: 2023-03-24
+toc: true
 ---
 
 https://blog.csdn.net/qq_21480147/article/details/124944419
