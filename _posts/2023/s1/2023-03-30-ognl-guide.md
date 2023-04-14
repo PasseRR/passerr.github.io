@@ -139,7 +139,7 @@ ognl对象声明脚本`#person = new Person(), #person.name="张三", #person.ag
 
 ### 静态属性访问
 
-需要全名称访问`@fullClassName@fieldName`，如`@java.util.Random@mask`
+需要全名称访问`@fullClassName@fieldName`，如`@java.util.Random@mask`、获得某个类的class`@java.lang.String@class`
 
 ## 变量声明定义
 
