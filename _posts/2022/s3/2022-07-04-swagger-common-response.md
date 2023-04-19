@@ -2,7 +2,7 @@
 layout: post
 title:  Swagger统一应答类型处理
 categories: [java]
-last_modified_at: 2022-07-04
+last_modified_at: 2023-04-19
 toc: true
 ---
 
@@ -275,6 +275,32 @@ public class FarioOperationBuilderPlugin implements OperationBuilderPlugin {
     @Override
     public boolean supports(DocumentationType documentationType) {
         return true;
+    }
+}
+```
+
+### 插件配置
+
+```java
+@Configuration(proxyBeanMethods = false)
+class SwaggerPluginConfiguration {
+    @Bean
+    FarioOperationModelsProviderPlugin farioOperationModelsProviderPlugin(TypeResolver typeResolver) {
+        return new FarioOperationModelsProviderPlugin(typeResolver);
+    }
+
+    @Bean
+    FarioOperationBuilderPlugin farioOperationBuilderPlugin(TypeResolver typeResolver,
+                                                            SchemaPluginsManager schemaPluginsManager,
+                                                            DocumentationPluginsManager documentationPluginsManager,
+                                                            ModelSpecificationFactory modelSpecificationFactory) {
+        return 
+            new FarioOperationBuilderPlugin(
+                typeResolver, 
+                schemaPluginsManager, 
+                documentationPluginsManager, 
+                modelSpecificationFactory
+            );
     }
 }
 ```
