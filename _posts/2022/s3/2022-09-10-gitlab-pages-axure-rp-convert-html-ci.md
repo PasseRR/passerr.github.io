@@ -2,7 +2,7 @@
 layout: post
 title:  Gitlab自动将rp文件转html部署pages
 categories: [ci, operation]
-last_modified_at: 2022-09-10
+last_modified_at: 2023-04-24
 toc: true
 ---
 
@@ -50,6 +50,14 @@ C:\Windows\System32\tscon.exe RDP-Tcp#37 /dest:console
 for /f "skip=1 tokens=3" %%s in ('query user %USERNAME%') do (C:\Windows\System32\tscon.exe %%s /dest:console 
 C:\qres\QRes.exe /x 1920 /y 1080)
 ```
+
+> **后台运行WAD**
+> 
+> [参考#47](https://github.com/microsoft/WinAppDriver/issues/47#issuecomment-594452572)，使用PowerShell实现。
+> ```shell
+> Start-Process -FilePath "C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe" -ArgumentList "127.0.0.1 4723/wd/hub" -WindowStyle Hidden -RedirectStandardOutput "C:\test\my.log"
+> ```
+{: .block-tip }
 
 ## 编写gitlab-ci脚本
 
