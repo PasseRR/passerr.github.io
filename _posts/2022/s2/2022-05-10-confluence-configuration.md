@@ -204,3 +204,22 @@ CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤
 [1]: {{ site.cdn }}/assets/2022/05-10/top.gif
 [2]: {{ site.cdn }}/assets/2022/05-10/toc.gif
 [3]: {{ site.cdn }}/assets/2022/05-10/plugin.gif
+
+<!-- 
+[agent]({{ site.cdn }}/assets/2022/05-10/atlassian-agent.jar)
+
+```bash
+# 下载jar包到任意目录
+cd /opt/atlassian
+# for jira
+vim jira/bin/setenv.sh
+export JAVA_OPTS="-javaagent:/opt/atlassian/atlassian-agent.jar ${JAVA_OPTS}"
+
+# for Confluence
+vim confluence/bin/setenv.sh
+CATALINA_OPTS="-javaagent:/opt/crack/jira/atlassian-agent.jar ${CATALINA_OPTS}"
+
+# 破解插件(Confluence和jira都可) 复制key即可
+java -jar atlassian-agent.jar -p 插件关键字 -m aaa@bbb.com -n my_name -o https://zhile.io -s BW1U-A0L5-92EL-VFVX
+```
+-->
