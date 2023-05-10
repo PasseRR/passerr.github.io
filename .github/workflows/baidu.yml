@@ -10,6 +10,7 @@ on:
   # https://crontab.guru/
   schedule:
     - cron: '0 0 1/2 * *'
+  workflow_dispatch:
 
 jobs:
   bot:
