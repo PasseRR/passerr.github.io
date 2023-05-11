@@ -2,7 +2,7 @@
 layout: post
 title:  SpringBoot中使用Hikari时对数据库用户名密码加密
 categories: [java]
-last_modified_at: 2022-11-09
+last_modified_at: 2023-05-11
 toc: true
 ---
 
@@ -310,8 +310,16 @@ class CipherConfigurer implements WebMvcConfigurer {
 ```
 
 ```yml
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/ORCL
+    username: demo
+    password: 1b52ea1954f984f2dfd51dfccff224c712788249decade70e8f307d9dcb15928
+
 db:
   auth-secret-key: 你的对称加密密钥
+  # 配置不做用户名加密
+  disable-username-encrypt: true
 ```
 
 以上，完成了满足二级等保要求的数据库连接用户名、密码加密要求。
