@@ -104,3 +104,5 @@ Jackson的注解主要在[jackson-annotations](https://github.com/FasterXML/jack
 标记注解 用于标记实现是jackson自用的标准实现
 
 ### [@JacksonAnnotationsInside](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JacksonAnnotationsInside.java){:target="_blank"}
+
+用户自定义注解
