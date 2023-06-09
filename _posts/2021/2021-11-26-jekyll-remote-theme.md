@@ -2,7 +2,7 @@
 layout: post
 title:  Jekyll远程主题
 categories: [others, style, js]
-last_modified_at: 2022-01-06
+last_modified_at: 2023-06-09
 toc: true
 ---
 
@@ -16,7 +16,7 @@ toc: true
 在一个jekyll主题中，仅仅`assert`、`_includes`、`_layouts`、`_sass`目录存在主题的gem中，
 其他文件_posts目录、index文件、_config.yml文件都需要在实现网站来写， 通过主题目录我们能定义一个通用布局的网站模版。
 
-以我自己写的[电子书主题](https://github.com/PasseRR/jekyll-eboot-theme) 为例。
+以我自己写的[电子书主题](https://github.com/PasseRR/jekyll-ebook-theme) 为例。
 1. 修改配置文件_config.yml
     ```yml
    # 引用Github上的主题 即主题地址为https://github.com/PasseRR/jekyll-gitbook-theme
