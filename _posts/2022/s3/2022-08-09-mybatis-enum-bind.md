@@ -212,7 +212,7 @@ public interface Enumerable<T> {
 
     /**
      * 默认key的解析序列化
-     * @param key 关键字{{@link #getKey()}}
+     * @param key 关键字{@link #getKey()}
      * @return 序列化后的字符串
      */
     default String keySerialize(T key) {
