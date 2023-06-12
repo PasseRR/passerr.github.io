@@ -2,7 +2,7 @@
 layout: post
 title:  MyBatis枚举类型绑定
 categories: [java]
-last_modified_at: 2022-04-15
+last_modified_at: 2023-06-12
 toc: true
 ---
 
@@ -416,7 +416,7 @@ public @interface EnumScans {
 
 ### 定义枚举自动扫描Registrar
 
-<details class="alert alert-info" role="alert">
+<details class="alert alert-info" role="alert" open>
 <summary markdown="span">EnumScannerRegistrar<i class="fa fa-code" aria-hidden="true"></i></summary>
 
 ~~~java
@@ -490,7 +490,10 @@ class EnumScannersRegistrar extends EnumScannerRegistrar {
 
 ### 定义枚举包扫描器
 
-```java
+<details class="alert alert-info" role="alert">
+<summary markdown="span">ScannedEnumTypeSupplier<i class="fa fa-code" aria-hidden="true"></i></summary>
+
+~~~java
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 class ScannedEnumTypeSupplier<T extends Enum<?> & Enumerable<?>> implements EnumTypeSupplier<T> {
@@ -501,7 +504,11 @@ class ScannedEnumTypeSupplier<T extends Enum<?> & Enumerable<?>> implements Enum
         return this.set;
     }
 }
+~~~
 
+</details>
+
+```java
 class ClassPathEnumScanner extends ClassPathBeanDefinitionScanner {
     ClassPathEnumScanner(BeanDefinitionRegistry registry) {
         super(registry, false);
@@ -540,6 +547,7 @@ class ClassPathEnumScanner extends ClassPathBeanDefinitionScanner {
         }
 
         AbstractBeanDefinition definition =
+            // 扩展EnumTypeSupplier实现类
             BeanDefinitionBuilder.genericBeanDefinition(ScannedEnumTypeSupplier.class)
                 // 通过构造方法构造EnumTypeSupplier
                 .addConstructorArgValue(
