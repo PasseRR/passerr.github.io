@@ -68,6 +68,7 @@ mkdir build && cd build
 # 编译
 # j后面的数字表示可用于编译的cpu个数 这里设置的是8 一般来说一个cpu对应两个逻辑处理器
 # 可以通过命令 cat /proc/stat | grep cpu[0-9] -c 查询cpu个数*2
+# 编译过程漫长
 make -j8
 # 安装
 make install
@@ -131,34 +132,62 @@ make && make install
 binutils -v
 ```
 
-## 升级glibc
+## 升级bison
 
-在[阿里云镜像](https://mirrors.aliyun.com/gnu/glibc/){:target="_blank"}上找到想要升级的glibc版本，这里以`2.7`为例
+在[阿里云镜像](https://mirrors.aliyun.com/gnu/bison/){:target="_blank"}上找到想要升级的bison版本，这里以`3.0.1`为例
 
 ```bash
-wget https://mirrors.aliyun.com/gnu/glibc/glibc-2.7.tar.gz
-tar -zxvf glibc-2.5.tar.gz
+wget https://mirrors.aliyun.com/gnu/bison/bison-3.0.1.tar.gz
+tar -zxvf bison-3.0.1.tar.gz
+```
+
+### 编译安装bison
+
+```bash
+cd bison-3.0.1
+./configure --prefix=/usr
+make && make install
+```
+
+### bison版本检查
+
+```bash
+bison -V
+```
+
+## 升级glibc
+
+在[阿里云镜像](https://mirrors.aliyun.com/gnu/glibc/){:target="_blank"}上找到想要升级的glibc版本，这里以`2.37`为例
+
+```bash
+wget https://mirrors.aliyun.com/gnu/glibc/glibc-2.37.tar.gz
+tar -zxvf glibc-2.37.tar.gz
 ```
 
 ### 查看安装依赖
 
 ```bash
-[root@localhost ~]# cd glibc-2.7
+[root@localhost ~]# cd glibc-2.37
 # 查看安装依赖
-[root@localhost glibc-2.7]# cat INSTALL | grep -E "newer|later"
-     want to compile glibc with a newer set of kernel headers than the
+[root@localhost glibc-2.37]# cat INSTALL | grep -E "newer|later"
 The tests (and later installation) use some pre-existing files of the
-privileges.)  If you are using a 2.1 or newer Linux kernel with the
-   * GNU `make' 3.79 or newer
-   * GCC 3.4 or newer, GCC 4.1 recommended
-   * GNU `binutils' 2.15 or later
-   * GNU `sed' 3.02 or newer
-   * GNU `gettext' 0.10.36 or later
+   * GNU 'make' 4.0 or newer
+   * GCC 6.2 or newer
+     building the GNU C Library, as newer compilers usually produce
+     of release, this implies GCC 7.4 and newer (excepting GCC 7.5.0,
+   * GNU 'binutils' 2.25 or later
+     binutils 2.26 or newer.
+   * GNU 'texinfo' 4.7 or later
+   * GNU 'bison' 2.7 or later
+   * GNU 'sed' 3.02 or newer
+   * Python 3.4 or later
+   * GDB 7.8 or later with support for Python 2.7/3.4 or later
+   * GNU 'gettext' 0.10.36 or later
 
 # make、gcc、binutils上面已经安装升级了
 
 # 查看sed版本
-[root@localhost glibc-2.7]# sed --version
+[root@localhost glibc-2.37]# sed --version
 sed (GNU sed) 4.2.2
 Copyright (C) 2012 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
@@ -173,7 +202,7 @@ E-mail bug reports to: <bug-sed@gnu.org>.
 Be sure to include the word ``sed'' somewhere in the ``Subject:'' field.
 
 # 查看gettext版本
-[root@localhost glibc-2.7]# gettext --version
+[root@localhost glibc-2.37]# gettext --version
 gettext (GNU gettext-runtime) 0.19.8.1
 Copyright (C) 1995-1997, 2000-2007 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -193,20 +222,43 @@ python3 -V
 > - gcc搜索**3.4**
 > - make搜索**3.79**
 > 
-> 搜索版本号为INSTALL中声明的版本，参考[https://stackoverflow.com/questions/46534957/configure-error-these-critical-programs-are-missing-or-too-old-gcc-make-w/62252633#62252633](https://stackoverflow.com/questions/46534957/configure-error-these-critical-programs-are-missing-or-too-old-gcc-make-w/62252633#62252633){:target="_blank"}
+> 搜索版本号为INSTALL中声明的版本，参考StackOverflow [configure-error-these-critical-programs-are-missing-or-too-old-gcc-make-w](https://stackoverflow.com/questions/46534957/configure-error-these-critical-programs-are-missing-or-too-old-gcc-make-w/62252633#62252633){:target="_blank"}
 {: .block-danger }
 
 ### 编译安装glibc
 
 ```bash
-cd glibc-2.7
+cd glibc-2.37
 mkdir build && cd build
-../configure  --prefix=/usr --disable-profile --enable-add-ons --with-headers=/usr/include --with-binutils=/usr/bin --disable-sanity-checks --disable-werror
+../configure --prefix=/usr --disable-profile --enable-add-ons --with-headers=/usr/include --with-binutils=/usr/bin --disable-sanity-checks --disable-werror
+# 编译过程漫长
+make && make install
+
+# 如果报错no include path in which to search for limits.h
+# 需要配置C_INCLUDE_PATH和CPLUS_INCLUDE_PATH环境变量
+# 配置为自己的gcc路径
+export C_INCLUDE_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed/:/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/
+export CPLUS_INCLUDE_PATH=${C_INCLUDE_PATH}
 ```
+
+> **注意**
+> 
+> 如果出现下面报错信息 千万不要重启
+> 
+> relocation error: : /usr/lib64/libpthread.so.0: relocation error: symbol __libc_dl_error_tsd, 
+> version GLIBC_PRIVATE not defined in file libc.so.6 with link time reference/usr/lib64/libpthread.so.0: symbol __libc_dl_error_tsd, 
+> version GLIBC_PRIVATE not defined in file libc.so.6 with link time reference
+> ```bash
+sln /usr/lib64/ld-2.17.so /usr/lib64/ld-linux-x86-64.so.2
+sln /usr/lib64/libc-2.17.so /usr/lib64/libc.so.6
+```
+{: .block-danger }
+
 
 ### glibc版本检查
 
 ```bash
 strings /lib64/libc.so.6 | grep GLIBC
 ll /lib64/libc.so*
+ldd --version
 ```
