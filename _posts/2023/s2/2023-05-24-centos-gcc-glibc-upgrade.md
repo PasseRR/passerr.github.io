@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  CentOs升级gcc、glibc
+title:  CentOs7升级gcc、glibc
 categories: [operation]
 last_modified_at: 2023-05-24
 toc: true
@@ -216,44 +216,38 @@ yum install -y python3
 python3 -V
 ```
 
-> 若存在版本号大于要求版本号，但是出现配置出错情况
-> 
+> 若存在版本号大于要求版本号，但是出现配置出错情况，编辑configure文件，修改正则匹配表达式的case部分  
 > - binutils搜索**2.1**，需要修改**as**和**ld**版本号兼容配置
 > - gcc搜索**3.4**
 > - make搜索**3.79**
 > 
-> 搜索版本号为INSTALL中声明的版本，参考StackOverflow [configure-error-these-critical-programs-are-missing-or-too-old-gcc-make-w](https://stackoverflow.com/questions/46534957/configure-error-these-critical-programs-are-missing-or-too-old-gcc-make-w/62252633#62252633){:target="_blank"}
-{: .block-danger }
+> 搜索的版本号为INSTALL中声明的版本，参考StackOverflow [configure-error-these-critical-programs-are-missing-or-too-old-gcc-make-w](https://stackoverflow.com/questions/46534957/configure-error-these-critical-programs-are-missing-or-too-old-gcc-make-w/62252633#62252633){:target="_blank"}
+{: .block-warning }
 
 ### 编译安装glibc
 
+参考[中文手册](https://lfs.xry111.site/zh_CN/11.3/chapter05/glibc.html){:target="_blank"}、[英文手册](https://www.linuxfromscratch.org/lfs/view/stable/chapter05/glibc.html){:target="_blank"}
+
 ```bash
+# 安装目录
+LFS=/opt/glibc
+# 创建兼容性软连接
+ln -sfv /lib64/ld-linux-x86-64.so.2 $LFS/lib64
+ln -sfv /lib64/ld-linux-x86-64.so.2 $LFS/lib64/ld-lsb-x86-64.so.3
+
+
 cd glibc-2.37
 mkdir build && cd build
-../configure --prefix=/usr --disable-profile --enable-add-ons --with-headers=/usr/include --with-binutils=/usr/bin --disable-sanity-checks --disable-werror
-# 编译过程漫长
+../configure  --prefix=/usr --disable-profile --enable-add-ons --with-headers=/usr/include --with-binutils=/usr/bin
+# 编译比较长
 make && make install
 
-# 如果报错no include path in which to search for limits.h
-# 需要配置C_INCLUDE_PATH和CPLUS_INCLUDE_PATH环境变量
-# 配置为自己的gcc路径
-export C_INCLUDE_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed/:/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/
-export CPLUS_INCLUDE_PATH=${C_INCLUDE_PATH}
-```
+# 更新链接缓存
+ldconfig
 
-> **注意**
-> 
-> 如果出现下面报错信息 千万不要重启
-> 
-> relocation error: : /usr/lib64/libpthread.so.0: relocation error: symbol __libc_dl_error_tsd, 
-> version GLIBC_PRIVATE not defined in file libc.so.6 with link time reference/usr/lib64/libpthread.so.0: symbol __libc_dl_error_tsd, 
-> version GLIBC_PRIVATE not defined in file libc.so.6 with link time reference
-> ```bash
-sln /usr/lib64/ld-2.17.so /usr/lib64/ld-linux-x86-64.so.2
-sln /usr/lib64/libc-2.17.so /usr/lib64/libc.so.6
+# 重启
+reboot
 ```
-{: .block-danger }
-
 
 ### glibc版本检查
 
@@ -262,3 +256,7 @@ strings /lib64/libc.so.6 | grep GLIBC
 ll /lib64/libc.so*
 ldd --version
 ```
+
+> **千万不要直接在生产环境升级**  
+> 做glibc升级前充分做好备份、测试，确保中间过程不会出错，否则可能会导致系统不可用
+{: .block-danger }
