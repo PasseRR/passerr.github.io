@@ -172,4 +172,5 @@ ldd --version
 配置webrtc-streamer的Http服务地址即可，[参考Github](https://github.com/mpromonet/webrtc-streamer-html){:target="_blank"}
 
 [comment]:<>(关于VLC和SmartPlayer的比较 http://www.taodudu.cc/news/show-1128355.html?action=onClick)
+[comment]:<>(史上最详细的webrtc-streamer访问摄像机视频流教程 https://blog.csdn.net/qq_20937557/article/details/129879697)
 [1]: {{ site.cdn }}/assets/2023/05-25/chrome.png
