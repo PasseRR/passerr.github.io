@@ -53,7 +53,7 @@ toc: true
 
 #### 1. 下载windows版本的webrtc-streamer
 
-[点击下载v0.6.5](https://github.com/mpromonet/webrtc-streamer/releases/download/v0.8.0/webrtc-streamer-v0.8.0-Windows-AMD64-Release.tar.gz)，
+[点击下载v0.6.5](https://github.com/mpromonet/webrtc-streamer/releases/download/v0.6.5/webrtc-streamer-v0.6.5-Windows-AMD64-Release.tar.gz)，
 其他版本下载启动后转流就自动停止，暂时未做问题分析。
 
 #### 2. 启动服务
