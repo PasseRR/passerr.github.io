@@ -161,10 +161,10 @@ ldd --version
 
 ```bash
 # 本机存在公网地址
-./webrtc-streamer -o -T0.0.0.0:3478 -tturn:turn@$(curl ifconfig.me -s):3478
+./webrtc-streamer -o -s- -T0.0.0.0:3478 -tturn:turn@$(curl ifconfig.me -s):3478
 
 # 使用公网映射需要TCP和UDP协议都支持 假如将本机3478端口映射到公网turn.abc.com:13478端口
-./webrtc-streamer -o -T0.0.0.0:3478 -tturn:turn@turn.abc.com:13478
+./webrtc-streamer -o -s- -T0.0.0.0:3478 -tturn:turn@turn.abc.com:13478
 ```
 
 ## demo
