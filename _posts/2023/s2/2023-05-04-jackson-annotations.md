@@ -556,7 +556,7 @@ Test.Bean(name=张三, age=1, sex=MALE)
 
 [@JsonUnwrapped](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonUnwrapped.java){:
 target="_blank"}
-在序列化时将嵌套对象属性放到父对象，反序列化时将父对象属性解析到嵌套对象属性，支持属性的前缀、后缀，单扩展的前缀不支持驼峰
+在序列化时将嵌套对象属性放到父对象，反序列化时将父对象属性解析到嵌套对象属性，支持属性的前缀、后缀，但扩展的前缀不支持驼峰
 
 <details class="alert alert-info" role="alert">
 <summary markdown="span">代码示例<i class="fa fa-code" aria-hidden="true"></i></summary>
