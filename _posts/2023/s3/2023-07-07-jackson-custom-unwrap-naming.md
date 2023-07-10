@@ -368,4 +368,4 @@ static class Bean {
 TestController.Bean(name=TestController.Name(firstName=张, lastName=三), age=1)
 ```
 
-其他命名风格不在一一展示，主要目的是为了实现JsonUnwrapped支持小写驼峰，其他命名规则只是jackson刚好支持，就默认做了这个扩展。
+其他命名风格不再一一展示，主要目的是为了实现JsonUnwrapped支持小写驼峰，其他命名规则只是jackson刚好支持，就默认做了这个扩展。
