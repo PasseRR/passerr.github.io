@@ -1,20 +1,20 @@
 {
   "redirects": [
     {
-      "source": "2021-12-11-mermaind-class-diagram.html",
-      "destination": "2021-12-11-mermaid-class-diagram.html"
+      "source": "/2021-12-11-mermaind-class-diagram.html",
+      "destination": "/2021-12-11-mermaid-class-diagram.html"
     },
     {
-      "source": "2021-12-09-mermaind-sequence-diagram.html",
-      "destination": "2021-12-09-mermaid-sequence-diagram.html"
+      "source": "/2021-12-09-mermaind-sequence-diagram.html",
+      "destination": "/2021-12-09-mermaid-sequence-diagram.html"
     },
     {
-      "source": "2021-12-11-mermaind-class-diagram.html",
-      "destination": "2021-12-11-mermaid-class-diagram.html"
+      "source": "/2021-12-11-mermaind-class-diagram.html",
+      "destination": "/2021-12-11-mermaid-class-diagram.html"
     },
     {
-      "source": "2021-12-17-mermaind-other-diagram.html",
-      "destination": "2021-12-17-mermaid-other-diagram.html"
+      "source": "/2021-12-17-mermaind-other-diagram.html",
+      "destination": "/2021-12-17-mermaid-other-diagram.html"
     }
   ],
   "rewrites": [
