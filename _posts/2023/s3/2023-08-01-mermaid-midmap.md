@@ -11,7 +11,12 @@ toc: true
 
 思维导图是使用一个中央关键词或想法引起形象化的构造和分类的想法；它用一个中央关键词或想法以辐射线形连接所有的代表字词、想法、任务或其它关联项目的图解方式。
 
-关键字`mindmap`，笔者使用的mermaid的`10.3.0`，当前mindmap还是实验性图，可能将来会改变语法或者配置。
+关键字`mindmap`
+
+> 注意
+> 
+> 笔者使用的mermaid为`10.3.0`，当前mindmap还是**实验性图**，可能将来会改变语法或者配置
+{: .block-warning }
 
 ## 基本语法
 
@@ -95,7 +100,7 @@ id))碰撞((
 </tr>
 <tr>
 <td>{% raw %}{{六边形}}{% endraw %}</td>
-<!-- 这里因为liquid模版语法原因 不能直接协作{{六边形}} -->
+
 <td><pre><code class="language-mermaid">
 mindmap
 {% raw %}id{{六边形}}{% endraw %}
