@@ -7,12 +7,6 @@ last_modified_at: 2023-08-01
 toc: true
 ---
 
-<style>
-.test {
-  background: #2a6496;
-}
-</style>
-
 ## [思维导图](https://mermaid.js.org/syntax/mindmap.html){:target="_blank"}
 
 思维导图是使用一个中央关键词或想法引起形象化的构造和分类的想法；它用一个中央关键词或想法以辐射线形连接所有的代表字词、想法、任务或其它关联项目的图解方式。
