@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Mermaid之思维导图(mindmap)
+title:  Mermaid之思维导图
 mermaid: true
 categories: [md, others]
 last_modified_at: 2023-08-01
