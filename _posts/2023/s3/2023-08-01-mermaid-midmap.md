@@ -172,44 +172,44 @@ root["`**加粗的根节点**`"]
 
 ```
 mindmap
-  root((mindmap)
+  root((MindMap)
     Origins
-      Long history
+      1)Long history(
       ::icon(fa fa-book)
-      Popularisation
+      2(Popularisation)
         a["`British popular
          psychology author 
          Tony Buzan`"]
-    Research
+    3))Research((
       On effectiveness<br/>and features
       On Automatic creation
         Uses
             Creative techniques
             Strategic planning
             Argument mapping
-    Tools["`**Tools**`"]
+    Tools(("`**Tools**`"))
       Pen and paper
       Mermaid
 ```
 
 ```mermaid
 mindmap
-  root((mindmap)
+  root((MindMap)
     Origins
-      Long history
+      1)Long history(
       ::icon(fa fa-book)
-      Popularisation
+      2(Popularisation)
         a["`British popular
          psychology author 
          Tony Buzan`"]
-    Research
+    3))Research((
       On effectiveness<br/>and features
       On Automatic creation
         Uses
             Creative techniques
             Strategic planning
             Argument mapping
-    Tools["`**Tools**`"]
+    Tools(("`**Tools**`"))
       Pen and paper
       Mermaid
 ```
