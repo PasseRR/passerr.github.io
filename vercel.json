@@ -15,6 +15,10 @@
     {
       "source": "/2021-12-17-mermaind-other-diagram.html",
       "destination": "/2021-12-17-mermaid-other-diagram.html"
+    },
+    {
+      "source": "/2023-08-01-mermaid-midmap.html",
+      "destination": "/2023-08-01-mermaid-mindmap.html"
     }
   ],
   "rewrites": [
