@@ -3,7 +3,7 @@
   url: /DesignPatterns
   date: 2017-07-09
 
-- name: JDK8源码阅读
+- name: Jdk8源码阅读
   url: /Java-Example
   date: 2017-09-22
   
@@ -11,10 +11,14 @@
   url: /JavaLeetCode
   date: 2018-05-01
 
-- name: JDK各版本特性
+- name: Jdk各版本特性
   url: /jdk-features
   date: 2020-01-24
   
 - name: Arthas手册
   url: /arthas
   date: 2022-11-18
+
+- name: Nginx手册
+  url: /nginx
+  date: 2023-08-10

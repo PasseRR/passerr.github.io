@@ -49,6 +49,10 @@
     {
       "source": "/middleware/arthas/:match*",
       "destination": "https://arthas-doc.vercel.app/:match*"
+    },
+    {
+      "source": "/nginx/:match*",
+      "destination": "https://nginx-doc-passerr.vercel.app/:match*"
     }
   ],
   "github": {
