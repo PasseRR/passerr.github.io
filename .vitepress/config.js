@@ -2,6 +2,7 @@ import {defineConfig} from 'vitepress'
 import {rewrites, site} from './main';
 import sup_plugin from "markdown-it-sup";
 import sub_plugin from "markdown-it-sub";
+import {getPosts} from './theme/serverUtils'
 
 export default defineConfig({
     title: site.title,
@@ -54,6 +55,7 @@ export default defineConfig({
     },
     appearance: false,
     themeConfig: {
+        posts: await getPosts(site.pageSize),
         nav: [
             {text: 'Home', link: '/'},
             {text: 'Archives', link: '/pages/archives'},

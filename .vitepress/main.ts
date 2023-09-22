@@ -4,6 +4,7 @@ import fg from 'fast-glob'
 const site = {
     main: 'https://www.xiehai.zone',
     logo: null,
+    pageSize: 10,
     // 标题
     title: 'PasseRR\'s Blog',
     // 描述
@@ -33,7 +34,5 @@ pages.map((page) => {
         rewrites[page] = name
     }
 });
-
-console.info(rewrites);
 
 export {site, rewrites};
