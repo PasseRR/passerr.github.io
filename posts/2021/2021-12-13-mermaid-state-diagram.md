@@ -1,16 +1,12 @@
 ---
-layout: post
 title:  Mermaid之状态图(stateDiagram)
-mermaid: true
-categories: [md, others]
-last_modified_at: 2022-01-06
-toc: true
+tags: [markdown, 其他]
 ---
 
 ## 状态图
 状态图(Statechart Diagram)是描述一个实体基于事件反应的动态行为，显示了该实体如何根据当前所处的状态对不同的事件做出反应。
 
-[mermaid stateDiagram](https://mermaid-js.github.io/mermaid/#/stateDiagram){:target="_blank"}
+[mermaid stateDiagram](https://mermaid-js.github.io/mermaid/#/stateDiagram)
 
 mermaid关键字`stateDiagram`或`stateDiagram-v2`
 
@@ -24,66 +20,79 @@ mermaid关键字`stateDiagram`或`stateDiagram-v2`
 <tr>
 <td>简单状态</td>
 <td>
-<pre>
+
+```mmd
 stateDiagram-v2
 direction LR
 s1 --> s2
-</pre>
+```
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+```mermaid
 stateDiagram-v2
 direction LR
 s1 --> s2
-</code></pre>
+```
+
 </td>
 </tr>
 
 <tr>
 <td>别名</td>
 <td>
-<pre>
+
+```mmd
 stateDiagram-v2
 direction LR
 state "this is state s1" as s1
 s2: this is state s2
 s1 --> s2: 连接描述
-</pre>
+```
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+```mermaid
 stateDiagram-v2
 direction LR
 state "this is state s1" as s1
 s2: this is state s2
 s1 --> s2: 连接描述
-</code></pre>
+```
+
 </td>
 </tr>
 
 <tr>
 <td>开始和结束</td>
 <td>
-<pre>
+
+```mmd
 stateDiagram-v2
 direction LR
 %% [*]在左边表示开始右边表示结束
 [*] --> [*]
-</pre>
+```
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+```mermaid
 stateDiagram-v2
 direction LR
 [*] --> [*]
-</code></pre>
+```
+
 </td>
 </tr>
 
 <tr>
 <td>复合状态</td>
 <td>
-<pre>
+
+```mmd
 stateDiagram-v2
 [*] --> First
 
@@ -100,10 +109,12 @@ state First {
         }
     }
 }
-</pre>
+```
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+```mermaid
 stateDiagram-v2
 [*] --> First
 state First {
@@ -117,14 +128,16 @@ state First {
         }
     }
 }
-</code></pre>
+```
+
 </td>
 </tr>
 
 <tr>
 <td>选择</td>
 <td>
-<pre>
+
+```mmd
 stateDiagram-v2
     %% 关键语法
     state if_state &lt;&lt;choice>>
@@ -134,10 +147,12 @@ stateDiagram-v2
     if_state --> True : if n >= 0
     False --> [*]
     True --> [*]
-</pre>
+```
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+```mermaid
 stateDiagram-v2
     state if &lt;&lt;choice>>
     [*] --> IsPositive
@@ -146,14 +161,16 @@ stateDiagram-v2
     if --> True : if n >= 0
     False --> [*]
     True --> [*]
-</code></pre>
+```
+
 </td>
 </tr>
 
 <tr>
 <td>fork/join状态</td>
 <td>
-<pre>
+
+```mmd
 stateDiagram-v2
     state fork_state &lt;&lt;fork>>
     %% fork语法
@@ -166,10 +183,12 @@ stateDiagram-v2
     State3 --> join_state
     join_state --> State4
     State4 --> [*]
-</pre>
+```
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+```mermaid
 stateDiagram-v2
     state fork_state &lt;&lt;fork>>
     %% fork语法
@@ -182,14 +201,16 @@ stateDiagram-v2
     State3 --> join_state
     join_state --> State4
     State4 --> [*]
-</code></pre>
+```
+
 </td>
 </tr>
 
 <tr>
 <td>并发状态</td>
 <td>
-<pre>
+
+```mmd
 stateDiagram-v2
     [*] --> Active
     state Active {
@@ -205,10 +226,12 @@ stateDiagram-v2
         CapsLockOn --> 
         CapsLockOff : EvCapsLockPressed
     }
-</pre>
+```
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+```mermaid
 stateDiagram-v2
     [*] --> Active
     state Active {
@@ -224,14 +247,16 @@ stateDiagram-v2
         CapsLockOn --> 
         CapsLockOff : EvCapsLockPressed
     }
-</code></pre>
+```
+
 </td>
 </tr>
 
 <tr>
 <td>备注</td>
 <td>
-<pre>
+
+```mmd
 stateDiagram-v2
     State1: The state with a note
     %% 多行备注
@@ -243,10 +268,12 @@ stateDiagram-v2
     State1 --> State2
     %% 单行备注
     note left of State2 : note left
-</pre>
+```
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+```mermaid
 stateDiagram-v2
     State1: The state with a note
     note right of State1
@@ -256,7 +283,8 @@ stateDiagram-v2
     end note
     State1 --> State2
     note left of State2 : note left
-</code></pre>
+```
+
 </td>
 </tr>
 </table>
@@ -266,7 +294,9 @@ stateDiagram-v2
 
 <table>
 <tr>
-<td><pre>
+<td>
+
+```mmd
 stateDiagram-v2
     [*] --> Runnable: start()
     Runnable --> Running: cpu schedule
@@ -280,8 +310,12 @@ stateDiagram-v2
     Running --> Block: block event
     Block --> Runnable: block event end
     Running --> [*]: run() complete
-</pre></td>
-<td><pre><code class="language-mermaid">
+```
+
+</td>
+<td>
+
+```mermaid
 stateDiagram-v2
     [*] --> Runnable: start()
     Runnable --> Running: cpu schedule
@@ -295,6 +329,8 @@ stateDiagram-v2
     Running --> Block: block event
     Block --> Runnable: block event end
     Running --> [*]: run() complete
-</code></pre></td>
+```
+
+</td>
 </tr>
 </table>

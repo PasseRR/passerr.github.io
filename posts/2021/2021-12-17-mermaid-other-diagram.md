@@ -1,13 +1,9 @@
 ---
-layout: post
 title:  Mermaid之其他图
-mermaid: true
-categories: [md, others]
-last_modified_at: 2023-08-04
-toc: true
+tags: [markdown, 其他]
 ---
 
-## [ER图](https://mermaid.js.org/syntax/entityRelationshipDiagram.html){:target="_blank"}
+## [ER图](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
 
 ER图关键字`erDiagram`，E-R图也称实体-联系图(Entity Relationship Diagram)，提供了表示实体类型、属性和联系的方法，用来描述现实世界的概念模型。
 
@@ -24,7 +20,9 @@ ER图关键字`erDiagram`，E-R图也称实体-联系图(Entity Relationship Dia
 
 <table>
 <tr>
-<td><pre>
+<td>
+
+```mmd
 ---
 title: 这是ER图标题
 ---
@@ -41,8 +39,12 @@ erDiagram
         string lastName
         int age
     }
-</pre></td>
-<td><pre><code class="language-mermaid">
+```
+
+</td>
+<td>
+
+```mermaid
 ---
 title: 这是ER图标题
 ---
@@ -59,11 +61,13 @@ erDiagram
         string lastName
         int age
     }
-</code></pre></td>
+```
+
+</td>
 </tr>
 </table>
 
-## [甘特图](https://mermaid.js.org/syntax/gantt.html){:target="_blank"}
+## [甘特图](https://mermaid.js.org/syntax/gantt.html)
 
 甘特图关键字`gantt`，每项任务描述有5个配置，其含义如下
 
@@ -75,7 +79,7 @@ erDiagram
 | 4   | 任务开始时间 | `YYYY-MM-DD/after 其他代号/缺省`           |
 | 5   | 任务结束时间 | `YYYY-MM-DD/持续时长/缺省`，h表示小时，d表示天，w表示周 |
 
-```
+```mmd
 gantt
     dateFormat  YYYY-MM-DD
     title       Adding GANTT diagram functionality to mermaid
@@ -141,11 +145,11 @@ gantt
     Add another diagram to demo page    :48h
 ```
 
-## [饼图](https://mermaid.js.org/syntax/pie.html){:target="_blank"}
+## [饼图](https://mermaid.js.org/syntax/pie.html)
 
 饼图关键字`pie`
 
-```
+```mmd
 pie
     title Key elements in Product X
     "Calcium" : 42.96
@@ -163,7 +167,7 @@ pie
     "Iron" :  5
 ```
 
-## [时间轴图](https://mermaid.js.org/syntax/timeline.html){:target="_blank"}
+## [时间轴图](https://mermaid.js.org/syntax/timeline.html)
 
 时间轴图关键字`timeline`
 
@@ -186,7 +190,7 @@ time : event1 : event2 : event3
 
 - 简单示例
 
-    ```
+    ```mmd
     timeline
         title History of Social Media Platform
         2002 : LinkedIn
@@ -206,7 +210,7 @@ time : event1 : event2 : event3
 
 - 带分组
 
-    ```
+    ```mmd
     timeline
             title England's History Timeline
             section Stone Age
