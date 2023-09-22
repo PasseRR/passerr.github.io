@@ -1,16 +1,18 @@
 import {defineConfig} from 'vitepress'
 import {site} from './main';
-import {getPosts} from './theme/serverUtils'
+import {getPosts, resolveDirectory} from './theme/serverUtils'
 import {globby} from 'globby'
 // @ts-ignore
 import {withMermaid} from "vitepress-plugin-mermaid";
+import {resolve} from 'path'
+import fs from 'fs-extra'
 
 const rewrites = {}
 // @ts-ignore
 const pages = await globby(['posts/**/*.md'])
 
 pages.map((page) => {
-    rewrites[page] = page.substring(page.lastIndexOf('/') + 1)
+    rewrites[page] = resolveDirectory(page)
 });
 
 export default withMermaid(
@@ -21,6 +23,10 @@ export default withMermaid(
         base: site.base,
         srcExclude: ['**/README.md', ...site.excludes],
         rewrites: rewrites,
+        buildEnd: async s => {
+            const paths = resolve('./');
+            await fs.writeFile(paths + 'sitemap_index.xml', '<?xml version="1.0" encoding="utf8" ?></xml>');
+        },
         head: [
             // google分析脚本
             [
@@ -60,7 +66,7 @@ export default withMermaid(
             // @ts-ignore
             transformItems(items) {
                 // @ts-ignore
-                return items.map(it => it.url = `${site.base}/${it.url}`);
+                return items.map(it => it.url = `/${it.url}`);
             }
         },
         appearance: false,

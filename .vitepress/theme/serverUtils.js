@@ -3,6 +3,10 @@ import matter from 'gray-matter'
 import fs from 'fs-extra'
 import {resolve} from 'path'
 
+function resolveDirectory(item) {
+    return item.substring(item.lastIndexOf('/') + 1);
+}
+
 async function getPosts(pageSize) {
     let paths = await globby(['posts/**/*.md'])
 
@@ -17,7 +21,7 @@ async function getPosts(pageSize) {
             data.date = name.substring(0, 10)
             return {
                 frontMatter: data,
-                regularPath: `/${item.replace('.md', '.html')}`
+                regularPath: `/${resolveDirectory(item).replace('.md', '')}`
             }
         })
     )
@@ -68,4 +72,4 @@ function _compareDate(obj1, obj2) {
     return obj1.frontMatter.date < obj2.frontMatter.date ? 1 : -1
 }
 
-export {getPosts}
+export {getPosts, resolveDirectory}

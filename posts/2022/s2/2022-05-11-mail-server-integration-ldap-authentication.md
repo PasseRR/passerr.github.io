@@ -88,7 +88,7 @@ systemctl enable mysqld
 centos默认安装
 
 ### OpenLdap
-[参考](../s1/2022-03-09-centos-install-openldap.md)
+[参考CentOs下安装配置OpenLdap](/2022-03-09-centos-install-openldap)
 
 ## 服务配置
 
@@ -117,7 +117,7 @@ chmod 700 /usr/local/vmail
 ```
 
 ### LDAP
-[参考](../s1/2022-03-09-centos-install-openldap.md)
+[参考CentOs下安装配置OpenLdap](/2022-03-09-centos-install-openldap)
 
 ### dovecot配置
 1. dovecot.conf
