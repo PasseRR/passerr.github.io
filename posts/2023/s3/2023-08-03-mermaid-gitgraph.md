@@ -1,8 +1,10 @@
 ---
 title:  Mermaid之Git版本分支图
 tags:
-  - markdown
-  - others
+
+- markdown
+- others
+
 ---
 
 ## Git版本分支图
@@ -23,7 +25,9 @@ mermaid的gitGraph支持git的以下操作
 
 <table>
 <tr>
-<td width="45%"><pre><code>
+<td width="45%">
+
+```mmd
 gitGraph
   commit
   commit
@@ -37,9 +41,12 @@ gitGraph
   merge develop
   commit
   commit
-</code></pre>
+```
+
 </td>
-<td width="55%"><pre><code class="language-mermaid">
+<td width="55%">
+
+```mermaid
 gitGraph
   commit
   commit
@@ -53,7 +60,9 @@ gitGraph
   merge develop
   commit
   commit
-</code></pre></td>
+```
+
+</td>
 </tr>
 </table>
 
@@ -69,7 +78,9 @@ gitGraph
 
 <table>
 <tr>
-<td width="45%"><pre><code>
+<td width="45%">
+
+```mmd
 gitGraph
   commit id: "第一次commit"
   commit type: REVERSE
@@ -78,9 +89,12 @@ gitGraph
   commit type: HIGHLIGHT tag: "v2.0.0" id: "重大里程碑"
   commit
   commit tag: "v2.0.1"
-</code></pre>
+```
+
 </td>
-<td width="55%"><pre><code class="language-mermaid">
+<td width="55%">
+
+```mermaid
 gitGraph
   commit id: "第一次commit"
   commit type: REVERSE
@@ -89,7 +103,9 @@ gitGraph
   commit type: HIGHLIGHT tag: "v2.0.0" id: "重大里程碑"
   commit
   commit tag: "v2.0.1"
-</code></pre></td>
+```
+
+</td>
 </tr>
 </table>
 
@@ -105,7 +121,9 @@ branch用于创建分支，checkout用于切换分支，`cherry-pick`功能有�
 
 <table>
 <tr>
-<td width="45%"><pre><code>
+<td width="45%">
+
+```mmd
 gitGraph
   commit
   branch dev
@@ -120,9 +138,12 @@ gitGraph
   checkout feature
   commit
   commit
-</code></pre>
+```
+
 </td>
-<td width="55%"><pre><code class="language-mermaid">
+<td width="55%">
+
+```mermaid
 gitGraph
   commit
   branch dev order: 2
@@ -137,7 +158,9 @@ gitGraph
   checkout feature
   commit
   commit
-</code></pre></td>
+```
+
+</td>
 </tr>
 </table>
 
@@ -147,7 +170,9 @@ gitGraph
 
 <table>
 <tr>
-<td width="45%"><pre><code>
+<td width="45%">
+
+```mmd
 gitGraph
   commit
   branch dev
@@ -166,9 +191,12 @@ gitGraph
   checkout main
   commit
   merge dev
-</code></pre>
+```
+
 </td>
-<td width="55%"><pre><code class="language-mermaid">
+<td width="55%">
+
+```mermaid
 gitGraph
   commit
   branch dev
@@ -187,7 +215,9 @@ gitGraph
   checkout main
   commit
   merge dev
-</code></pre></td>
+```
+
+</td>
 </tr>
 </table>
 
@@ -197,7 +227,9 @@ gitGraph
 
 <table>
 <tr>
-<td width="45%"><pre><code>
+<td width="45%">
+
+```mmd
 gitGraph TB:
   commit
   branch dev
@@ -216,9 +248,12 @@ gitGraph TB:
   checkout main
   commit
   merge dev
-</code></pre>
+```
+
 </td>
-<td width="55%"><pre><code class="language-mermaid">
+<td width="55%">
+
+```mermaid
 gitGraph TB:
   commit
   branch dev
@@ -237,7 +272,9 @@ gitGraph TB:
   checkout main
   commit
   merge dev
-</code></pre></td>
+```
+
+</td>
 </tr>
 </table>
 
@@ -316,7 +353,11 @@ gitGraph TB:
 
 ## 完整示例
 
-```
+<table>
+<tr>
+<td width="45%">
+
+```mmd
 %%{
   init: {
     'theme': 'base',
@@ -359,6 +400,9 @@ gitGraph LR:
   commit tag: "v2"
   commit
 ```
+
+</td>
+<td width="55%">
 
 ```mermaid
 %%{
@@ -403,3 +447,7 @@ gitGraph LR:
   commit tag: "v2"
   commit
 ```
+
+</td>
+</tr>
+</table>
