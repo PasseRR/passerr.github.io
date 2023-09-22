@@ -1,15 +1,12 @@
 ---
-layout: post
 title:  Jekyll远程主题
-categories: [others, style, js]
-last_modified_at: 2023-06-09
-toc: true
+tags: [javascript, 其他]
 ---
 
 ## 前提
 在使用jekyll搭建博客或者网站，已经熟悉了jekyll的目录结构，以电子书为例，
 我想使用相同主题的模版来写电子书，仅仅是书的内容不一样，但是其他样式、布局希望是一致，
-如果你有这种需求，那么[`jekyll remote theme`](https://www.jekyll.com.cn/docs/themes/) 就是你找的东西。
+如果你有这种需求，那么[jekyll remote theme](https://www.jekyll.com.cn/docs/themes/) 就是你找的东西。
 
 ## 写一个自己的主题
 

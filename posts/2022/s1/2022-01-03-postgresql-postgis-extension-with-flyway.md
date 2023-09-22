@@ -60,7 +60,7 @@ COMMENT ON COLUMN "project"."modified_datetime" IS '修改时间';
 
 ## 问题原因
 `postgis`扩展安装于`public`模式下，在非`public`模式找不到`GEOMETRY`类型，
-尝试修改~~`GEOMETRY`~~为`"public".GEOMETRY`，问题暂时解决。
+尝试修改~~GEOMETRY~~为`"public".GEOMETRY`，问题暂时解决。
 
 **扩展问题**：若当`postgis`未安装于`public`模式，上述sql脚本同样会执行不通过，会出现相同问题。
 
@@ -172,4 +172,4 @@ spring:
     url: jdbc:postgresql://localhost:6543/database?currentSchema=yourSchema,public
 ```
 
-最后移除所有`GEOMETRY`的~~`public`~~模式，问题解决。
+最后移除所有`GEOMETRY`的~~public~~模式，问题解决。

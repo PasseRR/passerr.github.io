@@ -20,7 +20,7 @@ ER图关键字`erDiagram`，E-R图也称实体-联系图(Entity Relationship Dia
 
 <table>
 <tr>
-<td>
+<td width="40%">
 
 ```mmd
 ---

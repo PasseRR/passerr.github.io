@@ -1,10 +1,6 @@
 ---
-layout: post
 title:  Mermaid之流程图(flowchart)
-mermaid: true
-categories: [md, others]
-last_modified_at: 2022-01-06
-toc: true
+tags: [markdown, 其他]
 ---
 
 ## 流程图
@@ -15,145 +11,145 @@ toc: true
 顾名思义，就是用来直观地描述一个工作过程的具体步骤。这种过程既可以是生产线上的工艺流程，
 也可以是完成一项任务所必需的管理过程。
 
-[mermaid flowchart文档](https://mermaid-js.github.io/mermaid/#/flowchart){:target="_blank"}
+[mermaid flowchart文档](https://mermaid-js.github.io/mermaid/#/flowchart)
 
 mermaid关键字`flowchart`
 
 ## 图例方向
     
-|关键字|描述|
-|:---|:---|
-|TB|top to bottom, 从顶到底|
-|TD|top-down, 同TB|
-|BT|bottom to top, 从底到顶|
-|RL|right to left, 从右到左|
-|LR|left to right, 从左到右|
+| 关键字 | 描述                  |
+|:----|:--------------------|
+| TB  | top to bottom, 从顶到底 |
+| TD  | top-down, 同TB       |
+| BT  | bottom to top, 从底到顶 |
+| RL  | right to left, 从右到左 |
+| LR  | left to right, 从左到右 |
 
 ## 节点形状
 
 <table>
   <thead>
     <tr>
-        <th>形状</th>
-        <th>效果</th>
+        <th width="40%">形状</th>
+        <th width="45%">效果</th>
     </tr>
   </thead>
   <tbody>
     <tr>
         <td>(圆角)</td>
         <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 id1(圆角)
-</code>
-</pre>
+```
+
 </td>
     </tr>
 <tr>
         <td>([圆边])</td>
         <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 id1([圆边])
-</code>
-</pre>
+```
+
 </td>
     </tr>
 <tr>
 <td>[[子程序]]</td>
 <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 id1[[子程序]]
-</code>
-</pre>
+```
+
 </td>
 </tr>
 
 <tr>
 <td>((圆形))</td>
 <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 id1((圆形))
-</code>
-</pre>
+```
+
 </td>
 </tr>
 
 <tr>
 <td>[(圆柱体)]</td>
 <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 id1[(圆柱体)]
-</code>
-</pre>
+```
+
 </td>
 </tr>
 
 <tr>
 <td>>不对称的]</td>
 <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 id1>不对称的]
-</code>
-</pre>
+```
+
 </td>
 </tr>
 
 <tr>
 <td>{菱形}</td>
 <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 id1{菱形}
-</code>
-</pre>
+```
+
 </td>
 </tr>
 
 <tr>
-<td>{{'{{'}}六边形}}</td>
+<td><span v-pre>{{六边形}}</span></td>
 <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
-id1{{'{{'}}六边形}}
-</code>
-</pre>
+id1{{六边形}}
+```
+
 </td>
 </tr>
 
 <tr>
 <td>[/平行四边形/]</td>
 <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 id1[/平行四边形/]
-</code>
-</pre>
+```
+
 </td>
 </tr>
 
 <tr>
 <td>[/梯形\]</td>
 <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 id1[/梯形\]
-</code>
-</pre>
+```
+
 </td>
 </tr>
 
@@ -168,147 +164,147 @@ id1[/梯形\]
 <thead>
 <tr>
 <th>连接</th>
-<th>代码</th>
-<th>效果</th>
+<th width="35%">代码</th>
+<th width="45%">效果</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>--直线---</td>
 <td>
-<pre class="highlight">
-<code>
+
+```mmd
 flowchart LR
 A --- B
 C --直线--- D
 E ---|直线| F
-</code>
-</pre>
+```
+
 </td>
 <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 A --- B
 C --直线--- D
 E ---|直线| F
-</code>
-</pre>
+```
+
 </td>
 </tr>
 <tr>
 <td>--箭头直线--></td>
 <td>
-<pre class="highlight">
-<code>
+
+```mmd
 flowchart LR
 A --> B
 C --箭头直线--> D
 E -->|箭头直线| F
-</code>
-</pre>
+```
+
 </td>
 <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 A --> B
 C --箭头直线--> D
 E -->|箭头直线| F
-</code>
-</pre>
+```
+
 </td>
 </tr>
 <tr>
 <td>==粗直线===</td>
 <td>
-<pre class="highlight">
-<code>
+
+```mmd
 flowchart LR
 A === B
 C ==直线=== D
 E ===|直线| F
-</code>
-</pre>
+```
+
 </td>
 <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 A === B
 C ==直线=== D
 E ===|直线| F
-</code>
-</pre>
+```
+
 </td>
 </tr>
 <tr>
 <td>==粗箭头直线==></td>
 <td>
-<pre class="highlight">
-<code>
+
+```mmd
 flowchart LR
 A ==> B
 C ==粗箭头直线==> D
 E ==>|粗箭头直线| F
-</code>
-</pre>
+```
+
 </td>
 <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 A ==> B
 C ==粗箭头直线==> D
 E ==>|粗箭头直线| F
-</code>
-</pre>
+```
+
 </td>
 </tr>
 <tr>
 <td>-.虚线.-</td>
 <td>
-<pre class="highlight">
-<code>
+
+```mmd
 flowchart LR
 A -.- B
 C -.虚线.- D
 E -.-|虚线| F
-</code>
-</pre>
+```
+
 </td>
 <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 A -.- B
 C -.虚线.- D
 E -.-|虚线| F
-</code>
-</pre>
+```
+
 </td>
 </tr>
 <tr>
 <td>-.箭头虚线.-></td>
 <td>
-<pre class="highlight">
-<code>
+
+```mmd
 flowchart LR
 A -.-> B
 C -.箭头虚线.-> D
 E -.->|箭头虚线| F
-</code>
-</pre>
+```
+
 </td>
 <td>
-<pre class="highlight">
-<code class="language-mermaid">
+
+```mermaid
 flowchart LR
 A -.-> B
 C -.箭头虚线.-> D
 E -.->|箭头虚线| F
-</code>
-</pre>
+```
+
 </td>
 </tr>
 </tbody>
@@ -316,62 +312,113 @@ E -.->|箭头虚线| F
 
 ### 连接长度
         
-|连接类型|长度1|长度2|长度3|
-|:---|:---|:---|
-|直线|`---`|`----`|`-----`|
-|箭头直线|`-->`|`--->`|`---->`|
-|粗直线|`===`|`====`|`=====`|
-|粗箭头直线|`==>`|`===>`|`====>`|
-|虚线|`-.-`|`-..-`|`-...-`|
-|箭头虚线|`-.->`|`-..->`|`-...->`|
+| 连接类型  | 长度1    | 长度2     | 长度3      |
+|:------|:-------|:--------|:---------|
+| 直线    | `---`  | `----`  | `-----`  |
+| 箭头直线  | `-->`  | `--->`  | `---->`  |
+| 粗直线   | `===`  | `====`  | `=====`  |
+| 粗箭头直线 | `==>`  | `===>`  | `====>`  |
+| 虚线    | `-.-`  | `-..-`  | `-...-`  |
+| 箭头虚线  | `-.->` | `-..->` | `-...->` |
       
 ### 连接链
 #### 连续连接
 
-```
+<table>
+<tr><td width="65%">
+
+```mmd
 flowchart LR
 A --- B --文字--> C -.- D -.文字.- E === F ==文字==> G
 ```
+
+</td></tr>
+<tr><td>
+
 ```mermaid
 flowchart LR
 A --- B --文字--> C -.- D -.文字.- E === F ==文字==> G
 ```
+
+</td></tr>
+</table>
 
 #### 相同线连接
 
-```
+<table>
+<tr>
+<td width="37%">
+
+```mmd
 flowchart LR
 a --> b & c--> d
 ```
+
+</td>
+<td width="40%">
+
 ```mermaid
 flowchart LR
 a --> b & c--> d
 ```
-```
+
+</td>
+</tr>
+<tr>
+<td>
+
+```mmd
 flowchart TD
 A & B--> C & D
 ```
+
+</td>
+<td>
+
 ```mermaid
 flowchart TD
 A & B--> C & D
 ```
+
+</td>
+</tr>
+</table>
    
 ## 超链接
-```
+
+<table>
+<tr>
+<td>
+
+```mmd
 flowchart LR
     A-->B
     click A "https://mermaid-js.github.io/" _blank
     click B "https://www.xiehai.win" _blank
 ```
+
+</td>
+<td width="50%">
+
 ```mermaid
 flowchart LR
     A-->B
     click A "https://mermaid-js.github.io/" _blank
     click B "https://www.xiehai.win" _blank
 ```
+
+</td>
+</tr>
+</table>
+
 
 ## 子图
-```
+
+<table>
+<tr>
+<td>
+
+```mmd
 flowchart LR
   subgraph TOP
     direction TB
@@ -387,6 +434,9 @@ flowchart LR
   A --> TOP --> B
   B1 --> B2
 ```
+
+</td>
+<td width="45%">
 
 ```mermaid
 flowchart LR
@@ -404,3 +454,7 @@ flowchart LR
   A --> TOP --> B
   B1 --> B2
 ```
+
+</td>
+</tr>
+</table>

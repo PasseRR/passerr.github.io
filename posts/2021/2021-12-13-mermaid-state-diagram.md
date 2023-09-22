@@ -294,7 +294,7 @@ stateDiagram-v2
 
 <table>
 <tr>
-<td>
+<td width="40%">
 
 ```mmd
 stateDiagram-v2

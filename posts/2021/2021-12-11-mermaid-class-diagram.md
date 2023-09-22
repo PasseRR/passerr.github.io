@@ -1,10 +1,6 @@
 ---
-layout: post
 title:  Mermaid之类图(classDiagram)
-mermaid: true
-categories: [md, others]
-last_modified_at: 2022-01-06
-toc: true
+tags: [markdown, 其他]
 ---
 
 ## 类图
@@ -13,26 +9,27 @@ toc: true
 类图可以组织在（并且属于）包中，仅显示特定包中的相关内容。类图(Class diagram)是最常用的UML图，
 显示出类、接口以及它们之间的静态结构和关系；它用于描述系统的结构化设计。类图(Class diagram)最基本的元素是类或者接口。
 
-[mermaid classDiagram](https://mermaid-js.github.io/mermaid/#/classDiagram){:target="_blank"}
+[mermaid classDiagram](https://mermaid-js.github.io/mermaid/#/classDiagram)
 
 mermaid关键字`classDiagram`
 
 ## 访问修饰符
 
-|符号|作用域|含义|
-|:---|:---|:---|
-|+|方法、字段|`public`|
-|-|方法、字段|`private`|
-|#|方法、字段|`protected`|
-|~|方法、字段|`package/friendly`|
-|$|方法、字段|`static`|
-|*|方法|`abstract`|
-|~~|类型(字段类型、返回类型、class/interface等)|`泛型`|
+| 符号  | 作用域                            | 含义                 |
+|:----|:-------------------------------|:-------------------|
+| +   | 方法、字段                          | `public`           |
+| -   | 方法、字段                          | `private`          |
+| #   | 方法、字段                          | `protected`        |
+| ~   | 方法、字段                          | `package/friendly` |
+| $   | 方法、字段                          | `static`           |
+| *   | 方法                             | `abstract`         |
+| ~~  | 类型(字段类型、返回类型、class/interface等) | `泛型`               |
 
 <table>
 <tr>
 <td>
-<pre>
+
+```mmd
 classDiagram
     %% 按类型批量添加
     class Animal {
@@ -52,11 +49,12 @@ classDiagram
     %% 单条添加
     Animal: List~String~ list
     Animal: +getList() List~String~
-</pre>
+```
+
 </td>
 <td>
-<pre>
-<code class="language-mermaid">
+
+```mermaid
 classDiagram
     class Animal {
         +String publicField
@@ -74,8 +72,8 @@ classDiagram
     }
     Animal: List~String~ list
     Animal: +getList() List~String~
-</code>
-</pre>
+```
+
 </td>
 </tr>
 </table>
@@ -91,8 +89,10 @@ classDiagram
 类注释语法如下:
 
 <table>
+<tr>
 <td style="width: 45%">
-<pre>
+
+```mmd
 classDiagram
 %% 结构体声明
 class Season {
@@ -109,10 +109,12 @@ class Fly
 %% 第二个注释无效
 << enum>> Fly
 Fly: +fly() void
-</pre>
+```
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+```mermaid
 classDiagram
 %% 结构体声明
 class Season {
@@ -128,8 +130,10 @@ class Fly
 %% 第二个类注释无效
 << enum>> Fly
 Fly: +fly() void
-</code></pre>
+```
+
 </td>
+</tr>
 </table>
 
 ## 方向
@@ -138,18 +142,18 @@ Fly: +fly() void
 
 ## 关系基数
 
-关系基数主要用于`聚合`与`组合`，表名类与类之间的关联关系。语法如下
-`[classA] "cardinality1" [Arrow] "cardinality2" [ClassB]:LabelText`
+关系基数主要用于`聚合`与`组合`，表名类与类之间的关联关系。  
+语法如下 `[classA] "cardinality1" [Arrow] "cardinality2" [ClassB]:LabelText`
 
-|基数|含义|
-|:---|:---|
-|`1`|有且只有1个|
-|`0..1`|0个或1个|
-|`1..*`|1个或多个|
-|`*`|多个|
-|`n`|n个，n大于1|
-|`0..n`|0至n个，n大于1|
-|`1..n`|1至n个，n大于1|
+| 基数     | 含义        |
+|:-------|:----------|
+| `1`    | 有且只有1个    |
+| `0..1` | 0个或1个     |
+| `1..*` | 1个或多个     |
+| `*`    | 多个        |
+| `n`    | n个，n大于1   |
+| `0..n` | 0至n个，n大于1 |
+| `1..n` | 1至n个，n大于1 |
 
 ## 类关系
 
@@ -165,73 +169,92 @@ Fly: +fly() void
 
 <tr>
 <td>继承</td>
-<td><code class="language-plaintext highlighter-rouge"><|--</code></td>
-<td><code class="language-plaintext highlighter-rouge">--|></code></td>
+<td>
+
+`<|--`
+
+</td>
+<td>
+
+`--|>`
+
+</td>
 <td>类继承另一个类或接口继承另一个接口</td>
 <td>
-<pre>
+
+```mmd
 classDiagram
 direction LR
 Parent <|-- Child
-</pre>
+```
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+```mermaid
 classDiagram
 direction LR
 Child --|> Parent
-</code></pre>
+```
+
 </td>
 </tr>
 
 <tr>
 <td>实现</td>
-<td><code class="language-plaintext highlighter-rouge"><|..</code></td>
-<td><code class="language-plaintext highlighter-rouge">..|></code></td>
+<td>
+
+`<|..`
+
+</td>
+<td>
+
+`..|>`
+
+</td>
 <td>类实现接口</td>
 <td>
-<pre>
+
+```mmd
 classDiagram
 direction LR
 class Parent {
     << interface >>
 }
 Child ..|> Parent
-</pre>
+```
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+```mermaid
 classDiagram
 direction LR
 class Parent {
 << interface >>
 }
 Child ..|> Parent
-</code></pre>
+```
+
 </td>
 </tr>
 
 <tr>
 <td>关联</td>
-<td><code class="language-plaintext highlighter-rouge"><--</code></td>
-<td><code class="language-plaintext highlighter-rouge">--></code></td>
-<td>表示一种<code class="language-plaintext highlighter-rouge">拥有</code>关系，A类作为了B类的成员变量，若B类也使用了A类作为成员变量则为双向关联</td>
 <td>
-<pre>
-classDiagram
-direction LR
-class Car {
-    +run() void
-}
-class Driver {
-    +Car car
-    +drive() void
-}
-Driver --> Car
-</pre>
+
+`<--`
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+`-->`
+
+</td>
+<td>表示一种`拥有`关系，A类作为了B类的成员变量，若B类也使用了A类作为成员变量则为双向关联</td>
+<td>
+
+```mmd
 classDiagram
 direction LR
 class Car {
@@ -242,30 +265,43 @@ class Driver {
     +drive() void
 }
 Driver --> Car
-</code></pre>
+```
+
+</td>
+<td>
+
+```mermaid
+classDiagram
+direction LR
+class Car {
+    +run() void
+}
+class Driver {
+    +Car car
+    +drive() void
+}
+Driver --> Car
+```
+
 </td>
 </tr>
 
 <tr>
 <td>依赖</td>
-<td><code class="language-plaintext highlighter-rouge"><..</code></td>
-<td><code class="language-plaintext highlighter-rouge">..></code></td>
-<td>表示一种<code class="language-plaintext highlighter-rouge">使用</code>关系，参数依赖、局部变量、静态方法/变量依赖</td>
 <td>
-<pre>
-classDiagram
-direction LR
-class Car {
-    +run() void
-}
-class Driver {
-    +drive(car:Car) void
-}
-Driver ..> Car
-</pre>
+
+`<..`
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+`..>`
+
+</td>
+<td>表示一种`使用`关系，参数依赖、局部变量、静态方法/变量依赖</td>
+<td>
+
+```mmd
 classDiagram
 direction LR
 class Car {
@@ -275,31 +311,42 @@ class Driver {
     +drive(car:Car) void
 }
 Driver ..> Car
-</code></pre>
+```
+
+</td>
+<td>
+
+```mermaid
+classDiagram
+direction LR
+class Car {
+    +run() void
+}
+class Driver {
+    +drive(car:Car) void
+}
+Driver ..> Car
+```
+
 </td>
 </tr>
 
 <tr>
 <td>聚合</td>
-<td><code class="language-plaintext highlighter-rouge">o--</code></td>
-<td><code class="language-plaintext highlighter-rouge">--o</code></td>
-<td>聚合是一种强关联关系，在代码语法上与关联无法区分</td>
 <td>
-<pre>
-classDiagram
-direction LR
-class Car {
-    +run() void
-}
-class Driver {
-    +Car car
-    +drive() void
-}
-Driver "1" o-- "1" Car
-</pre>
+
+`o--`
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+`--o`
+
+</td>
+<td>聚合是一种强关联关系，在代码语法上与关联无法区分</td>
+<td>
+
+```mmd
 classDiagram
 direction LR
 class Car {
@@ -310,28 +357,57 @@ class Driver {
     +drive() void
 }
 Driver "1" o-- "1" Car
-</code></pre>
+```
+
+</td>
+<td>
+
+```mermaid
+classDiagram
+direction LR
+class Car {
+    +run() void
+}
+class Driver {
+    +Car car
+    +drive() void
+}
+Driver "1" o-- "1" Car
+```
+
 </td>
 </tr>
 
 <tr>
 <td>组合</td>
-<td><code class="language-plaintext highlighter-rouge">*--</code></td>
-<td><code class="language-plaintext highlighter-rouge">--*</code></td>
-<td>组合也是一种强关联关系，比聚合关系还要强</td>
 <td>
-<pre>
-classDiagram
-direction LR
-Company "1" *-- "N" Dept
-</pre>
+
+`*--`
+
 </td>
 <td>
-<pre><code class="language-mermaid">
+
+`--*`
+
+</td>
+<td>组合也是一种强关联关系，比聚合关系还要强</td>
+<td>
+
+```mmd
 classDiagram
 direction LR
 Company "1" *-- "N" Dept
-</code></pre>
+```
+
+</td>
+<td>
+
+```mermaid
+classDiagram
+direction LR
+Company "1" *-- "N" Dept
+```
+
 </td>
 </tr>
 </table>
@@ -342,25 +418,29 @@ Company "1" *-- "N" Dept
 
 <table>
 <td style="width: 50%;">
-<pre>
+
+```mmd
 classDiagram
 class Blog
 link Blog "https://www.xiehai.win" "This is a tooltip for a link"
-</pre>
+```
+
 </td>
 
 <td>
-<pre><code class="language-mermaid">
+
+```mermaid
 classDiagram
 class Blog
 link Blog "https://www.xiehai.win" "This is a tooltip for a link"
-</code></pre>
+```
+
 </td>
 </table>
 
 ## 综合示例
 
-```
+```mmd
 classDiagram
 direction BT
 %% 代谢基础水和氧气
