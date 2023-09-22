@@ -1,7 +1,5 @@
 import {defineConfig} from 'vitepress'
 import {rewrites, site} from './main';
-import sup_plugin from "markdown-it-sup";
-import sub_plugin from "markdown-it-sub";
 import {getPosts} from './theme/serverUtils'
 
 export default defineConfig({
@@ -57,10 +55,10 @@ export default defineConfig({
     themeConfig: {
         posts: await getPosts(site.pageSize),
         nav: [
-            {text: 'Home', link: '/'},
-            {text: 'Archives', link: '/pages/archives'},
+            {text: '博客', link: '/'},
+            {text: '博客标签', link: '/tags'},
             {text: 'Tags', link: '/pages/tags'},
-            {text: 'About', link: '/pages/about'}
+            {text: '关于', link: '/about'}
         ],
         sidebar: [],
         search: {
@@ -82,66 +80,27 @@ export default defineConfig({
         returnToTopLabel: '回到顶部',
         externalLinkIcon: true,
         socialLinks: [{
-            icon: {
-                svg: `<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 48 48" enable-background="new 0 0 48 48" xml:space="preserve">  <image id="image0" width="48" height="48" x="0" y="0"
-    xlink:href="data:image/png;base64,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
-OjAwz6MktwAAAABJRU5ErkJggg==" />
-</svg>`
-            },
-            link: site.main
+            icon: 'github',
+            link: 'https://github.com/PasseRR',
+            ariaLabel: 'Github'
         }, {
             icon: {
-                svg: `<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M68.4876 75.8086C70.7358 73.5637 74.375 73.5696 76.616 75.8217C78.857 78.0738 78.8511 81.7194 76.6029 83.9642L66.6199 93.9326C57.4098 103.129 42.3911 103.263 33.0256 94.2424C32.9715 94.1905 28.8012 90.1015 15.044 76.6115C5.89166 67.6374 4.97987 53.2774 13.5925 44.0559L29.6506 26.8617C38.1985 17.7086 53.9552 16.7082 63.7285 24.6118L78.3131 36.4069C80.783 38.4043 81.1688 42.0294 79.1748 44.5036C77.1808 46.9778 73.5621 47.3642 71.0922 45.3667L56.5077 33.5717C51.3965 29.4383 42.4555 30.006 38.0451 34.7287L21.9867 51.9232C17.7939 56.4124 18.2531 63.6445 23.085 68.3823C33.1872 78.2883 40.9729 85.9224 40.9819 85.931C45.8509 90.6207 53.7239 90.5508 58.5045 85.777L68.4876 75.8086Z"
-          fill="#B3B3B3"></path>
-    <path fill-rule="evenodd" clip-rule="evenodd"
-          d="M44.2359 65.8329C41.0616 65.8329 38.4883 63.2551 38.4883 60.0752C38.4883 56.8954 41.0616 54.3176 44.2359 54.3176H86.6247C89.799 54.3176 92.3723 56.8954 92.3723 60.0752C92.3723 63.2551 89.799 65.8329 86.6247 65.8329H44.2359Z"
-          fill="#B3B3B3"></path>
-    <path fill-rule="evenodd" clip-rule="evenodd"
-          d="M52.1745 2.74414C54.3432 0.422038 57.9804 0.300713 60.2984 2.47315C62.6165 4.64558 62.7376 8.28912 60.5689 10.6112L21.9869 51.9233C17.7939 56.4122 18.2531 63.6443 23.0847 68.3823L40.9025 85.8543C43.1709 88.0787 43.2097 91.724 40.9892 93.9964C38.7687 96.2688 35.1297 96.3077 32.8613 94.0833L15.0435 76.6112C5.89165 67.6366 4.97986 53.2768 13.5929 44.0559L52.1745 2.74414Z"
-          fill="#B3B3B3"></path>
-</svg>`
+                svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Gitee</title><path d="M11.984 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.016 0zm6.09 5.333c.328 0 .593.266.592.593v1.482a.594.594 0 0 1-.593.592H9.777c-.982 0-1.778.796-1.778 1.778v5.63c0 .327.266.592.593.592h5.63c.982 0 1.778-.796 1.778-1.778v-.296a.593.593 0 0 0-.592-.593h-4.15a.592.592 0 0 1-.592-.592v-1.482a.593.593 0 0 1 .593-.592h6.815c.327 0 .593.265.593.592v3.408a4 4 0 0 1-4 4H5.926a.593.593 0 0 1-.593-.593V9.778a4.444 4.444 0 0 1 4.445-4.444h8.296Z"/></svg>'
+            },
+            link: 'https://gitee.com/PasseRR',
+            ariaLabel: 'Gitee'
+        }, {
+            icon: {
+                svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LeetCode</title><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>'
             },
             link: "https://leetcode.cn/u/passerr/",
             ariaLabel: "LeetCode"
+        }, {
+            icon: {
+                svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Sina Weibo</title><path d="M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.6-2.759 5.049-6.737 5.439l-.002.004zM9.05 17.219c-.384.616-1.208.884-1.829.602-.612-.279-.793-.991-.406-1.593.379-.595 1.176-.861 1.793-.601.622.263.82.972.442 1.592zm1.27-1.627c-.141.237-.449.353-.689.253-.236-.09-.313-.361-.177-.586.138-.227.436-.346.672-.24.239.09.315.36.18.601l.014-.028zm.176-2.719c-1.893-.493-4.033.45-4.857 2.118-.836 1.704-.026 3.591 1.886 4.21 1.983.64 4.318-.341 5.132-2.179.8-1.793-.201-3.642-2.161-4.149zm7.563-1.224c-.346-.105-.57-.18-.405-.615.375-.977.42-1.804 0-2.404-.781-1.112-2.915-1.053-5.364-.03 0 0-.766.331-.571-.271.376-1.217.315-2.224-.27-2.809-1.338-1.337-4.869.045-7.888 3.08C1.309 10.87 0 13.273 0 15.348c0 3.981 5.099 6.395 10.086 6.395 6.536 0 10.888-3.801 10.888-6.82 0-1.822-1.547-2.854-2.915-3.284v.01zm1.908-5.092c-.766-.856-1.908-1.187-2.96-.962-.436.09-.706.511-.616.932.09.42.511.691.932.602.511-.105 1.067.044 1.442.465.376.421.466.977.316 1.473-.136.406.089.856.51.992.405.119.857-.105.992-.512.33-1.021.12-2.178-.646-3.035l.03.045zm2.418-2.195c-1.576-1.757-3.905-2.419-6.054-1.968-.496.104-.812.587-.706 1.081.104.496.586.813 1.082.707 1.532-.331 3.185.15 4.296 1.383 1.112 1.246 1.429 2.943.947 4.416-.165.48.106 1.007.586 1.157.479.165.991-.104 1.157-.586.675-2.088.241-4.478-1.338-6.235l.03.045z"/></svg>'
+            },
+            link: 'https://weibo.com/u/1015039932',
+            ariaLabel: 'weibo'
         }]
     },
     markdown: {
@@ -149,10 +108,6 @@ OjAwz6MktwAAAABJRU5ErkJggg==" />
         theme: {
             light: 'github-light',
             dark: 'github-dark'
-        },
-        config: md => {
-            md.use(sup_plugin);
-            md.use(sub_plugin);
         }
     }
 });

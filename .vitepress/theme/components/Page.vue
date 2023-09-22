@@ -2,13 +2,13 @@
   <div v-for="(article, index) in posts" :key="index" class="post-list">
     <div class="post-header">
       <div class="post-title">
-        <a :href="withBase(article.regularPath)"> {{ article.frontMatter.title }}</a>
+        {{ index + 1 }}.<a :href="withBase(article.regularPath)">{{ article.frontMatter.title }}</a>
       </div>
     </div>
     <p class="describe" v-html="article.frontMatter.description"></p>
     <div class='post-info'>
       {{ article.frontMatter.date }} <span v-for="item in article.frontMatter.tags"><a
-        :href="withBase(`/pages/tags.html?tag=${item}`)"> {{ item }}</a></span>
+        :href="withBase(`/tags.html?tag=${item}`)"> {{ item }}</a></span>
     </div>
   </div>
 
@@ -46,9 +46,22 @@ const props = defineProps({
 }
 
 .post-title {
-  font-size: 1.125rem;
-  font-weight: 500;
+  font-family: "Roboto Condensed", Arial, sans-serif;
+  font-size: 16px;
   margin: 0.1rem 0;
+}
+
+.post-title a {
+  font-weight: 300;
+}
+
+.post-title a:hover, a:active {
+  color: var(--vp-c-brand-1);
+  text-decoration: underline;
+}
+
+.post-title a, a:link, a:active {
+  text-decoration: none;
 }
 
 .post-info {
@@ -79,7 +92,7 @@ const props = defineProps({
 .pagination {
   margin-top: 16px;
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
 }
 
 .link {

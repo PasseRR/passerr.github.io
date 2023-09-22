@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Github Pages搭建个人博客"
-categories: [md, js, style, others]
+tags: [md, js, style, others]
 last_modified_at: 2022-02-21
 toc: true
 ---

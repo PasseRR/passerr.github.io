@@ -29,6 +29,10 @@ async function generatePaginationPages(total, pageSize) {
     //  pagesNum
     let pagesNum = total % pageSize === 0 ? total / pageSize : parseInt(total / pageSize) + 1
     const paths = resolve('./')
+    const exists = await fs.exists(paths + '/blogs');
+    if (!exists) {
+        await fs.mkdirp(paths + '/blogs');
+    }
     if (total > 0) {
         for (let i = 1; i < pagesNum + 1; i++) {
             const page = `
@@ -36,18 +40,19 @@ async function generatePaginationPages(total, pageSize) {
 page: true
 title: ${i === 1 ? '博客' : '博客第' + i + '页'}
 aside: false
+editLink: false
+lastUpdated: false
 ---
 <script setup>
-import Page from "./.vitepress/theme/components/Page.vue";
+${i == 1 ? 'import Page from "./.vitepress/theme/components/Page.vue";' : 'import Page from "./../.vitepress/theme/components/Page.vue";'}
 import { useData } from "vitepress";
 const { theme } = useData();
 const posts = theme.value.posts.slice(${pageSize * (i - 1)},${pageSize * i})
 </script>
 <Page :posts="posts" :pageCurrent="${i}" :pagesNum="${pagesNum}" />
-`.trim()
-            const file = paths + `/blogs/page${i}.md`
-            console.info(file);
-            await fs.writeFile(file, page, 'utf-8')
+`.trim();
+            const file = paths + `/blogs/page${i}.md`;
+            await fs.writeFile(file, page, 'utf-8');
         }
     }
     // rename page1 to index for homepage

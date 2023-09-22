@@ -11,4 +11,4 @@ node_modules
 .vitepress/cache
 .vitepress/dist
 index.md
-page*.md
+blogs

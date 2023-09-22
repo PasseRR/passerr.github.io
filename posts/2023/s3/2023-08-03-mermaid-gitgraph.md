@@ -1,10 +1,8 @@
 ---
-layout: post
 title:  Mermaid之Git版本分支图
-mermaid: true
-categories: [md, others]
-last_modified_at: 2023-08-03
-toc: true
+tags:
+  - markdown
+  - others
 ---
 
 ## Git版本分支图
