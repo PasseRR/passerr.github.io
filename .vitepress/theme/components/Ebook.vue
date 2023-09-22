@@ -1,6 +1,6 @@
 <template>
   <div class="books">
-    <a :href="book.url" v-for="(book, _) in data.books" class="no-icon" target="_blank">
+    <a :href="site.main + book.url" v-for="(book, _) in data.books" class="no-icon" target="_blank">
       <div class="book">
         <div class="book-info">
           <span>{{ book.name }}</span>
