@@ -5,3 +5,8 @@ _site/
 .idea
 .jekyll-cache
 Gemfile.lock
+
+package-lock.json
+node_modules
+.vitepress/cache
+.vitepress/dist
