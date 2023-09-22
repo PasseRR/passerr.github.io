@@ -1,19 +1,16 @@
 ---
-layout: post
 title:  Java双亲委派模型
 categories: [java]
-last_modified_at: 2023-03-24
-toc: true
-mermaid: true
 ---
 
 ## 什么是双亲委派模型？
 
-> 如果一个类收到一个处理请求，他先判断请求是否已经被自己处理过，如果没有则将请求委派给父级处理，
-> 当且仅当父级不存在或者无法处理时，当前这个类才会处理请求，从而避免了重复处理。
-{: .block-tip }
+::: tip  
+如果一个类收到一个处理请求，他先判断请求是否已经被自己处理过，如果没有则将请求委派给父级处理，
+当且仅当父级不存在或者无法处理时，当前这个类才会处理请求，从而避免了重复处理。
+:::
 
-其实双亲委派模型本质上就是设计模式的[责任链模式](https://www.xiehai.zone/DesignPatterns/behavioural/2-1-chain-of-responsibility.html){:target="_blank"}，
+其实双亲委派模型本质上就是设计模式的[责任链模式](https://www.xiehai.zone/DesignPatterns/behavioural/2-1-chain-of-responsibility.html)，
 只是链有一定的顺序，且不能被打乱。
 
 ## 为什么叫双亲委派模型？
@@ -60,25 +57,24 @@ mermaid: true
     | defineClass              | 将字节数组解析为Class对象                                                                                                                                                                                                                                                                                                                                                |
     | findClass                | 需要子类实现，当父加载器无法加载Class时，当前加载器的加载实现，通常和defineClass一起使用                                                                                                                                                                                                                                                                                                           |
     | loadClass                | 加载类的核心方法，也是双亲委派模型的体现                                                                                                                                                                                                                                                                                                                                           |
-    | resolveClass             | 链接Class，注释上这么写的，实际可能没有做任何处理，[JDK8](https://github.com/openjdk/jdk/blob/jdk8-b120/jdk/src/share/classes/java/lang/ClassLoader.java#L960-L964){:target="_blank"}调用了native方法，[JDK9](https://github.com/openjdk/jdk/blob/801281100cbbec62d41c643ee4d79537a8e8992c/jdk/src/java.base/share/classes/java/lang/ClassLoader.java#L1207-L1211){:target="_blank"}只有一个空判断 |
+    | resolveClass             | 链接Class，注释上这么写的，实际可能没有做任何处理，[JDK8](https://github.com/openjdk/jdk/blob/jdk8-b120/jdk/src/share/classes/java/lang/ClassLoader.java#L960-L964)调用了native方法，[JDK9](https://github.com/openjdk/jdk/blob/801281100cbbec62d41c643ee4d79537a8e8992c/jdk/src/java.base/share/classes/java/lang/ClassLoader.java#L1207-L1211)只有一个空判断 |
     | findLoadedClass          | 查找已经被当前ClassLoader加载的Class                                                                                                                                                                                                                                                                                                                                     |
     | findBootstrapClassOrNull | 查找被BootstrapClassLoader加载的Class                                                                                                                                                                                                                                                                                                                                |
 
 在Java中，一个类加载器加载一个类时，除非显示的使用另一个类加载器，否则该类所依赖或者引用的其他类也将由该类加载器加载。
 
-> 关于ClassLoader的**父级**
->
-> 这里的父级不是继承关系，ClassLoader里面的parent其实是组合关系并非继承，
-> 在针对ClassLoader的父级是指**parent**加载器而非~~super~~，当parent为`null`时，则父加载器为BootstrapClassLoader。
-{: .block-warning }
+::: warning 关于ClassLoader的父级
+
+这里的父级不是继承关系，ClassLoader里面的parent其实是组合关系并非继承，
+在针对ClassLoader的父级是指**parent**加载器而非~~super~~，当parent为`null`时，则父加载器为BootstrapClassLoader。
+
+:::
 
 ### 不同ClassLoader各自负责加载哪些类呢？
 
 #### JDK8加载器加载情况
 
-<details class="alert alert-info" role="alert" open>
-<summary markdown="span">代码示例<i class="fa fa-code" aria-hidden="true"></i></summary>
-
+::: details 代码示例
 ~~~java
 public class Main {
     public static void main(String[] args) {
@@ -99,7 +95,7 @@ public class Main {
 
 结果输出
 
-~~~bash
+~~~console
 BootstrapClassLoader加载的路径
 [file:/D:/tools/JDK8/jre/lib/resources.jar, file:/D:/tools/JDK8/jre/lib/rt.jar, file:/D:/tools/JDK8/jre/lib/sunrsasign.jar, file:/D:/tools/JDK8/jre/lib/jsse.jar, file:/D:/tools/JDK8/jre/lib/jce.jar, file:/D:/tools/JDK8/jre/lib/charsets.jar, file:/D:/tools/JDK8/jre/lib/jfr.jar, file:/D:/tools/JDK8/jre/classes]
 ExtClassLoader加载的路径
@@ -108,13 +104,11 @@ AppClassLoader加载的路径
 [file:/D:/tools/JDK8/jre/lib/charsets.jar, file:/D:/tools/JDK8/jre/lib/deploy.jar, file:/D:/tools/JDK8/jre/lib/ext/access-bridge-64.jar, file:/D:/tools/JDK8/jre/lib/ext/cldrdata.jar, file:/D:/tools/JDK8/jre/lib/ext/dnsns.jar, file:/D:/tools/JDK8/jre/lib/ext/jaccess.jar, file:/D:/tools/JDK8/jre/lib/ext/jfxrt.jar, file:/D:/tools/JDK8/jre/lib/ext/localedata.jar, file:/D:/tools/JDK8/jre/lib/ext/nashorn.jar, file:/D:/tools/JDK8/jre/lib/ext/sunec.jar, file:/D:/tools/JDK8/jre/lib/ext/sunjce_provider.jar, file:/D:/tools/JDK8/jre/lib/ext/sunmscapi.jar, file:/D:/tools/JDK8/jre/lib/ext/sunpkcs11.jar, file:/D:/tools/JDK8/jre/lib/ext/zipfs.jar, file:/D:/tools/JDK8/jre/lib/javaws.jar, file:/D:/tools/JDK8/jre/lib/jce.jar, file:/D:/tools/JDK8/jre/lib/jfr.jar, file:/D:/tools/JDK8/jre/lib/jfxswt.jar, file:/D:/tools/JDK8/jre/lib/jsse.jar, file:/D:/tools/JDK8/jre/lib/management-agent.jar, file:/D:/tools/JDK8/jre/lib/plugin.jar, file:/D:/tools/JDK8/jre/lib/resources.jar, file:/D:/tools/JDK8/jre/lib/rt.jar, file:/D:/scm/temp/test/test/target/classes/, file:/C:/Program%20Files/JetBrains/IntelliJ%20IDEA%202022.3.1/lib/idea_rt.jar]
 ~~~
 
-</details>
+:::
 
-#### JDK9加载器[加载模块情况](https://openjdk.org/jeps/261){:target="_blank"}
+#### JDK9加载器[加载模块情况](https://openjdk.org/jeps/261)
 
-<details class="alert alert-info" role="alert" open>
-<summary markdown="span">代码示例<i class="fa fa-code" aria-hidden="true"></i></summary>
-
+::: details 代码示例
 代码运行需要添加`--add-opens=java.base/jdk.internal.loader=ALL-UNNAMED`vm参数
 
 ~~~java
@@ -140,7 +134,7 @@ public class Main {
 
 结果输出
 
-~~~bash
+~~~console
 BootClassLoader加载的模块
 {jdk.management.jfr=[module jdk.management.jfr, location=jrt:/jdk.management.jfr], java.rmi=[module java.rmi, location=jrt:/java.rmi], java.logging=[module java.logging, location=jrt:/java.logging], java.xml=[module java.xml, location=jrt:/java.xml], jdk.jfr=[module jdk.jfr, location=jrt:/jdk.jfr], java.datatransfer=[module java.datatransfer, location=jrt:/java.datatransfer], jdk.httpserver=[module jdk.httpserver, location=jrt:/jdk.httpserver], jdk.net=[module jdk.net, location=jrt:/jdk.net], java.naming=[module java.naming, location=jrt:/java.naming], java.desktop=[module java.desktop, location=jrt:/java.desktop], jdk.management.resource=[module jdk.management.resource, location=jrt:/jdk.management.resource], java.prefs=[module java.prefs, location=jrt:/java.prefs], jdk.naming.rmi=[module jdk.naming.rmi, location=jrt:/jdk.naming.rmi], jdk.snmp=[module jdk.snmp, location=jrt:/jdk.snmp], java.security.sasl=[module java.security.sasl, location=jrt:/java.security.sasl], jdk.management.cmm=[module jdk.management.cmm, location=jrt:/jdk.management.cmm], java.base=[module java.base, location=jrt:/java.base], jdk.management.agent=[module jdk.management.agent, location=jrt:/jdk.management.agent], java.management=[module java.management, location=jrt:/java.management], jdk.sctp=[module jdk.sctp, location=jrt:/jdk.sctp], jdk.unsupported=[module jdk.unsupported, location=jrt:/jdk.unsupported], java.instrument=[module java.instrument, location=jrt:/java.instrument], jdk.management=[module jdk.management, location=jrt:/jdk.management], java.management.rmi=[module java.management.rmi, location=jrt:/java.management.rmi]}
 PlatformClassLoader加载的模块
@@ -149,11 +143,11 @@ AppClassLoader加载的模块
 {jdk.javadoc=[module jdk.javadoc, location=jrt:/jdk.javadoc], jdk.jdi=[module jdk.jdi, location=jrt:/jdk.jdi], jdk.jshell=[module jdk.jshell, location=jrt:/jdk.jshell], jdk.editpad=[module jdk.editpad, location=jrt:/jdk.editpad], jdk.internal.le=[module jdk.internal.le, location=jrt:/jdk.internal.le], jdk.packager=[module jdk.packager, location=jrt:/jdk.packager], jdk.jlink=[module jdk.jlink, location=jrt:/jdk.jlink], jdk.jdwp.agent=[module jdk.jdwp.agent, location=jrt:/jdk.jdwp.agent], jdk.internal.jvmstat=[module jdk.internal.jvmstat, location=jrt:/jdk.internal.jvmstat], jdk.packager.services=[module jdk.packager.services, location=jrt:/jdk.packager.services], jdk.jstatd=[module jdk.jstatd, location=jrt:/jdk.jstatd], jdk.internal.ed=[module jdk.internal.ed, location=jrt:/jdk.internal.ed], jdk.jdeps=[module jdk.jdeps, location=jrt:/jdk.jdeps], jdk.compiler=[module jdk.compiler, location=jrt:/jdk.compiler], jdk.internal.opt=[module jdk.internal.opt, location=jrt:/jdk.internal.opt], jdk.jconsole=[module jdk.jconsole, location=jrt:/jdk.jconsole], jdk.jartool=[module jdk.jartool, location=jrt:/jdk.jartool], jdk.attach=[module jdk.attach, location=jrt:/jdk.attach]}
 ~~~
 
-</details>
+:::
 
 ### Java类加载机制
 
-Java ClassLoader加载类流程如下，即[loadClass](https://github.com/openjdk/jdk/blob/801281100cbbec62d41c643ee4d79537a8e8992c/jdk/src/java.base/share/classes/java/lang/ClassLoader.java#L540-L576){:target="_blank"}方法流程。
+Java ClassLoader加载类流程如下，即[loadClass](https://github.com/openjdk/jdk/blob/801281100cbbec62d41c643ee4d79537a8e8992c/jdk/src/java.base/share/classes/java/lang/ClassLoader.java#L540-L576)方法流程。
 
 ```mermaid
 flowchart TD
@@ -171,14 +165,11 @@ flowchart TD
     resolve -->|否| stop[返回加载的Class]
     step7 --> stop
 ```
-{: align="center" }
 
 按照双亲委派的定义，Java为了避免类的重复加载以及避免JDK核心开发库被覆盖使用了双亲委派来进行类的加载，自下而上委派，自上而下加载，
 保证一个类在每个类加载器中都是同一个。
 
-<details class="alert alert-info" role="alert">
-<summary markdown="span">自定义java.lang.Object类<i class="fa fa-code" aria-hidden="true"></i></summary>
-
+::: details 自定义java.lang.Object类
 ~~~java
 package java.lang;
 
@@ -191,13 +182,13 @@ public class Object {
 
 运行结果
 
-~~~bash
+~~~console
 错误: 在类 java.lang.Object 中找不到 main 方法, 请将 main 方法定义为:
    public static void main(String[] args)
 否则 JavaFX 应用程序类必须扩展javafx.application.Application
 ~~~
 
-</details>
+:::
 
 ### 类的卸载
 
@@ -224,14 +215,12 @@ public class Object {
 
 简单来说，有两种方法打破双亲委派，`自定义类装载器`或者`使用线程上线文类装载器`。
 
-### 案例一 [Arthas](https://github.com/alibaba/arthas){:target="_blank"}应用隔离
+### 案例一 [Arthas](https://github.com/alibaba/arthas)应用隔离
 
 按照前面类加载机制所讲的流程，要打破自定义的ClassLoader的双亲委派，只需重写`loadClass`方法，使其不向上委派即可。
-Arthas的[agent](https://github.com/alibaba/arthas/blob/master/agent/src/main/java/com/taobao/arthas/agent/ArthasClassloader.java){:target="_blank"}和[attach agent](https://github.com/alibaba/arthas/blob/master/arthas-agent-attach/src/main/java/com/taobao/arthas/agent/attach/AttachArthasClassloader.java){:target="_blank"}通过重写loadClass方法实现类加载隔离。
+Arthas的[agent](https://github.com/alibaba/arthas/blob/master/agent/src/main/java/com/taobao/arthas/agent/ArthasClassloader.java)和[attach agent](https://github.com/alibaba/arthas/blob/master/arthas-agent-attach/src/main/java/com/taobao/arthas/agent/attach/AttachArthasClassloader.java)通过重写loadClass方法实现类加载隔离。
 
-<details class="alert alert-info" role="alert" open>
-<summary markdown="span">代码示例<i class="fa fa-code" aria-hidden="true"></i></summary>
-
+::: details 代码示例
 ~~~java
 public class ArthasClassloader extends URLClassLoader {
     public ArthasClassloader(URL[] urls) {
@@ -263,7 +252,7 @@ public class ArthasClassloader extends URLClassLoader {
 }
 ~~~
 
-</details>
+:::
 
 ### 案例二 JDBC驱动加载
 
@@ -274,7 +263,7 @@ public class ArthasClassloader extends URLClassLoader {
 自JDK1.2开始，引入了线程上下文类加载器，就是为了解决SPI类似的问题，提供商实现的Driver由线程上线文类加载器加载。
 在JDK8中，DriverManager是静态块初始化加载，JDK9中使用的是懒加载，使用的时候才加载Driver，原理都是一样。
 
-- [DriverManager](https://github.com/openjdk/jdk/blob/jdk8-b120/jdk/src/share/classes/java/sql/DriverManager.java#L567-L628){:target="_blank"}
+- [DriverManager](https://github.com/openjdk/jdk/blob/jdk8-b120/jdk/src/share/classes/java/sql/DriverManager.java#L567-L628)
 
     ```java
     public class DriverManager {
@@ -353,7 +342,7 @@ public class ArthasClassloader extends URLClassLoader {
     }
     ```
 
-- [ServiceLoader](https://github.com/openjdk/jdk/blob/jdk8-b120/jdk/src/share/classes/java/util/ServiceLoader.java#L536-L539){:target="_blank"}
+- [ServiceLoader](https://github.com/openjdk/jdk/blob/jdk8-b120/jdk/src/share/classes/java/util/ServiceLoader.java#L536-L539)
 
     ```java
     public static <S> ServiceLoader<S> load(Class<S> service) {
@@ -363,7 +352,7 @@ public class ArthasClassloader extends URLClassLoader {
     }
     ```
 
-- [线程上下文类加载器](https://github.com/openjdk/jdk/blob/jdk8-b120/jdk/src/share/classes/java/lang/Thread.java#L1429-L1469){:target="_blank"}
+- [线程上下文类加载器](https://github.com/openjdk/jdk/blob/jdk8-b120/jdk/src/share/classes/java/lang/Thread.java#L1429-L1469)
 
     ```java
     public class Thread implements Runnable {
@@ -391,7 +380,7 @@ public class ArthasClassloader extends URLClassLoader {
     }
     ```
 
-- [线程上下文类加载器的初始化](https://github.com/openjdk/jdk/blob/jdk8-b120/jdk/src/share/classes/sun/misc/Launcher.java#L86){:target="_blank"}
+- [线程上下文类加载器的初始化](https://github.com/openjdk/jdk/blob/jdk8-b120/jdk/src/share/classes/sun/misc/Launcher.java#L86)
 
     ```java
     public Launcher() {
@@ -436,7 +425,7 @@ public class ArthasClassloader extends URLClassLoader {
     }
     ```
 
-### 案例三 [Tomcat](https://github.com/apache/tomcat){:target="_blank"}的web应用类加载隔离
+### 案例三 [Tomcat](https://github.com/apache/tomcat)的web应用类加载隔离
 
 ```mermaid
 flowchart BT
@@ -460,11 +449,11 @@ click H "https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/jasper/serv
 | common                                                                                                                                                                                                                                                                                              | 类似jvm的BootstrapClassLoader，加载tomcat的基础库                       |
 | server                                                                                                                                                                                                                                                                                              | 加载tomcat容器本身运行库                                               |
 | shared                                                                                                                                                                                                                                                                                              | 加载所有web服务依赖的公共库                                               |
-| [WebappClassLoader](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/catalina/loader/WebappClassLoader.java){:target="_blank"}/[ParallelWebappClassLoader](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/catalina/loader/ParallelWebappClassLoader.java){:target="_blank"} | 加载web应用下WEB-INF/lib和WEB-INF/classes，每个web应用一个独立加载器实例，应用相互之间隔离 |
-| [JasperLoader](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/jasper/servlet/JasperLoader.java){:target="_blank"}                                                                                                                                                                      | 用于加载编译后的jsp servlet类，每个web应用独有                                |
+| [WebappClassLoader](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/catalina/loader/WebappClassLoader.java)/[ParallelWebappClassLoader](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/catalina/loader/ParallelWebappClassLoader.java) | 加载web应用下WEB-INF/lib和WEB-INF/classes，每个web应用一个独立加载器实例，应用相互之间隔离 |
+| [JasperLoader](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/jasper/servlet/JasperLoader.java)                                                                                                                                                                      | 用于加载编译后的jsp servlet类，每个web应用独有                                |
 
-Tomcat在[Bootstrap](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/catalina/startup/Bootstrap.java#L144-L158){:target="_blank"}中初始化3个分别名为common、server、shared的URLClassLoader，
-并在[初始化](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/catalina/startup/Bootstrap.java#L252-L281){:target="_blank"}时通过反射将shared设为Servlet容器(Catalina)的父级类加载器。
+Tomcat在[Bootstrap](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/catalina/startup/Bootstrap.java#L144-L158)中初始化3个分别名为common、server、shared的URLClassLoader，
+并在[初始化](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/catalina/startup/Bootstrap.java#L252-L281)时通过反射将shared设为Servlet容器(Catalina)的父级类加载器。
 
 - common、server、shared类加载器初始化
     ```java
@@ -524,7 +513,7 @@ Tomcat在[Bootstrap](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache
     }
     ```
 
-- [WebappLoader](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/catalina/loader/WebappLoader.java#L391-L434){:target="_blank"}初始化WebAppClassLoader
+- [WebappLoader](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/catalina/loader/WebappLoader.java#L391-L434)初始化WebAppClassLoader
 
     ```java
     protected void startInternal() throws LifecycleException {
@@ -606,7 +595,7 @@ Tomcat在[Bootstrap](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache
     }
     ```
 
-- [WebappClassLoaderBase](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/catalina/loader/WebappClassLoaderBase.java){:target="_blank"}
+- [WebappClassLoaderBase](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/catalina/loader/WebappClassLoaderBase.java)
 
   WebappClassLoaderBase是WebappClassLoader和ParallelWebappClassLoader的父类，包括对生命周期Lifecycle和类加载核心逻辑的实现。
 
@@ -958,9 +947,8 @@ Tomcat在[Bootstrap](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache
   - 热部署实现
     
     Tomcat在修改资源文件、classes、lib后，可以不用重启就可以热加载变化，就是通过实现生命周期实现的，热加载就是stop后再start。
-    <details class="alert alert-info" role="alert">
-    <summary markdown="span">源码分析<i class="fa fa-code" aria-hidden="true"></i></summary>
-
+    ::: details 源码分析
+    
     ```java
     /**
      * 后台检测是否发生了变化 如果发生了变化 就触发reload
@@ -1070,11 +1058,11 @@ Tomcat在[Bootstrap](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache
     }
     ```
     
-    </details>
+    :::
     
-[comment]:<>(双亲委派模型 https://blog.csdn.net/u013490280/article/details/107993822)
-[comment]:<>(Tomcat为什么要JAVA破坏双亲委派机制 https://www.zhihu.com/question/466696410)
-[comment]:<>(JDBC、Tomcat为什么要破坏双亲委派模型 https://www.cnblogs.com/lyc88/articles/11431383.html)
-[comment]:<>(说说如何打破或违反双亲委派 https://cloud.tencent.com/developer/article/1912178)
-[comment]:<>(说说如何打破或违反双亲委派 https://cloud.tencent.com/developer/article/1912178)
-[comment]:<>(JVM线程上下文类加载器 https://blog.csdn.net/qq_21480147/article/details/124944419)
+<!-- 双亲委派模型 https://blog.csdn.net/u013490280/article/details/107993822 -->
+<!-- Tomcat为什么要JAVA破坏双亲委派机制 https://www.zhihu.com/question/466696410 -->
+<!-- JDBC、Tomcat为什么要破坏双亲委派模型 https://www.cnblogs.com/lyc88/articles/11431383.html -->
+<!-- 说说如何打破或违反双亲委派 https://cloud.tencent.com/developer/article/1912178 -->
+<!-- 说说如何打破或违反双亲委派 https://cloud.tencent.com/developer/article/1912178 -->
+<!-- JVM线程上下文类加载器 https://blog.csdn.net/qq_21480147/article/details/124944419 -->

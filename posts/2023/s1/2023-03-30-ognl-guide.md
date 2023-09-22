@@ -1,19 +1,16 @@
 ---
-layout: post
 title:  OGNL语法介绍
-categories: [java]
-last_modified_at: 2023-03-30
-toc: true
+tags: [java]
 ---
 
 ## 什么是OGNL?
 
-> [**来源官方**](https://commons.apache.org/proper/commons-ognl/index.html){:target="_blank"}
->
-> OGNL stands for Object-Graph Navigation Language; it is an expression language for getting and setting properties of
-> Java objects,
-> plus other extras such as list projection and selection and lambda expressions.
-{: .block-tip }
+::: tip [**来源官方**](https://commons.apache.org/proper/commons-ognl/index.html)
+
+OGNL stands for Object-Graph Navigation Language; it is an expression language for getting and setting properties of
+Java objects,
+plus other extras such as list projection and selection and lambda expressions.
+:::
 
 OGNL(Object-Graph Navigation Language)是对象导航图语言，是一种用于java对象get、set属性以及其他额外的投影、选择过滤、lambda表达式的的表达式语言。
 
@@ -21,12 +18,12 @@ OGNL读为`orthogonal`[ɔ:'θɒgənl]。
 
 ## Java中有哪些常见的框架/项目使用了OGNL?
 
-- [Struts2](https://struts.apache.org/index.html){:target="_blank"}
-- [Spring Web Flow](https://spring.io/projects/spring-webflow){:target="_blank"}
-- [**Mybatis**](https://mybatis.org/mybatis-3/){:target="_blank"}
-- [**FreeMarker**](https://freemarker.apache.org/){:target="_blank"}
-- [**Thymeleaf**](https://www.thymeleaf.org/){:target="_blank"}
-- [**Arthas**](https://arthas.aliyun.com/){:target="_blank"}
+- [Struts2](https://struts.apache.org/index.html)
+- [Spring Web Flow](https://spring.io/projects/spring-webflow)
+- [**Mybatis**](https://mybatis.org/mybatis-3/)
+- [**FreeMarker**](https://freemarker.apache.org/)
+- [**Thymeleaf**](https://www.thymeleaf.org/)
+- [**Arthas**](https://arthas.aliyun.com/)
 
 ## 常量
 
@@ -96,11 +93,12 @@ OGNL读为`orthogonal`[ɔ:'θɒgənl]。
 - 获得key的值
   `#map.foo`、`#map["foo"]`、`#map.get("foo")`
 
-  > **注意**
-  >
-  > 当存在key与map的方法冲突时，使用`#map.values`实际返回结果是map的值集合而非`"values value"`，
-  > 所以精确访问key的值建议使用后两种方式
-  {: .block-warning }
+  ::: danger 注意
+
+  当存在key与map的方法冲突时，使用`#map.values`实际返回结果是map的值集合而非`"values value"`，
+  所以精确访问key的值建议使用后两种方式
+
+  :::
 
 - 访问无参方法
 
@@ -145,10 +143,11 @@ ognl对象声明脚本`#person = new Person(), #person.name="张三", #person.ag
 
 `#`后面跟变量定义
 
-> **注意**
->
-> `#`也用于map定义，`#map=#{"foo": "foo value", "bar": "bar value"}`
-> {: .block-warning }
+::: danger 注意
+
+`#`也用于map定义，`#map=#{"foo": "foo value", "bar": "bar value"}`
+
+:::
 
 - `#integer=1`
 - `#big=1H`
@@ -274,51 +273,51 @@ OGNL可以强制object转为布尔、数字、整数、集合。
 
 ## 附录(OGNL中的操作符)
 
-| 操作符                                            | 描述               | 结果值描述                                       | 
-|:-----------------------------------------------|:-----------------|:--------------------------------------------|
-| e1 `,` e2                                      | 序列               | e1、e2表达式都会执行，结果为e2                          | 
-| e1 `=` e2                                      | 赋值               | 执行e2，赋值e1，结果为e2                             | 
-| e1 `?` e2 `:` e3                               | 三元条件操作符          | 执行e1，根据结果为true/false决定执行并返回结果e2/e3          |
-| e1 <code>&#124;&#124;</code> e2<br> e1 `or` e2 | 逻辑或              | 如果e1为true则只执行e1，否则再执行e2，结果为其中真值             | 
-| e1 `&&` e2<br> e1 `and` e2                     | 逻辑与              | 如果e1为false则只执行e1并返回结果e1，否则再执行e2并返回e2        | 
-| `!` e <br> `not` e                             | 逻辑非              | 将e解释为布尔值后取反则为结果                             |
-| e1 <code>&#124;</code> e2<br> e1 `bor` e2      | 位运算或             | 将e1和e2解释为整型并进行或运算结果                         |
-| e1 `^` e2<br> e1 `xor` e2                      | 位运算异或            | 将e1和e2解释为整型并进行异或运算结果                        |
-| e1 `&` e2<br> e1 `band` e2                     | 位运算与             | 将e1和e2解释为整型并进行与运算结果                         |
-| `~` e                                          | 位运算非             | 将e解释为整型并进行非运算结果                             |
-| e1 `<<` e2 <br> e1 `shl` e2                    | 位运算左移            | 将e1、e2解释为整型并左移运算结果                          |
-| e1 `>>` e2 <br> e1 `shr` e2                    | 位运算右移            | 将e1、e2解释为整型并右移运算结果                          |
-| e1 `>>>` e2 <br> e1 `ushr` e2                  | 位运算无符号右移         | 将e1、e2解释为整型并无符号右移运算结果                       |
-| e1 `+` e2                                      | 和运算              | 将e1、e2解释为整型并求和运算结果，若是字符串则结果为字符串拼接结果         |
-| e1 `-` e2                                      | 差运算              | 将e1、e2解释为整型并求差运算结果                          |
-| e1 `*` e2                                      | 乘运算              | 将e1、e2解释为整型并求乘积运算结果                         |
-| e1 `/` e2                                      | 除运算              | 将e1、e2解释为整型并求商运算结果                          |
-| e1 `%` e1                                      | 余运算              | 将e1、e2解释为整型并求余运算结果                          |
-| `+` e                                          | 正数符号             | 表示正数                                        |
-| `-` e                                          | 负数符号             | 表示负数                                        |
-| e1 `<` e2 <br> e1 `lt` e2                      | 小于               | 将e1、e2通过compareTo方法比较，结果为布尔值                |
-| e1 `<=` e2 <br> e1 `lte` e2                    | 小于等于             | 将e1、e2通过compareTo方法比较，结果为布尔值                |
-| e1 `>` e2 <br> e1 `gt` e2                      | 大于               | 将e1、e2通过compareTo方法比较，结果为布尔值                |
-| e1 `>=` e2 <br> e1 `gte` e2                    | 大于等于             | 将e1、e2通过compareTo方法比较，结果为布尔值                |
-| e1 `in` e2                                     | 包含               | 集合e2是否包含e1元素，结果为布尔值                         |
-| e1 `not in` e2                                 | 不包含              | 集合e2是否不包含e1元素，结果为布尔值                        |
-| e1 `==` e2 <br> e1 `eq` e2                     | equals           | 同java中Object的equals方法，结果为布尔值                |
-| e1 `!=` e2 <br> e1 `neq` e2                    | not equals       | 同java中Object的equals方法取反，结果为布尔值              |
-| e `instanceof` class                           | 判断实例是否是给定class类型 | 结果为布尔值，class必须是全名称                          |
-| e`.`method(args)                               | 方法调用             | 结果为方法返回值                                    |
-| e`.`property                                   | 属性值获取            | 结果为属性值                                      |
-| `@`class_name`@`method(args)                   | 静态方法调用           | 类名为全名，结果为方法调用结果                             |
-| `@`class_name`@`field                          | 静态字段访问           | 类名为全名，结果为字段值                                |
-| e1`[`e2`]`                                     | 索引               | 获得集合、数组索引位置的值                               |
-| e1`.{` e2 `}`                                  | 投影               | 集合投影                                        |
-| e1`.{?` e2 `}`                                 | 选择               | 集合选择过滤                                      |
-| e1`.{^` e2 `}`                                 | 选择第一个            | 集合过滤选择满足条件的第一个元素                            |
-| e1`.{$` e2 `}`                                 | 选择最后一个           | 集合过滤选择满足条件的最后一个元素                           |
-| e1`.(` e2, e3, e4 `)`                          | 子表达式             | 执行e1后执行e2、e3、e4子表达式，结果为e4                   |
-| e1`(` e2, e3, e4 `)`                           | 表达式执行            | 执行e1后执行e2、e3、e4子表达式，结果为e1                   |
-| `#`variable                                    | 变量引用/声明          | 变量引用/声明                                     |
-| `new` type`[]{` e, ... `}`                     | 数组创建             | 创建一个数组， type为任意类型                           |
-| `{` e, ... `}`                                 | 列表创建             | 创建一个列表，结果为ArrayList                         |
-| `#{` k1: v1, k2: v2, ... `}`                   | Map创建            | 创建一个Map，结果为LinkedHashMap                    |
-| `#@`class_name`@{` k1: v1, k2: v2, ... `}`     | 指定Map类型创建        | 类名为全名，如#@java.util.HashMap@{k1: v1, k2: v2} |
-| `:[` e `]`                                     | lambda表达式定义      | 如上的阶乘定义                                     |
+| 操作符                                            | 描述               | 结果值描述                                                          | 
+|:-----------------------------------------------|:-----------------|:---------------------------------------------------------------|
+| e1 `,` e2                                      | 序列               | e1、e2表达式都会执行，结果为e2                                             | 
+| e1 `=` e2                                      | 赋值               | 执行e2，赋值e1，结果为e2                                                | 
+| e1 `?` e2 `:` e3                               | 三元条件操作符          | 执行e1，根据结果为true/false决定执行并返回结果e2/e3                             |
+| e1 <code>&#124;&#124;</code> e2<br> e1 `or` e2 | 逻辑或              | 如果e1为true则只执行e1，否则再执行e2，结果为其中真值                                | 
+| e1 `&&` e2<br> e1 `and` e2                     | 逻辑与              | 如果e1为false则只执行e1并返回结果e1，否则再执行e2并返回e2                           | 
+| `!` e <br> `not` e                             | 逻辑非              | 将e解释为布尔值后取反则为结果                                                |
+| e1 <code>&#124;</code> e2<br> e1 `bor` e2      | 位运算或             | 将e1和e2解释为整型并进行或运算结果                                            |
+| e1 `^` e2<br> e1 `xor` e2                      | 位运算异或            | 将e1和e2解释为整型并进行异或运算结果                                           |
+| e1 `&` e2<br> e1 `band` e2                     | 位运算与             | 将e1和e2解释为整型并进行与运算结果                                            |
+| `~` e                                          | 位运算非             | 将e解释为整型并进行非运算结果                                                |
+| e1 `<<` e2 <br> e1 `shl` e2                    | 位运算左移            | 将e1、e2解释为整型并左移运算结果                                             |
+| e1 `>>` e2 <br> e1 `shr` e2                    | 位运算右移            | 将e1、e2解释为整型并右移运算结果                                             |
+| e1 `>>>` e2 <br> e1 `ushr` e2                  | 位运算无符号右移         | 将e1、e2解释为整型并无符号右移运算结果                                          |
+| e1 `+` e2                                      | 和运算              | 将e1、e2解释为整型并求和运算结果，若是字符串则结果为字符串拼接结果                            |
+| e1 `-` e2                                      | 差运算              | 将e1、e2解释为整型并求差运算结果                                             |
+| e1 `*` e2                                      | 乘运算              | 将e1、e2解释为整型并求乘积运算结果                                            |
+| e1 `/` e2                                      | 除运算              | 将e1、e2解释为整型并求商运算结果                                             |
+| e1 `%` e1                                      | 余运算              | 将e1、e2解释为整型并求余运算结果                                             |
+| `+` e                                          | 正数符号             | 表示正数                                                           |
+| `-` e                                          | 负数符号             | 表示负数                                                           |
+| e1 `<` e2 <br> e1 `lt` e2                      | 小于               | 将e1、e2通过compareTo方法比较，结果为布尔值                                   |
+| e1 `<=` e2 <br> e1 `lte` e2                    | 小于等于             | 将e1、e2通过compareTo方法比较，结果为布尔值                                   |
+| e1 `>` e2 <br> e1 `gt` e2                      | 大于               | 将e1、e2通过compareTo方法比较，结果为布尔值                                   |
+| e1 `>=` e2 <br> e1 `gte` e2                    | 大于等于             | 将e1、e2通过compareTo方法比较，结果为布尔值                                   |
+| e1 `in` e2                                     | 包含               | 集合e2是否包含e1元素，结果为布尔值                                            |
+| e1 `not in` e2                                 | 不包含              | 集合e2是否不包含e1元素，结果为布尔值                                           |
+| e1 `==` e2 <br> e1 `eq` e2                     | equals           | 同java中Object的equals方法，结果为布尔值                                   |
+| e1 `!=` e2 <br> e1 `neq` e2                    | not equals       | 同java中Object的equals方法取反，结果为布尔值                                 |
+| e `instanceof` class                           | 判断实例是否是给定class类型 | 结果为布尔值，class必须是全名称                                             |
+| e`.`method(args)                               | 方法调用             | 结果为方法返回值                                                       |
+| e`.`property                                   | 属性值获取            | 结果为属性值                                                         |
+| `@`class_name`@`method(args)                   | 静态方法调用           | 类名为全名，结果为方法调用结果                                                |
+| `@`class_name`@`field                          | 静态字段访问           | 类名为全名，结果为字段值                                                   |
+| e1`[`e2`]`                                     | 索引               | 获得集合、数组索引位置的值                                                  |
+| e1`.{` e2 `}`                                  | 投影               | 集合投影                                                           |
+| e1`.{?` e2 `}`                                 | 选择               | 集合选择过滤                                                         |
+| e1`.{^` e2 `}`                                 | 选择第一个            | 集合过滤选择满足条件的第一个元素                                               |
+| e1`.{$` e2 `}`                                 | 选择最后一个           | 集合过滤选择满足条件的最后一个元素                                              |
+| e1`.(` e2, e3, e4 `)`                          | 子表达式             | 执行e1后执行e2、e3、e4子表达式，结果为e4                                      |
+| e1`(` e2, e3, e4 `)`                           | 表达式执行            | 执行e1后执行e2、e3、e4子表达式，结果为e1                                      |
+| `#`variable                                    | 变量引用/声明          | 变量引用/声明                                                        |
+| `new` type`[]{` e, ... `}`                     | 数组创建             | 创建一个数组， type为任意类型                                              |
+| `{` e, ... `}`                                 | 列表创建             | 创建一个列表，结果为ArrayList                                            |
+| `#{` k1: v1, k2: v2, ... `}`                   | Map创建            | 创建一个Map，结果为LinkedHashMap                                       |
+| `#@`class_name`@{`k1: v1, k2: v2, ...`}`       | 指定Map类型创建        | 类名为全名，如<span v-pre>#@java.util.HashMap@{k1: v1, k2: v2}</span> |
+| `:[` e `]`                                     | lambda表达式定义      | 如上的阶乘定义                                                        |

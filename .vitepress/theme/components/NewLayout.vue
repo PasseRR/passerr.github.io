@@ -46,4 +46,9 @@ const parseDate = str => {
   border-radius: 2px;
   color: var(--vp-c-text-1);
 }
+
+.post-info a {
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+}
 </style>

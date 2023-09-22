@@ -63,4 +63,15 @@ const toggleTag = (tag: string) => {
         font-size: 0.75rem;
     }
 }
+
+.posts {
+  font-weight: 500;
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+}
+
+.posts:hover, .posts:active {
+  color: var(--vp-c-brand-1);
+  text-decoration: underline;
+}
 </style>

@@ -40,7 +40,6 @@
 .content a[rel~='noreferrer']:link, a[rel~='noreferrer']:visited {
     color: var(--vp-c-brand);
     font-weight: 500 !important;
-    border-bottom: 1px solid var(--vp-c-brand);
 }
 
 .content a[rel~='noreferrer']:hover {

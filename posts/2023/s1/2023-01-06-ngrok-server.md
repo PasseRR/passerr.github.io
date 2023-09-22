@@ -1,9 +1,6 @@
 ---
-layout: post
 title:  ngrok使用及自己搭建服务器
-categories: [operation]
-last_modified_at: 2023-01-06
-toc: true
+tags: [运维]
 ---
 
 ## ngrok作用
@@ -15,11 +12,11 @@ toc: true
 1. [帐号注册](https://ngrok.com)并登录
 2. 下载响应的ngrok客户端
 
-   [![][1]][1]{:target="_blank"}
+   [![p1][1]][1]{target=_blank class=no-icon}
 
 3. 复制授权码并在终端执行以下命令
 
-   [![][2]][2]{:target="_blank"}
+   [![p2][2]][2]{target=_blank class=no-icon}
 
     ```shell
     ngrok config add-authtoken token
@@ -33,7 +30,7 @@ toc: true
     ngrok help
     ```
 
-   [![][3]][3]{:target="_blank"}
+   [![p3][3]][3]{target=_blank class=no-icon}
 
    通过终端的域名地址直接访问本地服务，由于使用的是免费版本，不能自定义域名，每次启动服务域名地址都不一样。
 
@@ -47,7 +44,7 @@ toc: true
 yum install git
 ```
 
-#### 1.2 [go sdk](https://go.dev/dl/){:target="_blank"}安装
+#### 1.2 [go sdk](https://go.dev/dl/)安装
 
 ```shell
 # sdk下载、解压
@@ -70,7 +67,7 @@ yum install gcc
 
 ### 2. 源代码打包
 
-#### 2.1 [ngrok](https://github.com/inconshreveable/ngrok){:target="_blank"}代码克隆
+#### 2.1 [ngrok](https://github.com/inconshreveable/ngrok)代码克隆
 
 ```shell
 git clone git@github.com:inconshreveable/ngrok.git
@@ -125,7 +122,7 @@ GOOS=linux GOARCH=arm make release-client
 1. package code.google.com/p/log4go: unrecognized import path "code.google.com/p/log4go":
    parse https://code.google.com/p/log4go?go-get=1: no go-import meta tags ()
 
-   [参考](https://www.cnblogs.com/52php/p/6810115.html){:target="_blank"}
+   [参考](https://www.cnblogs.com/52php/p/6810115.html)
     ```shell
     cd ngrok
     mkdir -p code.google.com/p
@@ -192,11 +189,11 @@ ngrok.exe -config=ngrok.cfg 80
 ngrok.exe -subdomain web -config=ngrok.cfg 80
 ```
 
-[![][4]][4]{:target="_blank"}
+[![p4][4]][4]{target=_blank class=no-icon}
 
 图片中ngrokd仅开启了http协议，以上，完成了私有ngrok的编译部署。
 
-[1]: {{ site.cdn }}/assets/2023/01-06/ngrok-cloud-download.png "cloud-download"
-[2]: {{ site.cdn }}/assets/2023/01-06/ngrok-cloud-token.png "cloud-token"
-[3]: {{ site.cdn }}/assets/2023/01-06/ngrok-cloud-terminal.png "cloud-terminal"
-[4]: {{ site.cdn }}/assets/2023/01-06/ngrok.png "ngrok"
+[1]: /assets/2023/01-06/ngrok-cloud-download.png "cloud-download"
+[2]: /assets/2023/01-06/ngrok-cloud-token.png "cloud-token"
+[3]: /assets/2023/01-06/ngrok-cloud-terminal.png "cloud-terminal"
+[4]: /assets/2023/01-06/ngrok.png "ngrok"
