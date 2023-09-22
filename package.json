@@ -20,5 +20,8 @@
     "typescript": "^5.2.2",
     "vitepress": "^1.0.0-rc.4",
     "vitepress-plugin-mermaid": "^2.0.14"
+  },
+  "dependencies": {
+    "@giscus/vue": "^2.3.0"
   }
 }

@@ -16,12 +16,27 @@
       <br/>
     </template>
     <template v-if="frontmatter.page !== true" #doc-after>
-      comment
+      <Giscus
+          repo="PasseRR/passerr.github.io"
+          repo-id="MDEwOlJlcG9zaXRvcnk5MTc3MTIzOQ=="
+          category="Announcements"
+          category-id="DIC_kwDOBXhRZ84CZgw9"
+          :term="page.relativePath"
+          strict="0"
+          reactions-enabled="1"
+          emit-metadata="0"
+          input-position="bottom"
+          theme="light"
+          lang="zh-CN"
+          crossorigin="anonymous"
+          loading="lazy"
+      />
     </template>
   </Layout>
 </template>
 <script setup>
-import DefaultTheme from 'vitepress/theme'
+import DefaultTheme from 'vitepress/theme';
+import Giscus from '@giscus/vue';
 import {useData, withBase} from "vitepress";
 
 const {Layout} = DefaultTheme
