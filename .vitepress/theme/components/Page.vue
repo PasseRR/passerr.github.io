@@ -1,16 +1,14 @@
 <template>
-  <div v-for="(article, index) in posts" :key="index" class="post-list">
-    <div class="post-header">
-      <div class="post-title">
-        {{ index + 1 }}.<a :href="withBase(article.regularPath)">{{ article.frontMatter.title }}</a>
-      </div>
+  <ol>
+    <div v-for="(article, index) in posts" :key="index" class="post-list">
+      <li>
+        <div class="post-title">
+          <a :href="withBase(article.regularPath)">{{ article.frontMatter.title }}</a>
+          <span class="date">»{{ article.frontMatter.date }}</span>
+        </div>
+      </li>
     </div>
-    <p class="describe" v-html="article.frontMatter.description"></p>
-    <div class='post-info'>
-      {{ article.frontMatter.date }} <span v-for="item in article.frontMatter.tags"><a
-        :href="withBase(`/tags.html?tag=${item}`)"> {{ item }}</a></span>
-    </div>
-  </div>
+  </ol>
 
   <div class="pagination">
     <a
@@ -18,7 +16,7 @@
         :class="{ active: pageCurrent === i }"
         v-for="i in pagesNum"
         :key="i"
-        :href="withBase(i === 1 ? '/index.html' : `/blogs/page${i}.html`)"
+        :href="withBase(i === 1 ? '/index.html' : `/blogs/${i}.html`)"
     >{{ i }}</a>
   </div>
 </template>
@@ -36,7 +34,7 @@ const props = defineProps({
 <style scoped>
 .post-list {
   border-bottom: 1px dashed var(--vp-c-divider-light);
-  padding: 14px 0 14px 0;
+  padding: 5px 0 5px 0;
 }
 
 .post-header {
@@ -99,15 +97,15 @@ const props = defineProps({
   display: inline-block;
   width: 24px;
   text-align: center;
-  border: 1px var(--vp-c-divider-light) solid;
-  border-right: none;
+  border: 1px solid #ddd;
   font-weight: 400;
 }
 
 .link.active {
-  background: var(--vp-c-text-1);
+  /*background: var(--vp-c-brand-1);*/
+  background: #428bca;
   color: var(--vp-c-neutral-inverse);
-  border: 1px solid var(--vp-c-text-1) !important;
+  border: 1px solid var(--vp-c-brand-1) !important;
 }
 
 .link:first-child {
@@ -123,7 +121,7 @@ const props = defineProps({
 
 @media screen and (max-width: 768px) {
   .post-list {
-    padding: 14px 0 14px 0;
+    padding: 4px 0 4px 0;
   }
 
   .post-header {

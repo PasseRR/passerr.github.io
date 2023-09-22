@@ -4,7 +4,7 @@ import fg from 'fast-glob'
 const site = {
     main: 'https://www.xiehai.zone',
     logo: 'logo.jpg',
-    pageSize: 10,
+    pageSize: 17,
     // 标题
     title: 'PasseRR\'s Blog',
     // 描述

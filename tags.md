@@ -1,7 +1,6 @@
 ---
 page: true
-title: Tags
-description: Tags
+title: 博客标签
 aside: false
 editLink: false
 lastUpdated: false

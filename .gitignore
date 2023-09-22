@@ -1,11 +1,4 @@
-_site/
-.sass-cache
-.jekyll-metadata
-*backup/
 .idea
-.jekyll-cache
-Gemfile.lock
-
 package-lock.json
 node_modules
 .vitepress/cache
