@@ -1,65 +1,83 @@
 ---
-layout: post
 title:  "使用Spock完成单元测试"
-categories: [java]
-last_modified_at: 2022-03-04
-toc: true
+tags: [java, groovy]
 ---
+
 ## 前言
-### 单元测试是什么?   
-> 单元测试（英语：Unit Testing）又称为模块测试, 是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。   ------引用自[维基百科](https://zh.wikipedia.org/wiki/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95)  
 
-### 关于单元测试   
-java单元测试用的比较多的如jUnit,testng等。单元测试代码总是充斥着各种when(),any(),return(),加上java本身就是一种啰嗦的语言,使得写单元测试成为了一件体力活。不同的人写出来的单元测试也是五花八门：      
+### 单元测试是什么?
 
-* 直接使用Main函数   
-* 不使用Assert而使用Sysout.out.println()   
-* 一个单元测试函数几百行   
+> 单元测试（英语：Unit Testing）又称为模块测试,
+> 是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。
+> 
+> 引用自[维基百科](https://zh.wikipedia.org/wiki/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95)
 
-最终使得单元测试代码难以阅读、维护与理解,如同鸡肋一般食之无味弃之可惜.   
-### 单元测试的难点      
+### 关于单元测试
+
+java单元测试用的比较多的如jUnit,testng等。单元测试代码总是充斥着各种when(),any(),return()
+,加上java本身就是一种啰嗦的语言,使得写单元测试成为了一件体力活。不同的人写出来的单元测试也是五花八门：
+
+* 直接使用Main函数
+* 不使用Assert而使用Sysout.out.println()
+* 一个单元测试函数几百行
+
+最终使得单元测试代码难以阅读、维护与理解,如同鸡肋一般食之无味弃之可惜.
+
+### 单元测试的难点
+
 难写出简单、优雅、易维护、易理解的单元测试代码.   
-[![实际单元测试][1]][1]{:target="_blank"}
+[![实际单元测试][1]][1]{target=_blank class=no-icon}
 
 ## 关于Spock
-### 什么是Spock?   
-> Spock is a testing and specification framework for Java and Groovy applications. What makes it stand out from the crowd is its beautiful and highly expressive specification language. Thanks to its JUnit runner, Spock is compatible with most IDEs, build tools, and continuous integration servers. Spock is inspired from JUnit, RSpec, jMock, Mockito, Groovy, Scala, Vulcans, and other fascinating life forms. ------引用自[Spock官网](http://spockframework.org/)  
-  
-### groovy   
-Spock是基于[groovy](http://www.groovy-lang.org/)的,语法和java很接近,没有java那么啰嗦,可以完全用java语法编写groovy代码.   
+
+### 什么是Spock?
+
+> Spock is a testing and specification framework for Java and Groovy applications. What makes it stand out from the
+> crowd is its beautiful and highly expressive specification language. Thanks to its JUnit runner, Spock is compatible
+> with most IDEs, build tools, and continuous integration servers. Spock is inspired from JUnit, RSpec, jMock, Mockito,
+> Groovy, Scala, Vulcans, and other fascinating life forms. 
+> 
+> 引用自[Spock官网](http://spockframework.org/)
+
+### groovy
+
+Spock是基于[groovy](http://www.groovy-lang.org/)的,语法和java很接近,没有java那么啰嗦,可以完全用java语法编写groovy代码.
 
 ## 实战
-#### 依赖   
-* maven   
-    ```xml
-    <dependency>
-        <groupId>org.spockframework</groupId>
-        <artifactId>spock-core</artifactId>
-        <version>1.0-groovy-2.4</version>
-        <scope>test</scope>
-    </dependency>
-    <!-- if use spring -->
-    <dependency>
-        <groupId>org.spockframework</groupId>
-        <artifactId>spock-spring</artifactId>
-        <version>1.0-groovy-2.4</version>
-        <scope>test</scope>
-    </dependency>
-    ```
-  
-* gradle   
-    ```groovy
-    dependencies{
-        testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
-        testCompile "org.spockframework:spock-spring:1.0-groovy-2.4"
-    }
-    ```
+
+#### 依赖
+
+::: code-group
+```xml [maven]
+<dependency>
+    <groupId>org.spockframework</groupId>
+    <artifactId>spock-core</artifactId>
+    <version>1.0-groovy-2.4</version>
+    <scope>test</scope>
+</dependency>
+<!-- if use spring -->
+<dependency>
+    <groupId>org.spockframework</groupId>
+    <artifactId>spock-spring</artifactId>
+    <version>1.0-groovy-2.4</version>
+    <scope>test</scope>
+</dependency>
+```
+
+```groovy [gradle]
+dependencies{
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+    testCompile "org.spockframework:spock-spring:1.0-groovy-2.4"
+}
+```
+:::
 
 #### Spock中的概念
-* Specification   
-测试类都必须继承Specification类   
 
-* Fixture Methods   
+* Specification   
+  测试类都必须继承Specification类
+
+* Fixture Methods
     ```groovy
     // 每个spec前置
     def setupSpec() {
@@ -87,14 +105,14 @@ Spock是基于[groovy](http://www.groovy-lang.org/)的,语法和java很接近,�
     ```
 
 * setup/given Blocks   
-在这个block中会放置与这个测试函数相关的初始化程序   
+  在这个block中会放置与这个测试函数相关的初始化程序
     ```groovy
     given: // 也可以写作setup 
     def stack = new Stack()
     def elem = "push me"
     ```
 
-* when and then Blocks   
+* when and then Blocks
     ```groovy
     when:
     stack.push(elem)
@@ -106,7 +124,7 @@ Spock是基于[groovy](http://www.groovy-lang.org/)的,语法和java很接近,�
     ```
 
 * expect Blocks   
-when and then Blocks例子可以替换为:   
+  when and then Blocks例子可以替换为:
     ```groovy
     given:
     def stack = new Stack()
@@ -117,9 +135,9 @@ when and then Blocks例子可以替换为:
     stack.size() == 1
     stack.peek() == elem
     ```
-  
+
 * where Blocks   
-做测试时最复杂的事情之一就是准备测试数据，尤其是要测试边界条件、测试异常分支等，这些都需要在测试之前规划好数据.   
+  做测试时最复杂的事情之一就是准备测试数据，尤其是要测试边界条件、测试异常分支等，这些都需要在测试之前规划好数据.
     ```groovy
     def "maximum of two numbers"() {
         expect:
@@ -142,8 +160,9 @@ when and then Blocks例子可以替换为:
     }
     ```
 
-#### Spock和其他测试框架的比较   
-* 用jUnit写的单元测试代码   
+#### Spock和其他测试框架的比较
+
+* 用jUnit写的单元测试代码
     ```java
     @Test
     public void addPerson() {
@@ -170,7 +189,7 @@ when and then Blocks例子可以替换为:
         Assert.assertFalse(this.personService.addPerson(personVo));
     }
     ```
-  
+
 * 使用Spock编写同样的单元测试
     ```groovy
     @Unroll
@@ -200,10 +219,12 @@ when and then Blocks例子可以替换为:
         "123456" | "Lucy" | "female" || true
     }
     ```
-  
-在去除啰嗦冗余的语法过后,单元测试代码是否看起来更清晰、更容易阅读、更优雅?   
-## 测试结果   
-[![测试结果][2]][2]{:target="_blank"}  
 
-[1]: {{ site.cdn }}/assets/2017/07-12/unit_test.png
-[2]: {{ site.cdn }}/assets/2017/07-12/test_result.png
+在去除啰嗦冗余的语法过后,单元测试代码是否看起来更清晰、更容易阅读、更优雅?
+
+## 测试结果
+
+[![测试结果][2]][2]{target=_blank class=no-icon}
+
+[1]: /assets/2017/07-12/unit_test.png
+[2]: /assets/2017/07-12/test_result.png

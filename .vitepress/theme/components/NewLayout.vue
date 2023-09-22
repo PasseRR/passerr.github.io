@@ -13,6 +13,7 @@
           {{ parseDate(page.filePath) }}
         </div>
       </div>
+      <br/>
     </template>
     <template v-if="frontmatter.page !== true" #doc-after>
       comment

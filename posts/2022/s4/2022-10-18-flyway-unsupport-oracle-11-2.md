@@ -1,6 +1,6 @@
 ---
 title:  Flyway不支持低版本Oracle数据库适配(非重新编译flyway)
-tags: [java, database]
+tags: [java, oracle, 数据库]
 ---
 
 ## 前言

@@ -1,6 +1,6 @@
 ---
 title:  Postgres中使用postgis集成flyway
-tags: [数据库, java]
+tags: [postgresql, 数据库, java]
 ---
 
 ## 问题描述

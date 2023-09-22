@@ -1,19 +1,19 @@
 ---
-layout: post
 title:  "Java基于Selenium本地Chrome驱动自动化测试"
-categories: [java]
-last_modified_at: 2023-03-20
-toc: true
+tags: [java, 自动化测试, 运维]
 ---
-## Selenium
-> Selenium是一个用于Web应用程序测试的工具。Selenium测试直接运行在浏览器中，就像真正的用户在操作一样。
-> 支持的浏览器包括IE（7, 8, 9, 10, 11），Mozilla Firefox，Safari，Google Chrome，Opera等。
-> 这个工具的主要功能包括：测试与浏览器的兼容性——测试你的应用程序看是否能够很好得工作在不同浏览器和操作系统之上。
-> 测试系统功能——创建回归测试检验软件功能和用户需求。支持自动录制动作和自动生成 .Net、Java、Perl等不同语言的测试脚本。
+
+
+Selenium是一个用于Web应用程序测试的工具。Selenium测试直接运行在浏览器中，就像真正的用户在操作一样。
+支持的浏览器包括IE（7, 8, 9, 10, 11），Mozilla Firefox，Safari，Google Chrome，Opera等。
+这个工具的主要功能包括：测试与浏览器的兼容性——测试你的应用程序看是否能够很好得工作在不同浏览器和操作系统之上。
+测试系统功能——创建回归测试检验软件功能和用户需求。支持自动录制动作和自动生成 .Net、Java、Perl等不同语言的测试脚本。
 
 ## 依赖
-1.maven  
-```xml
+
+::: code-group
+
+```xml [maven]
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
@@ -21,10 +21,11 @@ toc: true
 </dependency>
 ```
 
-2.gradle  
-```groovy
+
+```groovy [gradle]
 compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.14.0'
 ```
+:::
 
 ## 元素定位
 有如下一段html，现在要模拟点击搜索按钮
@@ -246,14 +247,13 @@ public class StudentRegisterSpec extends BaseSpec {
 
 5.其他
 
-> 其他业务测试可以通过扩展BaseSpec进行业务测试
-{: .block-tip }
+其他业务测试可以通过扩展BaseSpec进行业务测试
 
 6.登录自动测试示例
 
-[![登录][1]][1]{:target="_blank"}
+[![登录][1]][1]{target=_blank class=no-icon}
 
 ## 结论
 需要在系统比较稳定的时候用于自动回归测试，会产生数据，需要准备一个纯净环境专门用于自动化测试。
 
-[1]: {{ site.cdn }}/assets/2019/05-23/login.gif
+[1]: /assets/2019/05-23/login.gif

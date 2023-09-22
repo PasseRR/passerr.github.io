@@ -1,9 +1,6 @@
 ---
-layout: post
 title:  "Postgresql联合主键left join查询"
-categories: [database]
-last_modified_at: 2022-02-21
-toc: true
+tags: [postgresql, 数据库]
 ---
 
 ## 问题及环境
@@ -42,7 +39,7 @@ ORDER BY "eisl"."exception_status_id"
 
 1.先分析查询语句
 
-[![EXPLAIN_LEFT_JOIN][1]][1]{:target="_blank"}
+[![EXPLAIN_LEFT_JOIN][1]][1]{target=_blank class=no-icon}
 
 发现LEFT JOIN的条件并没有走索引 而是过滤条件
 
@@ -57,7 +54,7 @@ WHERE "eisl"."invoice_status_log_id" = 1000
 ORDER BY "eisl"."exception_status_id"
 ```
 
-[![EXPLAIN_JOIN][2]][2]{:target="_blank"}
+[![EXPLAIN_JOIN][2]][2]{target=_blank class=no-icon}
 
 发现使用JOIN后查询条件走的是主键索引
 
@@ -66,5 +63,5 @@ ORDER BY "eisl"."exception_status_id"
 在postgresql中，若非联合主键，使用LEFT JOIN且条件为主键关联时，会使用主键索引。   
 若是联合主键，LEFT JOIN用主键关联不会走主键索引，使用JOIN会。   
 
-[1]: {{ site.cdn }}/assets/2017/07-03/explain_left_join.png
-[2]: {{ site.cdn }}/assets/2017/07-03/explain_join.png
+[1]: /assets/2017/07-03/explain_left_join.png
+[2]: /assets/2017/07-03/explain_join.png

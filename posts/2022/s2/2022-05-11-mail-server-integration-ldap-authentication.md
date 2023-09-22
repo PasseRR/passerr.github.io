@@ -399,7 +399,7 @@ chmod 700 /usr/local/vmail
     ```
 ### roundcube配置
 1. 数据库配置
-  ```mysql
+  ```sql
   USE mysql;
   CREATE USER 'roundcube'@'localhost' IDENTIFIED BY 'mypassword';
   GRANT USAGE ON * . * TO 'roundcube'@'localhost' IDENTIFIED BY 'mypassword';
@@ -428,7 +428,7 @@ chmod 700 /usr/local/vmail
     访问http://host/installer/index.php配置
     初始化完成后，修改权限禁止初始化页面访问
 
-    [![2]][2]
+    [![2]][2]{target=_blank class=no-icon}
     ```shell
     chmod -R 600 /var/www/html/installer/
     ```
