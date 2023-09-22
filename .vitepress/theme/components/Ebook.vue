@@ -25,6 +25,16 @@ const data = site
   flex-wrap: wrap;
 }
 
+.books a {
+  color: var(--vp-c-text-1);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.books a:hover, a:active {
+  color: var(--vp-c-brand-1);
+}
+
 .book {
   width: 149px;
   height: 200px;

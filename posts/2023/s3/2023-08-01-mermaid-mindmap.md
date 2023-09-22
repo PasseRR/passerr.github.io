@@ -1,22 +1,18 @@
 ---
-layout: post
 title:  Mermaid之思维导图
-mermaid: true
-categories: [md, others]
-last_modified_at: 2023-08-01
-toc: true
+tags: [markdown, 其他]
 ---
 
-## [思维导图](https://mermaid.js.org/syntax/mindmap.html){:target="_blank"}
+## [思维导图](https://mermaid.js.org/syntax/mindmap.html)
 
 思维导图是使用一个中央关键词或想法引起形象化的构造和分类的想法；它用一个中央关键词或想法以辐射线形连接所有的代表字词、想法、任务或其它关联项目的图解方式。
 
 关键字`mindmap`
 
-> 注意
-> 
-> 笔者使用的mermaid为`10.3.0`，当前mindmap还是**实验性图**，可能将来会改变语法或者配置
-{: .block-warning }
+::: warning 注意
+笔者使用的mermaid为`10.3.0`，当前mindmap还是**实验性图**，可能将来会改变语法或者配置
+:::
+
 
 ## 基本语法
 
@@ -26,7 +22,9 @@ toc: true
 
 <table>
 <tr>
-<td width="45%"><pre><code>
+<td width="45%">
+
+```mmd
 mindmap
 root["根节点"]
   C1[有个"特殊字符]
@@ -38,9 +36,12 @@ root["根节点"]
   C3
     C3-1
     C3-2
-</code></pre>
+```
+
 </td>
-<td width="55%"><pre><code class="language-mermaid">
+<td width="55%">
+
+```mermaid
 mindmap
 root[根节点]
   C1[有个"特殊字符]
@@ -52,7 +53,9 @@ root[根节点]
   C3
     C3-1
     C3-2
-</code></pre></td>
+```
+
+</td>
 </tr>
 </table>
 
@@ -65,46 +68,72 @@ root[根节点]
 </tr>
 <tr>
 <td> [默认形状矩形]</td>
-<td><pre><code class="language-mermaid">
+<td>
+
+```mermaid
 mindmap
 id[默认形状矩形]
-</code></pre></td>
+```
+
+</td>
 </tr>
 <tr>
 <td>(圆边)</td>
-<td><pre><code class="language-mermaid">
+<td>
+
+```mermaid
 mindmap
 id(圆边)
-</code></pre></td>
+```
+
+</td>
 </tr>
 <tr>
 <td>((圆))</td>
-<td><pre><code class="language-mermaid">
+<td>
+
+```mermaid
 mindmap
 id((圆))
-</code></pre></td>
+```
+
+</td>
 </tr>
 <tr>
 <td>)云(</td>
-<td><pre><code class="language-mermaid">
+<td>
+
+```mermaid
 mindmap
 id)云(
-</code></pre></td>
+```
+
+</td>
 </tr>
 <tr>
 <td>))碰撞((</td>
-<td><pre><code class="language-mermaid">
+<td>
+
+```mermaid
 mindmap
 id))碰撞((
-</code></pre></td>
+```
+
+</td>
 </tr>
 <tr>
-<td>{% raw %}{{六边形}}{% endraw %}</td>
+<td>
+<span v-pre>{{六边形}}</span>
+</td>
 
-<td><pre><code class="language-mermaid">
+<td>
+
+```mermaid
 mindmap
-{% raw %}id{{六边形}}{% endraw %}
-</code></pre></td>
+id{{六边形}}
+```
+
+</td>
 </tr>
 </table>
 
@@ -114,7 +143,9 @@ mindmap
 
 <table>
 <tr>
-<td width="45%"><pre><code>
+<td width="45%">
+
+```mmd
 mindmap
 ROOT
 ::icon(fa fa-book)
@@ -122,9 +153,12 @@ ROOT
   ::icon(fa fa-address-card)
   C2
   ::icon(fa fa-eercast)
-</code></pre>
+```
+
 </td>
-<td width="55%"><pre><code class="language-mermaid">
+<td width="55%">
+
+```mermaid
 mindmap
 ROOT
 ::icon(fa fa-book)
@@ -132,7 +166,9 @@ ROOT
   ::icon(fa fa-battery-three-quarters)
   C2
   ::icon(fa fa-calendar)
-</code></pre></td>
+```
+
+</td>
 </tr>
 </table>
 
@@ -142,7 +178,9 @@ ROOT
 
 <table>
 <tr>
-<td width="45%"><pre><code>
+<td width="45%">
+
+```mmd
 mindmap
 root["`**加粗的根节点**`"]
   C1["`多
@@ -152,9 +190,12 @@ root["`**加粗的根节点**`"]
 `"]
   C2["`*我是斜体*`"]
   C3[我是正常的]
-</code></pre>
+```
+
 </td>
-<td width="55%"><pre><code class="language-mermaid">
+<td width="55%">
+
+```mermaid
 mindmap
 root["`**加粗的根节点**`"]
   C1["`多
@@ -164,7 +205,9 @@ root["`**加粗的根节点**`"]
 `"]
   C2["`*我是斜体*`"]
   C3[我是正常的]
-</code></pre></td>
+```
+
+</td>
 </tr>
 </table>
 

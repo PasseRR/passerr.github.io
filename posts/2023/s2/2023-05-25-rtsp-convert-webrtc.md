@@ -1,37 +1,34 @@
 ---
-layout: post
 title: RTSP转WebRTC流播放
-categories: [js,operation]
-last_modified_at: 2023-05-25
-toc: true
+tags: [java, 运维]
 ---
 ## RTSP播放方案
 
 1. ffmpeg + nginx + video.js，rtsp转rtmp播放
    - 优点：延迟一般(1秒以上)
    - 缺点：依赖flash，但现代浏览器大多禁用或不能使用flash
-   - [参考方案](https://blog.csdn.net/xu_xu_0924/article/details/111984672){:target="_blank"}
+   - [参考方案](https://blog.csdn.net/xu_xu_0924/article/details/111984672)
 
 2. ffmpeg + video.js，rtsp转hls播放
    - 优点：不同码率无缝切换
    - 缺点1：延迟较高
    - 缺点2：切片文件碎片化
-   - [参考方案](https://mp.weixin.qq.com/s/ZQkjlkfo7zmOo2mjDRTmbg){:target="_blank"}
+   - [参考方案](https://mp.weixin.qq.com/s/ZQkjlkfo7zmOo2mjDRTmbg)
 
 3. ffmpeg + websocket + flv.js，rtsp转flv播放
    - 优点1：延迟较低(1秒左右)
    - 优点2：无需安装插件
    - 缺点：额外的ws支持
-   - [参考方案](https://www.cnblogs.com/liuqin-always/p/13853100.html){:target="_blank"}
+   - [参考方案](https://www.cnblogs.com/liuqin-always/p/13853100.html)
 
-4. [VLC](https://github.com/videolan/vlc){:target="_blank"}插件播放
+4. [VLC](https://github.com/videolan/vlc)插件播放
    - 优点：延迟低(毫秒级别)
    - 缺点1：需要安装VLC插件
    - 缺点2：不支持H265编码
    - 缺点3：仅支持IE浏览器或低版本Chrome
-   - [参考方案](https://blog.csdn.net/zyhse/article/details/113771661){:target="_blank"}
+   - [参考方案](https://blog.csdn.net/zyhse/article/details/113771661)
 
-5. [SmartPlayer](https://github.com/daniulive/SmarterStreaming){:target="_blank"}插件播放
+5. [SmartPlayer](https://github.com/daniulive/SmarterStreaming)插件播放
    - 优点1：延迟低(毫秒级别)
    - 优点2：支持H265、MJPEG编码
    - 缺点：需要商用授权
@@ -41,13 +38,13 @@ toc: true
    - 优点2：无需安装插件
    - 缺点1：linux下webrtc-streamer依赖的glibc版本较高，升级困难
    - 缺点2：不支持H265编码
-   - [参考方案](https://blog.csdn.net/qq_20937557/article/details/129879697){:target="_blank"}
+   - [参考方案](https://blog.csdn.net/qq_20937557/article/details/129879697)
 
 综合以上方案，最终选择使用webrtc播放，使用webrtc-streamer将rtsp转为webrtc播放。
 
-## [webrtc-streamer](https://github.com/mpromonet/webrtc-streamer){:target="_blank"}
+## [webrtc-streamer](https://github.com/mpromonet/webrtc-streamer)
 
-在github的[发布记录](https://github.com/mpromonet/webrtc-streamer/releases){:target="_blank"}中找到合适的版本，下载相应操作系统的可执行文件，本文使用的版本为[v0.8.0](https://github.com/mpromonet/webrtc-streamer/releases/tag/v0.8.0){:target="_blank"}。
+在github的[发布记录](https://github.com/mpromonet/webrtc-streamer/releases)中找到合适的版本，下载相应操作系统的可执行文件，本文使用的版本为[v0.8.0](https://github.com/mpromonet/webrtc-streamer/releases/tag/v0.8.0)。
 
 ### window下安装
 
@@ -112,7 +109,7 @@ yum install -y libXcomposite libXrandr.x86_64 libXtst libX11 libXext libXdamage 
 
 #### 3.glibc版本过低升级
 
-需要升级[glibc](https://mirrors.aliyun.com/gnu/glibc/){:target="_blank"}至少`2.35`及以上版本
+需要升级[glibc](https://mirrors.aliyun.com/gnu/glibc/)至少`2.35`及以上版本
 
 ```bash
 # glibc版本过低提示信息
@@ -130,7 +127,7 @@ yum install -y libXcomposite libXrandr.x86_64 libXtst libX11 libXext libXdamage 
 ldd --version
 ```
 
-参考[CentOs升级gcc、glibc](./2023-05-24-centos-gcc-glibc-upgrade.md)，升级过程会比较漫长。
+参考[CentOs升级gcc及glibc](2023-05-24-centos-gcc-glibc-upgrade.md)，升级过程会比较漫长。
 
 #### 4.启动服务
 
@@ -147,17 +144,19 @@ ldd --version
 
 #### 2. 同屏多个视频播放CPU占用率高
 
-[参考](https://github.com/mpromonet/webrtc-streamer/issues/401#issuecomment-813301063){:target="_blank"}，启动参数添加`-o`即可。
+[参考](https://github.com/mpromonet/webrtc-streamer/issues/401#issuecomment-813301063)，启动参数添加`-o`即可。
 
 #### 3. 视频出现绿屏、花屏
 
 禁用浏览器硬件加速，以google为例。
 
-[![][1]][1]{:target="_blank"}
+[![图片][1]][1]{target=_blank class=no-icon}
+
+
 
 #### 4. 公网播放问题
 
-[参考](https://github.com/mpromonet/webrtc-streamer/issues/314#issuecomment-615135937){:target="_blank"}，使用webrtc-streamer内嵌的`TURN`server
+[参考](https://github.com/mpromonet/webrtc-streamer/issues/314#issuecomment-615135937)，使用webrtc-streamer内嵌的`TURN`server
 
 ```bash
 # 本机存在公网地址
@@ -169,8 +168,8 @@ ldd --version
 
 ## demo
 
-配置webrtc-streamer的Http服务地址即可，[参考Github](https://github.com/mpromonet/webrtc-streamer-html){:target="_blank"}
+配置webrtc-streamer的Http服务地址即可，[参考Github](https://github.com/mpromonet/webrtc-streamer-html)
 
-[comment]:<>(关于VLC和SmartPlayer的比较 http://www.taodudu.cc/news/show-1128355.html?action=onClick)
-[comment]:<>(史上最详细的webrtc-streamer访问摄像机视频流教程 https://blog.csdn.net/qq_20937557/article/details/129879697)
-[1]: {{ site.cdn }}/assets/2023/05-25/chrome.png
+[1]: /assets/2023/05-25/chrome.png
+<!-- 关于VLC和SmartPlayer的比较 http://www.taodudu.cc/news/show-1128355.html?action=onClick -->
+<!-- 史上最详细的webrtc-streamer访问摄像机视频流教程 https://blog.csdn.net/qq_20937557/article/details/129879697 -->

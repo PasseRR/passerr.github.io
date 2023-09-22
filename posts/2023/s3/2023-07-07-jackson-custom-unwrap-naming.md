@@ -1,9 +1,6 @@
 ---
-layout: post
 title:  "自定义@JsonUnwrapped注解实现任意命名风格"
-categories: [java]
-last_modified_at: 2023-07-07
-toc: true
+tags: [java]
 ---
 
 ## [@JsonUnwrapped](https://github.com/FasterXML/jackson-annotations/blob/master/src/main/java/com/fasterxml/jackson/annotation/JsonUnwrapped.java){:target="_blank"}的作用？
@@ -11,10 +8,9 @@ toc: true
 参考[Jackson注解](../s2/2023-05-04-jackson-annotations.md#jsonunwrapped){:target="_blank"}对@JsonUnwrapped的介绍，
 简单来说，该注解的作用就是在json序列化与反序列化时，将嵌套对象的属性平铺到一层。
 
-> **注意**
-> 
-> JsonUnwrapped仅支持对普通java对象(POJO)展开，类似Map、Map.Entry是不支持的。
-{: .block-warning }
+::: warning 注意
+JsonUnwrapped仅支持对普通java对象(POJO)展开，类似Map、Map.Entry是不支持的。
+:::
 
 JsonUnwrapped提供三个属性配置
 - enable：是否启用，jackson注解大多有这个属性，就是注解是否生效
@@ -55,7 +51,7 @@ public class Test {
 
 输出结果
 
-```bash
+```console
 {"userfirstName":"张","userlastName":"三","age":1}
 Test.Bean(name=Test.Name(firstName=张, lastName=三), age=1)
 ```
@@ -343,7 +339,7 @@ public class Test {
 
 输出结果
 
-```bash
+```console
 {"userFirstName":"张","userLastName":"三","age":1}
 TestController.Bean(name=TestController.Name(firstName=张, lastName=三), age=1)
 ```
@@ -363,7 +359,7 @@ static class Bean {
 
 输出结果
 
-```bash
+```console
 {"user.first.name":"张","user.last.name":"三","age":1}
 TestController.Bean(name=TestController.Name(firstName=张, lastName=三), age=1)
 ```

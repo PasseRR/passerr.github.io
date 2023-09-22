@@ -1,10 +1,6 @@
 ---
 title:  Mermaid之Git版本分支图
-tags:
-
-- markdown
-- others
-
+tags: [markdown, 其他]
 ---
 
 ## Git版本分支图
@@ -353,10 +349,6 @@ gitGraph TB:
 
 ## 完整示例
 
-<table>
-<tr>
-<td width="45%">
-
 ```mmd
 %%{
   init: {
@@ -401,9 +393,6 @@ gitGraph LR:
   commit
 ```
 
-</td>
-<td width="55%">
-
 ```mermaid
 %%{
   init: {
@@ -425,7 +414,7 @@ gitGraph LR:
       'tagLabelFontSize': '16px'
     },
     'gitGraph': {
-      'rotateCommitLabel': true,
+      'rotateCommitLabel': false,
       'mainBranchName': 'master'
     }
   }
@@ -447,7 +436,3 @@ gitGraph LR:
   commit tag: "v2"
   commit
 ```
-
-</td>
-</tr>
-</table>

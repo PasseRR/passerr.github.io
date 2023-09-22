@@ -1,14 +1,11 @@
 ---
-layout: post
 title:  CentOs7升级gcc、glibc
-categories: [operation]
-last_modified_at: 2023-05-24
-toc: true
+tags: [运维]
 ---
 
 ## 升级gcc
 
-在[阿里云镜像](https://mirrors.aliyun.com/gnu/gcc){:target="_blank"}上找到想要升级的gcc版本，这里以`10.1.0`为例
+在[阿里云镜像](https://mirrors.aliyun.com/gnu/gcc)上找到想要升级的gcc版本，这里以`10.1.0`为例
 
 ```bash
 wget https://mirrors.aliyun.com/gnu/gcc/gcc-10.1.0/gcc-10.1.0.tar.gz
@@ -85,7 +82,7 @@ gcc -v
 
 ## 升级make
 
-在[阿里云镜像](https://mirrors.aliyun.com/gnu/make/){:target="_blank"}上找到想要升级的make版本，这里以`4.4`为例
+在[阿里云镜像](https://mirrors.aliyun.com/gnu/make/)上找到想要升级的make版本，这里以`4.4`为例
 
 ```bash
 wget https://mirrors.aliyun.com/gnu/make/make-4.4.tar.gz
@@ -111,7 +108,7 @@ make -v
 
 ## 升级binutils
 
-在[阿里云镜像](https://mirrors.aliyun.com/gnu/binutils/){:target="_blank"}上找到想要升级的binutils版本，这里以`2.30`为例
+在[阿里云镜像](https://mirrors.aliyun.com/gnu/binutils/)上找到想要升级的binutils版本，这里以`2.30`为例
 
 ```bash
 wget https://mirrors.aliyun.com/gnu/binutils/binutils-2.30.tar.gz
@@ -134,7 +131,7 @@ binutils -v
 
 ## 升级bison
 
-在[阿里云镜像](https://mirrors.aliyun.com/gnu/bison/){:target="_blank"}上找到想要升级的bison版本，这里以`3.0.1`为例
+在[阿里云镜像](https://mirrors.aliyun.com/gnu/bison/)上找到想要升级的bison版本，这里以`3.0.1`为例
 
 ```bash
 wget https://mirrors.aliyun.com/gnu/bison/bison-3.0.1.tar.gz
@@ -157,7 +154,7 @@ bison -V
 
 ## 升级glibc
 
-在[阿里云镜像](https://mirrors.aliyun.com/gnu/glibc/){:target="_blank"}上找到想要升级的glibc版本，这里以`2.37`为例
+在[阿里云镜像](https://mirrors.aliyun.com/gnu/glibc/)上找到想要升级的glibc版本，这里以`2.37`为例
 
 ```bash
 wget https://mirrors.aliyun.com/gnu/glibc/glibc-2.37.tar.gz
@@ -216,17 +213,20 @@ yum install -y python3
 python3 -V
 ```
 
-> 若存在版本号大于要求版本号，但是出现配置出错情况，编辑configure文件，修改正则匹配表达式的case部分  
-> - binutils搜索**2.1**，需要修改**as**和**ld**版本号兼容配置
-> - gcc搜索**3.4**
-> - make搜索**3.79**
-> 
-> 搜索的版本号为INSTALL中声明的版本，参考StackOverflow [configure-error-these-critical-programs-are-missing-or-too-old-gcc-make-w](https://stackoverflow.com/questions/46534957/configure-error-these-critical-programs-are-missing-or-too-old-gcc-make-w/62252633#62252633){:target="_blank"}
-{: .block-warning }
+::: warning 注意
+
+若存在版本号大于要求版本号，但是出现配置出错情况，编辑configure文件，修改正则匹配表达式的case部分  
+- binutils搜索**2.1**，需要修改**as**和**ld**版本号兼容配置
+- gcc搜索**3.4**
+- make搜索**3.79**
+
+搜索的版本号为INSTALL中声明的版本，参考StackOverflow [configure-error-these-critical-programs-are-missing-or-too-old-gcc-make-w](https://stackoverflow.com/questions/46534957/configure-error-these-critical-programs-are-missing-or-too-old-gcc-make-w/62252633#62252633)
+
+:::
 
 ### 编译安装glibc
 
-参考[中文手册](https://lfs.xry111.site/zh_CN/11.3/chapter05/glibc.html){:target="_blank"}、[英文手册](https://www.linuxfromscratch.org/lfs/view/stable/chapter05/glibc.html){:target="_blank"}
+参考[中文手册](https://lfs.xry111.site/zh_CN/11.3/chapter05/glibc.html)、[英文手册](https://www.linuxfromscratch.org/lfs/view/stable/chapter05/glibc.html)
 
 ```bash
 # 安装目录
@@ -257,6 +257,6 @@ ll /lib64/libc.so*
 ldd --version
 ```
 
-> **千万不要直接在生产环境升级**  
-> 做glibc升级前充分做好备份、测试，确保中间过程不会出错，否则可能会导致系统不可用
-{: .block-danger }
+::: danger 千万不要直接在生产环境升级  
+做glibc升级前充分做好备份、测试，确保中间过程不会出错，否则可能会导致系统不可用
+:::
