@@ -1,9 +1,6 @@
 ---
-layout: post
 title:  Swagger统一应答类型处理
-categories: [java]
-last_modified_at: 2023-04-19
-toc: true
+tags: [java]
 ---
 
 ## 需求描述
@@ -341,10 +338,10 @@ public static class TestController {
 ### 测试结果
 - get方法 自动添加统一应答包装
 
-  [![][1]][1]{:target="_blank"}
+  [![p1][1]][1]{target=_blank class=no-icon}
 - put方法 使用默认返回
 
-  [![][2]][2]{:target="_blank"}
+  [![p2][2]][2]{target=_blank class=no-icon}
 
-[1]: {{ site.cdn }}/assets/2022/07-04/get.png "get"
-[2]: {{ site.cdn }}/assets/2022/07-04/put.png "put"
+[1]: /assets/2022/07-04/get.png "get"
+[2]: /assets/2022/07-04/put.png "put"

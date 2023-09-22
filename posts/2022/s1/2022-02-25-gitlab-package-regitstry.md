@@ -1,9 +1,6 @@
 ---
-layout: post
 title:  Gitlab Package Registry搭建maven及npm私服
-categories: [ci]
-last_modified_at: 2023-03-20
-toc: true
+tags: [ci/cd, 运维]
 ---
 
 ## 开启Package Registry
@@ -32,12 +29,12 @@ gitlab支持每个仓库独立的Package管理，但是便于package查找，按
 
 以下配置中需要替换的地方
 
-|名称|描述|
-|:---|:---|
-|**YOUR.GITLAB.COM**|你的gitlab地址|
-|**YOUR_SCOPE_NAME**|npm scope名称|
-|**PROJECT_ID**|npm对应项目id|
-|**YOUR_ACCESS_TOKEN**|对应项目/分组的access_token|
+| 名称                    | 描述                   |
+|:----------------------|:---------------------|
+| **YOUR.GITLAB.COM**   | 你的gitlab地址           |
+| **YOUR_SCOPE_NAME**   | npm scope名称          |
+| **PROJECT_ID**        | npm对应项目id            |
+| **YOUR_ACCESS_TOKEN** | 对应项目/分组的access_token |
 
 ## maven
 ### settings.xml配置
@@ -87,7 +84,7 @@ gitlab支持每个仓库独立的Package管理，但是便于package查找，按
 
 ### registry配置(两种方案)
 - 使用`.npmrc`配置文件
-```text
+```txt
 //YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_authToken=YOUR_ACCESS_TOKEN
 @YOUR_SCOPE_NAME:registry=http://YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/
 ```
@@ -99,10 +96,11 @@ npm config set @YOUR_SCOPE_NAME:registry http://YOUR.GITLAB.COM/api/v4/projects/
 npm config set -- //YOUR.GITLAB.COM/api/v4/projects/PROJECT_ID/packages/npm/:_authToken YOUR_ACCESS_TOKEN
 ```
 
-> **注意**
-> 
-> 若gitlab上存放了多个scope的依赖，每个scope都需要配置一次registry地址
-{: .block-danger }
+::: danger 注意
+
+若gitlab上存放了多个scope的依赖，每个scope都需要配置一次registry地址
+
+:::
 
 ### package.json示例
 ```js

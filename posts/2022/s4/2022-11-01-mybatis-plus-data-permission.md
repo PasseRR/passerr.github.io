@@ -1,9 +1,6 @@
 ---
-layout: post
 title:  MyBatis Plus基于注解的数据权限
-categories: [java]
-last_modified_at: 2023-03-20
-toc: true
+tags: [java]
 ---
 
 ## 概述
@@ -48,9 +45,9 @@ toc: true
 
 ## 准备工作
 
-笔者开发时基于mybatis-plus的[3.4.3.2](https://github.com/baomidou/mybatis-plus/tree/v3.4.3.2){:target="_blank"}
+笔者开发时基于mybatis-plus的[3.4.3.2](https://github.com/baomidou/mybatis-plus/tree/v3.4.3.2)
 
-### mp本身提供了一个[DataPermissionInterceptor](https://github.com/baomidou/mybatis-plus/blob/v3.4.3.2/mybatis-plus-extension/src/main/java/com/baomidou/mybatisplus/extension/plugins/inner/DataPermissionInterceptor.java){:target="_blank"}数据权限拦截器
+### mp本身提供了一个[DataPermissionInterceptor](https://github.com/baomidou/mybatis-plus/blob/v3.4.3.2/mybatis-plus-extension/src/main/java/com/baomidou/mybatisplus/extension/plugins/inner/DataPermissionInterceptor.java)数据权限拦截器
 
 ```java
 public class DataPermissionInterceptor extends JsqlParserSupport implements InnerInterceptor {
@@ -357,10 +354,11 @@ public interface OrderMapper extends BaseMapper<Order> {
 
 多租户、动态的数据权限都可以通过这种方式实现，只要能拼sql，剩下的工作我相信你都会了，只是需要多熟悉下jsqlparser的API用法。
 
-> **注意**
-> 
-> 在结合[PageHelper](https://github.com/pagehelper/Mybatis-PageHelper){:target="_blank"}
-> 做带有数据权限的分页时遇到过一个问题，
-> jsqlparser版本过低导致分页的`LIMIT`和`OFFSET`两个关键字位置不一样导致分页不生效，
-> 处理方法更新PageHelper使得和MP的jsqlparser的版本一致。
-{: .block-warning }
+::: danger 注意
+
+在结合[PageHelper](https://github.com/pagehelper/Mybatis-PageHelper)
+做带有数据权限的分页时遇到过一个问题，
+jsqlparser版本过低导致分页的`LIMIT`和`OFFSET`两个关键字位置不一样导致分页不生效，
+处理方法更新PageHelper使得和MP的jsqlparser的版本一致。
+
+:::

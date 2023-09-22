@@ -1,9 +1,6 @@
 ---
-layout: post
 title:  Gitlab CI/CD集成钉钉消息通知模板
-categories: [ci]
-last_modified_at: 2022-02-23
-toc: true
+tags: [ci/cd]
 ---
 
 ## 前言
@@ -12,7 +9,7 @@ toc: true
 extends对应任务实现的before_script和after_script就可以实现消息通知机制。
 
 ## 消息通知模板定义
-[钉钉消息链接说明](https://open.dingtalk.com/document/orgapp-server/message-link-description){:target="_blank"}
+[钉钉消息链接说明](https://open.dingtalk.com/document/orgapp-server/message-link-description)
 
 在gitlab中新建仓库，名为`gitlab/gitlab-ci`，仓库中添加文件`dingtalk.yml`模板文件，内容如下：
 
@@ -145,10 +142,10 @@ variables:
 
 ## 效果
 
-[![启动][1]][1]{:target="_blank"}
-[![成功][2]][2]{:target="_blank"}
-[![失败][3]][3]{:target="_blank"}
+[![启动][1]][1]{target=_blank class=no-icon}
+[![成功][2]][2]{target=_blank class=no-icon}
+[![失败][3]][3]{target=_blank class=no-icon}
 
-[1]: {{ site.cdn }}/assets/2022/02-23/start.jpg
-[2]: {{ site.cdn }}/assets/2022/02-23/success.jpg
-[3]: {{ site.cdn }}/assets/2022/02-23/failed.jpg
+[1]: /assets/2022/02-23/start.jpg
+[2]: /assets/2022/02-23/success.jpg
+[3]: /assets/2022/02-23/failed.jpg

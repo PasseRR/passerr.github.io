@@ -1,13 +1,10 @@
 ---
-layout: post
 title:  CentOs升级Git版本
-categories: [operation]
-last_modified_at: 2022-03-01
-toc: true
+categories: [运维]
 ---
 
 ## gitlab-ci报错
-```text
+```txt
 fatal: git fetch-pack: expected shallow list
 fatal: The remote end hung up unexpectedly
 ```

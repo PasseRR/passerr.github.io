@@ -1,9 +1,6 @@
 ---
-layout: post
 title:  Windows安装sshd服务
-categories: [ci, operation]
-last_modified_at: 2022-01-12
-toc: true
+tags: [ci/cd, 运维]
 ---
 
 ## 概述
@@ -32,7 +29,7 @@ linux使用ssh免密登录windows的时候，将public key加入windows的.ssh/a
 
 解决办法，修改`%ProgramData%/ssh/sshd_config`文件最后部分
 
-```text
+```txt
 Match Group administrators
     AuthorizedKeysFile .ssh/authorized_keys
 ```

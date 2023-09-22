@@ -1,9 +1,6 @@
 ---
-layout: post 
 title:  CentOs下安装配置OpenLdap 
-categories: [operation]
-last_modified_at: 2022-03-09
-toc: true
+categories: [运维]
 ---
 
 ## 安装LDAP
@@ -94,4 +91,4 @@ ldapadd -x -W -D "cn=ldapadm,dc=51cto,dc=com" -f base.ldif
 
 至此，LDAP安装配置完成
 
-> [引用自](https://blog.51cto.com/moerjinrong/2149584){:target="_blank"}
+> [引用自](https://blog.51cto.com/moerjinrong/2149584)

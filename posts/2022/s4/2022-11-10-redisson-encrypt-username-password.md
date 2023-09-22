@@ -1,25 +1,22 @@
 ---
-layout: post
 title:  SpringBoot中使用Redisson时对用户名密码加密
-categories: [java]
-last_modified_at: 2023-05-11
-toc: true
+tags: [java]
 ---
 
 ## 概述
 
 为了满足**二级等保**要求，数据库用户名、密码需要进行加密且内存中不能常驻明文用户名、密码。
-使用[jasypt](http://www.jasypt.org/){:target="_blank"}实质上是读取配置时解密，然后设置用户名密码到配置中，
+使用[jasypt](http://www.jasypt.org/)实质上是读取配置时解密，然后设置用户名密码到配置中，
 结果不满足内存中不常驻明文用户名、密码要求。
 
-笔者在扩展这一支持时使用的是[Redisson 3.16.2](https://github.com/redisson/redisson/tree/redisson-3.16.2){:target="_blank"}，
+笔者在扩展这一支持时使用的是[Redisson 3.16.2](https://github.com/redisson/redisson/tree/redisson-3.16.2)，
 以下的扩展均基于此版本修改，其他版本可以参考修改。
 
 ## Redisson连接创建过程
 
 ### 1. 自动配置
 通过不同的配置Redisson支持单机、主从、哨兵、集群、分片等多种连接模式，
-结合spring-data-redis的`RedisProperties`[自动配置](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson-spring-boot-starter/src/main/java/org/redisson/spring/starter/RedissonAutoConfiguration.java#L116-L204){:target="_blank"}。
+结合spring-data-redis的`RedisProperties`[自动配置](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson-spring-boot-starter/src/main/java/org/redisson/spring/starter/RedissonAutoConfiguration.java#L116-L204)。
 
 ```java
 @Bean(destroyMethod = "shutdown")
@@ -119,7 +116,7 @@ public RedissonClient redisson() throws IOException {
 
 ### 2. 连接管理器创建
 
-- [Redisson](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson/src/main/java/org/redisson/Redisson.java#L67){:target="_blank"}
+- [Redisson](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson/src/main/java/org/redisson/Redisson.java#L67)
 
     ```java
     // Redisson是RedissonClient的实现，我们可以在代码中直接注入RedissonClient使用
@@ -139,7 +136,7 @@ public RedissonClient redisson() throws IOException {
         writeBehindService = new WriteBehindService(commandExecutor);
     }
     ```
-- [ConfigSupport](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson/src/main/java/org/redisson/config/ConfigSupport.java#L182-L205){:target="_blank"}
+- [ConfigSupport](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson/src/main/java/org/redisson/config/ConfigSupport.java#L182-L205)
 
    ```java
     // 通过配置初始化不同的连接管理器
@@ -169,7 +166,7 @@ public RedissonClient redisson() throws IOException {
     }
    ```
 
-### 3. [RedisClient](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson/src/main/java/org/redisson/client/RedisClient.java#L85-L124){:target="_blank"}创建
+### 3. [RedisClient](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson/src/main/java/org/redisson/client/RedisClient.java#L85-L124)创建
 
 ```java
 private RedisClient(RedisClientConfig config) {
@@ -200,7 +197,7 @@ private Bootstrap createBootstrap(RedisClientConfig config, Type type) {
 }
 ```
 
-### 4. nio通道[始化过程](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson/src/main/java/org/redisson/client/handler/RedisChannelInitializer.java#L74-L107){:target="_blank"}
+### 4. nio通道[始化过程](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson/src/main/java/org/redisson/client/handler/RedisChannelInitializer.java#L74-L107)
 
 ```java
 @Override
@@ -247,8 +244,8 @@ protected void initChannel(Channel ch) throws Exception {
 
 ## 扩展CommandEncoder自持用户名、密码加密
 
-通过扩展CommandEncoder，重写encode方法，发送报文编码之前拦截[AUTH](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson/src/main/java/org/redisson/client/protocol/RedisCommands.java#L259){:target="_blank"}命令，
-编码时将命令参数(用户名、密码)解密，通过[NettyHook](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson/src/main/java/org/redisson/client/NettyHook.java#L42){:target="_blank"}将扩展实现的CommandEncoder替换。
+通过扩展CommandEncoder，重写encode方法，发送报文编码之前拦截[AUTH](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson/src/main/java/org/redisson/client/protocol/RedisCommands.java#L259)命令，
+编码时将命令参数(用户名、密码)解密，通过[NettyHook](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson/src/main/java/org/redisson/client/NettyHook.java#L42)将扩展实现的CommandEncoder替换。
 
 ### 1. 定义解密器
 

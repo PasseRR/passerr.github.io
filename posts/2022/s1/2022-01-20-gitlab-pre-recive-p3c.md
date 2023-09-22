@@ -1,25 +1,22 @@
 ---
-layout: post
 title:  Gitlab集成P3C代码规约检测
-categories: [ci, operation]
-last_modified_at: 2022-02-22
-toc: true
+tags: [ci/cd, 运维]
 ---
 
 ## 前言
-公司需要对java代码进行静态代码检测，需要满足[阿里规约](https://github.com/alibaba/p3c){:target="_blank"}，
+公司需要对java代码进行静态代码检测，需要满足[阿里规约](https://github.com/alibaba/p3c)，
 但对一些已有的仓库不进行检测，考虑使用Gitlab的server hook的pre-receive实现，在代码提交时对java文件进行代码检测。
 本文Gitlab服务器使用的是CentOS，其他Linux环境自行对照。
 
 ## 阿里规约准备
 
 ### 编译最新p3c-pmd模块
-- 直接[pmd包](/assets/2022/01-20/p3c-pmd-2.1.1-jar-with-dependencies.jar){:target="_blank"}
-- [下载](https://github.com/alibaba/p3c){:target="_blank"}官方最新代码编译
+- 直接[pmd包](/assets/2022/01-20/p3c-pmd-2.1.1-jar-with-dependencies.jar)
+- [下载](https://github.com/alibaba/p3c)官方最新代码编译
 
 ### 编写规则集xml文件
 
-根据需要设定规则，[下载实例]({{ site.cdn }}/assets/2022/01-20/ali-p3c.xml){:target="_blank"}
+根据需要设定规则，[下载实例](/assets/2022/01-20/ali-p3c.xml)
 
 ```xml
 <?xml version="1.0"?>
@@ -134,7 +131,7 @@ chmod 777 p3c-pre-inspect.sh
 ```
    
 ### 5. 自动创建检测标识文件钩子
-`/opt/gitlab/embedded/service/gitlab-rails/file_hooks`目录下创建`add_pre_check_on_project_create.rb`[钩子文件](/assets/2022/01-20/add_pre_check_on_project_create.rb){:target="_blank"}，根据需要设定规则，
+`/opt/gitlab/embedded/service/gitlab-rails/file_hooks`目录下创建`add_pre_check_on_project_create.rb`[钩子文件](/assets/2022/01-20/add_pre_check_on_project_create.rb)，根据需要设定规则，
 每当项目创建时，会自动提交一个新的.pre-check文件到仓库，当前使用的是web api提交标识文件到仓库，
 不知道是否存在钩子之类的后置操作，**目前暂时没有想到其他更好的解决方案，如果你有，请你联系我**。
 
@@ -189,6 +186,6 @@ java -version
 
 ## 验证钩子
 
-[![图片][1]][1]{:target="_blank"}
+[![图片][1]][1]{target=_blank class=no-icon}
 
-[1]: {{ site.cdn }}/assets/2022/01-20/hook.png
+[1]: /assets/2022/01-20/hook.png

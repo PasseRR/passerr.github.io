@@ -1,9 +1,6 @@
 ---
-layout: post
 title:  Gitlab Runner介绍
-categories: [ci]
-last_modified_at: 2022-03-01
-toc: true
+tags: [ci/cd]
 ---
 
 ## Gitlab Runner 安装
@@ -62,7 +59,7 @@ ssh-keygen
 
 ## config.toml配置
 
-详细配置参考[官方文档](https://docs.gitlab.com/runner/configuration/advanced-configuration.html){:target="_blank"}
+详细配置参考[官方文档](https://docs.gitlab.com/runner/configuration/advanced-configuration.html)
 
 ```toml
 # 最大并发任务数

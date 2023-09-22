@@ -1,25 +1,22 @@
 ---
-layout: post
 title:  基于postfix、dovecot、roundcube的邮件服务器搭建及ldap认证集成
-categories: [operation]
-last_modified_at: 2022-05-11
-toc: true
+categories: [运维]
 ---
 
 ## 整体环境介绍
 
-|模块|作用|
-|:---|:---|
-|[postfix](http://www.postfix.org/){:target="_blank"}|发邮件|
-|opendkim|邮件加密|
-|[dovecot](https://www.dovecot.org/){:target="_blank"}|收/存邮件，ldap用户认证(基于dovecot-ldap)|
-|[roundcube](https://roundcube.net/){:target="_blank"}|web邮箱ui|
-|[php7.4](https://www.php.net/){:target="_blank"}|roundcube运行环境|
-|mysql|web邮箱信息存储|
-|[apache2](https://httpd.apache.org/){:target="_blank"}|web服务器|
-|[OpenLdap](https://www.openldap.org/){:target="_blank"}|用户目录|
+| 模块                                    | 作用                             |
+|:--------------------------------------|:-------------------------------|
+| [postfix](http://www.postfix.org/)    | 发邮件                            |
+| opendkim                              | 邮件加密                           |
+| [dovecot](https://www.dovecot.org/)   | 收/存邮件，ldap用户认证(基于dovecot-ldap) |
+| [roundcube](https://roundcube.net/)   | web邮箱ui                        |
+| [php7.4](https://www.php.net/)        | roundcube运行环境                  |
+| mysql                                 | web邮箱信息存储                      |
+| [apache2](https://httpd.apache.org/)  | web服务器                         |
+| [OpenLdap](https://www.openldap.org/) | 用户目录                           |
 
-[![1]][1]{:target="_blank"}
+[![1]][1]{target=_blank class=no-icon}
 
 ## 服务安装
 ### dovecot
@@ -63,7 +60,7 @@ pear install Auth_SASL Net_SMTP Net_IDNA2-0.1.1 Mail_Mime
 ```
 
 ### roundcube
-[参考官方安装](https://github.com/roundcube/roundcubemail/wiki/Installation){:target="_blank"}
+[参考官方安装](https://github.com/roundcube/roundcubemail/wiki/Installation)
 
 ```shell
 # 下载安装包
@@ -91,7 +88,7 @@ systemctl enable mysqld
 centos默认安装
 
 ### OpenLdap
-[参考](../s1/2022-03-09-centos-install-openldap.md){:target="_blank"}
+[参考](../s1/2022-03-09-centos-install-openldap.md)
 
 ## 服务配置
 
@@ -120,7 +117,7 @@ chmod 700 /usr/local/vmail
 ```
 
 ### LDAP
-[参考](../s1/2022-03-09-centos-install-openldap.md){:target="_blank"}
+[参考](../s1/2022-03-09-centos-install-openldap.md)
 
 ### dovecot配置
 1. dovecot.conf
@@ -431,7 +428,7 @@ chmod 700 /usr/local/vmail
     访问http://host/installer/index.php配置
     初始化完成后，修改权限禁止初始化页面访问
 
-    [![2]][2]{:target="_blank"}
+    [![2]][2]
     ```shell
     chmod -R 600 /var/www/html/installer/
     ```
@@ -478,6 +475,7 @@ chmod 700 /usr/local/vmail
     ```shell
     systemctl restart httpd
     ```
-[comment]:<>(参考文章 https://www.jianshu.com/p/aa9c48aa0aa8)
-[1]: {{ site.cdn }}/assets/2022/05-11/architecture.png
-[2]: {{ site.cdn }}/assets/2022/05-11/roundcube.gif
+<!-- 参考文章 https://www.jianshu.com/p/aa9c48aa0aa8 -->
+
+[1]: /assets/2022/05-11/architecture.png
+[2]: /assets/2022/05-11/roundcube.gif

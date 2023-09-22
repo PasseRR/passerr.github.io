@@ -43,6 +43,6 @@ tags: [markdown, javascript, 其他]
     [liquid模版语言](https://shopify.github.io/liquid/)
 
 ## 发布新文章
-在_posts目录下新增一篇文章，push到仓库等github部署完，就可以看到属于你的个人博客了。
+在`_posts`目录下新增一篇文章，push到仓库等github部署完，就可以看到属于你的个人博客了。
 
 [1]: /assets/2017/05-22/repository.png

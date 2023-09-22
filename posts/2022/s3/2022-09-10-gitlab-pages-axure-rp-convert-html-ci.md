@@ -1,16 +1,13 @@
 ---
-layout: post
 title:  Gitlab自动将rp文件转html部署pages
-categories: [ci, operation]
-last_modified_at: 2023-04-24
-toc: true
+tags: [ci/cd, 运维]
 ---
 
 ## 前言
-在了解[基于WinAppDriver实现的rp文件转html](./2022-09-02-windows-app-driver-axure.md){:target="_blank"}后，
+在了解[基于WinAppDriver实现的rp文件转html](2022-09-02-windows-app-driver-axure.md){target=_blank}后，
 我们可以结合gitlab runner实现自动化将rp文件部署到gitlab pages。
 
-## 搭建[windows gitlab runner](https://docs.gitlab.com/runner/install/windows.html){:target="_blank"}
+## 搭建[windows gitlab runner](https://docs.gitlab.com/runner/install/windows.html)
 
 ### 1. 注册runner到gitlab
 ### 2. 修改config.toml，避免乱码
@@ -29,14 +26,14 @@ pre_build_script = "chcp 65001"
 ```
 ### 2. 修改用户session时间, 运行输入gpedit.msc打开组策略设置
 用户配置 -> 管理模版 -> Windows组件 -> 远程桌面服务 -> 远程桌面会话 -> 会话时间
-[![][1]][1]{:target="_blank"}
+[![p1][1]][1]{target=_blank class=no-icon}
 
 ### 3. 关闭windows自动更新，可能会顶层弹窗，影响ui元素捕捉，运行输入sconfig.msc
 
-[![][2]][2]{:target="_blank"}
+[![p2][2]][2]{target=_blank class=no-icon}
 
 ### 4. 关闭axure自动更新
-### 5. 复制[axure-automation.jar]({{ site.cdn }}/assets/2022/09-10/axure-automation.jar)到c盘根目录
+### 5. 复制[axure-automation.jar](/assets/2022/09-10/axure-automation.jar)到c盘根目录
 ### 6. 关闭远程连接
 任务管理器 -> 用户，查看用户远程连接会话id，RDP-Tcp#后面的数字
 ```shell
@@ -44,20 +41,21 @@ pre_build_script = "chcp 65001"
 # 来源 https://stackoverflow.com/questions/62969814/winappdriver-based-automation-stops-working-on-windows-10-vm-when-i-close-the-rd
 C:\Windows\System32\tscon.exe RDP-Tcp#37 /dest:console
 ```
-[参照官方文档](https://github.com/microsoft/WinAppDriver/blob/master/Docs/RunningOnRemoteMachine.md)使用[QRes.exe]({{ site.cdn }}/assets/2022/09-10/qres.zip)，
+[参照官方文档](https://github.com/microsoft/WinAppDriver/blob/master/Docs/RunningOnRemoteMachine.md)使用[QRes.exe](/assets/2022/09-10/qres.zip)，
 创建logout-rdp.cmd文件如下
 ```cmd
 for /f "skip=1 tokens=3" %%s in ('query user %USERNAME%') do (C:\Windows\System32\tscon.exe %%s /dest:console 
 C:\qres\QRes.exe /x 1920 /y 1080)
 ```
 
-> **后台运行WAD**
-> 
-> [参考#47](https://github.com/microsoft/WinAppDriver/issues/47#issuecomment-594452572)，使用PowerShell实现。
-> ```shell
-> Start-Process -FilePath "C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe" -ArgumentList "127.0.0.1 4723/wd/hub" -WindowStyle Hidden -RedirectStandardOutput "C:\test\my.log"
-> ```
-{: .block-tip }
+::: tip 后台运行WAD
+
+[参考#47](https://github.com/microsoft/WinAppDriver/issues/47#issuecomment-594452572)，使用PowerShell实现。
+```shell
+Start-Process -FilePath "C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe" -ArgumentList "127.0.0.1 4723/wd/hub" -WindowStyle Hidden -RedirectStandardOutput "C:\test\my.log"
+```
+
+:::
 
 ## 编写gitlab-ci脚本
 
@@ -155,10 +153,10 @@ pages:
 ```
 ### 4. 结合钉钉消息效果
 
-[![][3]][3]{:target="_blank"}
+[![p3][3]][3]{target=_blank class=no-icon}
 
 自此，结合WinAppDriver完成了一个简陋版的rp文件ci/cd，基本满足现有工作需要。
 
-[1]: {{ site.cdn }}/assets/2022/09-10/gpedit.gif "gpedit"
-[2]: {{ site.cdn }}/assets/2022/09-10/sconfig.jpeg "sconfig"
-[3]: {{ site.cdn }}/assets/2022/09-10/dingding.png "dingding"
+[1]: /assets/2022/09-10/gpedit.gif "gpedit"
+[2]: /assets/2022/09-10/sconfig.jpeg "sconfig"
+[3]: /assets/2022/09-10/dingding.png "dingding"

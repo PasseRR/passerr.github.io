@@ -1,9 +1,6 @@
 ---
-layout: post
 title:  Github Pages迁移到vercel
-categories: [md, others]
-last_modified_at: 2022-05-31
-toc: true
+categories: [markdown, 其他]
 ---
 
 ## Github Pages现状
@@ -12,8 +9,8 @@ toc: true
 主站点的CNAME为`www.xiehai.win`
 
 ## 迁移过程
-### 1. 将所有站点从github[导入](2022-05-31-vercel-sites.md){:target="_blank"}**vercel**
-### 2. [将vercel多个项目配置为一个域名](https://vercel.com/support/articles/how-can-i-serve-multiple-projects-under-a-single-domain){:target="_blank"}，在主站点根目录添加`vercel.json`
+### 1. 将所有站点从github[导入](2022-05-31-vercel-sites.md)**vercel**
+### 2. [将vercel多个项目配置为一个域名](https://vercel.com/support/articles/how-can-i-serve-multiple-projects-under-a-single-domain)，在主站点根目录添加`vercel.json`
 
 ```js
 {
@@ -69,8 +66,8 @@ github子站点会存在一个上下文路径，以`PasseRR/DesignPatterns`为�
 
 ### 4. 配置主站域名，若是个新域名，将旧域名重定向到新域名
 
-[![域名][1]][1]{:target="_blank"}
+[![域名][1]][1]{target=_blank class=no-icon}
 ### 5. 删除github的域名或者直接删除CNAME文件
 ### 6. 等待dns缓存过期，访问新的域名就可以看到基于vercel的新站点了
 
-[1]: {{ site.cdn }}/assets/2022/06-01/domain.png "域名"
+[1]: /assets/2022/06-01/domain.png "域名"

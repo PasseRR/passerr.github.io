@@ -1,9 +1,6 @@
 ---
-layout: post
 title:  Confluence常用配置
-categories: [operation]
-last_modified_at: 2022-04-15
-toc: true
+tags: [运维]
 ---
 
 ## 1. Confluence页面添加返回顶部
@@ -35,11 +32,11 @@ AJS.toInit(function(){
 //]]>
 </script>
 ```
-[![1]][1]{:target="_blank"}
+[![1]][1]{target=_blank class=no-icon}
 
 ## 2. 右侧浮动导航宏
 设置 -> 用户宏 -> 创建用户宏，然后在编辑器中插入创建的宏。
-```ftl
+```freemarker
 ## Macro title: toc-right
 ## Macro has a body:  N
 ##
@@ -98,12 +95,12 @@ AJS.toInit(function(){
 ```
 使用[html宏](https://community.atlassian.com/t5/Boise-discussions/Widget-Wednesday-Floating-TOC-in-Confluence/m-p/1095431#M22)实现
 
-[![2]][2]{:target="_blank"}
+[![2]][2]{target=_blank class=no-icon}
 
 ## 3. 右侧导航插件(Easy Heading Macro)【推荐】
-[Easy Heading Macro](https://marketplace.atlassian.com/apps/1221271/easy-heading-macro-floating-table-of-contents?tab=overview&hosting=server){:target="_blank"}
+[Easy Heading Macro](https://marketplace.atlassian.com/apps/1221271/easy-heading-macro-floating-table-of-contents?tab=overview&hosting=server)
 
-离线插件下载[easy-heading-free-2.2.1.jar]({{ site.cdn }}/assets/2022/05-10/easy-heading-free-2.2.1.jar)，上传插件安装就可以使用
+离线插件下载[easy-heading-free-2.2.1.jar](/assets/2022/05-10/easy-heading-free-2.2.1.jar)，上传插件安装就可以使用
 
 插件目录可以使用wiki全局配置、按照空间配置、按照页面配置自由选择，并且支持内容按照标题展开、收起。
 
@@ -135,7 +132,7 @@ AJS.toInit(function(){
   |navigationExpandOption|expand-all-by-default|导航目录展开方式，可选值expand-all-by-default、collapse-all-by-default、collapse-all-but-headings-1、collapse-all-but-headings-1-2、collapse-all-but-headings-1-3、collapse-all-but-headings-1-4、disable-expand-collapse|
   |disableNavLinksUnder|0|当标题少于多少个时目录不可用|
 
-[![3]][3]{:target="_blank"}
+[![3]][3]{target=_blank class=no-icon}
 
 ## 4. confluence多个地址访问时提示Your URL doesn't match
 confluence只能设置一个基础url，当confluence通过内网或外网ip访问时，每当访问任意页面时会提示Your URL doesn't match，
@@ -143,10 +140,10 @@ confluence只能设置一个基础url，当confluence通过内网或外网ip访�
 
 设置 -> 插件管理 -> 系统 -> Confluence Base URL Plugin -> 禁用模块`Base URL plugin filter`
 
-## 5. [CVE-2021-26084漏洞修复](https://confluence.atlassian.com/doc/confluence-security-advisory-2021-08-25-1077906215.html){:target="_blank"}
+## 5. [CVE-2021-26084漏洞修复](https://confluence.atlassian.com/doc/confluence-security-advisory-2021-08-25-1077906215.html)
 CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤如下
 1. 关闭confluence
-2. 下载[cve-2021-26084-update.sh]({{ site.cdn }}/assets/2022/05-10/cve-2021-26084-update.sh)脚本
+2. 下载[cve-2021-26084-update.sh](/assets/2022/05-10/cve-2021-26084-update.sh)脚本
 3. 修改脚本中的`INSTALLATION_DIRECTORY`为你的confluence安装目录并保存
 4. 修改脚本执行权限
     
@@ -201,12 +198,12 @@ CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤
 
 4. 重启Confluence
 
-[1]: {{ site.cdn }}/assets/2022/05-10/top.gif
-[2]: {{ site.cdn }}/assets/2022/05-10/toc.gif
-[3]: {{ site.cdn }}/assets/2022/05-10/plugin.gif
+[1]: /assets/2022/05-10/top.gif
+[2]: /assets/2022/05-10/toc.gif
+[3]: /assets/2022/05-10/plugin.gif
 
 <!-- 
-[agent]({{ site.cdn }}/assets/2022/05-10/atlassian-agent.jar)
+[agent](/assets/2022/05-10/atlassian-agent.jar)
 
 ```bash
 # 下载jar包到任意目录

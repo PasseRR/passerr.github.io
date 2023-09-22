@@ -1,15 +1,12 @@
 ---
-layout: post
 title:  SpringBoot中使用Hikari时对数据库用户名密码加密
-categories: [java]
-last_modified_at: 2023-05-11
-toc: true
+tags: [java]
 ---
 
 ## 概述
 
 为了满足**二级等保**要求，数据库用户名、密码需要进行加密且内存中不能常驻明文用户名、密码。
-使用[jasypt](http://www.jasypt.org/){:target="_blank"}实质上是读取配置时解密，然后设置用户名密码到数据源中，
+使用[jasypt](http://www.jasypt.org/)实质上是读取配置时解密，然后设置用户名密码到数据源中，
 结果不满足内存中不常驻明文用户名、密码要求。
 
 笔者在扩展这一支持时使用的是SpringBoot推荐的[Hikari 4.0.3](https://github.com/brettwooldridge/HikariCP/tree/HikariCP-4.0.3){:target="_blank"}，

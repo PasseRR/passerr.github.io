@@ -1,16 +1,13 @@
 ---
-layout: post
 title:  Postgres中使用postgis集成flyway
-categories: [database, java]
-last_modified_at: 2023-03-20
-toc: true
+tags: [数据库, java]
 ---
 
 ## 问题描述
-在系统[flyway](https://flywaydb.org/){:target="_blank"}初始化脚本中，使用了[postgis](http://postgis.net/){:target="_blank"}
+在系统[flyway](https://flywaydb.org/)初始化脚本中，使用了[postgis](http://postgis.net/)
 扩展中的`GEOMETRY`类型，当脚本在非`public`模式下运行时报错如下：
 
-```text
+```txt
 Caused by: org.postgresql.util.PSQLException: 错误: 类型 "geometry" 不存在
   位置：215
 	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2552)
@@ -159,11 +156,12 @@ COMMIT;
 
 2.修改连接配置参数`currentSchema`
 
-> [官网说明](https://jdbc.postgresql.org/documentation/head/connect.html){:target="_blank"}  
-> 
-> Specify the schema (or several schema separated by commas) to be set in the search-path. 
-> This schema will be used to resolve unqualified object names used in statements over this connection.  
-{: .block-tip }
+::: tip [官网说明](https://jdbc.postgresql.org/documentation/head/connect.html)  
+
+Specify the schema (or several schema separated by commas) to be set in the search-path. 
+This schema will be used to resolve unqualified object names used in statements over this connection.
+
+:::
 
 根据官方参数定义，可以设置`currentSchema`参数为多个schema，将`public`添加到currentSchema中。
 在代码中访问`public`模式下的函数或者扩展的数据类型就不需要要public模式了。

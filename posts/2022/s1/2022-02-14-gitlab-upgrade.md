@@ -1,13 +1,10 @@
 ---
-layout: post
 title:  Gitlab跨版本升级计划
-categories: [operation]
-last_modified_at: 2022-02-14
-toc: true
+tags: [运维]
 ---
 
 ## 概述
-Gitlab不能随意升级，需要按照官方[升级路线](https://docs.gitlab.com/ee/update/index.html#upgrade-paths){:target="_blank"}进行。
+Gitlab不能随意升级，需要按照官方[升级路线](https://docs.gitlab.com/ee/update/index.html#upgrade-paths)进行。
 比如当前Gitlab版本为`10.0.0`，要升级到最新版本`14.7.3`，那么升级路径如下：  
 10.0.0 -> 10.8.7 -> 11.11.8 -> 12.0.12 -> 12.1.17 -> 12.10.14 -> 13.0.14 -> 13.1.11 -> 13.8.8 -> 13.12.15 -> 14.0.11 -> 14.1.8 -> 14.7.3
 
@@ -15,7 +12,7 @@ Gitlab不能随意升级，需要按照官方[升级路线](https://docs.gitlab.
 
 ## 升级方法
 
-- [Linux包安装](https://docs.gitlab.com/ee/update/package/){:target="_blank"}
+- [Linux包安装](https://docs.gitlab.com/ee/update/package/)
 - 源代码安装
 - Docker安装
 - k8s(Helm)安装
@@ -24,7 +21,7 @@ Gitlab不能随意升级，需要按照官方[升级路线](https://docs.gitlab.
 
 ## 准备工作
 
-[参考官网备份恢复文档](https://docs.gitlab.com/ee/raketasks/backup_restore.html){:target="_blank"}
+[参考官网备份恢复文档](https://docs.gitlab.com/ee/raketasks/backup_restore.html)
 
 ### 备份
 #### 备份gitlab
@@ -87,7 +84,7 @@ sudo gitlab-rake gitlab:check SANITIZE=true
 ps: 若没有完全的把握升级，建议使用一台备用服务器做升级模拟。
 
 ## 升级过程
-### [配置yum源](https://packages.gitlab.com/gitlab/gitlab-ce/install#manual-rpm){:target="_blank"}
+### [配置yum源](https://packages.gitlab.com/gitlab/gitlab-ce/install#manual-rpm)
 
 ```shell
 curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash

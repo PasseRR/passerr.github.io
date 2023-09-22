@@ -1,9 +1,6 @@
 ---
-layout: post
 title:  MyBatis枚举类型绑定
-categories: [java]
-last_modified_at: 2023-06-12
-toc: true
+tags: [java]
 ---
 
 ## 前言
@@ -82,12 +79,11 @@ public class DayOfWeekTypeHandler extends BaseTypeHandler<DayOfWeek> {
 
 ### 定义实体、Mapper
 
-<details class="alert alert-info" role="alert">
-<summary markdown="span">代码示例<i class="fa fa-code" aria-hidden="true"></i></summary>
-
 定义一个打卡实体，包含用户、打卡时间、星期，**只是为了展示枚举的使用，并不切合实际业务**。
 
-~~~java
+::: code-group
+
+```java [打卡实体]
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @Table(name = "t_clock_in_out")
@@ -100,16 +96,14 @@ public class ClockInOut {
      */
     DayOfWeek dayOfWeek;
 }
-~~~
+```
 
-打卡的Mapper
-
-~~~java
+```java [打卡Mapper]
 public interface ClockInOutMapper extends BaseMapper<ClockInOut> {
 }
-~~~
+```
 
-</details>
+:::
 
 ### 配置扩展mybatis的类型处理器
 
@@ -134,8 +128,7 @@ public class MybatisConfigurer {
 
 mybatis的TypeHandler支持两种方式初始化，一种是带Class的构造方法，另一种是默认构造方法。
 
-<details class="alert alert-info" role="alert">
-<summary markdown="span">参考代码<i class="fa fa-code" aria-hidden="true"></i></summary>
+::: details 参考代码 {open}
 
 ~~~java
 public <T> TypeHandler<T> getInstance(Class<?> javaTypeClass, Class<?> typeHandlerClass) {
@@ -161,7 +154,7 @@ public <T> TypeHandler<T> getInstance(Class<?> javaTypeClass, Class<?> typeHandl
   }
 ~~~
 
-</details>
+:::
 
 考虑，定义一个类型处理器的提供者，在mybatis配置时，根据配置提供者的值来动态注册类型处理器。
 
@@ -379,10 +372,9 @@ EnumTypeSupplier来自动注入。
 
 包含单个扫描及多个扫描，可以使用@EnumScans配置多个扫描路径，也可以多次使用@EnumScan配置多个扫描路径。
 
-<details class="alert alert-info" role="alert" open>
-<summary markdown="span">@EnumScan<i class="fa fa-code" aria-hidden="true"></i></summary>
+::: code-group
 
-~~~java
+~~~java [@EnumScan]
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Documented
@@ -397,12 +389,7 @@ public @interface EnumScan {
 }
 ~~~
 
-</details>
-
-<details class="alert alert-info" role="alert" open>
-<summary markdown="span">@EnumScans<i class="fa fa-code" aria-hidden="true"></i></summary>
-
-~~~java
+~~~java [@EnumScans]
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Documented
@@ -412,14 +399,13 @@ public @interface EnumScans {
 }
 ~~~
 
-</details>
+:::
 
 ### 定义枚举自动扫描Registrar
 
-<details class="alert alert-info" role="alert" open>
-<summary markdown="span">EnumScannerRegistrar<i class="fa fa-code" aria-hidden="true"></i></summary>
+::: code-group
 
-~~~java
+~~~java [EnumScannerRegistrar]
 class EnumScannerRegistrar implements ImportBeanDefinitionRegistrar {
     @Override
     public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry registry) {
@@ -462,12 +448,7 @@ class EnumScannerRegistrar implements ImportBeanDefinitionRegistrar {
 }
 ~~~
 
-</details>
-
-<details class="alert alert-info" role="alert">
-<summary markdown="span">EnumScannersRegistrar<i class="fa fa-code" aria-hidden="true"></i></summary>
-
-~~~java
+~~~java [EnumScannersRegistrar]
 class EnumScannersRegistrar extends EnumScannerRegistrar {
     @Override
     public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry registry) {
@@ -486,29 +467,13 @@ class EnumScannersRegistrar extends EnumScannerRegistrar {
 }
 ~~~
 
-</details>
+:::
 
 ### 定义枚举包扫描器
 
-<details class="alert alert-info" role="alert">
-<summary markdown="span">ScannedEnumTypeSupplier<i class="fa fa-code" aria-hidden="true"></i></summary>
+::: code-group
 
-~~~java
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-@RequiredArgsConstructor
-class ScannedEnumTypeSupplier<T extends Enum<?> & Enumerable<?>> implements EnumTypeSupplier<T> {
-    Set<Class<? extends T>> set;
-
-    @Override
-    public Set<Class<? extends T>> get() {
-        return this.set;
-    }
-}
-~~~
-
-</details>
-
-```java
+```java [ClassPathEnumScanner]
 class ClassPathEnumScanner extends ClassPathBeanDefinitionScanner {
     ClassPathEnumScanner(BeanDefinitionRegistry registry) {
         super(registry, false);
@@ -567,6 +532,21 @@ class ClassPathEnumScanner extends ClassPathBeanDefinitionScanner {
 }
 ```
 
+~~~java [ScannedEnumTypeSupplier]
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@RequiredArgsConstructor
+class ScannedEnumTypeSupplier<T extends Enum<?> & Enumerable<?>> implements EnumTypeSupplier<T> {
+    Set<Class<? extends T>> set;
+
+    @Override
+    public Set<Class<? extends T>> get() {
+        return this.set;
+    }
+}
+~~~
+
+:::
+
 ### 实际使用
 
 ```java
@@ -598,4 +578,4 @@ public class Application {
 
 - swagger对自定义枚举的友好展示
 
-    可以参考[Swagger统一应答类型处理](./2022-07-04-swagger-common-response.md)实现
+    可以参考[Swagger统一应答类型处理](2022-07-04-swagger-common-response.md)实现
