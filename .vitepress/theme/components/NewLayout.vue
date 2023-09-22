@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <template #doc-before>
+    <template v-if="frontmatter.page !== true" #doc-before>
       <div class="vp-doc">
         <h1 :id="frontmatter.title">
           {{ frontmatter.title }}
@@ -14,15 +14,13 @@
         </div>
       </div>
     </template>
-    <template #doc-after>
+    <template v-if="frontmatter.page !== true" #doc-after>
       comment
     </template>
   </Layout>
-  <Copyright/>
 </template>
 <script setup>
 import DefaultTheme from 'vitepress/theme'
-import Copyright from './Copyright.vue'
 import {useData, withBase} from "vitepress";
 
 const {Layout} = DefaultTheme

@@ -1,6 +1,15 @@
 import {defineConfig} from 'vitepress'
-import {rewrites, site} from './main';
+import {site} from './main';
 import {getPosts} from './theme/serverUtils'
+import {globby} from 'globby'
+
+const rewrites = {}
+// @ts-ignore
+const pages = await globby(['posts/**/*.md'])
+
+pages.map((page) => {
+    rewrites[page] = page.substring(page.lastIndexOf('/') + 1)
+});
 
 export default defineConfig({
     title: site.title,
@@ -54,12 +63,7 @@ export default defineConfig({
     appearance: false,
     themeConfig: {
         posts: await getPosts(site.pageSize),
-        nav: [
-            {text: '博客', link: '/'},
-            {text: '博客标签', link: '/tags'},
-            {text: 'Tags', link: '/pages/tags'},
-            {text: '关于', link: '/about'}
-        ],
+        nav: site.navs,
         sidebar: [],
         search: {
             provider: 'local'
@@ -74,7 +78,7 @@ export default defineConfig({
         logo: site.logo,
         outline: {
             level: "deep",
-            label: '摘要'
+            label: '文章摘要'
         },
         sidebarMenuLabel: '菜单',
         returnToTopLabel: '回到顶部',

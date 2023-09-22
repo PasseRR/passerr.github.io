@@ -50,7 +50,7 @@ const props = defineProps({
 }
 
 .post-title a {
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .post-title a:hover, a:active {
