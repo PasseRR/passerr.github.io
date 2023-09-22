@@ -23,9 +23,16 @@ export default withMermaid(
         base: site.base,
         srcExclude: ['**/README.md', ...site.excludes],
         rewrites: rewrites,
+        // sitemap_index文件生成
         buildEnd: async s => {
-            const paths = resolve('./');
-            await fs.writeFile(paths + 'sitemap_index.xml', '<?xml version="1.0" encoding="utf8" ?></xml>');
+            const paths = resolve(s.outDir);
+            let xml = `<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\
+<sitemap><loc>${site.main}/sitemap.xml</loc> <lastmod>2019-05-06T00:00:00+00:00</lastmod></sitemap>`;
+            site.books.forEach(it => {
+                xml += `<sitemap><loc>${site.main}${it.url}/sitemap.xml</loc><lastmod>${it.date}T00:00:00+00:00</lastmod></sitemap>`
+            })
+            xml += '</sitemapindex>'
+            await fs.writeFile(paths + '/sitemap_index.xml', xml);
         },
         head: [
             // google分析脚本

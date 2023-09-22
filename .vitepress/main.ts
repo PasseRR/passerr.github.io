@@ -3,7 +3,7 @@ import fg from 'fast-glob'
 
 const site = {
     main: 'https://www.xiehai.zone',
-    logo: 'logo.jpg',
+    logo: '/logo.jpg',
     // 博客分页大小
     pageSize: 17,
     // 标题

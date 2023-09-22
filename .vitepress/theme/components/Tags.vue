@@ -1,6 +1,6 @@
 <template>
   <div class="tags">
-        <span @click="toggleTag(key)" v-for="(item, key) in data" class="tag">
+        <span @click="toggleTag(key)" v-for="(key, _) in keys" class="tag">
             {{ key }} <strong>{{ data[key].length }}</strong>
         </span>
   </div>
@@ -21,6 +21,8 @@ import {initTags} from '../functions'
 const {theme} = useData()
 const route = useRoute()
 const data = computed(() => initTags(theme.value.posts))
+const keys = Object.keys(data.value);
+keys.sort();
 
 let selectTag = ref('')
 const toggleTag = (tag: string) => {

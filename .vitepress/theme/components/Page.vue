@@ -4,7 +4,7 @@
       <li>
         <div class="post-title">
           <a :href="withBase(article.regularPath)">{{ article.frontMatter.title }}</a>
-          <span class="date">»{{ article.frontMatter.date }}</span>
+          »<span class="date">{{ article.frontMatter.date }}</span>
         </div>
       </li>
     </div>
@@ -96,16 +96,16 @@ const props = defineProps({
 }
 
 .link {
+  color: var(--vp-c-text-1);
   display: inline-block;
   width: 24px;
   text-align: center;
-  border: 1px solid #ddd;
+  border: 1px #ddd solid !important;;
   font-weight: 400;
 }
 
 .link.active {
-  /*background: var(--vp-c-brand-1);*/
-  background: #428bca;
+  background: var(--vp-c-brand-1);
   color: var(--vp-c-neutral-inverse);
   border: 1px solid var(--vp-c-brand-1) !important;
 }

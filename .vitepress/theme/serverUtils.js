@@ -25,7 +25,7 @@ async function getPosts(pageSize) {
             }
         })
     )
-    posts.sort(_compareDate)
+    posts.sort((a, b) => a.frontMatter.date < b.frontMatter.date ? 1 : -1)
     return posts
 }
 
@@ -61,15 +61,6 @@ const posts = theme.value.posts.slice(${pageSize * (i - 1)},${pageSize * i})
     }
     // rename page1 to index for homepage
     await fs.move(paths + '/blogs/1.md', paths + '/index.md', {overwrite: true})
-}
-
-function _convertDate(date = new Date().toString()) {
-    const json_date = new Date(date).toJSON()
-    return json_date.split('T')[0]
-}
-
-function _compareDate(obj1, obj2) {
-    return obj1.frontMatter.date < obj2.frontMatter.date ? 1 : -1
 }
 
 export {getPosts, resolveDirectory}

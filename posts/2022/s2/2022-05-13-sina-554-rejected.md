@@ -1,6 +1,6 @@
 ---
 title:  新浪邮箱554退信
-tags: [operation]
+tags: [运维]
 ---
 
 ## 问题描述

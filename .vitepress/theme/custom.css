@@ -171,6 +171,7 @@
 .date {
     color: var(--date-color);
     font-family: var(--date-font-family);
+    font-size: 0.75rem;
 }
 
 .logo {
