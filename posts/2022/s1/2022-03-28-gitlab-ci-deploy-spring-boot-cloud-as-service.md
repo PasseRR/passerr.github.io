@@ -3,7 +3,6 @@ title:  Gitlab CI以服务化的方式部署SpringBoot/SpringCloud
 categories: [ci/cd, 运维]
 ---
 
-## 前言
 在使用gitlab ci的时候，在部署windows或者Linux的时候希望以服务化的方式部署，
 这样当服务器重启的时候可以自动重启响应的服务。
 

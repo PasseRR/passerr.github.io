@@ -3,9 +3,7 @@ title:  Mermaid之思维导图
 tags: [markdown, 其他]
 ---
 
-## [思维导图](https://mermaid.js.org/syntax/mindmap.html)
-
-思维导图是使用一个中央关键词或想法引起形象化的构造和分类的想法；它用一个中央关键词或想法以辐射线形连接所有的代表字词、想法、任务或其它关联项目的图解方式。
+[思维导图](https://mermaid.js.org/syntax/mindmap.html)是使用一个中央关键词或想法引起形象化的构造和分类的想法。它用一个中央关键词或想法以辐射线形连接所有的代表字词、想法、任务或其它关联项目的图解方式。
 
 关键字`mindmap`
 

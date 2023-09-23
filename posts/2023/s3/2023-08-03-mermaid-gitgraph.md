@@ -3,8 +3,6 @@ title:  Mermaid之Git版本分支图
 tags: [markdown, 其他]
 ---
 
-## Git版本分支图
-
 Git版本分支图用于展示版本库中提交（commit）的历史记录和分支结构的图形化表示方式。
 它以图表形式展示了每个提交的节点，以及它们之间的关系和分支的演变。
 
@@ -74,7 +72,7 @@ gitGraph
 
 <table>
 <tr>
-<td width="45%">
+<td>
 
 ```mmd
 gitGraph
