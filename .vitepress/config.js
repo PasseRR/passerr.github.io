@@ -76,7 +76,7 @@ export default withMermaid(
                 return items.map(it => it.url = `/${it.url}`);
             }
         },
-        appearance: false,
+        // appearance: false,
         themeConfig: {
             posts: await getPosts(site.pageSize),
             nav: site.navs,

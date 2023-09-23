@@ -9,7 +9,7 @@
       reactions-enabled="1"
       emit-metadata="0"
       input-position="bottom"
-      theme="light"
+      :theme="isDark ? 'dark': 'light'"
       lang="zh-CN"
       crossorigin="anonymous"
       loading="lazy"
@@ -19,5 +19,5 @@
 import Giscus from '@giscus/vue';
 import {useData} from "vitepress";
 
-const {page} = useData()
+const {page, isDark} = useData()
 </script>
