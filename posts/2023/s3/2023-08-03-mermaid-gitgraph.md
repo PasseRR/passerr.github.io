@@ -75,7 +75,7 @@ gitGraph
 <td>
 
 ```mmd
-gitGraph
+gitGraph TB:
   commit id: "第一次commit"
   commit type: REVERSE
   commit tag: "v1.0.0"
@@ -86,10 +86,10 @@ gitGraph
 ```
 
 </td>
-<td width="55%">
+<td>
 
 ```mermaid
-gitGraph
+gitGraph TB:
   commit id: "第一次commit"
   commit type: REVERSE
   commit tag: "v1.0.0"
@@ -373,7 +373,7 @@ gitGraph TB:
     }
   }
 }%%
-gitGraph LR:
+gitGraph TB:
   commit
   commit type: HIGHLIGHT
   branch dev
@@ -417,7 +417,7 @@ gitGraph LR:
     }
   }
 }%%
-gitGraph LR:
+gitGraph TB:
   commit
   commit type: HIGHLIGHT
   branch dev
