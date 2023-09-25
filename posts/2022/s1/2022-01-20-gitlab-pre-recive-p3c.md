@@ -3,7 +3,6 @@ title:  Gitlab集成P3C代码规约检测
 tags: [ci/cd, 运维]
 ---
 
-## 前言
 公司需要对java代码进行静态代码检测，需要满足[阿里规约](https://github.com/alibaba/p3c)，
 但对一些已有的仓库不进行检测，考虑使用Gitlab的server hook的pre-receive实现，在代码提交时对java文件进行代码检测。
 本文Gitlab服务器使用的是CentOS，其他Linux环境自行对照。

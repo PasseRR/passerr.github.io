@@ -32,7 +32,7 @@ const site = {
     ],
     navs: [
         {text: '博客', link: '/'},
-        {text: '博客标签', link: '/tags'},
+        {text: '标签', link: '/tags'},
         {text: '开源', link: '/open-source'},
         {text: '电子书', link: '/ebook'},
         {text: '留言板', link: '/messages-board'},

@@ -3,7 +3,6 @@ title:  Gitlab自动将rp文件转html部署pages
 tags: [ci/cd, 运维]
 ---
 
-## 前言
 在了解[基于WinAppDriver实现的rp文件转html](2022-09-02-windows-app-driver-axure.md){target=_blank}后，
 我们可以结合gitlab runner实现自动化将rp文件部署到gitlab pages。
 

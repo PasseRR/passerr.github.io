@@ -1,6 +1,6 @@
 ---
 title:  基于postfix、dovecot、roundcube的邮件服务器搭建及ldap认证集成
-categories: [运维]
+tags: [运维]
 ---
 
 ## 整体环境介绍

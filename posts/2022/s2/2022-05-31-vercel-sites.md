@@ -1,6 +1,6 @@
 ---
 title:  基于vercel搭建博客
-categories: [markdown, 其他]
+tags: [markdown, 其他]
 ---
 
 ## 什么是[vercel](https://vercel.com)

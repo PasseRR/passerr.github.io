@@ -1,6 +1,6 @@
 ---
 title:  Java双亲委派模型
-categories: [java]
+tags: [java]
 ---
 
 ## 什么是双亲委派模型？

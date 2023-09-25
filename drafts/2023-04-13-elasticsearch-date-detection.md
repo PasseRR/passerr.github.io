@@ -1,9 +1,6 @@
 ---
-layout: post
 title:  记一次ElasticSearch自动将字符串转日期类型问题
-categories: [java]
-last_modified_at: 2023-04-07
-toc: true
+tags: [java]
 ---
 
 字符串形如年月格式，`2021-12`、`2021-55`，

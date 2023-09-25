@@ -1,6 +1,6 @@
 ---
 title:  CentOs升级Git版本
-categories: [运维]
+tags: [运维]
 ---
 
 ## gitlab-ci报错

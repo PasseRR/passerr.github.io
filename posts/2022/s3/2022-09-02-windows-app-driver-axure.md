@@ -3,7 +3,6 @@ title:  使用WindowsAppDriver将axure的rp文件转为html
 tags: [java, 其他]
 ---
 
-## 前言
 公司产品经理现状，原型开发产出rp文件，若开发同事想要看到原型需要将rp文件转为html，通过ftp或者文件共享的方式浏览。
 若把rp文件也当作源代码或者源代码的一部分，版本控制rp文件，结合`gitlab ci`及`gitlab pages`来实现自动将rp文件转为html，然后发布到pages，
 开发同事通过pages地址就可以愉快的浏览原型了。

@@ -1,9 +1,6 @@
 ---
-layout: post
 title:  使用git进行svg的版本控制
-categories: [others]
-last_modified_at: 2022-11-21
-toc: true
+tags: [其他]
 ---
 
 ```

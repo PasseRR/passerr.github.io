@@ -1,6 +1,6 @@
 ---
 title:  CentOs7 systemd服务 
-categories: [运维]
+tags: [运维]
 ---
 
 ## systemd

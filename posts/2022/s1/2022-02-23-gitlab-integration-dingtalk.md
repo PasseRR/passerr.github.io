@@ -3,7 +3,6 @@ title:  Gitlab CI/CD集成钉钉消息通知模板
 tags: [ci/cd]
 ---
 
-## 前言
 在使用Gitlab进行CI/CD的时候，希望在任务开始/结束(成功或失败)的时候能有对应的消息通知机制，
 结合.gitlab-ci.yml的include模板功能，实现钉钉消息通知模板，在实际的CI任务中，只需include对应模板，
 extends对应任务实现的before_script和after_script就可以实现消息通知机制。
