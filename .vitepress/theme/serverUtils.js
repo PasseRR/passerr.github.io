@@ -19,9 +19,15 @@ async function getPosts(pageSize) {
             const {data} = matter(content)
             const name = item.substring(item.lastIndexOf('/') + 1)
             data.date = name.substring(0, 10)
+            const regularFile = resolveDirectory(item);
             return {
                 frontMatter: data,
-                regularPath: `/${resolveDirectory(item).replace('.md', '')}`
+                // md文件名
+                regularFile: regularFile,
+                // 原文件路径
+                originPath: item,
+                // 访问路径
+                regularPath: `/${regularFile.replace('.md', '')}`
             }
         })
     )
@@ -41,11 +47,7 @@ async function generatePaginationPages(total, pageSize) {
         for (let i = 1; i < pagesNum + 1; i++) {
             const page = `
 ---
-page: true
 title: ${i === 1 ? '博客' : '博客第' + i + '页'}
-aside: false
-editLink: false
-lastUpdated: false
 ---
 <script setup>
 ${i == 1 ? 'import Page from "./.vitepress/theme/components/Page.vue";' : 'import Page from "./../.vitepress/theme/components/Page.vue";'}

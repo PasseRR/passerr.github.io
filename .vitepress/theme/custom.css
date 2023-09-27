@@ -31,7 +31,7 @@
 
 .title {
     color: var(--vp-c-text-1);
-    font-size: 1.5rem !important;
+    /*font-size: 1.5rem !important;*/
     letter-spacing: 1px;
     font-weight: 600 !important;
     font-family: var(--date-font-family);
@@ -179,3 +179,7 @@
     -webkit-border-radius: 150px;
 }
 
+.prev-next {
+    /*兼容giscus问题*/
+    padding-bottom: 24px;
+}
