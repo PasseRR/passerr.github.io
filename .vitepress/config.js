@@ -92,6 +92,9 @@ export default withMermaid(
                 return
             }
 
+            // 博客创建日期frontmatter
+            page.frontmatter.date = posts[index].frontMatter.date
+
             // 用于自动添加博客上一篇、下一篇
             if (index < posts.length - 1) {
                 page.frontmatter.next = {

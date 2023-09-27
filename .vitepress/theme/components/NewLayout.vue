@@ -10,7 +10,7 @@
           <span v-if="frontmatter.tags" v-for="item in frontmatter.tags">
             <a :href="withBase(`/tags.html?tag=${item}`)" target="_blank"> {{ item }}</a>
           </span>
-          {{ parseDate(page.filePath) }}
+          {{ frontmatter.date }}
         </div>
       </div>
       <br/>
@@ -27,10 +27,6 @@ import {useData, withBase} from "vitepress";
 
 const {Layout} = DefaultTheme
 const {frontmatter, page} = useData()
-const parseDate = str => {
-  const name = str.substring(str.lastIndexOf('/') + 1)
-  return name.substring(0, 10)
-}
 </script>
 
 <style scoped>
