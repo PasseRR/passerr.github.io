@@ -120,7 +120,7 @@ export default withMermaid(
             },
             editLink: {
                 pattern: `https://github.com/PasseRR/${site.repository}/edit/${site.branch || 'main'}/:path`,
-                text: 'Edit this page on GitHub'
+                text: '在Github上编辑页面'
             },
             logo: site.logo,
             outline: {

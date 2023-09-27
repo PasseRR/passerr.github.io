@@ -32,9 +32,9 @@
 .title {
     color: var(--vp-c-text-1);
     /*font-size: 1.5rem !important;*/
-    letter-spacing: 1px;
-    font-weight: 600 !important;
-    font-family: var(--date-font-family);
+    /*letter-spacing: 1px;*/
+    font-weight: 550 !important;
+    /*font-family: var(--date-font-family);*/
 }
 
 .content a[rel~='noreferrer']:link, a[rel~='noreferrer']:visited {
