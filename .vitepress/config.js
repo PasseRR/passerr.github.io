@@ -76,7 +76,12 @@ export default withMermaid(
             // @ts-ignore
             transformItems(items) {
                 // @ts-ignore
-                return items.map(it => it.url = `/${it.url}`);
+                return items.map(it => {
+                    it.lastmodrealtime = true;
+                    it.url = `/${it.url}`;
+                    
+                    return it;
+                });
             }
         },
         transformPageData: page => {
