@@ -4,7 +4,7 @@ import {getPosts} from './theme/serverUtils'
 import {withMermaid} from "vitepress-plugin-mermaid";
 import {resolve} from 'path'
 import {createWriteStream} from "fs";
-import {SitemapIndexStream, ErrorLevel} from "sitemap";
+import {ErrorLevel, SitemapIndexStream} from "sitemap";
 
 const rewrites = {}
 // 所有博客列表
@@ -28,11 +28,9 @@ export default withMermaid(
         rewrites: rewrites,
         // sitemap_index文件生成
         buildEnd: async s => {
-            const paths = resolve(s.outDir);
+            const paths = resolve(s.outDir)
             const smis = new SitemapIndexStream({level: ErrorLevel.WARN})
-            site.books.forEach(it => {
-                smis.write({url: site.main + it.url, lastmod: it.date})
-            })
+            site.books.forEach(it => smis.write({url: site.main + it.url, lastmod: it.date}))
             smis.pipe(createWriteStream(paths + '/sitemap_index.xml'))
             smis.end()
         },

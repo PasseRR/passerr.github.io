@@ -1,41 +1,47 @@
 ---
 title:  Confluence常用配置
-tags: [运维]
+tags: [运维, 配置]
 ---
 
 ## 1. Confluence页面添加返回顶部
+
 设置 -> 自定义HTML -> BODY尾部中添加如下代码。
+
 ```html
+
 <script type="text/javascript">
-//<![CDATA[
-AJS.toInit(function(){
-    //If the scroll button doesn't exist add it and set up the listeners
-    if(AJS.$('#scroll-top').length == 0) {
-        AJS.$('#main-content').prepend('<button id="scroll-top" class="aui-button aui-button-primary scroll-top-button" style="display: none; position: fixed; bottom: 10px; right: 10px; z-index: 10;" title="返回顶部"><span class="aui-icon aui-icon-small aui-iconfont-chevron-up">Back to Top</span></button>');
+    //<![CDATA[
+    AJS.toInit(function () {
+        //If the scroll button doesn't exist add it and set up the listeners
+        if (AJS.$('#scroll-top').length == 0) {
+            AJS.$('#main-content').prepend('<button id="scroll-top" class="aui-button aui-button-primary scroll-top-button" style="display: none; position: fixed; bottom: 10px; right: 10px; z-index: 10;" title="返回顶部"><span class="aui-icon aui-icon-small aui-iconfont-chevron-up">Back to Top</span></button>');
 
-        //Check to see if the window is top if not then display button
-        AJS.$(window).scroll(function(){
-            if (AJS.$(this).scrollTop() > 100) {
-                AJS.$('#scroll-top').fadeIn();
-            } else {
-                AJS.$('#scroll-top').fadeOut();
-            }
-        });
+            //Check to see if the window is top if not then display button
+            AJS.$(window).scroll(function () {
+                if (AJS.$(this).scrollTop() > 100) {
+                    AJS.$('#scroll-top').fadeIn();
+                } else {
+                    AJS.$('#scroll-top').fadeOut();
+                }
+            });
 
-        //Click event to scroll to top
-        AJS.$('#scroll-top').click(function(){
-            AJS.$('html, body').animate({scrollTop : 0}, 500);
-            return false;
-        });
-    }
-});
-//]]>
+            //Click event to scroll to top
+            AJS.$('#scroll-top').click(function () {
+                AJS.$('html, body').animate({scrollTop: 0}, 500);
+                return false;
+            });
+        }
+    });
+    //]]>
 </script>
 ```
+
 [![1]][1]{target=_blank class=no-icon}
 
 ## 2. 右侧浮动导航宏
+
 设置 -> 用户宏 -> 创建用户宏，然后在编辑器中插入创建的宏。
+
 ```freemarker
 ## Macro title: toc-right
 ## Macro has a body:  N
@@ -93,11 +99,14 @@ AJS.toInit(function(){
 </script>
 #end
 ```
-使用[html宏](https://community.atlassian.com/t5/Boise-discussions/Widget-Wednesday-Floating-TOC-in-Confluence/m-p/1095431#M22)实现
+
+使用[html宏](https://community.atlassian.com/t5/Boise-discussions/Widget-Wednesday-Floating-TOC-in-Confluence/m-p/1095431#M22)
+实现
 
 [![2]][2]{target=_blank class=no-icon}
 
-## 3. 右侧导航插件(Easy Heading Macro)【推荐】
+## 3. 【推荐】右侧导航插件(Easy Heading Macro)
+
 [Easy Heading Macro](https://marketplace.atlassian.com/apps/1221271/easy-heading-macro-floating-table-of-contents?tab=overview&hosting=server)
 
 离线插件下载[easy-heading-free-2.2.1.jar](/assets/2022/05-10/easy-heading-free-2.2.1.jar)，上传插件安装就可以使用
@@ -115,9 +124,9 @@ AJS.toInit(function(){
 - 页面配置  
   创建页面 -> 插入更多内容 -> 其他宏 -> 导航 -> Easy Heading Free
 - 配置参数说明
-  
+
   |参数名|默认值|描述|
-  |:---|:---|:---|
+    |:---|:---|:---|
   |enabled|true|是否启用宏|
   |selector|h1,h2,h3|从h1到h6，标题选择器，逗号分隔|
   |titleExpandClickable|false|点击标题自动展开目录|
@@ -135,18 +144,21 @@ AJS.toInit(function(){
 [![3]][3]{target=_blank class=no-icon}
 
 ## 4. confluence多个地址访问时提示Your URL doesn't match
+
 confluence只能设置一个基础url，当confluence通过内网或外网ip访问时，每当访问任意页面时会提示Your URL doesn't match，
 为了避免这种情况，通过修改`Confluence Base URL Plugin`插件配置。
 
 设置 -> 插件管理 -> 系统 -> Confluence Base URL Plugin -> 禁用模块`Base URL plugin filter`
 
 ## 5. [CVE-2021-26084漏洞修复](https://confluence.atlassian.com/doc/confluence-security-advisory-2021-08-25-1077906215.html)
+
 CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤如下
+
 1. 关闭confluence
 2. 下载[cve-2021-26084-update.sh](/assets/2022/05-10/cve-2021-26084-update.sh)脚本
 3. 修改脚本中的`INSTALLATION_DIRECTORY`为你的confluence安装目录并保存
 4. 修改脚本执行权限
-    
+
     ```shell
     chmod 700 cve-2021-26084-update.sh
     ```
@@ -178,6 +190,7 @@ CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤
 ## 6. confluence文件预览乱码
 
 假设Confluence安装目录为`/opt/atlassian/confluence`，应用数据目录为`/var/atlassian/application-data/confluence`
+
 1. 将windows`C:\Windows\Fonts`目录下的字体文件复制到`/opt/atlassian/confluence/fonts`目录
 2. 修改`/opt/atlassian/confluence/bin/setenv.sh`文件
 
@@ -187,7 +200,7 @@ CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤
     ```
 
 3. 删除应用临时预览文件
-    
+
     ```shell
     cd /var/atlassian/application-data/confluence
     rm -rf viewfile/*
@@ -199,7 +212,9 @@ CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤
 4. 重启Confluence
 
 [1]: /assets/2022/05-10/top.gif
+
 [2]: /assets/2022/05-10/toc.gif
+
 [3]: /assets/2022/05-10/plugin.gif
 
 <!-- 
