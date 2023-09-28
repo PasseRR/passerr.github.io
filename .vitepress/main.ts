@@ -31,7 +31,7 @@ const site = {
         {name: "Nginx手册", url: "/nginx", date: "2023-08-10"}
     ],
     navs: [
-        {text: '博客', link: '/'},
+        {text: '博客', link: '/', activeMatch: '/blogs/*'},
         {text: '标签', link: '/tags'},
         {text: '开源', link: '/open-source'},
         {text: '电子书', link: '/ebook'},

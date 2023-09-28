@@ -1,16 +1,16 @@
 import {defineConfig} from 'vitepress'
-import {site} from './main';
-import {getPosts} from './theme/serverUtils'
-import {withMermaid} from "vitepress-plugin-mermaid";
+import {site} from './main'
+import {BLOG_PREFIX, getPosts} from './theme/serverUtils'
+import {withMermaid} from "vitepress-plugin-mermaid"
 import {resolve} from 'path'
-import {createWriteStream} from "fs";
-import {ErrorLevel, SitemapIndexStream} from "sitemap";
+import {createWriteStream} from "fs"
+import {ErrorLevel, SitemapIndexStream} from "sitemap"
 
 const rewrites = {}
 // 所有博客列表
 const posts = await getPosts(site.pageSize)
 // 缓存博客位置索引
-const postMapping = {};
+const postMapping = {}
 
 // 博客路径重写
 posts.forEach((it, idx) => {
@@ -72,8 +72,8 @@ export default withMermaid(
             lastmodDateOnly: false,
             transformItems(items) {
                 return items.map(it => {
-                    it.lastmodrealtime = true;
-                    it.url = `/${it.url}`;
+                    it.lastmodrealtime = true
+                    it.url = `/${it.url}`
 
                     return it;
                 });
@@ -84,13 +84,20 @@ export default withMermaid(
             const index = postMapping[page.relativePath];
             // 非博客的页面 设置编辑链接、更新日期、边栏不显示
             if (index === undefined) {
+                if (page.relativePath === 'index.md') {
+                    // 首页nav active路径
+                    page.relativePath = BLOG_PREFIX
+                }
                 // 用于区分是页面还是博客
                 page.frontmatter.page = true
                 page.frontmatter.aside = false
-                page.frontmatter.editLink = false;
-                page.frontmatter.lastUpdated = false;
+                page.frontmatter.editLink = false
+                page.frontmatter.lastUpdated = false
                 return
             }
+
+            // 博客详细nav active路径
+            page.relativePath = BLOG_PREFIX
 
             // 博客创建日期frontmatter
             page.frontmatter.date = posts[index].frontMatter.date

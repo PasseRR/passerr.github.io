@@ -3,9 +3,8 @@ import matter from 'gray-matter'
 import fs from 'fs-extra'
 import {resolve} from 'path'
 
-function resolveDirectory(item) {
-    return item.substring(item.lastIndexOf('/') + 1);
-}
+// 博客前缀
+const BLOG_PREFIX = '/blogs';
 
 async function getPosts(pageSize) {
     let paths = await globby(['posts/**/*.md'])
@@ -19,7 +18,7 @@ async function getPosts(pageSize) {
             const {data} = matter(content)
             const name = item.substring(item.lastIndexOf('/') + 1)
             data.date = name.substring(0, 10)
-            const regularFile = resolveDirectory(item);
+            const regularFile = item.substring(item.lastIndexOf('/') + 1);
             return {
                 frontMatter: data,
                 // md文件名
@@ -39,9 +38,9 @@ async function generatePaginationPages(total, pageSize) {
     //  pagesNum
     let pagesNum = total % pageSize === 0 ? total / pageSize : parseInt(total / pageSize) + 1
     const paths = resolve('./')
-    const exists = await fs.exists(paths + '/blogs');
+    const exists = await fs.exists(paths + BLOG_PREFIX);
     if (!exists) {
-        await fs.mkdirp(paths + '/blogs');
+        await fs.mkdirp(paths + BLOG_PREFIX);
     }
     if (total > 0) {
         for (let i = 1; i < pagesNum + 1; i++) {
@@ -57,12 +56,12 @@ const posts = theme.value.posts.slice(${pageSize * (i - 1)},${pageSize * i})
 </script>
 <Page :posts="posts" :pageCurrent="${i}" :pagesNum="${pagesNum}" />
 `.trim();
-            const file = paths + `/blogs/${i}.md`;
+            const file = paths + BLOG_PREFIX + `/${i}.md`;
             await fs.writeFile(file, page, 'utf-8');
         }
     }
     // rename page1 to index for homepage
-    await fs.move(paths + '/blogs/1.md', paths + '/index.md', {overwrite: true})
+    await fs.move(paths + BLOG_PREFIX + '/1.md', paths + '/index.md', {overwrite: true})
 }
 
-export {getPosts, resolveDirectory}
+export {getPosts, BLOG_PREFIX}

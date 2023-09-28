@@ -3,7 +3,6 @@ title:  Swagger统一应答类型处理
 tags: [java]
 ---
 
-## 需求描述
 在rest接口定义统一应答时，我们通常会定义code、message、以及一个泛型的data，有时候泛型参数过长，会导致controller
 方法很长，我借助Spring的`ResponseBodyAdvice`来做统一应答拦截，但是，swagger只会读取实际的方法返回类型作为应答。
 如何使用swagger来实现类似ResponseBodyAdvice的功能呢？
@@ -11,7 +10,9 @@ tags: [java]
 ## Spring报文统一拦截定义
 
 ### 应答状态定义
+
 ```java
+
 @Getter
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -79,7 +80,9 @@ public enum RestState implements Stateful {
 ```
 
 ### 统一应答实体定义
+
 ```java
+
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder(access = AccessLevel.PROTECTED)
@@ -150,7 +153,9 @@ public class RestResponse<T> {
 ```
 
 ### 报文拦截定义
+
 ```java
+
 @RestControllerAdvice
 public class GlobalResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     /**
@@ -192,7 +197,9 @@ public class GlobalResponseBodyAdvice implements ResponseBodyAdvice<Object> {
 ## Swagger插件处理应答拦截
 
 ### 模型提供插件
+
 ```java
+
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 public class FarioOperationModelsProviderPlugin implements OperationModelsProviderPlugin {
@@ -218,7 +225,9 @@ public class FarioOperationModelsProviderPlugin implements OperationModelsProvid
 ```
 
 ### Operation构建插件
+
 ```java
+
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 public class FarioOperationBuilderPlugin implements OperationBuilderPlugin {
@@ -279,6 +288,7 @@ public class FarioOperationBuilderPlugin implements OperationBuilderPlugin {
 ### 插件配置
 
 ```java
+
 @Configuration(proxyBeanMethods = false)
 class SwaggerPluginConfiguration {
     @Bean
@@ -291,11 +301,11 @@ class SwaggerPluginConfiguration {
                                                             SchemaPluginsManager schemaPluginsManager,
                                                             DocumentationPluginsManager documentationPluginsManager,
                                                             ModelSpecificationFactory modelSpecificationFactory) {
-        return 
+        return
             new FarioOperationBuilderPlugin(
-                typeResolver, 
-                schemaPluginsManager, 
-                documentationPluginsManager, 
+                typeResolver,
+                schemaPluginsManager,
+                documentationPluginsManager,
                 modelSpecificationFactory
             );
     }
@@ -305,7 +315,9 @@ class SwaggerPluginConfiguration {
 ## 测试
 
 ### 接口代码
+
 ```java
+
 @RestController
 @RestController
 @RequestMapping("/test")
@@ -336,6 +348,7 @@ public static class TestController {
 ```
 
 ### 测试结果
+
 - get方法 自动添加统一应答包装
 
   [![p1][1]][1]{target=_blank class=no-icon}
@@ -344,4 +357,5 @@ public static class TestController {
   [![p2][2]][2]{target=_blank class=no-icon}
 
 [1]: /assets/2022/07-04/get.png "get"
+
 [2]: /assets/2022/07-04/put.png "put"

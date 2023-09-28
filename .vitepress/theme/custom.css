@@ -183,3 +183,7 @@
     /*兼容giscus问题*/
     padding-bottom: 24px;
 }
+
+.VPNavBarMenu span {
+    font-weight: 550;
+}
