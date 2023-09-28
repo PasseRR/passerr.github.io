@@ -17,11 +17,10 @@
     "globby": "^13.2.2",
     "gray-matter": "^4.0.3",
     "prettier": "^3.0.3",
+    "sitemap": "^7.1.1",
     "typescript": "^5.2.2",
     "vitepress": "^1.0.0-rc.4",
-    "vitepress-plugin-mermaid": "^2.0.14"
-  },
-  "dependencies": {
+    "vitepress-plugin-mermaid": "^2.0.14",
     "@giscus/vue": "^2.3.0"
   }
 }

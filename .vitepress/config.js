@@ -1,10 +1,10 @@
 import {defineConfig} from 'vitepress'
 import {site} from './main';
 import {getPosts} from './theme/serverUtils'
-// @ts-ignore
 import {withMermaid} from "vitepress-plugin-mermaid";
 import {resolve} from 'path'
-import fs from 'fs-extra'
+import {createWriteStream} from "fs";
+import {SitemapIndexStream, ErrorLevel} from "sitemap";
 
 const rewrites = {}
 // 所有博客列表
@@ -29,13 +29,12 @@ export default withMermaid(
         // sitemap_index文件生成
         buildEnd: async s => {
             const paths = resolve(s.outDir);
-            let xml = `<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\
-<sitemap><loc>${site.main}/sitemap.xml</loc> <lastmod>2019-05-06T00:00:00+00:00</lastmod></sitemap>`;
+            const smis = new SitemapIndexStream({level: ErrorLevel.WARN})
             site.books.forEach(it => {
-                xml += `<sitemap><loc>${site.main}${it.url}/sitemap.xml</loc><lastmod>${it.date}T00:00:00+00:00</lastmod></sitemap>`
+                smis.write({url: site.main + it.url, lastmod: it.date})
             })
-            xml += '</sitemapindex>'
-            await fs.writeFile(paths + '/sitemap_index.xml', xml);
+            smis.pipe(createWriteStream(paths + '/sitemap_index.xml'))
+            smis.end()
         },
         head: [
             // google分析脚本
@@ -73,13 +72,11 @@ export default withMermaid(
         sitemap: {
             hostname: site.main,
             lastmodDateOnly: false,
-            // @ts-ignore
             transformItems(items) {
-                // @ts-ignore
                 return items.map(it => {
                     it.lastmodrealtime = true;
                     it.url = `/${it.url}`;
-                    
+
                     return it;
                 });
             }
