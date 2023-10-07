@@ -137,7 +137,7 @@ id{{六边形}}
 
 ### 图标
 
-图标支持[Font Awesome](https://fontawesome.com/v4/icons/){:target="_blank"}、[Material Design](https://fonts.google.com/icons){:target="_blank"}
+图标支持[Font Awesome](https://fontawesome.com/v4/icons/)、[Material Design](https://fonts.google.com/icons)
 
 <table>
 <tr>

@@ -58,10 +58,10 @@ Process finished with exit code 1
 
 ## 源码阅读
 
-flyway对数据库的支持扩展主要在包[org.flywaydb.core.internal.database](https://github.com/flyway/flyway/tree/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database){:target="_blank"}中，
+flyway对数据库的支持扩展主要在包[org.flywaydb.core.internal.database](https://github.com/flyway/flyway/tree/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database)中，
 其中涉及对数据库类型校验、数据库版本支持校验。
  
-### [DatabaseTypeRegister](https://github.com/flyway/flyway/blob/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/DatabaseTypeRegister.java){:target="_blank"}  
+### [DatabaseTypeRegister](https://github.com/flyway/flyway/blob/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/DatabaseTypeRegister.java)
 
 数据库类型支持主要是通过`DatabaseTypeRegister`注册器实现
 
@@ -138,7 +138,7 @@ public class DatabaseTypeRegister {
 }
 ```
 
-### [OracleDatabaseType](https://github.com/flyway/flyway/blob/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/oracle/OracleDatabaseType.java#L89-L91){:target="_blank"}
+### [OracleDatabaseType](https://github.com/flyway/flyway/blob/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/oracle/OracleDatabaseType.java#L89-L91)
 
 ```java
 public class OracleDatabaseType extends DatabaseType {
@@ -150,7 +150,7 @@ public class OracleDatabaseType extends DatabaseType {
 }
 ```
   
-### [OracleDatabase](https://github.com/flyway/flyway/blob/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/oracle/OracleDatabase.java#L80-L87){:target="_blank"}
+### [OracleDatabase](https://github.com/flyway/flyway/blob/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/oracle/OracleDatabase.java#L80-L87)
 
 ```java
 public class OracleDatabase extends Database<OracleConnection> {
@@ -170,7 +170,7 @@ public class OracleDatabase extends Database<OracleConnection> {
 `OracleDatabase`中的`ensureSupported`方法是final的，不可以override，这个就比较恶心了，只能复制他的代码，构建自己的类型支持。
 
 ## 重写支持低版本数据库扩展
-参考[官方对oracle数据库支持的目录](https://github.com/flyway/flyway/tree/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/oracle){:target="_blank"}结构重写
+参考[官方对oracle数据库支持的目录](https://github.com/flyway/flyway/tree/flyway-7.7.3/flyway-core/src/main/java/org/flywaydb/core/internal/database/oracle)结构重写
 
 ### LowerOracleDatabaseType
 

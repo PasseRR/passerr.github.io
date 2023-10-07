@@ -7,7 +7,7 @@ tags: [java]
 使用[jasypt](http://www.jasypt.org/)实质上是读取配置时解密，然后设置用户名密码到数据源中，
 结果不满足内存中不常驻明文用户名、密码要求。
 
-笔者在扩展这一支持时使用的是SpringBoot推荐的[Hikari 4.0.3](https://github.com/brettwooldridge/HikariCP/tree/HikariCP-4.0.3){:target="_blank"}，
+笔者在扩展这一支持时使用的是SpringBoot推荐的[Hikari 4.0.3](https://github.com/brettwooldridge/HikariCP/tree/HikariCP-4.0.3)，
 以下的扩展均基于此版本修改。
 
 ## 关于Hikari是如何创建数据库连接的?
@@ -62,7 +62,7 @@ public Connection getConnection() throws SQLException
 
 ### 2. HikariPool的父类PoolBase
 
-其默认构造方法有一个[initializeDataSource()](https://github.com/brettwooldridge/HikariCP/blob/da838d36fa85fabcdd671a1fa4d9e22392e9e9a3/src/main/java/com/zaxxer/hikari/pool/PoolBase.java#L315-L348){:target="_blank"}方法
+其默认构造方法有一个[initializeDataSource()](https://github.com/brettwooldridge/HikariCP/blob/da838d36fa85fabcdd671a1fa4d9e22392e9e9a3/src/main/java/com/zaxxer/hikari/pool/PoolBase.java#L315-L348)方法
 
 ```java
  private void initializeDataSource()
@@ -105,9 +105,9 @@ public Connection getConnection() throws SQLException
  }
 ```
    
-通过代码我们可以知道，若在初始化HikariDataSource的时候设[置了dataSource](https://github.com/brettwooldridge/HikariCP/blob/da838d36fa/src/main/java/com/zaxxer/hikari/HikariConfig.java#L95){:target="_blank"}，则连接池会直接使用设置的数据源初始化连接。
+通过代码我们可以知道，若在初始化HikariDataSource的时候设[置了dataSource](https://github.com/brettwooldridge/HikariCP/blob/da838d36fa/src/main/java/com/zaxxer/hikari/HikariConfig.java#L95)，则连接池会直接使用设置的数据源初始化连接。
 
-### 3. [DriverDataSource](https://github.com/brettwooldridge/HikariCP/blob/da838d36fa/src/main/java/com/zaxxer/hikari/util/DriverDataSource.java){:target="_blank"}
+### 3. [DriverDataSource](https://github.com/brettwooldridge/HikariCP/blob/da838d36fa/src/main/java/com/zaxxer/hikari/util/DriverDataSource.java)
 根据HikariDataSource配置实现获取连接的方法
 
 以上，大概梳理了hikari初始化连接池过程，我们只需要定义一个在创建连接时解密的数据源则满足了加密需求。

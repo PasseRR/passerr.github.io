@@ -3,9 +3,9 @@ title:  "自定义@JsonUnwrapped注解实现任意命名风格"
 tags: [java]
 ---
 
-## [@JsonUnwrapped](https://github.com/FasterXML/jackson-annotations/blob/master/src/main/java/com/fasterxml/jackson/annotation/JsonUnwrapped.java){:target="_blank"}的作用？
+## [@JsonUnwrapped](https://github.com/FasterXML/jackson-annotations/blob/master/src/main/java/com/fasterxml/jackson/annotation/JsonUnwrapped.java)的作用？
 
-参考[Jackson注解](/2023-05-04-jackson-annotations#jsonunwrapped){:target="_blank"}对@JsonUnwrapped的介绍，
+参考[Jackson注解](/2023-05-04-jackson-annotations#jsonunwrapped){:target='_blank'}对@JsonUnwrapped的介绍，
 简单来说，该注解的作用就是在json序列化与反序列化时，将嵌套对象的属性平铺到一层。
 
 ::: warning 注意
@@ -61,9 +61,9 @@ Test.Bean(name=Test.Name(firstName=张, lastName=三), age=1)
 
 ## @JsonUnwrapped是怎么实现的？
 
-在[PropertyBuilder](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java#L235){:target="_blank"}和[BeanDeserializerBase](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerBase.java#L560){:target="_blank"}
-中都使用了来自AnnotationIntrospector的方法[findUnwrappingNameTransformer](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java#L616){:target="_blank"}。 
-该方法返回了一个[NameTransformer](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/util/NameTransformer.java#L104-L114){:target="_blank"}，如果为null则表示不进行展开序列化/反序列化，否则按照返回的转换器进行名称转换。
+在[PropertyBuilder](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/ser/PropertyBuilder.java#L235)和[BeanDeserializerBase](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/deser/BeanDeserializerBase.java#L560)
+中都使用了来自AnnotationIntrospector的方法[findUnwrappingNameTransformer](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/AnnotationIntrospector.java#L616)。 
+该方法返回了一个[NameTransformer](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/util/NameTransformer.java#L104-L114)，如果为null则表示不进行展开序列化/反序列化，否则按照返回的转换器进行名称转换。
 即如何将未展开的属性转换为展开后的属性名称方式以及如何将已展开的属性还原为未展开的属性名称。
 
 我们看看默认的命名转换是怎么定义的。
@@ -173,7 +173,7 @@ public abstract class NameTransformer {
 
 ## Jackson的命名风格
 
-Jackson支持默认支持7种命名风格，参考[PropertyNamingStrategies](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/PropertyNamingStrategies.java#L36-L89){:target="_blank"}，命名转换的定义。
+Jackson支持默认支持7种命名风格，参考[PropertyNamingStrategies](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/PropertyNamingStrategies.java#L36-L89)，命名转换的定义。
 
 所有命名规则都是基于LOWER_CAMEL_CASE进行转换，也就是代码里面的属性必须是驼峰的，否则转换可能不是你想要的结果。
 
