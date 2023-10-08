@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@giscus/vue": "^2.3.0",
     "@types/node": "^20.5.7",
+    "font-awesome": "^4.7.0",
     "fs-extra": "^11.1.1",
     "globby": "^13.2.2",
     "gray-matter": "^4.0.3",
@@ -21,6 +23,6 @@
     "typescript": "^5.2.2",
     "vitepress": "^1.0.0-rc.4",
     "vitepress-plugin-mermaid": "^2.0.14",
-    "@giscus/vue": "^2.3.0"
+    "vitepress-plugin-tabs": "^0.4.1"
   }
 }

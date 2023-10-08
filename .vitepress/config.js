@@ -5,6 +5,7 @@ import {withMermaid} from "vitepress-plugin-mermaid"
 import {resolve} from 'path'
 import {createWriteStream} from "fs"
 import {ErrorLevel, SitemapIndexStream} from "sitemap"
+import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 
 const rewrites = {}
 // 所有博客列表
@@ -179,7 +180,8 @@ export default withMermaid(
             theme: {
                 light: 'github-light',
                 dark: 'github-dark'
-            }
+            },
+            config: md => md.use(tabsMarkdownPlugin)
         }
     })
 );
