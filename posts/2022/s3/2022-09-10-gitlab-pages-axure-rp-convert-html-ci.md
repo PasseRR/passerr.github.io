@@ -27,7 +27,7 @@ pre_build_script = "chcp 65001"
 用户配置 -> 管理模版 -> Windows组件 -> 远程桌面服务 -> 远程桌面会话 -> 会话时间
 [![p1][1]][1]{target=_blank class=no-icon}
 
-### 3. 关闭windows自动更新，可能会顶层弹窗，影响ui元素捕捉，运行输入sconfig.msc
+### 3. 关闭windows自动更新，可能会顶层弹窗，影响ui元素捕捉，运行输入sconfig.cmd
 
 [![p2][2]][2]{target=_blank class=no-icon}
 
