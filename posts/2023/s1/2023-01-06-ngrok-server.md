@@ -12,11 +12,11 @@ tags: [运维]
 1. [帐号注册](https://ngrok.com)并登录
 2. 下载响应的ngrok客户端
 
-   [![p1][1]][1]{target=_blank class=no-icon}
+   ![p1][1]
 
 3. 复制授权码并在终端执行以下命令
 
-   [![p2][2]][2]{target=_blank class=no-icon}
+   ![p2][2]
 
     ```shell
     ngrok config add-authtoken token
@@ -30,7 +30,7 @@ tags: [运维]
     ngrok help
     ```
 
-   [![p3][3]][3]{target=_blank class=no-icon}
+   ![p3][3]
 
    通过终端的域名地址直接访问本地服务，由于使用的是免费版本，不能自定义域名，每次启动服务域名地址都不一样。
 
@@ -189,7 +189,7 @@ ngrok.exe -config=ngrok.cfg 80
 ngrok.exe -subdomain web -config=ngrok.cfg 80
 ```
 
-[![p4][4]][4]{target=_blank class=no-icon}
+![p4][4]
 
 图片中ngrokd仅开启了http协议，以上，完成了私有ngrok的编译部署。
 

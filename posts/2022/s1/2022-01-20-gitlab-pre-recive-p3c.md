@@ -185,6 +185,6 @@ java -version
 
 ## 验证钩子
 
-[![图片][1]][1]{target=_blank class=no-icon}
+![图片][1]
 
 [1]: /assets/2022/01-20/hook.png

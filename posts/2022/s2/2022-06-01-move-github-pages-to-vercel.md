@@ -66,7 +66,7 @@ github子站点会存在一个上下文路径，以`PasseRR/DesignPatterns`为�
 
 ### 4. 配置主站域名，若是个新域名，将旧域名重定向到新域名
 
-[![域名][1]][1]{target=_blank class=no-icon}
+![域名][1]
 ### 5. 删除github的域名或者直接删除CNAME文件
 ### 6. 等待dns缓存过期，访问新的域名就可以看到基于vercel的新站点了
 

@@ -351,11 +351,10 @@ public static class TestController {
 
 - get方法 自动添加统一应答包装
 
-  [![p1][1]][1]{target=_blank class=no-icon}
+  ![p1][1]
 - put方法 使用默认返回
 
-  [![p2][2]][2]{target=_blank class=no-icon}
+  ![p2][2]
 
 [1]: /assets/2022/07-04/get.png "get"
-
 [2]: /assets/2022/07-04/put.png "put"

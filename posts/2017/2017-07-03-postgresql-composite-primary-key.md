@@ -39,7 +39,7 @@ ORDER BY "eisl"."exception_status_id"
 
 1.先分析查询语句
 
-[![EXPLAIN_LEFT_JOIN][1]][1]{target=_blank class=no-icon}
+![EXPLAIN_LEFT_JOIN][1]
 
 发现LEFT JOIN的条件并没有走索引 而是过滤条件
 
@@ -54,7 +54,7 @@ WHERE "eisl"."invoice_status_log_id" = 1000
 ORDER BY "eisl"."exception_status_id"
 ```
 
-[![EXPLAIN_JOIN][2]][2]{target=_blank class=no-icon}
+![EXPLAIN_JOIN][2]
 
 发现使用JOIN后查询条件走的是主键索引
 

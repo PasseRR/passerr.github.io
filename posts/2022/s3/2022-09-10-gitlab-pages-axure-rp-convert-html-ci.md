@@ -25,11 +25,11 @@ pre_build_script = "chcp 65001"
 ```
 ### 2. 修改用户session时间, 运行输入gpedit.msc打开组策略设置
 用户配置 -> 管理模版 -> Windows组件 -> 远程桌面服务 -> 远程桌面会话 -> 会话时间
-[![p1][1]][1]{target=_blank class=no-icon}
+![p1][1]
 
 ### 3. 关闭windows自动更新，可能会顶层弹窗，影响ui元素捕捉，运行输入sconfig.cmd
 
-[![p2][2]][2]{target=_blank class=no-icon}
+![p2][2]
 
 ### 4. 关闭axure自动更新
 ### 5. 复制[axure-automation.jar](/assets/2022/09-10/axure-automation.jar)到c盘根目录
@@ -152,7 +152,7 @@ pages:
 ```
 ### 4. 结合钉钉消息效果
 
-[![p3][3]][3]{target=_blank class=no-icon}
+![p3][3]
 
 自此，结合WinAppDriver完成了一个简陋版的rp文件ci/cd，基本满足现有工作需要。
 

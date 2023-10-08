@@ -16,7 +16,7 @@ tags: [运维]
 | [apache2](https://httpd.apache.org/)  | web服务器                         |
 | [OpenLdap](https://www.openldap.org/) | 用户目录                           |
 
-[![1]][1]{target=_blank class=no-icon}
+![1][1]
 
 ## 服务安装
 ### dovecot
@@ -428,7 +428,7 @@ chmod 700 /usr/local/vmail
     访问http://host/installer/index.php配置
     初始化完成后，修改权限禁止初始化页面访问
 
-    [![2]][2]{target=_blank class=no-icon}
+    ![2][2]
     ```shell
     chmod -R 600 /var/www/html/installer/
     ```

@@ -9,7 +9,7 @@ tags: [java, 其他]
 
 我以为axure会提供以命令行的方式将rp文件转为html，然而咨询了官方，并未提供该功能，于是便有了本篇文章的尝试。
 
-[![p1][1]][1]{target=_blank class=no-icon}
+![p1][1]
 
 ## [WinAppDriver](https://github.com/microsoft/WinAppDriver)
 做过web自动化的应该都知道Selenium，WinAppDriver其实是一个类似Selenium的UI自动化驱动服务框架。
@@ -18,7 +18,7 @@ tags: [java, 其他]
 ### 1. [下载](https://github.com/microsoft/WinAppDriver/releases)最新的驱动安装
 ### 2. 设置开发者模式
 
-[![p2][2]][2]{target=_blank class=no-icon}
+![p2][2]
 
 ### 3. 驱动安装目录以powershell启动WinAppDriver服务，**不能以后台服务的方式运行**
 ```bat
@@ -36,7 +36,7 @@ tags: [java, 其他]
 基于[官方demo](https://github.com/microsoft/WinAppDriver/tree/master/Samples/Java/CalculatorTest)，
 开发的Axure 9自动将rp文件转html，参考[项目代码](https://gitee.com/PasseRR/axure-automic-driver)，最终运行效果如下
 
-[![p3][3]][3]{target=_blank class=no-icon}
+![p3][3]
 
 自此，自己实现了一种方式，通过jar将rp文件转为html，为下一步gitlab ci自动化rp做好了准备。
 

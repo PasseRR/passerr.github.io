@@ -141,9 +141,9 @@ variables:
 
 ## 效果
 
-[![启动][1]][1]{target=_blank class=no-icon}
-[![成功][2]][2]{target=_blank class=no-icon}
-[![失败][3]][3]{target=_blank class=no-icon}
+![启动][1]
+![成功][2]
+![失败][3]
 
 [1]: /assets/2022/02-23/start.jpg
 [2]: /assets/2022/02-23/success.jpg

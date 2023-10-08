@@ -36,7 +36,7 @@ tags: [运维, 配置]
 </script>
 ```
 
-[![1]][1]{target=_blank class=no-icon}
+![1][1]
 
 ## 2. 右侧浮动导航宏
 
@@ -103,7 +103,7 @@ tags: [运维, 配置]
 使用[html宏](https://community.atlassian.com/t5/Boise-discussions/Widget-Wednesday-Floating-TOC-in-Confluence/m-p/1095431#M22)
 实现
 
-[![2]][2]{target=_blank class=no-icon}
+![2][2]
 
 ## 3. 【推荐】右侧导航插件(Easy Heading Macro)
 
@@ -141,7 +141,7 @@ tags: [运维, 配置]
   |navigationExpandOption|expand-all-by-default|导航目录展开方式，可选值expand-all-by-default、collapse-all-by-default、collapse-all-but-headings-1、collapse-all-but-headings-1-2、collapse-all-but-headings-1-3、collapse-all-but-headings-1-4、disable-expand-collapse|
   |disableNavLinksUnder|0|当标题少于多少个时目录不可用|
 
-[![3]][3]{target=_blank class=no-icon}
+![3][3]
 
 ## 4. confluence多个地址访问时提示Your URL doesn't match
 

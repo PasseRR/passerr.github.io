@@ -192,3 +192,12 @@
 :root:not(.dark) .plugin-tabs--content div[class*='language-'] {
     background-color: var(--vp-code-block-bg) !important;
 }
+
+/*图片放大缩小层级*/
+.medium-zoom-overlay {
+    z-index: 20;
+}
+
+.medium-zoom-image {
+    z-index: 21;
+}

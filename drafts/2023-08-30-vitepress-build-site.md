@@ -83,3 +83,7 @@ posts.forEach((it, idx) => {
 https://simpleicons.org/?q=gitee
 
 ## 关于`{{`的转义
+
+## 图片放大
+
+https://github.com/vuejs/vitepress/issues/854#issuecomment-1732376667

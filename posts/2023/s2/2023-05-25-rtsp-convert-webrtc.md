@@ -150,7 +150,7 @@ ldd --version
 
 禁用浏览器硬件加速，以google为例。
 
-[![图片][1]][1]{target=_blank class=no-icon}
+![图片][1]
 
 
 

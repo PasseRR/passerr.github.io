@@ -251,7 +251,7 @@ public class StudentRegisterSpec extends BaseSpec {
 
 6.登录自动测试示例
 
-[![登录][1]][1]{target=_blank class=no-icon}
+![登录][1]
 
 ## 结论
 需要在系统比较稳定的时候用于自动回归测试，会产生数据，需要准备一个纯净环境专门用于自动化测试。
