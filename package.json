@@ -18,6 +18,8 @@
     "fs-extra": "^11.1.1",
     "globby": "^13.2.2",
     "gray-matter": "^4.0.3",
+    "highcharts": "^11.1.0",
+    "highcharts-vue": "^1.4.3",
     "medium-zoom": "^1.0.8",
     "mermaid": "^10.5.0",
     "prettier": "^3.0.3",

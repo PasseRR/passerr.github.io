@@ -24,17 +24,12 @@ export default {
         app.component('Ebook', Ebook)
     },
     setup() {
-        const route = useRoute();
+        const route = useRoute()
         const initZoom = () => {
             // mediumZoom('[data-zoomable]', {background: 'var(--vp-c-bg)'});
             mediumZoom('.main img', {background: 'var(--vp-c-bg)'});
         };
-        onMounted(() => {
-            initZoom();
-        });
-        watch(
-            () => route.path,
-            () => nextTick(() => initZoom())
-        );
+        onMounted(() => initZoom());
+        watch(() => route.path, () => nextTick(() => initZoom()));
     }
 }
