@@ -28,10 +28,11 @@ export default withMermaid(
         srcExclude: ['**/README.md', ...site.excludes],
         rewrites: rewrites,
         // sitemap_index文件生成
-        buildEnd: async s => {
-            const paths = resolve(s.outDir)
+        async buildEnd(s) {
+            const paths = resolve(s.outDir), sufix = '/sitemap.xml'
             const smis = new SitemapIndexStream({level: ErrorLevel.WARN})
-            site.books.forEach(it => smis.write({url: site.main + it.url, lastmod: it.date}))
+            smis.write({url: site.main + sufix, lastmod: '2017-05-19'})
+            site.books.forEach(it => smis.write({url: site.main + it.url + sufix, lastmod: it.date}))
             smis.pipe(createWriteStream(paths + '/sitemap_index.xml'))
             smis.end()
         },
