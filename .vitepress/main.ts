@@ -1,5 +1,8 @@
 // @ts-ignore
 import fg from 'fast-glob'
+import plantuml from './language/plantuml.tmLanguage.json'
+import ftl from './language/ftl.tmLanguage.json'
+import wiki from './language/confluence-wiki.tmLanguage.json'
 
 const site = {
     main: 'https://www.xiehai.zone',
@@ -40,4 +43,21 @@ const site = {
     ]
 }
 
-export {site};
+const languages = [{
+    id: 'plantuml',
+    scopeName: 'source.plantuml',
+    grammar: plantuml,
+    aliases: ['plantuml']
+}, {
+    id: 'freemarker',
+    scopeName: 'text.html.ftl',
+    grammar: ftl,
+    aliases: ['ftl', 'freemarker']
+}, {
+    id: 'wiki.confluence',
+    scopeName: 'source.wiki.confluence',
+    grammar: wiki,
+    aliases: ['confluence-wiki']
+}]
+
+export {site, languages};

@@ -3,7 +3,7 @@ title:  Confluence常用配置
 tags: [运维, 配置]
 ---
 
-## 1. Confluence页面添加返回顶部
+## Confluence页面添加返回顶部
 
 设置 -> 自定义HTML -> BODY尾部中添加如下代码。
 
@@ -38,7 +38,7 @@ tags: [运维, 配置]
 
 ![1][1]
 
-## 2. 右侧浮动导航宏
+## 右侧浮动导航宏
 
 设置 -> 用户宏 -> 创建用户宏，然后在编辑器中插入创建的宏。
 
@@ -96,7 +96,6 @@ tags: [运维, 配置]
       </tbody>
     </table>
   </div>
-</script>
 #end
 ```
 
@@ -105,7 +104,7 @@ tags: [运维, 配置]
 
 ![2][2]
 
-## 3. 【推荐】右侧导航插件(Easy Heading Macro)
+## 【推荐】右侧导航插件(Easy Heading Macro)
 
 [Easy Heading Macro](https://marketplace.atlassian.com/apps/1221271/easy-heading-macro-floating-table-of-contents?tab=overview&hosting=server)
 
@@ -114,7 +113,7 @@ tags: [运维, 配置]
 插件目录可以使用wiki全局配置、按照空间配置、按照页面配置自由选择，并且支持内容按照标题展开、收起。
 
 - 配置wiki
-  ```wiki
+  ```confluence-wiki
   {easy-heading-free:selector=h1,h2,h3,h4,h5,h6|navigationTitle=目录|navigationExpandOption=expand-all-by-default}
   ```
 - 全局配置  
@@ -126,7 +125,7 @@ tags: [运维, 配置]
 - 配置参数说明
 
   |参数名|默认值|描述|
-    |:---|:---|:---|
+  |:---|:---|:---|
   |enabled|true|是否启用宏|
   |selector|h1,h2,h3|从h1到h6，标题选择器，逗号分隔|
   |titleExpandClickable|false|点击标题自动展开目录|
@@ -143,14 +142,14 @@ tags: [运维, 配置]
 
 ![3][3]
 
-## 4. confluence多个地址访问时提示Your URL doesn't match
+## confluence多个地址访问时提示Your URL doesn't match
 
 confluence只能设置一个基础url，当confluence通过内网或外网ip访问时，每当访问任意页面时会提示Your URL doesn't match，
 为了避免这种情况，通过修改`Confluence Base URL Plugin`插件配置。
 
 设置 -> 插件管理 -> 系统 -> Confluence Base URL Plugin -> 禁用模块`Base URL plugin filter`
 
-## 5. [CVE-2021-26084漏洞修复](https://confluence.atlassian.com/doc/confluence-security-advisory-2021-08-25-1077906215.html)
+## [CVE-2021-26084漏洞修复](https://confluence.atlassian.com/doc/confluence-security-advisory-2021-08-25-1077906215.html)
 
 CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤如下
 
@@ -187,7 +186,7 @@ CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤
     ```
 7. 重启confluence
 
-## 6. confluence文件预览乱码
+## confluence文件预览乱码
 
 假设Confluence安装目录为`/opt/atlassian/confluence`，应用数据目录为`/var/atlassian/application-data/confluence`
 

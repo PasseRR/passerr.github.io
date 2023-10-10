@@ -1,5 +1,5 @@
 import {defineConfig} from 'vitepress'
-import {site} from './main'
+import {languages, site} from './main'
 import {BLOG_PREFIX, getPosts} from './theme/serverUtils'
 import {withMermaid} from "vitepress-plugin-mermaid"
 import {resolve} from 'path'
@@ -175,6 +175,7 @@ export default withMermaid(
             }]
         },
         markdown: {
+            languages: languages,
             lineNumbers: true,
             theme: {
                 light: 'github-light',

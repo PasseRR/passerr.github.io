@@ -1,0 +1,1033 @@
+{
+  "name": "Confluence Wiki",
+  "scopeName": "source.wiki.confluence",
+  "fileTypes": [
+    "wiki",
+    "confluence",
+    "cwf"
+  ],
+  "uuid": "de43e6f7-a820-4d64-a472-30c79f83a963",
+  "patterns": [
+    {
+      "include": "#character-escape"
+    },
+    {
+      "include": "#code-blocks"
+    },
+    {
+      "include": "#page-link"
+    },
+    {
+      "include": "#block-macro"
+    },
+    {
+      "include": "#lists"
+    },
+    {
+      "include": "#text-styling"
+    },
+    {
+      "include": "#inline-macro"
+    }
+  ],
+  "repository": {
+    "block-macro": {
+      "patterns": [
+        {
+          "include": "#headings"
+        },
+        {
+          "include": "#block-quote"
+        },
+        {
+          "include": "#horizontal-line"
+        },
+        {
+          "include": "#table-header"
+        },
+        {
+          "include": "#table-cell"
+        },
+        {
+          "include": "#info-macro"
+        },
+        {
+          "include": "#note-macro"
+        },
+        {
+          "include": "#tip-macro"
+        },
+        {
+          "include": "#warning-macro"
+        }
+      ]
+    },
+    "code-blocks": {
+      "patterns": [
+        {
+          "include": "#recognized-code-blocks"
+        },
+        {
+          "include": "#unrecognized-code-block"
+        }
+      ]
+    },
+    "headings": {
+      "patterns": [
+        {
+          "include": "#heading-1"
+        },
+        {
+          "include": "#heading-2"
+        },
+        {
+          "include": "#heading-3"
+        },
+        {
+          "include": "#heading-4"
+        },
+        {
+          "include": "#heading-5"
+        },
+        {
+          "include": "#heading-6"
+        }
+      ]
+    },
+    "inline-macro": {
+      "patterns": [
+        {
+          "include": "#character-escape"
+        },
+        {
+          "include": "#page-link"
+        },
+        {
+          "include": "#anchor-macro"
+        },
+        {
+          "include": "#image-link"
+        },
+        {
+          "include": "#single-macro"
+        }
+      ]
+    },
+    "lists": {
+      "patterns": [
+        {
+          "include": "#ordered-list"
+        },
+        {
+          "include": "#simple-list"
+        },
+        {
+          "include": "#unordered-list"
+        }
+      ]
+    },
+    "recognized-code-blocks": {
+      "patterns": [
+        {
+          "include": "#code-block-cs"
+        },
+        {
+          "include": "#code-block-html"
+        },
+        {
+          "include": "#code-block-javascript"
+        },
+        {
+          "include": "#code-block-shell"
+        },
+        {
+          "include": "#code-block-sql"
+        },
+        {
+          "include": "#code-block-xml"
+        }
+      ]
+    },
+    "text-styling": {
+      "patterns": [
+        {
+          "include": "#character-escape"
+        },
+        {
+          "include": "#bold"
+        },
+        {
+          "include": "#italic"
+        },
+        {
+          "include": "#preformatted"
+        },
+        {
+          "include": "#underline"
+        },
+        {
+          "include": "#strikethrough"
+        },
+        {
+          "include": "#citation"
+        },
+        {
+          "include": "#subscript"
+        },
+        {
+          "include": "#superscript"
+        }
+      ]
+    },
+    "image-link": {
+      "name": "markup.underline.link.image.confluence",
+      "match": "(?<!\\w)(?<!\\\\)!([^!]+?)!(?!\\w)",
+      "captures": {
+        "1": {
+          "name": "meta.link.destination.image.confluence"
+        }
+      }
+    },
+    "page-link": {
+      "name": "markup.underline.link.confluence",
+      "match": "(?<!\\\\)\\[([^|]*?)(?:\\|([^]]*))?\\]",
+      "captures": {
+        "1": {
+          "name": "meta.link.title.confluence"
+        },
+        "2": {
+          "name": "meta.link.destination.confluence"
+        }
+      }
+    },
+    "anchor-macro": {
+      "name": "meta.macro.anchor.confluence",
+      "match": "(?<!\\\\)({)(anchor)(:)([^}]+?)(})",
+      "captures": {
+        "1": {
+          "name": "keyword.operator.confluence meta.operator.confluence"
+        },
+        "2": {
+          "name": "entity.name.tag.confluence meta.macro.name.confluence"
+        },
+        "3": {
+          "name": "keyword.operator.confluence meta.operator.confluence"
+        },
+        "4": {
+          "name": "constant.other.confluence meta.macro.settings.confluence meta.macro.settings.key.confluence"
+        },
+        "5": {
+          "name": "keyword.operator.confluence meta.operator.confluence"
+        }
+      }
+    },
+    "block-quote": {
+      "name": "markup.quote.confluence",
+      "match": "((?:^|\\s+)bq\\.)",
+      "contentName": "markup.quote.confluence",
+      "captures": {
+        "1": {
+          "name": "entity.name.type.confluence"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#page-link"
+        },
+        {
+          "include": "#lists"
+        },
+        {
+          "include": "#text-styling"
+        },
+        {
+          "include": "#inline-macro"
+        }
+      ]
+    },
+    "horizontal-line": {
+      "name": "markup.separator.horizontal.confluence meta.separator.horizontal.confluence",
+      "match": "(^\\s*----\\s*$)"
+    },
+    "info-macro": {
+      "name": "meta.macro.info.confluence",
+      "begin": "(?<!\\\\)({)(info)",
+      "end": "({)(info)(})",
+      "captures": {
+        "1": {
+          "name": "keyword.operator.confluence meta.operator.confluence"
+        },
+        "2": {
+          "name": "entity.name.tag.confluence meta.macro.name.confluence meta.macro.name.info.confluence"
+        },
+        "3": {
+          "name": "keyword.operator.confluence meta.operator.confluence"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#recognized-macro-setting-helper"
+        },
+        {
+          "include": "#code-blocks"
+        },
+        {
+          "include": "#lists"
+        },
+        {
+          "include": "#text-styling"
+        },
+        {
+          "include": "#block-macro"
+        },
+        {
+          "include": "#inline-macro"
+        }
+      ]
+    },
+    "note-macro": {
+      "name": "meta.macro.note.confluence",
+      "begin": "(?<!\\\\)({)(note)",
+      "end": "({)(note)(})",
+      "captures": {
+        "1": {
+          "name": "keyword.operator.confluence meta.operator.confluence"
+        },
+        "2": {
+          "name": "entity.name.tag.confluence meta.macro.name.confluence meta.macro.name.note.confluence"
+        },
+        "3": {
+          "name": "keyword.operator.confluence meta.operator.confluence"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#recognized-macro-setting-helper"
+        },
+        {
+          "include": "#code-blocks"
+        },
+        {
+          "include": "#lists"
+        },
+        {
+          "include": "#text-styling"
+        },
+        {
+          "include": "#block-macro"
+        },
+        {
+          "include": "#inline-macro"
+        }
+      ]
+    },
+    "tip-macro": {
+      "name": "meta.macro.tip.confluence",
+      "begin": "(?<!\\\\)({)(tip)",
+      "end": "({)(tip)(})",
+      "captures": {
+        "1": {
+          "name": "keyword.operator.confluence meta.operator.confluence"
+        },
+        "2": {
+          "name": "entity.name.tag.confluence meta.macro.name.confluence meta.macro.name.tip.confluence"
+        },
+        "3": {
+          "name": "keyword.operator.confluence meta.operator.confluence"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#recognized-macro-setting-helper"
+        },
+        {
+          "include": "#code-blocks"
+        },
+        {
+          "include": "#lists"
+        },
+        {
+          "include": "#text-styling"
+        },
+        {
+          "include": "#block-macro"
+        },
+        {
+          "include": "#inline-macro"
+        }
+      ]
+    },
+    "warning-macro": {
+      "name": "meta.macro.warning.confluence",
+      "begin": "(?<!\\\\)({)(warning)",
+      "end": "({)(warning)(})",
+      "captures": {
+        "1": {
+          "name": "keyword.operator.confluence meta.operator.confluence"
+        },
+        "2": {
+          "name": "entity.name.tag.confluence meta.macro.name.confluence meta.macro.name.warning.confluence"
+        },
+        "3": {
+          "name": "keyword.operator.confluence meta.operator.confluence"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#recognized-macro-setting-helper"
+        },
+        {
+          "include": "#code-blocks"
+        },
+        {
+          "include": "#lists"
+        },
+        {
+          "include": "#text-styling"
+        },
+        {
+          "include": "#block-macro"
+        },
+        {
+          "include": "#inline-macro"
+        }
+      ]
+    },
+    "secondary-table-header": {
+      "name": "markup.table.header.confluence meta.table.header.confluence",
+      "begin": "(?:\\s+(\\|\\|))",
+      "end": "(?=\\||$)",
+      "captures": {
+        "1": {
+          "name": "meta.table.header.border.confluence"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#secondary-table-header"
+        },
+        {
+          "include": "#secondary-table-cell"
+        },
+        {
+          "include": "#page-link"
+        },
+        {
+          "include": "#block-quote"
+        },
+        {
+          "include": "#lists"
+        },
+        {
+          "include": "#text-styling"
+        },
+        {
+          "include": "#inline-macro"
+        }
+      ]
+    },
+    "secondary-table-cell": {
+      "name": "markup.table.cell.confluence meta.table.cell.confluence",
+      "begin": "(?:\\s+(\\|))",
+      "end": "(?=\\||$)",
+      "captures": {
+        "1": {
+          "name": "meta.table.cell.border.confluence"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#secondary-table-header"
+        },
+        {
+          "include": "#secondary-table-cell"
+        },
+        {
+          "include": "#page-link"
+        },
+        {
+          "include": "#block-quote"
+        },
+        {
+          "include": "#lists"
+        },
+        {
+          "include": "#text-styling"
+        },
+        {
+          "include": "#inline-macro"
+        }
+      ]
+    },
+    "table-header": {
+      "name": "markup.table.header.confluence meta.table.header.confluence",
+      "begin": "^((?:\\s*\\|\\|))",
+      "end": "$",
+      "captures": {
+        "1": {
+          "name": "meta.table.header.border.confluence"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#secondary-table-header"
+        },
+        {
+          "include": "#secondary-table-cell"
+        },
+        {
+          "include": "#page-link"
+        },
+        {
+          "include": "#block-quote"
+        },
+        {
+          "include": "#lists"
+        },
+        {
+          "include": "#text-styling"
+        },
+        {
+          "include": "#inline-macro"
+        }
+      ]
+    },
+    "table-cell": {
+      "name": "markup.table.cell.confluence meta.table.cell.confluence",
+      "begin": "^((?:\\s*\\|))",
+      "end": "$",
+      "captures": {
+        "1": {
+          "name": "meta.table.cell.border.confluence"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#secondary-table-header"
+        },
+        {
+          "include": "#secondary-table-cell"
+        },
+        {
+          "include": "#page-link"
+        },
+        {
+          "include": "#block-quote"
+        },
+        {
+          "include": "#lists"
+        },
+        {
+          "include": "#text-styling"
+        },
+        {
+          "include": "#inline-macro"
+        }
+      ]
+    },
+    "heading-1": {
+      "name": "markup.heading.1.confluence meta.heading.1.confluence",
+      "match": "^(h1\\.) (.*)$",
+      "captures": {
+        "1": {
+          "name": "entity.name.type.confluence"
+        },
+        "2": {
+          "name": "markup.heading.1.text.confluence meta.heading.1.confluence"
+        }
+      }
+    },
+    "heading-2": {
+      "name": "markup.heading.2.confluence meta.heading.2.confluence",
+      "match": "^(h2\\.) (.*)$",
+      "captures": {
+        "1": {
+          "name": "entity.name.type.confluence"
+        },
+        "2": {
+          "name": "markup.heading.2.confluence meta.heading.2.confluence"
+        }
+      }
+    },
+    "heading-3": {
+      "name": "markup.heading.3.confluence meta.heading.3.confluence",
+      "match": "^(h3\\.) (.*)$",
+      "captures": {
+        "1": {
+          "name": "entity.name.type.confluence"
+        },
+        "2": {
+          "name": "markup.heading.3.confluence meta.heading.3.confluence"
+        }
+      }
+    },
+    "heading-4": {
+      "name": "markup.heading.4.confluence meta.heading.4.confluence",
+      "match": "^(h4\\.) (.*)$",
+      "captures": {
+        "1": {
+          "name": "entity.name.type.confluence"
+        },
+        "2": {
+          "name": "markup.heading.4.confluence meta.heading.4.confluence"
+        }
+      }
+    },
+    "heading-5": {
+      "name": "markup.heading.5.confluence meta.heading.5.confluence",
+      "match": "^(h5\\.) (.*)$",
+      "captures": {
+        "1": {
+          "name": "entity.name.type.confluence"
+        },
+        "2": {
+          "name": "markup.heading.5.confluence meta.heading.5.confluence"
+        }
+      }
+    },
+    "heading-6": {
+      "name": "markup.heading.6.confluence meta.heading.6.confluence",
+      "match": "^(h6\\.) (.*)$",
+      "captures": {
+        "1": {
+          "name": "entity.name.type.confluence"
+        },
+        "2": {
+          "name": "markup.heading.6.confluence meta.heading.6.confluence"
+        }
+      }
+    },
+    "ordered-list": {
+      "name": "markup.list.numbered.confluence meta.list.confluence meta.list.numbered.confluence",
+      "match": "((?:^|(?<=\\|)\\s+)(?:\\#(?:\\*|\\#)*) )",
+      "captures": {
+        "1": {
+          "name": "markup.list.numbered.confluence meta.list.confluence meta.list.numbered.confluence"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#block-macro"
+        },
+        {
+          "include": "#inline-macro"
+        },
+        {
+          "include": "#text-styling"
+        }
+      ]
+    },
+    "simple-list": {
+      "name": "markup.list.unnumbered.simple.confluence meta.list.confluence meta.list.unnumbered.simple.confluence",
+      "match": "(^(?:-)|(?:(?<=\\|)\\s+(?:-)) )",
+      "captures": {
+        "1": {
+          "name": "markup.list.unnumbered.simple.confluence meta.list.confluence meta.list.unnumbered.simple.confluence"
+        }
+      }
+    },
+    "unordered-list": {
+      "name": "markup.list.unnumbered.confluence meta.list.confluence meta.list.unnumbered.confluence",
+      "match": "((?:^|(?<=\\|)\\s+)(?:\\*(?:\\*|\\#)*) )",
+      "captures": {
+        "1": {
+          "name": "markup.list.unnumbered.confluence meta.list.confluence meta.list.unnumbered.confluence"
+        }
+      }
+    },
+    "citation": {
+      "name": "markup.italic.confluence meta.citation.confluence",
+      "begin": "(?<!\\w)(?<!\\\\)\\?\\?(?=.+?(?<!\\\\)\\?\\?)",
+      "end": "(?<!\\\\)\\?\\?(?!\\w)",
+      "patterns": [
+        {
+          "include": "#text-styling"
+        }
+      ]
+    },
+    "italic": {
+      "name": "markup.italic.confluence meta.italic.confluence",
+      "begin": "(?<!\\w)(?<!\\\\)_(?=.+?(?<!\\\\)_)",
+      "end": "(?<!\\\\)_(?!\\w)",
+      "patterns": [
+        {
+          "include": "#text-styling"
+        }
+      ]
+    },
+    "bold": {
+      "name": "markup.bold.confluence meta.bold.confluence",
+      "begin": "(?<!\\w)(?<!\\\\)\\*(?=.+?(?<!\\\\)\\*)",
+      "end": "(?<!\\\\)\\*(?!\\w)",
+      "patterns": [
+        {
+          "include": "#text-styling"
+        }
+      ]
+    },
+    "underline": {
+      "name": "markup.underline.confluence meta.underline.confluence",
+      "begin": "(?<!\\w)(?<!\\\\)\\+(?=.+?(?<!\\\\)\\+)",
+      "end": "(?<!\\\\)\\+(?!\\w)",
+      "patterns": [
+        {
+          "include": "#text-styling"
+        }
+      ]
+    },
+    "strikethrough": {
+      "name": "markup.underline.strikethrough.confluence meta.strikethrough.confluence",
+      "begin": "(?<!(?:\\\\|\\w))-(?=.+?(?<!\\\\)-)",
+      "end": "((?<!\\\\)-)(?!\\w)",
+      "patterns": [
+        {
+          "include": "#text-styling"
+        }
+      ]
+    },
+    "subscript": {
+      "name": "markup.other.subscript.confluence meta.subscript.confluence",
+      "begin": "(?<!\\\\)~(?=.+?(?<!\\\\)~)",
+      "end": "(?<!\\\\)~(?!\\w)",
+      "patterns": [
+        {
+          "include": "#text-styling"
+        }
+      ]
+    },
+    "superscript": {
+      "name": "markup.other.superscript.confluence meta.superscript.confluence",
+      "begin": "(?<!\\\\)\\^(?=.+?(?<!\\\\)\\^)",
+      "end": "(?<!\\\\)\\^(?!\\w)",
+      "patterns": [
+        {
+          "include": "#text-styling"
+        }
+      ]
+    },
+    "preformatted": {
+      "name": "markup.code.confluence meta.preformatted.confluence",
+      "begin": "({{)",
+      "end": "(}})",
+      "captures": {
+        "1": {
+          "name": "keyword.operator.subtle.confluence meta.operator.subtle.confluence"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#character-escape"
+        },
+        {
+          "include": "#page-link"
+        }
+      ]
+    },
+    "character-escape": {
+      "name": "constant.character.escape.confluence meta.character-escape.confluence",
+      "match": "(\\\\(\\||{|}|\\[|\\]|\\(|\\)|\\*|_|-|\\+|\\\\|\\?|~|\\^))"
+    },
+    "recognized-macro-setting-helper": {
+      "patterns": [
+        {
+          "name": "meta.macro.settings.confluence",
+          "match": "(?:(:)(?:([^=|}]+?)(=)([^=|}]+?)(\\|))*([^=|}]+?)(=)([^}]+?))?(})",
+          "captures": {
+            "1": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            },
+            "2": {
+              "name": "constant.other.confluence meta.macro.settings.key.confluence"
+            },
+            "3": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            },
+            "4": {
+              "name": "string.unquoted.confluence meta.macro.settings.value.confluence"
+            },
+            "5": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            },
+            "6": {
+              "name": "constant.other.confluence meta.macro.settings.key.confluence"
+            },
+            "7": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            },
+            "8": {
+              "name": "string.unquoted.confluence meta.macro.settings.value.confluence"
+            },
+            "9": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            }
+          }
+        }
+      ]
+    },
+    "macro-settings": {
+      "name": "meta.macro.settings.confluence",
+      "patterns": [
+        {
+          "match": "(:|\\|)",
+          "captures": {
+            "1": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            }
+          }
+        },
+        {
+          "include": "#macro-key-value-pair"
+        }
+      ]
+    },
+    "macro-key-value-pair": {
+      "match": "([^=|}]+?)(?:(=)((?:[^|}]+)))?",
+      "captures": {
+        "1": {
+          "name": "constant.other.confluence meta.macro.settings.confluence meta.macro.settings.key.confluence"
+        },
+        "2": {
+          "name": "keyword.operator.confluence meta.macro.settings.confluence meta.operator.confluence"
+        },
+        "3": {
+          "name": "string.unquoted.confluence meta.macro.settings.confluence meta.macro.settings.value.confluence"
+        }
+      }
+    },
+    "single-macro": {
+      "name": "meta.macro",
+      "begin": "({)([^}:]+)",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.operator.confluence meta.operator.confluence"
+        },
+        "2": {
+          "name": "entity.name.tag.confluence meta.macro.name.confluence"
+        },
+        "3": {
+          "name": "keyword.operator.confluence meta.operator.confluence"
+        }
+      },
+      "end": "(})",
+      "endCaptures": {
+        "1": {
+          "name": "keyword.operator.confluence meta.operator.confluence"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#macro-settings"
+        }
+      ]
+    },
+    "code-block-cs": {
+      "name": "meta.code.cs.confluence",
+      "begin": "(?={code:language=(csharp|c#))",
+      "end": "(?<={code})",
+      "patterns": [
+        {
+          "include": "#single-macro"
+        },
+        {
+          "begin": "(?<!{code})",
+          "end": "({)(code)(})",
+          "endCaptures": {
+            "1": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            },
+            "2": {
+              "name": "entity.name.tag.confluence meta.macro.name.confluence"
+            },
+            "3": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            }
+          },
+          "patterns": [
+            {
+              "include": "source.cs"
+            }
+          ]
+        }
+      ]
+    },
+    "code-block-html": {
+      "name": "meta.code.html.confluence",
+      "begin": "(?={code:language=html)",
+      "end": "(?<={code})",
+      "patterns": [
+        {
+          "include": "#single-macro"
+        },
+        {
+          "begin": "(?<!{code})",
+          "end": "({)(code)(})",
+          "endCaptures": {
+            "1": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            },
+            "2": {
+              "name": "entity.name.tag.confluence meta.macro.name.confluence"
+            },
+            "3": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            }
+          },
+          "patterns": [
+            {
+              "include": "text.html.basic"
+            }
+          ]
+        }
+      ]
+    },
+    "code-block-javascript": {
+      "name": "meta.code.javascript.confluence",
+      "begin": "(?={code:language=javascript)",
+      "end": "(?<={code})",
+      "patterns": [
+        {
+          "include": "#single-macro"
+        },
+        {
+          "begin": "(?<!{code})",
+          "end": "({)(code)(})",
+          "endCaptures": {
+            "1": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            },
+            "2": {
+              "name": "entity.name.tag.confluence meta.macro.name.confluence"
+            },
+            "3": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            }
+          },
+          "patterns": [
+            {
+              "include": "source.js"
+            }
+          ]
+        }
+      ]
+    },
+    "code-block-shell": {
+      "name": "meta.code.shell.confluence",
+      "begin": "(?={code:language=shell)",
+      "end": "(?<={code})",
+      "patterns": [
+        {
+          "include": "#single-macro"
+        },
+        {
+          "begin": "(?<!{code})",
+          "end": "({)(code)(})",
+          "endCaptures": {
+            "1": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            },
+            "2": {
+              "name": "entity.name.tag.confluence meta.macro.name.confluence"
+            },
+            "3": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            }
+          },
+          "patterns": [
+            {
+              "include": "source.shell"
+            }
+          ]
+        }
+      ]
+    },
+    "code-block-sql": {
+      "name": "meta.code.sql.confluence",
+      "begin": "(?={code:language=sql)",
+      "end": "(?<={code})",
+      "patterns": [
+        {
+          "include": "#single-macro"
+        },
+        {
+          "begin": "(?<!{code})",
+          "end": "({)(code)(})",
+          "endCaptures": {
+            "1": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            },
+            "2": {
+              "name": "entity.name.tag.confluence meta.macro.name.confluence"
+            },
+            "3": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            }
+          },
+          "patterns": [
+            {
+              "include": "source.plsql.oracle"
+            },
+            {
+              "include": "source.sql"
+            }
+          ]
+        }
+      ]
+    },
+    "code-block-xml": {
+      "name": "meta.code.xml.confluence",
+      "begin": "(?={code:language=xml)",
+      "end": "(?<={code})",
+      "patterns": [
+        {
+          "include": "#single-macro"
+        },
+        {
+          "begin": "(?<!{code})",
+          "end": "({)(code)(})",
+          "endCaptures": {
+            "1": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            },
+            "2": {
+              "name": "entity.name.tag.confluence meta.macro.name.confluence"
+            },
+            "3": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            }
+          },
+          "patterns": [
+            {
+              "include": "text.xml"
+            }
+          ]
+        }
+      ]
+    },
+    "unrecognized-code-block": {
+      "name": "meta.code.raw.confluence",
+      "begin": "(?={code)",
+      "end": "(?<={code})",
+      "patterns": [
+        {
+          "include": "#single-macro"
+        },
+        {
+          "contentName": "meta.code.raw.confluence markup.raw",
+          "begin": "(?<!{code})",
+          "end": "({)(code)(})",
+          "endCaptures": {
+            "1": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            },
+            "2": {
+              "name": "entity.name.tag.confluence meta.macro.name.confluence"
+            },
+            "3": {
+              "name": "keyword.operator.confluence meta.operator.confluence"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
