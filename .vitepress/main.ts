@@ -3,6 +3,7 @@ import fg from 'fast-glob'
 import plantuml from './language/plantuml.tmLanguage.json'
 import ftl from './language/ftl.tmLanguage.json'
 import wiki from './language/confluence-wiki.tmLanguage.json'
+import log from './language/log.tmLanguage.json'
 
 const site = {
     main: 'https://www.xiehai.zone',
@@ -58,6 +59,11 @@ const languages = [{
     scopeName: 'source.wiki.confluence',
     grammar: wiki,
     aliases: ['confluence-wiki']
+}, {
+    id: 'log',
+    scopeName: 'text.log',
+    grammar: log,
+    aliases: ['log']
 }]
 
 export {site, languages};

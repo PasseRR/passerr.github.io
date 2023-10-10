@@ -35,7 +35,7 @@ WantedBy=multi-user.target
 
 启动后，调用matlab出错，错误信息如下：
 
-```txt
+```log
 Caused by: java.lang.UnsatisfiedLinkError: Failed to find the required library libmwmclmcrrt.so.9.10 on java.library.path.
 This library is typically installed along with MATLAB or the MATLAB Runtime. Its absence may indicate an issue with that installation or
 the current path configuration, or a mismatch with the architecture of the Java interpreter on the path.

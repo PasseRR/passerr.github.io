@@ -7,7 +7,7 @@ tags: [postgresql, 数据库, java]
 在系统[flyway](https://flywaydb.org/)初始化脚本中，使用了[postgis](http://postgis.net/)
 扩展中的`GEOMETRY`类型，当脚本在非`public`模式下运行时报错如下：
 
-```txt
+```log
 Caused by: org.postgresql.util.PSQLException: 错误: 类型 "geometry" 不存在
   位置：215
 	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2552)
