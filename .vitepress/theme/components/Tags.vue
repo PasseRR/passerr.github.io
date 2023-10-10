@@ -1,7 +1,5 @@
 <template>
-  <ClientOnly>
-    <highcharts :options="chartOptions" :key="themeToggle(isDark, Highcharts)"/>
-  </ClientOnly>
+  <highcharts :options="chartOptions" :key="themeToggle(isDark, Highcharts)"/>
   <div class="tag-header">{{ selectTag }}</div>
   <a :href="withBase(article.regularPath)" v-for="(article, index) in data[selectTag]" :key="index" class="posts">
     <div class="post-container">
@@ -12,10 +10,10 @@
   </a>
 </template>
 <script lang="ts" setup>
-import {computed, onBeforeMount, onMounted, ref} from "vue"
-import {useData, withBase} from 'vitepress'
+import {computed, onMounted, ref} from "vue"
+import {defineClientComponent, useData, withBase} from 'vitepress'
 import Highcharts from 'highcharts'
-import loadWordcloud from 'highcharts/modules/wordcloud'
+import wordcloud from 'highcharts/modules/wordcloud'
 import {initTags} from '../functions'
 
 const dark = {
@@ -52,21 +50,24 @@ const {theme, isDark} = useData()
 const data = computed(() => initTags(theme.value.posts))
 const keys = Object.keys(data.value);
 
-let selectTag = ref('')
+const selectTag = ref('')
 
 // 标签切换
-const toggleTag = (tag: string) => {
-  selectTag.value = tag
-}
+const toggleTag = (tag: string) => selectTag.value = tag,
+    // 客户端组件引用
+    highcharts = defineClientComponent(() => {
+      // 词云引入
+      wordcloud(Highcharts)
+      return import('highcharts-vue').then(it => it.Chart)
+    }),
+    // 主题切换
+    themeToggle = (isDark, charts) => {
+      if (typeof charts === 'object') {
+        charts.setOptions(isDark ? dark : light)
+      }
 
-// 主题切换
-const themeToggle = computed(() => {
-  return (isDark, charts) => {
-    charts.setOptions(isDark ? dark : light)
-
-    return isDark ? 'dark' : 'light'
-  }
-})
+      return isDark ? 'dark' : 'light';
+    }
 
 const chartOptions = computed(() => {
   return {
@@ -74,8 +75,8 @@ const chartOptions = computed(() => {
       type: 'wordcloud',
       rotation: {
         from: 0,
-        to: 75,
-        orientations: 8
+        to: 45,
+        orientations: 12
       },
       data: keys.map(it => {
         let len = data.value[it].length
@@ -99,18 +100,14 @@ const chartOptions = computed(() => {
     },
     title: {
       text: ''
+    },
+    accessibility: {
+      enabled: false,
     }
   }
 })
 
-onBeforeMount(() => loadWordcloud(Highcharts))
-const highcharts = ref(null)
-
 onMounted(() => {
-  import('highcharts-vue').then(module => {
-    // use code
-    highcharts.value = module.Chart
-  })
   let url = location.href.split('?')[1]
   let params = new URLSearchParams(url)
   let tag = params.get('tag');
@@ -121,41 +118,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.tags {
-  margin-top: 14px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.tag {
-  display: inline-block;
-  padding: 4px 16px;
-  margin: 6px 8px;
-  font-size: 0.875rem;
-  line-height: 25px;
-  background-color: var(--vp-c-bg-alt);
-  transition: 0.4s;
-  border-radius: 2px;
-  color: var(--vp-c-text-1);
-  cursor: pointer;
-}
-
-.tag strong {
-  color: var(--vp-c-brand-1);
-}
-
-.tag-header {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin: 1rem 0;
-  text-align: left;
-}
-
 @media screen and (max-width: 768px) {
-  .tag-header {
-    font-size: 1.5rem;
-  }
-
   .date {
     font-size: 0.75rem;
   }
