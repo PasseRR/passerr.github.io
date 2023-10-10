@@ -1,6 +1,6 @@
 ---
 title:  Mermaid之类图(classDiagram)
-tags: [markdown, uml, 其他]
+tags: [markdown, mermaid, uml, 其他]
 ---
 
 类图(class diagram)由许多（静态）说明性的模型元素（例如类、包和它们之间的关系，这些元素和它们的内容互相连接）组成。

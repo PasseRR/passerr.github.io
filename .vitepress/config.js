@@ -80,7 +80,7 @@ export default withMermaid(
                 });
             }
         },
-        transformPageData: page => {
+        transformPageData(page) {
             // 页面是否是博客
             const index = postMapping[page.relativePath];
             // 非博客的页面 设置编辑链接、更新日期、边栏不显示
@@ -181,7 +181,9 @@ export default withMermaid(
                 light: 'github-light',
                 dark: 'github-dark'
             },
-            config: md => md.use(tabsMarkdownPlugin)
+            config(md) {
+                md.use(tabsMarkdownPlugin)
+            }
         }
     })
 );

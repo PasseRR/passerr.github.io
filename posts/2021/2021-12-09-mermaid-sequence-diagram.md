@@ -1,6 +1,6 @@
 ---
 title:  Mermaid之序列图(sequenceDiagram)
-tags: [markdown, uml, 其他]
+tags: [markdown, mermaid, uml, 其他]
 ---
 
 它通过描述对象之间发送消息的时间顺序显示多个对象之间的动态协作。它可以表示用例的行为顺序，当执行一个用例行为时，

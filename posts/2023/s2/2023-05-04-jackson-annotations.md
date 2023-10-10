@@ -566,10 +566,8 @@ Test.Bean(name=Test.Name(firstName=张, lastName=三), age=1)
 
 #### @JsonSerialize/@JsonDeserialize
 
-- [@JsonSerialize](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/annotation/JsonSerialize.java){:
-  target="_blank"}用于自定义序列化，针对特定类型作为属性、map的key、map的value定义
-- [@JsonDeserialize](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/annotation/JsonDeserialize.java){:
-  target="_blank"}用于自定义反序列化，针对特定类型作为属性、map的key、map的value定义
+- [@JsonSerialize](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/annotation/JsonSerialize.java)用于自定义序列化，针对特定类型作为属性、map的key、map的value定义
+- [@JsonDeserialize](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/annotation/JsonDeserialize.java)用于自定义反序列化，针对特定类型作为属性、map的key、map的value定义
 
 ::: details 代码示例
 以简单的Date序列化与反序列化为例

@@ -1,6 +1,6 @@
 ---
 title:  Mermaid之其他图
-tags: [markdown, 其他]
+tags: [markdown, mermaid, 其他]
 ---
 
 ## [ER图](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)

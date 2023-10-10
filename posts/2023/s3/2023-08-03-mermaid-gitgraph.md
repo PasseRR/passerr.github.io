@@ -1,6 +1,6 @@
 ---
 title:  Mermaid之Git版本分支图
-tags: [markdown, 其他]
+tags: [markdown, mermaid, 其他]
 ---
 
 Git版本分支图用于展示版本库中提交（commit）的历史记录和分支结构的图形化表示方式。

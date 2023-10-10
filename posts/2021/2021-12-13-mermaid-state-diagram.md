@@ -1,6 +1,6 @@
 ---
 title:  Mermaid之状态图(stateDiagram)
-tags: [markdown, uml, 其他]
+tags: [markdown, mermaid, uml, 其他]
 ---
 
 状态图(Statechart Diagram)是描述一个实体基于事件反应的动态行为，显示了该实体如何根据当前所处的状态对不同的事件做出反应。

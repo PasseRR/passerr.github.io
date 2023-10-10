@@ -1,6 +1,6 @@
 ---
 title:  Mermaid之流程图(flowchart)
-tags: [markdown, uml, 其他]
+tags: [markdown, mermaid, uml, 其他]
 ---
 
 流程图是对过程、算法、流程的一种图像表示，在技术设计、交流及商业简报等领域有广泛的应用。
