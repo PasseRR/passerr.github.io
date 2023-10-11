@@ -123,7 +123,7 @@ posts
 ::: code-group
 
 ````ts [config.ts]
-// .vitepress/config.tx
+// .vitepress/config.ts
 import {defineConfig} from 'vitepress'
 import {getPosts} from './theme/serverUtils'
 
