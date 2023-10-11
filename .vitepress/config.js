@@ -37,6 +37,11 @@ export default withMermaid(
             smis.end()
         },
         head: [
+            // 不蒜子
+            [
+                'script',
+                {async: '', src: '/busuanzi.pure.min.js'}
+            ],
             // google分析脚本
             [
                 'script',

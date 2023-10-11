@@ -7,8 +7,15 @@
           <a class="header-anchor" :href="'#'+frontmatter.title">​</a>
         </h1>
         <div class='post-info date'>
-          <span v-if="frontmatter.tags" v-for="item in frontmatter.tags">
-            <a :href="withBase(`/tags.html?tag=${item}`)" target="_blank"> {{ item }}</a>
+          <span id="busuanzi_container_page_pv" class="strict" style="display: none">
+            <span class="fa fa-eye">
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+          </span>
+          <span class="fa fa-tag">
+            <span v-if="frontmatter.tags" v-for="item in frontmatter.tags">
+              <a :href="withBase(`/tags.html?tag=${item}`)" target="_blank"> {{ item }}</a>
+            </span>
           </span>
           <span class="fa fa-calendar"><span class="date">{{ frontmatter.date }}</span> </span>
         </div>
@@ -66,12 +73,11 @@ provide('toggle-appearance', async ({clientX: x, clientY: y}) => {
 <style>
 .post-info {
   float: right;
-  font-size: 12px;
+  font-size: 22px;
 }
 
-.post-info span {
+.post-info span:not(.strict) {
   display: inline-block;
-  padding: 0 8px;
   background-color: var(--vp-c-bg-alt);
   margin-right: 10px;
   transition: 0.4s;
