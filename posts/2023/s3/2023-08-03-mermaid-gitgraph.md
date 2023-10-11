@@ -1,5 +1,5 @@
 ---
-title:  Mermaid之Git版本分支图
+title:  Mermaid之Git版本分支图(gitGraph)
 tags: [markdown, mermaid, 其他]
 ---
 

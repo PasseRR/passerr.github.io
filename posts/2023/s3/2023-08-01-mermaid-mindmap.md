@@ -1,5 +1,5 @@
 ---
-title:  Mermaid之思维导图
+title:  Mermaid之思维导图(mindmap)
 tags: [markdown, mermaid, 其他]
 ---
 
