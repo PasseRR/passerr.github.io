@@ -569,6 +569,94 @@ export default defineConfig({
 })
 ```
 
+### 集成评论
+
+- [disqus](https://disqus.com/) 国外的一家评论集成系统，支持匿名评论或者disqus帐号，个人觉得界面不是很好看。
+- [畅言](https://changyan.kuaizhan.com/) 网易的评论系统，不支持匿名评论，需要畅言帐号才能评论。
+- [utterances](https://utteranc.es/) 博客模版使用的评论，基于Github Issues，需要Github帐号认证，不支持盖楼，盖楼回复不太友好。
+- [giscus](https://giscus.app/zh-CN) 本博客使用的评论，基于Github Discussions，需要Github帐号认证。
+
+  ::: code-group
+  ```ts [index.ts]
+  // .vitepress/theme/index.ts
+  import DefaultTheme from 'vitepress/theme'
+  import NewGiscus from './components/NewGiscus.vue'
+  import NewLayout from "./components/NewLayout.vue"
+  
+  export default {
+    extends: DefaultTheme,
+    Layout: NewLayout,
+    enhanceApp({app}) {
+        // 注册全局组件
+        app.component('NewGiscus', NewGiscus)
+    }
+  }
+  ```
+  
+  ```vue [NewLayout.vue]
+  <!-- .vitepress/theme/components/NewLayout.vue -->
+  <template>
+    <Layout>
+      <template v-if="frontmatter.page !== true" #doc-before>
+        <div class="vp-doc">
+          <h1 :id="frontmatter.title">
+            {{ frontmatter.title }}
+            <a class="header-anchor" :href="'#'+frontmatter.title">​</a>
+          </h1>
+          <div class='post-info date'>
+            <span v-if="frontmatter.tags" v-for="item in frontmatter.tags">
+              <a :href="withBase(`/tags.html?tag=${item}`)" target="_blank"> {{ item }}</a>
+            </span>
+            {{ frontmatter.date }}
+          </div>
+        </div>
+        <br/>
+      </template>
+      <template v-if="frontmatter.page !== true" #doc-after>
+        <NewGiscus/>
+      </template>
+    </Layout>
+  </template>
+  <script setup>
+  import DefaultTheme from 'vitepress/theme'
+  import NewGiscus from "./NewGiscus.vue"
+  import {useData, withBase} from "vitepress"
+  import {nextTick, provide} from 'vue'
+  
+  const {Layout} = DefaultTheme
+  const {frontmatter, page, isDark} = useData()
+  </script>
+  ```
+  
+  ```vue [NewGiscus.vue]
+  <template>
+    <Giscus
+        repo="PasseRR/passerr.github.io"
+        repo-id="MDEwOlJlcG9zaXRvcnk5MTc3MTIzOQ=="
+        category="Announcements"
+        category-id="DIC_kwDOBXhRZ84CZgw9"
+        :term="page.relativePath"
+        strict="0"
+        reactions-enabled="1"
+        emit-metadata="0"
+        input-position="bottom"
+        :theme="isDark ? 'dark': 'light'"
+        lang="zh-CN"
+        crossorigin="anonymous"
+        loading="lazy"
+    />
+  </template>
+  <script setup lang="ts">
+  import Giscus from '@giscus/vue';
+  import {useData} from "vitepress";
+  
+  const {page, isDark} = useData()
+  </script>
+  ```
+  :::
+  
+  效果可以参考所有博客最下方的评论区或者[留言板](/messages-board){:target='_blank'}
+
 ## 最后
 
 博客终于迁移完了，VitePress无论是颜值、维护性来说，我都很满意，就是某些个性功能实现对我这个菜鸟来说比较复杂，但是安利安利！
