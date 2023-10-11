@@ -1,6 +1,6 @@
 ---
 title:  "Flyway在SpringBoot中的使用"
-tags: [java]
+tags: [springboot, flyway, java]
 ---
 
 ## 什么是[Flyway](https://flywaydb.org/)

@@ -1,6 +1,6 @@
 ---
 title:  "自定义@JsonUnwrapped注解实现任意命名风格"
-tags: [java]
+tags: [jackson, java]
 ---
 
 ## [@JsonUnwrapped](https://github.com/FasterXML/jackson-annotations/blob/master/src/main/java/com/fasterxml/jackson/annotation/JsonUnwrapped.java)的作用？

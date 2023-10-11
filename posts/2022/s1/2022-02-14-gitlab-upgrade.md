@@ -1,6 +1,6 @@
 ---
 title:  Gitlab跨版本升级计划
-tags: [运维]
+tags: [gitlab, 运维]
 ---
 
 Gitlab不能随意升级，需要按照[官方升级路线](https://docs.gitlab.com/ee/update/index.html#upgrade-paths)进行。

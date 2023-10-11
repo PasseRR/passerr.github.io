@@ -1,6 +1,6 @@
 ---
 title: RTSP转WebRTC流播放
-tags: [java, 运维]
+tags: [java, centos, windows, 运维]
 ---
 ## RTSP播放方案
 

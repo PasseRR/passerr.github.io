@@ -19,6 +19,10 @@
     {
       "source": "/2023-08-01-mermaid-midmap.html",
       "destination": "/2023-08-01-mermaid-mindmap.html"
+    },
+    {
+      "source": "/2019-07-09-spring-boot-flayway-usage.html",
+      "destination": "/2019-07-09-spring-boot-flyway-usage.html"
     }
   ],
   "rewrites": [

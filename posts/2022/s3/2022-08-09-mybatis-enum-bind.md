@@ -1,6 +1,6 @@
 ---
 title:  MyBatis枚举类型绑定
-tags: [java]
+tags: [mybatis, java]
 ---
 
 ## 前言

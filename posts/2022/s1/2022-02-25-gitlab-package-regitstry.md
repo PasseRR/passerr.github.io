@@ -1,6 +1,6 @@
 ---
 title:  Gitlab Package Registry搭建maven及npm私服
-tags: [ci/cd, 运维]
+tags: [gitlab, ci/cd, 运维]
 ---
 
 ## 开启Package Registry

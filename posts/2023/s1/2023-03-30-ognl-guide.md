@@ -1,6 +1,6 @@
 ---
 title:  OGNL语法介绍
-tags: [java]
+tags: [ognl, java]
 ---
 
 ## 什么是OGNL?

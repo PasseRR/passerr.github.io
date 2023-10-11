@@ -75,8 +75,8 @@ const chartOptions = computed(() => {
       type: 'wordcloud',
       rotation: {
         from: 0,
-        to: 45,
-        orientations: 12
+        to: 60,
+        orientations: 25
       },
       data: keys.map(it => {
         let len = data.value[it].length

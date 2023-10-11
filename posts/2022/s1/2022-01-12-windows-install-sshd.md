@@ -1,6 +1,6 @@
 ---
 title:  Windows安装sshd服务
-tags: [ci/cd, 运维]
+tags: [windows, ci/cd, 运维]
 ---
 
 在做ci或者运维的时候，有时候必须连到windows服务器，虽然mstsc也也可以连接，但必然没有命令行来得快捷。

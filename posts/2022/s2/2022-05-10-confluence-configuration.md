@@ -1,6 +1,6 @@
 ---
 title:  Confluence常用配置
-tags: [运维, 配置]
+tags: [运维, confluence]
 ---
 
 ## Confluence页面添加返回顶部

@@ -1,6 +1,6 @@
 ---
 title:  CentOs下安装配置OpenLdap 
-tags: [运维]
+tags: [centos, 运维]
 ---
 
 ## 安装LDAP

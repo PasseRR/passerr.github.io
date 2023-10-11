@@ -1,6 +1,6 @@
 ---
 title:  Gitlab Runner介绍
-tags: [ci/cd]
+tags: [gitlab-runner, ci/cd]
 ---
 
 ## Gitlab Runner 安装

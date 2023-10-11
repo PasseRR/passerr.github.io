@@ -1,6 +1,6 @@
 ---
 title:  数据库窗口函数
-tags: [数据库]
+tags: [postgresql, 数据库]
 ---
 
 ::: tip 什么是数据库窗口函数(Window Functions)?

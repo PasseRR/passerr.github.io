@@ -1,6 +1,6 @@
 ---
 title:  Github Pages迁移到vercel
-tags: [markdown, 其他]
+tags: [github, vercel, markdown, 其他]
 ---
 
 ## Github Pages现状

@@ -1,6 +1,6 @@
 ---
 title:  Jackson注解
-tags: [java]
+tags: [jackson, java]
 ---
 
 ## 注解分类

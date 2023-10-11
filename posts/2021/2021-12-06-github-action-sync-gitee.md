@@ -1,6 +1,6 @@
 ---
 title:  利用github action自动同步代码到gitee
-tags: [ci/cd]
+tags: [github, gitee, ci/cd]
 ---
 
 ## 1.生成ssh密钥对

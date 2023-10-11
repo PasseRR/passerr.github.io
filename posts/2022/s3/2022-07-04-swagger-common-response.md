@@ -1,6 +1,6 @@
 ---
 title:  Swagger统一应答类型处理
-tags: [java]
+tags: [swagger, knife4j, java]
 ---
 
 在rest接口定义统一应答时，我们通常会定义code、message、以及一个泛型的data，有时候泛型参数过长，会导致controller

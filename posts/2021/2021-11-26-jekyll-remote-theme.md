@@ -1,6 +1,6 @@
 ---
 title:  Jekyll远程主题
-tags: [javascript, 其他]
+tags: [jekyll, 其他]
 ---
 
 ## 前提

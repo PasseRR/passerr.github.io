@@ -1,6 +1,6 @@
 ---
 title:  ngrok使用及自己搭建服务器
-tags: [运维]
+tags: [centos, ngrok, 运维]
 ---
 
 ## ngrok作用

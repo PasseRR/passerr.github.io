@@ -1,6 +1,6 @@
 ---
 title:  MyBatis Plus基于注解的数据权限
-tags: [java]
+tags: [mybatis, mybatis-plus, java]
 ---
 
 ## 概述

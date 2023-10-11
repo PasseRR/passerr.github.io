@@ -1,6 +1,6 @@
 ---
 title:  CentOs7升级gcc、glibc
-tags: [运维]
+tags: [centos, gcc, 运维]
 ---
 
 ## 升级gcc

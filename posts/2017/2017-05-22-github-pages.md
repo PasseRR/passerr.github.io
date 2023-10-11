@@ -1,6 +1,6 @@
 ---
 title:  "Github Pages搭建个人博客"
-tags: [markdown, javascript, 其他]
+tags: [markdown, github, 其他]
 ---
 
 ## 准备工作

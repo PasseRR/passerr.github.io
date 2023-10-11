@@ -1,6 +1,6 @@
 ---
 title:  使用WindowsAppDriver将axure的rp文件转为html
-tags: [java, 其他]
+tags: [axure, java, 其他]
 ---
 
 公司产品经理现状，原型开发产出rp文件，若开发同事想要看到原型需要将rp文件转为html，通过ftp或者文件共享的方式浏览。

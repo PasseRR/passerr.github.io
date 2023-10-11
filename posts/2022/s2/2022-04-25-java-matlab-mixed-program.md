@@ -1,6 +1,6 @@
 ---
 title:  Java和Matlab混合编程问题
-java: [java]
+java: [java, matlab]
 ---
 
 ## windows

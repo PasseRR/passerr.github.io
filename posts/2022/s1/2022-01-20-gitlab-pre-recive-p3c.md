@@ -1,6 +1,6 @@
 ---
 title:  Gitlab集成P3C代码规约检测
-tags: [ci/cd, 运维]
+tags: [gitlab, ci/cd, 运维]
 ---
 
 公司需要对java代码进行静态代码检测，需要满足[阿里规约](https://github.com/alibaba/p3c)，
