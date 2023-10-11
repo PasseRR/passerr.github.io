@@ -240,7 +240,7 @@ protected void initChannel(Channel ch) throws Exception {
 }
 ```
 
-## 扩展CommandEncoder自持用户名、密码加密
+## 扩展CommandEncoder支持用户名、密码加密
 
 通过扩展CommandEncoder，重写encode方法，发送报文编码之前拦截[AUTH](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson/src/main/java/org/redisson/client/protocol/RedisCommands.java#L259)命令，
 编码时将命令参数(用户名、密码)解密，通过[NettyHook](https://github.com/redisson/redisson/blob/redisson-3.16.2/redisson/src/main/java/org/redisson/client/NettyHook.java#L42)将扩展实现的CommandEncoder替换。
