@@ -669,7 +669,13 @@ export default defineConfig({
         // 不蒜子
         [
             'script',
-            {async: '', src: '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'}
+            {async: '', src: 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'}
+        ],
+        // 在Chrome 85版本中，为了保护用户的隐私，默认的Referrer Policy则变成了strict-origin-when-cross-origin
+        // 所以必须加入此部分代码，否则文章统计访问量的数据则不正确
+        [
+            'meta',
+            {name: 'referrer', content: 'no-referrer-when-downgrade'}
         ]
     ]
 })

@@ -40,7 +40,11 @@ export default withMermaid(
             // 不蒜子
             [
                 'script',
-                {async: '', src: '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'}
+                {async: '', src: 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'}
+            ],
+            [
+                'meta',
+                {name: 'referrer', content: 'no-referrer-when-downgrade'}
             ],
             // google分析脚本
             [
