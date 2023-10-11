@@ -10,7 +10,7 @@
           <span v-if="frontmatter.tags" v-for="item in frontmatter.tags">
             <a :href="withBase(`/tags.html?tag=${item}`)" target="_blank"> {{ item }}</a>
           </span>
-          {{ frontmatter.date }}
+          <span class="fa fa-calendar"><span class="date">{{ frontmatter.date }}</span> </span>
         </div>
       </div>
       <br/>
