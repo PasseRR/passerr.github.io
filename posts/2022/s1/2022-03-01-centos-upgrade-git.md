@@ -1,16 +1,19 @@
 ---
 title:  CentOs升级Git版本
-tags: [centos, 运维]
+tags: [centos, git, 运维]
 ---
 
 ## gitlab-ci报错
+
 ```txt
 fatal: git fetch-pack: expected shallow list
 fatal: The remote end hung up unexpectedly
 ```
+
 原因是git客户端版本太低，不支持git fetch-pack，所以需要升级CentOs下的git客户端版本。
 
 ## 升级过程
+
 ```shell
 # 安装依赖
 yum install -y gcc zlib-devel autoconf libcurl-devel curl-devel

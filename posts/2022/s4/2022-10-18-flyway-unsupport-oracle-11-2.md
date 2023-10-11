@@ -10,7 +10,7 @@ tags: [flyway, springboot, java, oracle, 数据库]
 
 在网上搜了下，都是修改flyway源代码重新打包，强迫症受不了，在看了当前版本的flyway后，发现可以通过反射的方式自行增加数据库适配。
 
-```markdown
+```log
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Invocation of init method failed; nested exception is org.flywaydb.core.internal.license.FlywayEditionUpgradeRequiredException: Flyway Teams Edition or Oracle upgrade required: Oracle 11.2 is no longer supported by Flyway Community Edition, but still supported by Flyway Teams Edition.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602)
