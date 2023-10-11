@@ -657,6 +657,28 @@ export default defineConfig({
   
   效果可以参考所有博客最下方的评论区或者[留言板](/messages-board){:target='_blank'}
 
+### 集成不蒜子统计
+
+参考[官网](https://ibruce.info/2015/04/04/busuanzi/)，引入脚本，在博客正文布局相应位置插入`span`标签即可。
+
+```ts [index.ts]
+// vitepress/config.ts
+
+export default defineConfig({
+    head: [
+        // 不蒜子
+        [
+            'script',
+            {async: '', src: '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'}
+        ]
+    ]
+})
+```
+
+::: warning 注意
+如果是不同域名是分开统计的，比如我的博客就是`xiehai.zone`、`passerr.github.io`分开统计的，我也未找到相关配置。
+:::
+
 ## 最后
 
 博客终于迁移完了，VitePress无论是颜值、维护性来说，我都很满意，就是某些个性功能实现对我这个菜鸟来说比较复杂，但是安利安利！
