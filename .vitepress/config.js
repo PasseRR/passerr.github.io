@@ -42,6 +42,10 @@ export default withMermaid(
                 'meta',
                 {name: 'referrer', content: 'no-referrer-when-downgrade'}
             ],
+            [
+                'meta',
+                {'http-equiv': 'Referrer-Policy', content: 'no-referrer-when-downgrade'}
+            ],
             // google分析脚本
             [
                 'script',

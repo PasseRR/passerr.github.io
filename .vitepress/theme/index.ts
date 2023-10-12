@@ -35,6 +35,6 @@ export default {
         };
         onMounted(() => initZoom());
         watch(() => route.path, () => nextTick(() => initZoom()));
-        watch(() => route, () => nextTick(() => m.fetch()))
+        watch(() => route, () => m.fetch())
     }
 }
