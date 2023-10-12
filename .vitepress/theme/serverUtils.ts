@@ -35,13 +35,11 @@ async function getPosts(pageSize) {
 }
 
 function generatePaginationPages(total, pageSize) {
-    //  pagesNum
-    let pagesNum = total % pageSize === 0 ? total / pageSize : parseInt(total / pageSize) + 1
-    const paths = resolve('./')
-    const exists = fs.existsSync(paths + BLOG_PREFIX);
-    if (!exists) {
-        fs.mkdirSync(paths + BLOG_PREFIX);
+    const pagesNum = Math.ceil(total / pageSize), root = resolve('./'), blog = root + BLOG_PREFIX
+    if (!fs.existsSync(blog)) {
+        fs.mkdirSync(blog);
     }
+
     if (total > 0) {
         for (let i = 1; i < pagesNum + 1; i++) {
             const page = `
@@ -55,12 +53,11 @@ const posts = theme.value.posts.slice(${pageSize * (i - 1)},${pageSize * i})
 </script>
 <Page :posts="posts" :pageCurrent="${i}" :pagesNum="${pagesNum}" />
 `.trim();
-            const file = paths + BLOG_PREFIX + `/${i}.md`;
-            fs.writeFileSync(file, page, 'utf-8');
+            fs.writeFileSync(blog + `/${i}.md`, page, 'utf-8');
         }
     }
     // rename page1 to index for homepage
-    fs.renameSync(paths + BLOG_PREFIX + '/1.md', paths + '/index.md')
+    fs.renameSync(blog + '/1.md', root + '/index.md')
 }
 
 export {getPosts, BLOG_PREFIX}
