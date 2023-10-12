@@ -1,6 +1,6 @@
 import {globby} from 'globby'
 import matter from 'gray-matter'
-import fs from 'fs-extra'
+import fs from 'fs'
 import {resolve} from 'path'
 
 // 博客前缀
@@ -10,11 +10,11 @@ async function getPosts(pageSize) {
     let paths = await globby(['posts/**/*.md'])
 
     //生成分页页面markdown
-    await generatePaginationPages(paths.length, pageSize)
+    generatePaginationPages(paths.length, pageSize)
 
     let posts = await Promise.all(
         paths.map(async (item) => {
-            const content = await fs.readFile(item, 'utf-8')
+            const content = fs.readFileSync(item, 'utf-8')
             const {data} = matter(content)
             const name = item.substring(item.lastIndexOf('/') + 1)
             data.date = name.substring(0, 10)
@@ -34,13 +34,13 @@ async function getPosts(pageSize) {
     return posts
 }
 
-async function generatePaginationPages(total, pageSize) {
+function generatePaginationPages(total, pageSize) {
     //  pagesNum
     let pagesNum = total % pageSize === 0 ? total / pageSize : parseInt(total / pageSize) + 1
     const paths = resolve('./')
-    const exists = await fs.exists(paths + BLOG_PREFIX);
+    const exists = fs.existsSync(paths + BLOG_PREFIX);
     if (!exists) {
-        await fs.mkdirp(paths + BLOG_PREFIX);
+        fs.mkdirSync(paths + BLOG_PREFIX);
     }
     if (total > 0) {
         for (let i = 1; i < pagesNum + 1; i++) {
@@ -56,11 +56,11 @@ const posts = theme.value.posts.slice(${pageSize * (i - 1)},${pageSize * i})
 <Page :posts="posts" :pageCurrent="${i}" :pagesNum="${pagesNum}" />
 `.trim();
             const file = paths + BLOG_PREFIX + `/${i}.md`;
-            await fs.writeFile(file, page, 'utf-8');
+            fs.writeFileSync(file, page, 'utf-8');
         }
     }
     // rename page1 to index for homepage
-    await fs.move(paths + BLOG_PREFIX + '/1.md', paths + '/index.md', {overwrite: true})
+    fs.renameSync(paths + BLOG_PREFIX + '/1.md', paths + '/index.md')
 }
 
 export {getPosts, BLOG_PREFIX}
