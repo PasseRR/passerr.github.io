@@ -188,6 +188,11 @@
     font-weight: 550;
 }
 
+.outline-link:hover,
+.outline-link.active {
+    color: var(--vp-c-brand-1) !important;
+}
+
 /*tabs插件代码样式覆盖*/
 :root:not(.dark) .plugin-tabs--content div[class*='language-'] {
     background-color: var(--vp-code-block-bg) !important;

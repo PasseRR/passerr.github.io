@@ -95,10 +95,6 @@ export default withMermaid(
             const index = postMapping[page.relativePath];
             // 非博客的页面 设置编辑链接、更新日期、边栏不显示
             if (index === undefined) {
-                if (page.relativePath === 'index.md') {
-                    // 首页nav active路径
-                    page.relativePath = BLOG_PREFIX
-                }
                 // 用于区分是页面还是博客
                 page.frontmatter.page = true
                 page.frontmatter.aside = false
