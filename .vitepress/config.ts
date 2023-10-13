@@ -40,7 +40,12 @@ export default withMermaid({
             'script',
             {async: '', src: `https://www.googletagmanager.com/gtag/js?id=${site.google}`}
         ],
-        // google、百度统计分析
+        // vercel分析脚本
+        [
+            'script',
+            {defer: '', src: 'https://vercel.com/_vercel/insights/script.js'}
+        ],
+        // google、百度统计、vercel分析
         [
             'script',
             {},
@@ -48,6 +53,7 @@ export default withMermaid({
                 && window.location.host.indexOf('127.0.0.1') === -1
                 && window.location.host.indexOf('localhost') === -1
                 && window.location.host.indexOf('192.168.') === -1;
+
              if(isProductEnv) {
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
@@ -64,6 +70,8 @@ export default withMermaid({
                 _hmt.push(['_setAccount', '${site.baidu}']);
                 _hmt.push(['_trackPageview', window.location]);
                 _hmt.push(['_setAutoPageview', true]);
+                
+                window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
              }`
         ]
     ],
