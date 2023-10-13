@@ -14,7 +14,6 @@ import {computed, onMounted, ref} from "vue"
 import {defineClientComponent, useData, withBase} from 'vitepress'
 import Highcharts from 'highcharts'
 import wordcloud from 'highcharts/modules/wordcloud'
-import {initTags} from '../functions'
 
 const dark = {
   colors: [
@@ -47,7 +46,24 @@ const dark = {
 };
 
 const {theme, isDark} = useData()
-const data = computed(() => initTags(theme.value.posts))
+const data = computed(() => {
+  const data: any = {}
+  for (let index = 0; index < theme.value.posts.length; index++) {
+    const element = theme.value.posts[index]
+    const tags = element.frontMatter.tags
+    if (tags) {
+      tags.forEach((item) => {
+        if (data[item]) {
+          data[item].push(element)
+        } else {
+          data[item] = []
+          data[item].push(element)
+        }
+      })
+    }
+  }
+  return data
+})
 const keys = Object.keys(data.value);
 
 const selectTag = ref('')

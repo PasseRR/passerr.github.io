@@ -1,37 +1,50 @@
-import {globby} from 'globby'
 import matter from 'gray-matter'
 import fs from 'fs'
 import {resolve} from 'path'
 
-// 博客前缀
-const BLOG_PREFIX = '/blogs';
+// 博客根目录、前缀
+const BLOG_ROOT = 'posts/', BLOG_PREFIX = '/blogs';
 
-async function getPosts(pageSize) {
-    let paths = await globby(['posts/**/*.md'])
+function getPosts(pageSize) {
+    const posts = [], rewrites = {}, mappings = {}
+    // 遍历博客目录
+    const walk = path => {
+        fs.readdirSync(path, 'utf-8').forEach((it) => {
+            let item = path + it
+            if (fs.statSync(item).isDirectory()) {
+                walk(item + '/')
+            } else if (item.endsWith(".md")) {
+                const content = fs.readFileSync(item, 'utf-8')
+                const {data} = matter(content)
+                data.date = it.substring(0, 10)
 
-    //生成分页页面markdown
-    generatePaginationPages(paths.length, pageSize)
+                rewrites[item] = it;
 
-    let posts = await Promise.all(
-        paths.map(async (item) => {
-            const content = fs.readFileSync(item, 'utf-8')
-            const {data} = matter(content)
-            const name = item.substring(item.lastIndexOf('/') + 1)
-            data.date = name.substring(0, 10)
-            const regularFile = item.substring(item.lastIndexOf('/') + 1);
-            return {
-                frontMatter: data,
-                // md文件名
-                regularFile: regularFile,
-                // 原文件路径
-                originPath: item,
-                // 访问路径
-                regularPath: `/${regularFile.replace('.md', '')}`
+                posts.push({
+                    frontMatter: data,
+                    // md文件名
+                    regularFile: it,
+                    // 访问路径
+                    regularPath: `/${it.replace('.md', '')}`
+                })
             }
         })
-    )
+    }
+
+    walk(BLOG_ROOT)
+
+    //生成分页页面markdown
+    generatePaginationPages(posts.length, pageSize)
+
     posts.sort((a, b) => a.frontMatter.date < b.frontMatter.date ? 1 : -1)
-    return posts
+
+    posts.forEach((it, idx) => mappings[it.regularFile] = idx)
+
+    return {
+        posts: posts,
+        rewrites: rewrites,
+        mappings: mappings
+    }
 }
 
 function generatePaginationPages(total, pageSize) {
@@ -60,4 +73,4 @@ const posts = theme.value.posts.slice(${pageSize * (i - 1)},${pageSize * i})
     fs.renameSync(blog + '/1.md', root + '/index.md')
 }
 
-export {getPosts, BLOG_PREFIX}
+export {getPosts}

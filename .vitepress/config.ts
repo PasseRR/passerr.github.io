@@ -6,17 +6,8 @@ import {createWriteStream} from "fs"
 import {ErrorLevel, SitemapIndexStream} from "sitemap"
 import {tabsMarkdownPlugin} from 'vitepress-plugin-tabs'
 
-const rewrites = {}
-// 所有博客列表
-const posts = await getPosts(site.pageSize)
-// 缓存博客位置索引
-const postMapping = {}
-
-// 博客路径重写
-posts.forEach((it, idx) => {
-    rewrites[it.originPath] = it.regularFile
-    postMapping[it.regularFile] = idx
-})
+// 所有博客列表、重写路径、博客映射
+const {posts, rewrites, mappings} = getPosts(site.pageSize)
 
 export default withMermaid({
     title: site.title,
@@ -90,7 +81,7 @@ export default withMermaid({
     },
     transformPageData(page) {
         // 页面是否是博客
-        const index = postMapping[page.relativePath];
+        const index = mappings[page.relativePath];
         // 非博客的页面 设置编辑链接、更新日期、边栏不显示
         if (index === undefined) {
             // 用于区分是页面还是博客
@@ -121,7 +112,6 @@ export default withMermaid({
             }
         }
     },
-    // appearance: false,
     themeConfig: {
         posts: posts,
         nav: site.navs,

@@ -16,7 +16,6 @@
     "@types/node": "^20.5.7",
     "busuanzi.pure.js": "^1.0.3",
     "font-awesome": "^4.7.0",
-    "globby": "^13.2.2",
     "gray-matter": "^4.0.3",
     "highcharts": "^11.1.0",
     "highcharts-vue": "^1.4.3",
