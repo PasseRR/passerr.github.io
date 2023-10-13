@@ -127,19 +127,8 @@ posts
 import {defineConfig} from 'vitepress'
 import {getPosts} from './theme/serverUtils'
 
-const rewrites = {}
-// 所有博客列表
-const posts = await getPosts(site.pageSize)
-// 缓存博客位置索引
-const postMapping = {}
-
-// 博客路径重写
-posts.forEach((it, idx) => {
-    // 重写url
-    rewrites[it.originPath] = it.regularFile
-    // 记录博客顺序索引
-    postMapping[it.regularFile] = idx
-})
+// 所有博客列表、重写路径、博客映射
+const {rewrites} = getPosts(site.pageSize)
 
 export default defineConfig({
     // 配置重写url
@@ -147,46 +136,55 @@ export default defineConfig({
 })
 ````
 
-```js [serverUtils.js]
-// .vitepress/theme/serverUtils.js
-import {globby} from 'globby'
+```js [serverUtils.ts]
+// .vitepress/theme/serverUtils.ts
 import matter from 'gray-matter'
-import fs from 'fs-extra'
+import fs from 'fs'
+import {resolve} from 'path'
 
-async function getPosts(pageSize) {
-    // 读取固定目录的md文件
-    let paths = await globby(['posts/**/*.md'])
+// 博客根目录、前缀
+const BLOG_ROOT = 'posts/', BLOG_PREFIX = '/blogs';
 
-    //生成分页页面markdown
-    await generatePaginationPages(paths.length, pageSize)
+function getPosts(pageSize) {
+    const posts = [], rewrites = {}, mappings = {}
+    // 遍历博客目录
+    const walk = path => {
+        fs.readdirSync(path, 'utf-8').forEach((it) => {
+            let item = path + it
+            if (fs.statSync(item).isDirectory()) {
+                walk(item + '/')
+            } else if (item.endsWith(".md")) {
+                const content = fs.readFileSync(item, 'utf-8')
+                const {data} = matter(content)
+                data.date = it.substring(0, 10)
 
-    let posts = await Promise.all(
-        paths.map(async (item) => {
-            const content = await fs.readFile(item, 'utf-8')
-            // 获得md文件中的frontmatter
-            const {data} = matter(content)
-            // 名字只取最后文件名
-            const name = item.substring(item.lastIndexOf('/') + 1)
-            // 解析前10位为日期固定格式
-            data.date = name.substring(0, 10)
-            const regularFile = item.substring(item.lastIndexOf('/') + 1)
+                rewrites[item] = it;
 
-            return {
-                frontMatter: data,
-                // md文件名
-                regularFile: regularFile,
-                // 原文件路径
-                originPath: item,
-                // 访问路径
-                regularPath: `/${regularFile.replace('.md', '')}`
+                posts.push({
+                    frontMatter: data,
+                    // md文件名
+                    regularFile: it,
+                    // 访问路径
+                    regularPath: `/${it.replace('.md', '')}`
+                })
             }
         })
-    )
+    }
 
-    // 将博客按照日期倒叙排序
+    walk(BLOG_ROOT)
+
+    //生成分页页面markdown
+    generatePaginationPages(posts.length, pageSize)
+
     posts.sort((a, b) => a.frontMatter.date < b.frontMatter.date ? 1 : -1)
 
-    return posts
+    posts.forEach((it, idx) => mappings[it.regularFile] = idx)
+
+    return {
+        posts: posts,
+        rewrites: rewrites,
+        mappings: mappings
+    }
 }
 
 export {getPosts}
@@ -648,7 +646,7 @@ export default defineConfig({
   </template>
   <script setup lang="ts">
   import Giscus from '@giscus/vue';
-  import {useData} from "vitepress";
+  import {useData} from "vitepress"
   
   const {page, isDark} = useData()
   </script>
