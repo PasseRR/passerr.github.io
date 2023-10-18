@@ -16,6 +16,9 @@ export default withMermaid({
     base: site.base,
     srcExclude: ['**/README.md', ...site.excludes],
     rewrites: rewrites,
+    vite: {
+        publicDir: '.vitepress/public'
+    },
     // sitemap_index文件生成
     async buildEnd(s) {
         const paths = resolve(s.outDir), sufix = '/sitemap.xml'
