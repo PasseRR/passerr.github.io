@@ -1,13 +1,11 @@
 <template>
   <ol>
-    <div v-for="(article, index) in posts" :key="index" class="post-list">
-      <li>
-        <div class="post-title">
-          <a :href="withBase(article.regularPath)">{{ article.frontMatter.title }}</a>
-          »<span class="date">{{ article.frontMatter.date }}</span>
-        </div>
-      </li>
-    </div>
+    <li v-for="(article, index) in posts" :key="index" class="post-list">
+      <div class="post-title">
+        <a :href="withBase(article.regularPath)">{{ article.frontMatter.title }}</a>
+        »<span class="date">{{ article.frontMatter.date }}</span>
+      </div>
+    </li>
   </ol>
 
   <div class="pagination">
@@ -34,7 +32,7 @@ const props = defineProps({
 <style scoped>
 .post-list {
   border-bottom: 1px dashed var(--vp-c-divider-light);
-  padding: 5px 0 5px 0;
+  padding: 3px 0 3px 0;
 }
 
 .post-header {
