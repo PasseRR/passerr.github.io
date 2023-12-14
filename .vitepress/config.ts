@@ -5,6 +5,28 @@ import {resolve} from 'path'
 import {createWriteStream} from "fs"
 import {ErrorLevel, SitemapIndexStream} from "sitemap"
 import {tabsMarkdownPlugin} from 'vitepress-plugin-tabs'
+import MiniSearch from 'minisearch'
+import Segment from 'segment'
+
+const segment = new Segment()
+    .use('URLTokenizer')            // URL识别
+    .use('WildcardTokenizer')       // 通配符，必须在标点符号识别之前
+    // 中文单词识别
+    .use('DictTokenizer')           // 词典识别
+    .use('ChsNameTokenizer')        // 人名识别，建议在词典识别之后
+    // 优化模块
+    .use('EmailOptimizer')          // 邮箱地址识别
+    .use('ChsNameOptimizer')        // 人名识别优化
+    .use('DictOptimizer')           // 词典识别优化
+    .use('DatetimeOptimizer')       // 日期时间识别优化
+    // 字典文件
+    .loadDict('dict.txt')           // 盘古词典
+    .loadDict('dict2.txt')          // 扩展词典（用于调整原盘古词典）
+    .loadDict('dict3.txt')          // 扩展词典（用于调整原盘古词典）
+    .loadDict('names.txt')          // 常见名词、人名
+    .loadDict('wildcard.txt', 'WILDCARD', true)   // 通配符
+    .loadSynonymDict('synonym.txt')   // 同义词
+    .loadStopwordDict('stopword.txt') // 停止符
 
 // 所有博客列表、重写路径、博客映射
 const {posts, rewrites, mappings} = getPosts(site.pageSize)
@@ -128,7 +150,33 @@ export default withMermaid({
         nav: site.navs,
         sidebar: [],
         search: {
-            provider: 'local'
+            provider: 'local',
+            options: {
+                _render: (src, env, md) => {
+                    const html = md.render(src, env)
+                    if (env.frontmatter?.title) {
+                        return md.render('# ' + env.frontmatter.title) + html;
+                    }
+
+                    return html;
+                },
+                miniSearch: {
+                    options: {
+                        tokenize: (text, fieldName) => {
+                            // 仅对标题中文分词
+                            if (fieldName.indexOf('title') >= 0) {
+                                return segment.doSegment(text, {simple: true, stripPunctuation: true});
+                            }
+
+                            return MiniSearch.getDefault('tokenize')(text, fieldName)
+                        }
+                    },
+                    searchOptions: {
+                        // 仅以空白字符
+                        tokenize: (string) => string.split(/\s+/)
+                    }
+                }
+            }
         },
         lastUpdated: {
             text: '最后更新'
