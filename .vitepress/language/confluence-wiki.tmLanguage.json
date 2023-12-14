@@ -1,10 +1,8 @@
 {
-  "name": "Confluence Wiki",
+  "name": "confluence-wiki",
   "scopeName": "source.wiki.confluence",
   "fileTypes": [
-    "wiki",
-    "confluence",
-    "cwf"
+    "confluence-wiki"
   ],
   "uuid": "de43e6f7-a820-4d64-a472-30c79f83a963",
   "patterns": [

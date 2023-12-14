@@ -1,10 +1,9 @@
 {
   "fileTypes": [
-    "txt",
-    "iuml"
+    "plantuml"
   ],
   "firstLineMatch": "@startuml",
-  "name": "PlantUML",
+  "name": "plantuml",
   "patterns": [
     {
       "match": "(?:^\\s*)(@startuml|@enduml)\\b",
