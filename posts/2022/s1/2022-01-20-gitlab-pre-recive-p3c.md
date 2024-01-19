@@ -17,7 +17,8 @@ tags: [gitlab, ci/cd, 运维]
 
 根据需要设定规则，[下载xml规则](/assets/2022/01-20/ali-p3c.xml){:target='_blank' class=no-icon download}
 
-```xml
+::: code-group
+```xml [ali-p3c.xml]
 <?xml version="1.0"?>
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="alibaba-pmd"
          xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
@@ -40,6 +41,7 @@ tags: [gitlab, ci/cd, 运维]
     <rule ref="rulesets/java/ali-set.xml"/>
 </ruleset>
 ```
+:::
 
 ## Gitlab Server Hook配置
 
@@ -130,11 +132,12 @@ chmod 777 p3c-pre-inspect.sh
 ```
    
 ### 5. 自动创建检测标识文件钩子
-`/opt/gitlab/embedded/service/gitlab-rails/file_hooks`目录下创建[add_pre_check_on_project_create.rb](/assets/2022/01-20/add_pre_check_on_project_create.rb){:target='_blank' class=no-icon download}钩子文件，根据需要设定规则，
+`/opt/gitlab/embedded/service/gitlab-rails/file_hooks`目录下创建`add_pre_check_on_project_create.rb`钩子文件，根据需要设定规则，
 每当项目创建时，会自动提交一个新的.pre-check文件到仓库，当前使用的是web api提交标识文件到仓库，
 不知道是否存在钩子之类的后置操作，**目前暂时没有想到其他更好的解决方案，如果你有，请你联系我**。
 
-```ruby
+::: code-group
+```ruby [add_pre_check_on_project_create.rb]
 #!/opt/gitlab/embedded/bin/ruby
 
 require 'net/http'
@@ -169,6 +172,8 @@ if ARGS['event_name'] == 'project_create'
 end
 ```
 
+:::
+
 修改文件权限为可执行
 ```shell
 chmod 777 add_pre_check_on_project_create.rb
@@ -188,3 +193,4 @@ java -version
 ![图片][1]
 
 [1]: /assets/2022/01-20/hook.png
+[2]: /assets/2022/01-20/add_pre_check_on_project_create.rb
