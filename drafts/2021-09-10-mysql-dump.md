@@ -17,7 +17,7 @@ password="your_password"
 # 修改文件权限
 chmod 600 dump.conf
 # 简单的备份执行
-/usr/local/bin/mysqldump --defaults-extra-file=/etc/mysql/backup.cnf -h localhost -P 3306 -B your_database > backup.sql
+mysqldump --defaults-extra-file=/etc/mysql/backup.cnf -B your_database > backup.sql
 ```
 
 # 结合crontab做定时备份
@@ -41,7 +41,9 @@ V_TODAY=`date "+%Y%m%d"`
 V_DUMP_FILE="${V_BACKUP_DIR}/`date "+%Y%m%d%H%M%S"`"
 
 # 数据库备份
-mysqldump --defaults-extra-file=${V_CONF_PATH} --socket=${V_SOCKET} -B ${V_DATABASE} > ${V_DUMP_FILE}.sql
+start_time=$(date +%s.%N)
+echo "开始数据库备份..."
+/usr/local/bin/mysqldump --defaults-extra-file=${V_CONF_PATH} --socket=${V_SOCKET} -B ${V_DATABASE} > ${V_DUMP_FILE}.sql
 
 # 删除备份文件
 cd ${V_BACKUP_DIR}
@@ -52,6 +54,10 @@ if [ $[$(date -d "$V_TODAY" "+%s") - $(date -d "${i:0:8} + $V_KEEP_DAYS day" "+%
    rm -f $i
 fi
 done
+
+end_time=$(date +%s.%N)
+execution_time=$(echo "$end_time - $start_time" | bc)
+echo "完成数据库备份,耗时$execution_time秒..."
 ```
 
 ## 创建crontab
