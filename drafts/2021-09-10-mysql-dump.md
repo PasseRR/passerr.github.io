@@ -24,7 +24,7 @@ mysqldump --defaults-extra-file=/etc/mysql/backup.cnf -h localhost -P 3306 -B yo
 
 ## 准备定时执行的脚本
 
-```sh [dump.sh]
+```sh [/etc/mysql/dump.sh]
 # 配置文件路径
 V_CONF_PATH="./backup.cnf"
 # 备份目录
@@ -52,4 +52,22 @@ if [ $[$(date -d "$V_TODAY" "+%s") - $(date -d "${i:0:8} + $V_KEEP_DAYS day" "+%
    rm -f $i
 fi
 done
+```
+
+## 创建crontab
+
+```sh
+# 编辑定时任务
+crontab -e
+# 每天1点执行数据库备份 并记录日志
+0 1 * * * /etc/mysql/dump.sh >> /var/log/mysqldump.log 2>&1
+# 查看已有定时任务
+crontab -l
+
+# 查看crontab日志
+# 执行记录日志
+vi /var/log/cron
+# 过程日志
+vi /var/log/messages
+vi /var/log/syslog
 ```
