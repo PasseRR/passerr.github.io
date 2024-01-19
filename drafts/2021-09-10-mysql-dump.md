@@ -17,7 +17,7 @@ password="your_password"
 # 修改文件权限
 chmod 600 dump.conf
 # 简单的备份执行
-mysqldump --defaults-extra-file=/etc/mysql/backup.cnf -h localhost -P 3306 -B your_database > backup.sql
+/usr/local/bin/mysqldump --defaults-extra-file=/etc/mysql/backup.cnf -h localhost -P 3306 -B your_database > backup.sql
 ```
 
 # 结合crontab做定时备份
