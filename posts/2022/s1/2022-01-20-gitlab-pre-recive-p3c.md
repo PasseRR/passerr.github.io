@@ -15,7 +15,7 @@ tags: [gitlab, ci/cd, 运维]
 
 ### 编写规则集xml文件
 
-根据需要设定规则，[下载实例](/assets/2022/01-20/ali-p3c.xml)
+根据需要设定规则，[下载xml规则](/assets/2022/01-20/ali-p3c.xml){:target='_blank' class=no-icon download}
 
 ```xml
 <?xml version="1.0"?>
@@ -130,7 +130,7 @@ chmod 777 p3c-pre-inspect.sh
 ```
    
 ### 5. 自动创建检测标识文件钩子
-`/opt/gitlab/embedded/service/gitlab-rails/file_hooks`目录下创建`add_pre_check_on_project_create.rb`[钩子文件](/assets/2022/01-20/add_pre_check_on_project_create.rb)，根据需要设定规则，
+`/opt/gitlab/embedded/service/gitlab-rails/file_hooks`目录下创建[add_pre_check_on_project_create.rb](/assets/2022/01-20/add_pre_check_on_project_create.rb){:target='_blank' class=no-icon download}钩子文件，根据需要设定规则，
 每当项目创建时，会自动提交一个新的.pre-check文件到仓库，当前使用的是web api提交标识文件到仓库，
 不知道是否存在钩子之类的后置操作，**目前暂时没有想到其他更好的解决方案，如果你有，请你联系我**。
 
