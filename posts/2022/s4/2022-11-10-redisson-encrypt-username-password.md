@@ -1,6 +1,6 @@
 ---
 title:  SpringBoot中使用Redisson时对用户名密码加密
-tags: [springboot, redission, java]
+tags: [二级等保, springboot, redission, java]
 ---
 
 为了满足**二级等保**要求，数据库用户名、密码需要进行加密且内存中不能常驻明文用户名、密码。
