@@ -45,6 +45,14 @@ EOS
 gitlab-ctl reconfigure
 ```
 
+### gitlab锁定ldap删除用户
+
+目前只能通过添加定时任务的方式执行，可以使用crontab或gitlab ci定时执行
+
+```shell
+gitlab-rake gitlab:cleanup:block_removed_ldap_users BLOCK=true
+```
+
 ## 集成钉钉扫码登录
 ### 创建钉钉应用
 记录`appKey`和`appSecret`
