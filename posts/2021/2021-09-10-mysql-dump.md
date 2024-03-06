@@ -1,31 +1,45 @@
 ---
-title:  "Mysql定时备份"
-tags: [数据库, mysql]
+title:  "Mysql数据库备份"
+tags: [数据库, 备份, mysql]
 ---
 
-# 简单备份
+## 配置准备
 
-```conf [/etc/mysql/backup.cnf]
+::: code-group
+
+```bash
+# 修改文件权限
+chmod 600 /etc/mysql/backup.cnf
+```
+
+```toml [/etc/mysql/backup.cnf]
+# /etc/mysql/backup.cnf
 [client]
 host=localhost
 port=3306
 user=root
 password="your_password"
 ```
+:::
+
+## 简单手动备份
 
 ```bash
-# 修改文件权限
-chmod 600 dump.conf
-# 简单的备份执行
+# 输入密码备份
+mysqldump -u root -p -B your_database > backup.sql
+# 根据配置简单备份
 mysqldump --defaults-extra-file=/etc/mysql/backup.cnf -B your_database > backup.sql
 ```
 
-# 结合crontab做定时备份
+## 结合crontab做定时备份
 
-## 准备定时执行的脚本
+依赖`backup.cnf`配置文件
 
-```sh [/etc/mysql/dump.sh]
-# 配置文件路径
+### 准备定时执行的脚本
+
+```sh
+# /etc/mysql/dump.sh
+# 配置文件路径 即配置准备中完成的配置
 V_CONF_PATH="./backup.cnf"
 # 备份目录
 V_BACKUP_DIR="/log/database"
@@ -33,7 +47,7 @@ V_BACKUP_DIR="/log/database"
 V_SOCKET="/tmp/mysql.sock"
 # 需要备份数据库
 V_DATABASE=benyin
-# 备份保留天数
+# 备份保留天数 自动删除超过备份天数的备份文件
 V_KEEP_DAYS=30
 # 当前日期
 V_TODAY=`date "+%Y%m%d"`
@@ -50,7 +64,7 @@ cd ${V_BACKUP_DIR}
 for i in `ls -l | awk '{print \$9}' | grep "[0-9]"`
 do
 if [ $[$(date -d "$V_TODAY" "+%s") - $(date -d "${i:0:8} + $V_KEEP_DAYS day" "+%s")] -ge 0 ]; then
-   echo "删除过期目录$i"
+   echo "删除过期备份文件$i"
    rm -f $i
 fi
 done
@@ -60,7 +74,7 @@ execution_time=$(echo "$end_time - $start_time" | bc)
 echo "完成数据库备份,耗时$execution_time秒..."
 ```
 
-## 创建crontab
+### 创建crontab
 
 ```sh
 # 编辑定时任务
@@ -77,3 +91,9 @@ vi /var/log/cron
 vi /var/log/messages
 vi /var/log/syslog
 ```
+
+### 效果
+
+![备份效果][1]
+
+[1]: /assets/2021/09-10/mysql.png
