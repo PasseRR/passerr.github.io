@@ -57,6 +57,10 @@
     {
       "source": "/nginx/:match*",
       "destination": "https://nginx-doc-passerr.vercel.app/:match*"
+    },
+    {
+      "source": "/it-tools/:match*",
+      "destination": "https://it-tools-topaz.vercel.app/:match*"
     }
   ],
   "github": {

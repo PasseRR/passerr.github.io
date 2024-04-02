@@ -28,7 +28,8 @@ const site = {
         {name: "Java版LeetCode", url: "/JavaLeetCode", date: "2018-05-01"},
         {name: "Jdk各版本特性", url: "/jdk-features", date: "2020-01-24"},
         {name: "Arthas手册", url: "/arthas", date: "2022-11-18"},
-        {name: "Nginx手册", url: "/nginx", date: "2023-08-10"}
+        {name: "Nginx手册", url: "/nginx", date: "2023-08-10"},
+        {name: "实用开发工具", url: "/it-tools", date: "2024-04-02"},
     ],
     navs: [
         {text: '博客', link: '/', activeMatch: '/blogs/|^/$'},
