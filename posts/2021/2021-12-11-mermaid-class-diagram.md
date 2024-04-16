@@ -483,7 +483,7 @@ class Bird {
     +Wing right
     +fly()* void
 }
-Bird "1" o-- "2" Wing
+Bird "1" *-- "2" Wing
 Bird --|> Animal
 
 %% 鸟群
@@ -541,7 +541,7 @@ class Bird {
     +Wing right
     +fly()* void
 }
-Bird "1" *-- "0..2" Wing
+Bird "1" *-- "2" Wing
 Bird --|> Animal
 
 %% 鸟群
