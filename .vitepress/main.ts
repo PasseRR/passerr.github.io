@@ -22,6 +22,9 @@ const site = {
     baidu: '6fcc00740d8cd30d91522810ec50075d',
     // 排除文件
     excludes: ["drafts/*.md"],
+    // vercel kv存储
+    kvUrl: 'https://amusing-foxhound-32120.upstash.io',
+    kvToken: 'AX14ASQgMGUzN2YwODktMDlmMS00N2ZhLWE2NjYtOTliYzc0NjlhZWJmNDA3OTA5YWJkOWY4NDVkYWI4YzgyNjNmMTk1YjM2MzY=',
     books: [
         {name: "设计模式", url: "/DesignPatterns", date: "2017-07-09"},
         {name: "Jdk8源码阅读", url: "/Java-Example", date: "2017-09-22"},

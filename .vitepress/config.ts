@@ -1,4 +1,5 @@
 import {languages, site} from './main'
+import {loadEnv} from "vitepress";
 import {getPosts} from './theme/serverUtils'
 import {UserConfig, withMermaid} from "vitepress-plugin-mermaid"
 import {resolve} from 'path'
@@ -30,6 +31,18 @@ const segment = new Segment()
 
 // 所有博客列表、重写路径、博客映射
 const {posts, rewrites, mappings} = getPosts(site.pageSize)
+const env = loadEnv('', process.cwd(), '')
+const processEnvValues = {
+    'process.env': Object.entries(env).reduce(
+        (prev, [key, val]) => {
+            return {
+                ...prev,
+                [key]: val,
+            }
+        },
+        {},
+    )
+}
 
 export default withMermaid({
     title: site.title,
@@ -40,15 +53,7 @@ export default withMermaid({
     rewrites: rewrites,
     vite: {
         publicDir: '.vitepress/public',
-        define: {
-            // vercel redis配置
-            'process.env': {
-                KV_URL: "redis://default:407909abd9f845dab8c8263f195b3636@amusing-foxhound-32120.upstash.io:32120",
-                KV_REST_API_URL: "https://amusing-foxhound-32120.upstash.io",
-                KV_REST_API_TOKEN: "AX14ASQgMGUzN2YwODktMDlmMS00N2ZhLWE2NjYtOTliYzc0NjlhZWJmNDA3OTA5YWJkOWY4NDVkYWI4YzgyNjNmMTk1YjM2MzY=",
-                KV_REST_API_READ_ONLY_TOKEN: "An14ASQgMGUzN2YwODktMDlmMS00N2ZhLWE2NjYtOTliYzc0NjlhZWJm5LLDwjF_WT6u-nONYzZh8Cvh5Q0Avmv15I_y1-MBZkw=",
-            }
-        }
+        define: processEnvValues,
     },
     // sitemap_index文件生成
     async buildEnd(s) {
@@ -155,6 +160,8 @@ export default withMermaid({
         }
     },
     themeConfig: {
+        kvUrl: site.kvUrl,
+        kvToken: site.kvToken,
         posts: posts,
         nav: site.navs,
         sidebar: [],

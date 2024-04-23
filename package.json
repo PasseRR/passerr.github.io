@@ -27,8 +27,5 @@
     "vitepress": "^1.0.0-rc.40",
     "vitepress-plugin-mermaid": "^2.0.14",
     "vitepress-plugin-tabs": "^0.4.1"
-  },
-  "dependencies": {
-    "@vercel/kv": "^1.0.1"
   }
 }

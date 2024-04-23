@@ -30,19 +30,26 @@ import DefaultTheme from 'vitepress/theme'
 import NewGiscus from "./NewGiscus.vue"
 import {useData, withBase} from "vitepress"
 import {nextTick, onMounted, provide, ref} from 'vue'
-import {kv} from '@vercel/kv'
 
 const {Layout} = DefaultTheme
-const {frontmatter, page, isDark} = useData()
+const {frontmatter, page, isDark, theme} = useData()
 const views = ref(1);
 
 onMounted(() => {
   // 考虑本地环境不做view
   if (location.host.startsWith('localhost') || location.host.startsWith('192.168')) {
+    views.value = -1
     return
   }
-  kv.hincrby('views', location.href.substring(location.href.lastIndexOf('/')), 1)
-      .then(it => views.value = it);
+
+  fetch(theme.value.kvUrl, {
+    headers: {
+      Authorization: `Bearer ${theme.value.kvToken}`,
+    },
+    method: 'POST',
+    body: `["HINCRBY", "views", "${location.href.substring(location.href.lastIndexOf('/'))}", "1"]`
+  }).then((response) => response.json())
+      .then((data) => views.value = data.result);
 })
 
 const enableTransitions = () =>
