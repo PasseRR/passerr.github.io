@@ -37,9 +37,9 @@ const views = ref(1);
 
 const init = () => {
   // 考虑本地环境不做view
-  if (location.host.startsWith('localhost') || location.host.startsWith('192.168')) {
-    return
-  }
+  // if (location.host.startsWith('localhost') || location.host.startsWith('192.168')) {
+  //   return
+  // }
 
   // 请求计数
   fetch(theme.value.kvUrl, {
@@ -47,7 +47,7 @@ const init = () => {
       Authorization: `Bearer ${theme.value.kvToken}`,
     },
     method: 'POST',
-    body: `["HINCRBY", "views", "${location.pathname + location.search}", "1"]`,
+    body: `["ZINCRBY", "hits", "1", "${location.pathname + location.search}"]`,
   }).then(res => res.json())
       .then(res => views.value = res.result);
 };
