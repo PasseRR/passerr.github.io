@@ -24,14 +24,17 @@ export default {
         app.component('Ebook', Ebook)
     },
     setup() {
-        const route = useRoute()
+        const route = useRoute();
+        // zoom 初始化
         const initZoom = () => {
             // 带有data-zoomable class的图片可以放大
             mediumZoom('[data-zoomable]', {background: 'var(--vp-c-bg)'});
             // 主内容区域的任何图片(除带有data-unzoomable class)可以放大
             mediumZoom('.main img:not(.data-unzoomable)', {background: 'var(--vp-c-bg)'});
         };
+
         onMounted(() => initZoom());
+
         watch(() => route.path, () => nextTick(() => initZoom()));
     }
 }

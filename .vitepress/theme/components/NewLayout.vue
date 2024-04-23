@@ -28,29 +28,33 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme'
 import NewGiscus from "./NewGiscus.vue"
-import {useData, withBase} from "vitepress"
-import {nextTick, onMounted, provide, ref} from 'vue'
+import {useData, withBase, useRoute} from "vitepress"
+import {nextTick, onMounted, provide, ref, watch} from 'vue'
 
 const {Layout} = DefaultTheme
-const {frontmatter, page, isDark, theme} = useData()
+const {frontmatter, page, isDark, theme, params} = useData(), route = useRoute()
 const views = ref(1);
 
-onMounted(() => {
+const init = () => {
   // 考虑本地环境不做view
   if (location.host.startsWith('localhost') || location.host.startsWith('192.168')) {
-    views.value = -1
     return
   }
 
+  // 请求计数
   fetch(theme.value.kvUrl, {
     headers: {
       Authorization: `Bearer ${theme.value.kvToken}`,
     },
     method: 'POST',
-    body: `["HINCRBY", "views", "${location.href.substring(location.href.lastIndexOf('/'))}", "1"]`
-  }).then((response) => response.json())
-      .then((data) => views.value = data.result);
-})
+    body: `["HINCRBY", "views", "${location.pathname + location.search}", "1"]`,
+  }).then(res => res.json())
+      .then(res => views.value = res.result);
+};
+
+onMounted(() => init());
+
+watch(() => route.path, () => nextTick(() => init()));
 
 const enableTransitions = () =>
     'startViewTransition' in document &&

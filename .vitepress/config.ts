@@ -1,5 +1,4 @@
 import {languages, site} from './main'
-import {loadEnv} from "vitepress";
 import {getPosts} from './theme/serverUtils'
 import {UserConfig, withMermaid} from "vitepress-plugin-mermaid"
 import {resolve} from 'path'
@@ -31,18 +30,6 @@ const segment = new Segment()
 
 // 所有博客列表、重写路径、博客映射
 const {posts, rewrites, mappings} = getPosts(site.pageSize)
-const env = loadEnv('', process.cwd(), '')
-const processEnvValues = {
-    'process.env': Object.entries(env).reduce(
-        (prev, [key, val]) => {
-            return {
-                ...prev,
-                [key]: val,
-            }
-        },
-        {},
-    )
-}
 
 export default withMermaid({
     title: site.title,
@@ -53,7 +40,6 @@ export default withMermaid({
     rewrites: rewrites,
     vite: {
         publicDir: '.vitepress/public',
-        define: processEnvValues,
     },
     // sitemap_index文件生成
     async buildEnd(s) {
