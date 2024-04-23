@@ -39,7 +39,16 @@ export default withMermaid({
     srcExclude: ['**/README.md', ...site.excludes],
     rewrites: rewrites,
     vite: {
-        publicDir: '.vitepress/public'
+        publicDir: '.vitepress/public',
+        define: {
+            // vercel redis配置
+            'process.env': {
+                KV_URL: "redis://default:407909abd9f845dab8c8263f195b3636@amusing-foxhound-32120.upstash.io:32120",
+                KV_REST_API_URL: "https://amusing-foxhound-32120.upstash.io",
+                KV_REST_API_TOKEN: "AX14ASQgMGUzN2YwODktMDlmMS00N2ZhLWE2NjYtOTliYzc0NjlhZWJmNDA3OTA5YWJkOWY4NDVkYWI4YzgyNjNmMTk1YjM2MzY=",
+                KV_REST_API_READ_ONLY_TOKEN: "An14ASQgMGUzN2YwODktMDlmMS00N2ZhLWE2NjYtOTliYzc0NjlhZWJm5LLDwjF_WT6u-nONYzZh8Cvh5Q0Avmv15I_y1-MBZkw=",
+            }
+        }
     },
     // sitemap_index文件生成
     async buildEnd(s) {

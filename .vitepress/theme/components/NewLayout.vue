@@ -7,15 +7,13 @@
           <a class="header-anchor" :href="'#'+frontmatter.title">​</a>
         </h1>
         <div class='post-info date'>
-          <span id="busuanzi_container_page_pv" class="strict" style="display: none">
-            <span class="fa fa-eye">
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-          </span>
           <span class="fa fa-tag">
             <span v-if="frontmatter.tags" v-for="item in frontmatter.tags">
               <a :href="withBase(`/tags.html?tag=${item}`)" target="_blank"> {{ item }}</a>
             </span>
+          </span>
+          <span class="fa fa-eye">
+            <span>{{ views }}</span>
           </span>
           <span class="fa fa-calendar"><span class="date">{{ frontmatter.date }}</span> </span>
         </div>
@@ -31,10 +29,21 @@
 import DefaultTheme from 'vitepress/theme'
 import NewGiscus from "./NewGiscus.vue"
 import {useData, withBase} from "vitepress"
-import {nextTick, provide} from 'vue'
+import {nextTick, onMounted, provide, ref} from 'vue'
+import {kv} from '@vercel/kv'
 
 const {Layout} = DefaultTheme
 const {frontmatter, page, isDark} = useData()
+const views = ref(1);
+
+onMounted(() => {
+  // 考虑本地环境不做view
+  if (location.host.startsWith('localhost') || location.host.startsWith('192.168')) {
+    return
+  }
+  kv.hincrby('views', location.href.substring(location.href.lastIndexOf('/')), 1)
+      .then(it => views.value = it);
+})
 
 const enableTransitions = () =>
     'startViewTransition' in document &&
