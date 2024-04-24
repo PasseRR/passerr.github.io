@@ -36,13 +36,18 @@ const {frontmatter, page, isDark, theme, params} = useData(), route = useRoute()
 const views = ref(1);
 
 const init = () => {
+  // 开发环境忽略访问计数
+  if (import.meta.env.DEV) {
+    return
+  }
+  
   // 请求计数
   fetch(theme.value.kvUrl, {
     headers: {
       Authorization: `Bearer ${theme.value.kvToken}`,
     },
     method: 'POST',
-    body: `["ZINCRBY", "${import.meta.env.DEV ? "dev-" : ""}hits", "1", "${location.pathname + location.search}"]`,
+    body: `["ZINCRBY", "hits", "1", "${location.pathname + location.search}"]`,
   }).then(res => res.json())
       .then(res => views.value = res.result);
 };
