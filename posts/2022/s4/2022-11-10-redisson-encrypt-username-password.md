@@ -1,6 +1,6 @@
 ---
 title:  SpringBoot中使用Redisson时对用户名密码加密
-tags: [二级等保, springboot, redission, java]
+tags: [二级等保, springboot, redission, redis, java]
 ---
 
 为了满足**二级等保**要求，数据库用户名、密码需要进行加密且内存中不能常驻明文用户名、密码。
@@ -374,7 +374,7 @@ class RedisAuthenticationDecryptor implements AuthenticationDecryptor {
             return Sm4CipherType.PASSWORD.decrypt(redisCipherProperties.getAuthSecretKey(), password);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            throw new MaginaException("Redis免密解密失败");
+            throw new MaginaException("Redis密码解密失败");
         }
     }
 }
