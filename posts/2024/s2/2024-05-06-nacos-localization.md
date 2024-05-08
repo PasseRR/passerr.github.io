@@ -26,9 +26,9 @@ cd nacos-plugin && mvn clean package
 
 ### Maven打包遇到的[问题](https://github.com/nacos-group/nacos-plugin/issues/38)
 
-1. Could not resolve dependencies for project com.alibaba.nacos:nacos-encryption-plugin-ext\:pom\:1.0.0-SNAPSHOT: The following artifacts co
-   uld not be resolved: com.alibaba.nacos:nacos-encryption-plugin\:jar\:2.3.0-SNAPSHOT, com.alibaba.nacos:nacos-common\:jar\:2.3.0-SNAPSHOT: Could not find artifact com.alibaba.nacos:nacos-encryption-plugin\:jar\:2.
-   3.0-SNAPSHOT
+1. Could not resolve dependencies for project com.alibaba.nacos:nacos-encryption-plugin-ext\:pom\:1.0.0-SNAPSHOT: The following artifacts could not be resolved: 
+   com.alibaba.nacos:nacos-encryption-plugin\:jar\:2.3.0-SNAPSHOT, com.alibaba.nacos:nacos-common\:jar\:2.3.0-SNAPSHOT: 
+   Could not find artifact com.alibaba.nacos:nacos-encryption-plugin\:jar\:2.3.0-SNAPSHOT
 
    根据[Nacos的仓库](https://github.com/alibaba/nacos)项目的版本更新根目录pom中alibaba-nacos.version的值。如目前的值为2.4.0-SNAPSHOT，或者修改为一个release版本号。
    ```xml
