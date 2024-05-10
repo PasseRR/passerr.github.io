@@ -62,9 +62,10 @@ title: ${i === 1 ? '博客' : '博客第' + i + '页'}
 <script setup>
 import { useData } from "vitepress";
 const { theme } = useData();
+const total = theme.value.posts.length;
 const posts = theme.value.posts.slice(${pageSize * (i - 1)},${pageSize * i})
 </script>
-<Page :posts="posts" :pageCurrent="${i}" :pagesNum="${pagesNum}" />
+<Page :posts="posts" :pageCurrent="${i}" :per-page="${pageSize}" :total="${total}" />
 `.trim();
             fs.writeFileSync(blog + `/${i}.md`, page, 'utf-8');
         }

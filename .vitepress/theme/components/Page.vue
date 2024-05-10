@@ -8,25 +8,64 @@
     </li>
   </ol>
 
-  <div class="pagination">
-    <a
-        class="link"
-        :class="{ active: pageCurrent === i }"
-        v-for="i in pagesNum"
-        :key="i"
-        :href="withBase(i === 1 ? '/index.html' : `/blogs/${i}.html`)"
-    >{{ i }}</a>
+  <div class="pager">
+    <PaginationRoot :total="total" :items-per-page="perPage" :sibling-count="1" show-edges :default-page="pageCurrent"
+                    @update:page="pageUpdate">
+      <PaginationList v-slot="{ items }" class="PaginationList">
+        <PaginationFirst class="Button">
+          <Icon icon="radix-icons:double-arrow-left" width="100%" height="1em"/>
+        </PaginationFirst>
+        <PaginationPrev :style="{ marginRight: 16 }" class="Button">
+          <Icon icon="radix-icons:chevron-left" width="100%" height="1em"/>
+        </PaginationPrev>
+        <template v-for="(page, index) in items">
+          <PaginationListItem v-if="page.type === 'page'" :key="index" class="Button" :value="page.value">
+            {{ page.value }}
+          </PaginationListItem>
+          <PaginationEllipsis v-else :key="page.type" :index="index" class="PaginationEllipsis">
+            &#8230;
+          </PaginationEllipsis>
+        </template>
+        <PaginationNext :style="{ marginLeft: 16 }" class="Button">
+          <Icon icon="radix-icons:chevron-right" width="100%" height="1em"/>
+        </PaginationNext>
+        <PaginationLast class="Button">
+          <Icon icon="radix-icons:double-arrow-right" width="100%" height="1em"/>
+        </PaginationLast>
+      </PaginationList>
+    </PaginationRoot>
   </div>
 </template>
 
 <script lang="ts" setup>
-import {withBase} from 'vitepress'
 
+import {useRouter, withBase} from "vitepress";
+import {Icon} from '@iconify/vue'
+import {
+  PaginationEllipsis,
+  PaginationFirst,
+  PaginationLast,
+  PaginationList,
+  PaginationListItem,
+  PaginationNext,
+  PaginationPrev,
+  PaginationRoot
+} from 'radix-vue'
+
+const router = useRouter()
 const props = defineProps({
   posts: Array,
   pageCurrent: Number,
-  pagesNum: Number
+  perPage: Number,
+  total: Number,
 })
+
+const pageUpdate = (num) => {
+  const path = router.route.path, routePath = num == 1 ? '/' : `/blogs/${num}.html`
+  if (path !== routePath) {
+    router.go(routePath)
+  }
+}
 </script>
 
 <style scoped>
@@ -62,10 +101,6 @@ const props = defineProps({
   text-decoration: none;
 }
 
-.post-info {
-  font-size: 12px;
-}
-
 .post-info span {
   display: inline-block;
   padding: 0 8px;
@@ -76,58 +111,9 @@ const props = defineProps({
   color: var(--vp-c-text-1);
 }
 
-.describe {
-  font-size: 0.9375rem;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
-  color: var(--vp-c-text-2);
-  margin: 10px 0;
-  line-height: 1.5rem;
-}
-
-.pagination {
-  margin-top: 16px;
-  display: flex;
-  /*justify-content: center;*/
-}
-
-.link {
-  color: var(--vp-c-text-1);
-  display: inline-block;
-  width: 24px;
-  text-align: center;
-  border: 1px #ddd solid !important;;
-  font-weight: 400;
-}
-
-.link.active {
-  background: var(--vp-c-brand-1);
-  color: var(--vp-c-neutral-inverse);
-  border: 1px solid var(--vp-c-brand-1) !important;
-}
-
-.link:first-child {
-  border-bottom-left-radius: 2px;
-  border-top-left-radius: 2px;
-}
-
-.link:last-child {
-  border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-right: 1px var(--vp-c-divider-light) solid;
-}
-
 @media screen and (max-width: 768px) {
   .post-list {
     padding: 4px 0 4px 0;
-  }
-
-  .post-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
 
   .post-title {
@@ -138,15 +124,6 @@ const props = defineProps({
     -webkit-line-clamp: 2;
     overflow: hidden;
     width: 17rem;
-  }
-
-  .describe {
-    font-size: 0.9375rem;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-    margin: 0.5rem 0 1rem;
   }
 }
 </style>

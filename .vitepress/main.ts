@@ -6,6 +6,8 @@ const site = {
     logo: '/logo.jpg',
     // 博客分页大小
     pageSize: 17,
+    // 博客分类分页大小
+    tagPageSize: 10,
     // 标题
     title: 'PasseRR\'s Blog',
     // 描述
