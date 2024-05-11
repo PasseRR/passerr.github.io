@@ -1,7 +1,7 @@
 <template>
   <highcharts :options="chartOptions" :key="themeToggle(isDark, Highcharts)"/>
   <div class="tag-header">{{ selectTag }}</div>
-  <a :href="withBase(article.regularPath)" v-for="(article, index) in articles" :key="index"
+  <a :href="withBase(article.regularPath)+'.html'" v-for="(article, index) in articles" :key="index"
      class="posts no-icon" target="_blank" rel="noreferrer">
     <div class="post-container">
       <div class="post-dot"></div>
