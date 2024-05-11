@@ -2,8 +2,8 @@
   <ol>
     <li v-for="(article, index) in posts" :key="index" class="post-list">
       <div class="post-title">
-        <a :href="withBase(article.regularPath)">{{ article.frontMatter.title }}</a>
-        »<span class="date">{{ article.frontMatter.date }}</span>
+        <a :href="withBase(article.regularPath)">{{ article.frontMatter.title }}
+          »<span class="date">{{ article.frontMatter.date }}</span></a>
       </div>
     </li>
   </ol>
@@ -93,7 +93,7 @@ const pageUpdate = (num) => {
 }
 
 .post-title a:hover, a:active {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
   text-decoration: underline;
 }
 

@@ -1,19 +1,37 @@
 <template>
   <highcharts :options="chartOptions" :key="themeToggle(isDark, Highcharts)"/>
   <div class="tag-header">{{ selectTag }}</div>
-  <a :href="withBase(article.regularPath)" v-for="(article, index) in data[selectTag]" :key="index" class="posts">
+  <a :href="withBase(article.regularPath)" v-for="(article, index) in articles" :key="index"
+     class="posts no-icon" target="_blank" rel="noreferrer">
     <div class="post-container">
       <div class="post-dot"></div>
       {{ article.frontMatter.title }}
+      »<span class="date">{{ article.frontMatter.date }}</span>
     </div>
-    <div class="date">{{ article.frontMatter.date }}</div>
   </a>
+
+  <div class="pager" v-if="total > pageSize" :key="selectTag">
+    <PaginationRoot :total="total" :items-per-page="pageSize" :sibling-count="1" :show-edges="false"
+                    :default-page="pageNumber" @update:page="pageUpdate">
+      <PaginationList v-slot="{ items }" class="PaginationList">
+        <template v-for="(page, index) in items">
+          <PaginationListItem v-if="page.type === 'page'" :key="index" class="Button" :value="page.value">
+            {{ page.value }}
+          </PaginationListItem>
+          <PaginationEllipsis v-else :key="page.type" :index="index" class="PaginationEllipsis">
+            &#8230;
+          </PaginationEllipsis>
+        </template>
+      </PaginationList>
+    </PaginationRoot>
+  </div>
 </template>
 <script lang="ts" setup>
 import {computed, onMounted, ref} from "vue"
 import {defineClientComponent, useData, withBase} from 'vitepress'
 import Highcharts from 'highcharts'
 import wordcloud from 'highcharts/modules/wordcloud'
+import {PaginationEllipsis, PaginationList, PaginationListItem, PaginationRoot} from 'radix-vue'
 
 const dark = {
   colors: [
@@ -66,10 +84,15 @@ const data = computed(() => {
 })
 const keys = Object.keys(data.value);
 
-const selectTag = ref('')
+const selectTag = ref(''), pageNumber = ref(1), total = ref(0), articles = ref(), pageSize = 10
 
 // 标签切换
-const toggleTag = (tag: string) => selectTag.value = tag,
+const toggleTag = (tag: string, page: Number) => {
+      selectTag.value = tag
+      pageNumber.value = page
+      total.value = data.value[selectTag.value].length
+      articles.value = data.value[selectTag.value].slice((page - 1) * pageSize, page * pageSize)
+    },
     // 客户端组件引用
     highcharts = defineClientComponent(() => {
       // 词云引入
@@ -84,6 +107,9 @@ const toggleTag = (tag: string) => selectTag.value = tag,
 
       return isDark ? 'dark' : 'light';
     }
+
+// 页面更新
+const pageUpdate = (num) => toggleTag(selectTag.value, num)
 
 const chartOptions = computed(() => {
   return {
@@ -103,7 +129,7 @@ const chartOptions = computed(() => {
         }
       }),
       events: {
-        click: (e) => toggleTag(e.point.options.name)
+        click: (e) => toggleTag(e.point.options.name, 1)
       },
       tooltip: {
         headerFormat: '',
@@ -126,9 +152,9 @@ const chartOptions = computed(() => {
 onMounted(() => {
   let url = location.href.split('?')[1]
   let params = new URLSearchParams(url)
-  let tag = params.get('tag');
+  let tag = params.get('tag'), page = params.get('page')
 
-  tag && toggleTag(tag)
+  tag && toggleTag(tag, parseInt(page) || 1)
 })
 
 </script>
