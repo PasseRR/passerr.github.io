@@ -84,7 +84,7 @@ const data = computed(() => {
 })
 const keys = Object.keys(data.value);
 
-const selectTag = ref(''), pageNumber = ref(1), total = ref(0), articles = ref(), pageSize = 10
+const selectTag = ref(''), pageNumber = ref(1), total = ref(0), articles = ref(), pageSize = 9
 
 // 标签切换
 const toggleTag = (tag: string, page: Number) => {
