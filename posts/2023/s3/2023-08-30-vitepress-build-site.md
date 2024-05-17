@@ -1,5 +1,5 @@
 ---
-title:  "基于vitepress搭建个人站点"
+title:  "基于VitePress搭建个人站点"
 tags: [markdown, vue, vitepress, typescript, 其他]
 ---
 

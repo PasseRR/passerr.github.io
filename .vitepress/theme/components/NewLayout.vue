@@ -40,7 +40,7 @@ const init = () => {
   if (import.meta.env.DEV) {
     return
   }
-  
+
   // 请求计数
   fetch(theme.value.kvUrl, {
     headers: {
