@@ -6,16 +6,12 @@
           {{ frontmatter.title }}
           <a class="header-anchor" :href="'#'+frontmatter.title">​</a>
         </h1>
-        <div class='post-info date'>
-          <span class="fa fa-tag">
-            <span v-if="frontmatter.tags" v-for="item in frontmatter.tags">
-              <a :href="withBase(`/tags.html?tag=${item}`)" target="_blank"> {{ item }}</a>
-            </span>
-          </span>
-          <span class="fa fa-eye">
-            <span>{{ views }}</span>
-          </span>
-          <span class="fa fa-calendar"><span class="date">{{ frontmatter.date }}</span> </span>
+        <div class='post-info'>
+          <a v-if="frontmatter.tags" v-for="item in frontmatter.tags" :href="withBase(`/tags.html?tag=${item}`)" target="_blank">
+            <Badge type="tip"><span class="fa fa-tag"></span> {{item}}</Badge>
+          </a>
+          <Badge type="warning"><span class="fa fa-eye"></span> {{views}}</Badge>
+          <Badge type="info"><span class="fa fa-calendar"></span> {{frontmatter.date}}</Badge>
         </div>
       </div>
       <br/>
@@ -91,23 +87,11 @@ provide('toggle-appearance', async ({clientX: x, clientY: y}) => {
 </script>
 
 <style>
+
 .post-info {
+  margin-top: 1em;
   float: right;
-  font-size: 22px;
-}
-
-.post-info span:not(.strict) {
-  display: inline-block;
-  background-color: var(--vp-c-bg-alt);
-  margin-right: 10px;
-  transition: 0.4s;
-  border-radius: 2px;
-  color: var(--vp-c-text-1);
-}
-
-.post-info a {
-  color: var(--vp-c-text-1);
-  text-decoration: none;
+  font-size: .8em;
 }
 
 ::view-transition-old(root),
