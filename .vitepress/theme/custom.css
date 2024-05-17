@@ -207,11 +207,6 @@
     z-index: 21;
 }
 
-.shields {
-    display: inline-block;
-    margin-right: .5em;
-}
-
 /* 分页器相关 */
 .pager button {
     all: unset;
