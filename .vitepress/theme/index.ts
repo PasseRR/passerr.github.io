@@ -4,7 +4,7 @@ import Page from './components/Page.vue'
 import Ebook from './components/Ebook.vue'
 import NewGiscus from './components/NewGiscus.vue'
 import NewLayout from "./components/NewLayout.vue"
-import ShieldsLogo from "./components/ShieldsLogo.vue"
+import ShieldsBadge from "./components/ShieldsBadge.vue"
 import {enhanceAppWithTabs} from 'vitepress-plugin-tabs/client'
 import {useRoute} from 'vitepress'
 import {nextTick, onMounted, watch} from 'vue'
@@ -23,7 +23,7 @@ export default {
         app.component('Tags', Tags)
         app.component('Page', Page)
         app.component('Ebook', Ebook)
-        app.component('ShieldsLogo', ShieldsLogo)
+        app.component('ShieldsBadge', ShieldsBadge)
     },
     setup() {
         const route = useRoute();

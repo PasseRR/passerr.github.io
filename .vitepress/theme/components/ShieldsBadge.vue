@@ -33,7 +33,7 @@ const actualLogo = computedAsync(() => {
   if (props.svg.length) {
     return import(/* @vite-ignore */`./icons/${props.svg}.svg?raw`)
         .then(it => it.default)
-        .then(it => `data:image/svg%2bxml;base64,${window.btoa(it)}`)
+        .then(it => `data:image/svg+xml;base64,${window.btoa(it)}`)
   }
 
   return props.logo
