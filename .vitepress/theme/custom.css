@@ -11,7 +11,7 @@
     /* pure theme color */
     --li-dot-color: var(--vp-c-brand);
     --date-color: var(--vp-c-text-2);
-    --date-font-family: Georgia, sans-serif;
+    --date-font-family: var(--vp-font-family-mono);
 }
 
 .dark {
