@@ -1,14 +1,17 @@
 <template>
   <highcharts :options="chartOptions" :key="themeToggle(isDark, Highcharts)"/>
   <div class="tag-header">{{ selectTag }}</div>
-  <a :href="withBase(article.regularPath)+'.html'" v-for="(article, index) in articles" :key="index"
-     class="posts no-icon" target="_blank" rel="noreferrer">
-    <div class="post-container">
-      <div class="post-dot"></div>
-      {{ article.frontMatter.title }}
-      »<span class="date">{{ article.frontMatter.date }}</span>
+  <ul>
+    <div class="post-title">
+      <li v-for="(article, index) in articles">
+        <a :href="withBase(article.regularPath)+'.html'" :key="index"
+           class="hover-underline-animation no-icon" target="_blank">
+          {{ article.frontMatter.title }}
+          <span class="date"><span class="fa fa-clock-o"></span>{{ article.frontMatter.date }}</span>
+        </a>
+      </li>
     </div>
-  </a>
+  </ul>
 
   <div class="pager" v-if="total > pageSize" :key="selectTag">
     <PaginationRoot :total="total" :items-per-page="pageSize" :sibling-count="1" :show-edges="false"
@@ -162,18 +165,7 @@ onMounted(() => {
 <style scoped>
 @media screen and (max-width: 768px) {
   .date {
-    font-size: 0.75rem;
+    display: none;
   }
-}
-
-.posts {
-  font-weight: 500;
-  color: var(--vp-c-text-1);
-  text-decoration: none;
-}
-
-.posts:hover, .posts:active {
-  color: var(--vp-c-brand-1);
-  text-decoration: underline;
 }
 </style>

@@ -2,8 +2,9 @@
   <ol>
     <li v-for="(article, index) in posts" :key="index" class="post-list">
       <div class="post-title">
-        <a :href="withBase(article.regularPath)">{{ article.frontMatter.title }}
-          »<span class="date">{{ article.frontMatter.date }}</span></a>
+        <a :href="withBase(article.regularPath)" class="hover-underline-animation">{{ article.frontMatter.title }}
+          <span class="date"><span class="fa fa-clock-o"></span>{{ article.frontMatter.date }}</span>
+        </a>
       </div>
     </li>
   </ol>
@@ -72,33 +73,6 @@ const pageUpdate = (num) => {
 .post-list {
   border-bottom: 1px dashed var(--vp-c-divider-light);
   padding: 3px 0 3px 0;
-}
-
-.post-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.post-title {
-  font-family: "Roboto Condensed", Arial, sans-serif;
-  font-size: 16px;
-  margin: 0.1rem 0;
-}
-
-.post-title a {
-  color: var(--vp-c-text-1);
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.post-title a:hover, a:active {
-  color: var(--vp-c-brand);
-  text-decoration: underline;
-}
-
-.post-title a, a:link, a:active {
-  text-decoration: none;
 }
 
 .post-info span {

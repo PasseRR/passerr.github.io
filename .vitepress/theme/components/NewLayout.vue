@@ -11,7 +11,7 @@
             <Badge type="tip"><span class="fa fa-tag"></span> {{item}}</Badge>
           </a>
           <Badge type="warning"><span class="fa fa-eye"></span> {{views}}</Badge>
-          <Badge type="info"><span class="fa fa-calendar"></span> {{frontmatter.date}}</Badge>
+          <Badge type="info"><span class="fa fa-clock-o"></span> {{frontmatter.date}}</Badge>
         </div>
       </div>
       <br/>
