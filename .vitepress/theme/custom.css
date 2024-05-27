@@ -31,19 +31,31 @@
 
 .title {
     color: var(--vp-c-text-1);
-    /*font-size: 1.5rem !important;*/
-    /*letter-spacing: 1px;*/
     font-weight: 550 !important;
-    /*font-family: var(--date-font-family);*/
 }
 
-.content a[rel~='noreferrer']:link, a[rel~='noreferrer']:visited {
+.content a[rel~='noreferrer']:link, a[rel~='noreferrer']:visited, a[rel~='noreferrer']:active {
     color: var(--vp-c-brand);
-    font-weight: 500 !important;
+    text-decoration: none;
+    position: relative;
+    font-weight: 550 !important;
 }
 
-.content a[rel~='noreferrer']:hover {
-    color: #888;
+.content a[rel~='noreferrer']::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--vp-c-brand);
+    transform: scaleX(0);
+    transition: transform 0.4s ease-in-out;
+}
+
+.content a[rel~='noreferrer']:hover::before {
+    transform: scaleX(1);
 }
 
 /* for aside start */
@@ -290,11 +302,9 @@
     bottom: 0;
     left: 0;
     background-color: var(--vp-c-brand);;
-    transform-origin: bottom right;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.4s ease-in-out;
 }
 
 .hover-underline-animation:hover::after {
     transform: scaleX(1);
-    transform-origin: bottom left;
 }
