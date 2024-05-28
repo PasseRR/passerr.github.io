@@ -35,7 +35,7 @@
 }
 
 .content a[rel~='noreferrer']:link, a[rel~='noreferrer']:visited, a[rel~='noreferrer']:active {
-    color: var(--vp-c-brand);
+    color: var(--vp-c-brand-2);
     text-decoration: none;
     position: relative;
     font-weight: 550 !important;
@@ -49,7 +49,7 @@
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: var(--vp-c-brand);
+    background-color: var(--vp-c-brand-2);
     transform: scaleX(0);
     transition: transform 0.4s ease-in-out;
 }
