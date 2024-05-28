@@ -34,14 +34,14 @@
     font-weight: 550 !important;
 }
 
-.content a[rel~='noreferrer']:link, a[rel~='noreferrer']:visited, a[rel~='noreferrer']:active {
+.content a[rel~='noreferrer']:not(.without-underline-animation):link, a[rel~='noreferrer']:not(.without-underline-animation):visited, a[rel~='noreferrer']:not(.without-underline-animation):active {
     color: var(--vp-c-brand-2);
     text-decoration: none;
     position: relative;
     font-weight: 550 !important;
 }
 
-.content a[rel~='noreferrer']::before {
+.content a[rel~='noreferrer']:not(.without-underline-animation)::before {
     content: "";
     position: absolute;
     display: block;
@@ -54,7 +54,7 @@
     transition: transform 0.4s ease-in-out;
 }
 
-.content a[rel~='noreferrer']:hover::before {
+.content a[rel~='noreferrer']:not(.without-underline-animation):hover::before {
     transform: scaleX(1);
 }
 
@@ -211,6 +211,9 @@
 }
 
 /*图片放大缩小层级*/
+.main img:not(.data-unzoomable) {
+    cursor: pointer;
+}
 .medium-zoom-overlay {
     z-index: 20;
 }
