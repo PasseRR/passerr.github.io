@@ -1,9 +1,9 @@
 <template>
   <div class="books">
-    <a :href="site.main + book.url" v-for="(book, _) in data.books" class="no-icon" target="_blank">
+    <a :href="site.main + book.url" v-for="(book, _) in data.books" class="no-icon hover-book" target="_blank">
       <div class="book">
         <div class="book-info">
-          <span class="hover-underline-animation" style="color: var(--vp-c-text-1)">{{ book.name }}</span>
+          <span class="hover-title">{{ book.name }}</span>
         </div>
         <div class="book-date date">
           <span class="fa fa-calendar"></span> {{ book.date }}
@@ -47,11 +47,32 @@ const data = site
   padding-top: 75px;
   /*color: #3fa757;*/
   word-break: break-word;
+  color: var(--vp-c-text-1)
 }
 
 .book-date {
   text-align: center;
   font-size: 11px;
   color: var(--date-color);
+}
+
+.hover-title {
+  position: relative;
+}
+
+.hover-title::after  {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 3px;
+  bottom: -3px;
+  left: 0;
+  background-color: var(--vp-c-brand);;
+  transition: transform 0.4s ease-in-out;
+}
+
+.hover-book:hover .hover-title::after {
+  transform: scaleX(1);
 }
 </style>
