@@ -132,7 +132,11 @@ const chartOptions = computed(() => {
         }
       }),
       events: {
-        click: (e) => toggleTag(e.point.options.name, 1)
+        click: (e) => {
+          // 修改浏览器地址
+          history.pushState({}, null, `/tags.html?tag=${e.point.options.name}`)
+          toggleTag(e.point.options.name, 1)
+        }
       },
       tooltip: {
         headerFormat: '',
