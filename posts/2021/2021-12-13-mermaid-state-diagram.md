@@ -5,7 +5,7 @@ tags: [markdown, mermaid, uml, 其他]
 
 状态图(Statechart Diagram)是描述一个实体基于事件反应的动态行为，显示了该实体如何根据当前所处的状态对不同的事件做出反应。
 
-[mermaid stateDiagram](https://mermaid-js.github.io/mermaid/#/stateDiagram)
+[mermaid stateDiagram](https://mermaid.js.org/syntax/stateDiagram.html)
 
 mermaid关键字`stateDiagram`或`stateDiagram-v2`
 

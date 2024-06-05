@@ -7,7 +7,7 @@ tags: [markdown, mermaid, uml, 其他]
 类图可以组织在（并且属于）包中，仅显示特定包中的相关内容。类图(Class diagram)是最常用的UML图，
 显示出类、接口以及它们之间的静态结构和关系；它用于描述系统的结构化设计。类图(Class diagram)最基本的元素是类或者接口。
 
-[mermaid classDiagram](https://mermaid-js.github.io/mermaid/#/classDiagram)
+[mermaid classDiagram](https://mermaid.js.org/syntax/classDiagram.html)
 
 mermaid关键字`classDiagram`
 

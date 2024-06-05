@@ -246,6 +246,9 @@ export default withMermaid({
         },
         config(md) {
             md.use(tabsMarkdownPlugin)
+        },
+        image: {
+            lazyLoading: true
         }
     },
     mermaid: {},

@@ -9,7 +9,7 @@ tags: [markdown, mermaid, uml, 其他]
 顾名思义，就是用来直观地描述一个工作过程的具体步骤。这种过程既可以是生产线上的工艺流程，
 也可以是完成一项任务所必需的管理过程。
 
-[mermaid flowchart文档](https://mermaid-js.github.io/mermaid/#/flowchart)
+[mermaid flowchart文档](https://mermaid.js.org/syntax/flowchart.html)
 
 mermaid关键字`flowchart`
 
