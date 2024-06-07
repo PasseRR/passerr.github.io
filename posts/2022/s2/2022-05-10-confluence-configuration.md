@@ -108,7 +108,7 @@ tags: [运维, confluence]
 
 [Easy Heading Macro](https://marketplace.atlassian.com/apps/1221271/easy-heading-macro-floating-table-of-contents?tab=overview&hosting=server)
 
-离线插件下载[easy-heading-free-2.2.1.jar](/assets/2022/05-10/easy-heading-free-2.2.1.jar)，上传插件安装就可以使用
+离线插件下载[easy-heading-free-2.2.1.jar](/assets/2022/05-10/easy-heading-free-2.2.1.jar){download}，上传插件安装就可以使用
 
 插件目录可以使用wiki全局配置、按照空间配置、按照页面配置自由选择，并且支持内容按照标题展开、收起。
 

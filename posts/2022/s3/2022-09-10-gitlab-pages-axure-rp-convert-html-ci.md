@@ -32,7 +32,7 @@ pre_build_script = "chcp 65001"
 ![p2][2]
 
 ### 4. 关闭axure自动更新
-### 5. 复制[axure-automation.jar](/assets/2022/09-10/axure-automation.jar)到c盘根目录
+### 5. 复制[axure-automation.jar](/assets/2022/09-10/axure-automation.jar){download}到c盘根目录
 ### 6. 关闭远程连接
 任务管理器 -> 用户，查看用户远程连接会话id，RDP-Tcp#后面的数字
 ```shell
@@ -40,7 +40,7 @@ pre_build_script = "chcp 65001"
 # 来源 https://stackoverflow.com/questions/62969814/winappdriver-based-automation-stops-working-on-windows-10-vm-when-i-close-the-rd
 C:\Windows\System32\tscon.exe RDP-Tcp#37 /dest:console
 ```
-[参照官方文档](https://github.com/microsoft/WinAppDriver/blob/master/Docs/RunningOnRemoteMachine.md)使用[QRes.exe](/assets/2022/09-10/qres.zip)，
+[参照官方文档](https://github.com/microsoft/WinAppDriver/blob/master/Docs/RunningOnRemoteMachine.md)使用[QRes.exe](/assets/2022/09-10/qres.zip){download}，
 创建logout-rdp.cmd文件如下
 ```cmd
 for /f "skip=1 tokens=3" %%s in ('query user %USERNAME%') do (C:\Windows\System32\tscon.exe %%s /dest:console 

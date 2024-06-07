@@ -10,8 +10,8 @@ tags: [gitlab, ci/cd, 运维]
 ## 阿里规约准备
 
 ### 编译最新p3c-pmd模块
-- 直接[pmd包](/assets/2022/01-20/p3c-pmd-2.1.1-jar-with-dependencies.jar)
-- [下载](https://github.com/alibaba/p3c)官方最新代码编译
+- 直接[pmd包](/assets/2022/01-20/p3c-pmd-2.1.1-jar-with-dependencies.jar){download}
+- [克隆](https://github.com/alibaba/p3c)官方最新代码编译
 
 ### 编写规则集xml文件
 

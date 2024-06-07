@@ -29,7 +29,7 @@ tags: [axure, java, 其他]
 # 指定端口及ip 默认是localhost 远程服务需要以管理员身份运行
 .\WinAppDriver.exe 192.168.5.2 4723
 ```
-### 4. [inspect.exe](/assets/2022/09-02/inspect.exe)元素识别工具
+### 4. [inspect.exe](/assets/2022/09-02/inspect.exe){download}元素识别工具
 结合[文档](https://github.com/microsoft/WinAppDriver/blob/master/Docs/AuthoringTestScripts.md)使用
 
 ## 自动化测试脚本/服务
