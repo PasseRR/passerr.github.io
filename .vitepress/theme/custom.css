@@ -331,7 +331,7 @@
     height: 11px;
     background: currentColor;
     flex-shrink: 0;
-    --icon: url('./download.svg');
+    --icon: url('/download.svg');
     -webkit-mask-image: var(--icon);
     mask-image: var(--icon);
     content: '';
