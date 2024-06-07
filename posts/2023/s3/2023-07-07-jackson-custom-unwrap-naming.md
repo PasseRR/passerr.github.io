@@ -5,7 +5,7 @@ tags: [jackson, java]
 
 ## [@JsonUnwrapped](https://github.com/FasterXML/jackson-annotations/blob/master/src/main/java/com/fasterxml/jackson/annotation/JsonUnwrapped.java)的作用？
 
-参考[Jackson注解](/2023-05-04-jackson-annotations#jsonunwrapped){:target='_blank'}对@JsonUnwrapped的介绍，
+参考[Jackson注解](/2023-05-04-jackson-annotations#jsonunwrapped){:target='_blank' rel="noreferrer"}对@JsonUnwrapped的介绍，
 简单来说，该注解的作用就是在json序列化与反序列化时，将嵌套对象的属性平铺到一层。
 
 ::: warning 注意

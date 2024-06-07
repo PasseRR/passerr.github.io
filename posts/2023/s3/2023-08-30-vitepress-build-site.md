@@ -7,11 +7,11 @@ VitePress很适合构建`博客`、`技术文档`、`面试题网站`、`产品�
 而且还会自动生成导航栏、目录摘要、锚点、移动端自适应，针对markdown做了很多扩展，代码块、代码组、自定义容器等。
 
 个人博客从[Jekyll](https://www.jekyll.com.cn/)开始，过程中由于[Github Pages](https://pages.github.com/)访问过慢，
-迁移到了[Vercel](https://vercel.com/)上(可参考我[迁移到Vercel的过程](/2022-06-01-move-github-pages-to-vercel){:target='_blank'})，
+迁移到了[Vercel](https://vercel.com/)上(可参考我[迁移到Vercel的过程](/2022-06-01-move-github-pages-to-vercel){:target='_blank' rel="noreferrer"})，
 最近在VitePress看到后，心动不已，刚好Vercel也支持VitePress部署，故计划将博客使用VitePress重构了一遍，
 当然，博客是一个长期维护的空间，仅记录下过程中遇到的问题。
 
-由于非前端开发人员，我前期通过先将我的[电子书](/ebook){:target='_blank'}使用VitePress重构，待到慢慢熟悉后，
+由于非前端开发人员，我前期通过先将我的[电子书](/ebook){:target='_blank' rel="noreferrer"}使用VitePress重构，待到慢慢熟悉后，
 开始重构博客，过程还是比较艰辛(主要太菜了)。
 
 - [VitePress Guide](https://vitepress.dev/)
@@ -74,7 +74,7 @@ export default withMermaid(
 在代码块中使用`mmd`则为代码块显示，使用`mermaid`则作为svg显示，但不支持`code-group`，
 [Issue](https://github.com/emersonbottero/vitepress-plugin-mermaid/issues/60)提问作者，应该不是很好支持(虽然我也不懂)。
 
-最终效果可参考我[Mermaid相关博客](/tags.html?tag=mermaid){:target='_blank'}。
+最终效果可参考我[Mermaid相关博客](/tags.html?tag=mermaid){:target='_blank' rel="noreferrer"}。
 
 ::: info 提示
 [vitepress-plugin-tabs](https://github.com/Red-Asuka/vitepress-plugin-tabs)插件支持tabs容器，
@@ -529,7 +529,7 @@ export default defineConfig({
 
 :::
 
-效果参考我的[PlantUml的使用](/2017-09-25-plantuml){:target='_blank'}
+效果参考我的[PlantUml的使用](/2017-09-25-plantuml){:target='_blank' rel="noreferrer"}
 
 ### 自定义社交svg图标
 
@@ -653,7 +653,7 @@ export default defineConfig({
   ```
   :::
   
-  效果可以参考所有博客最下方的评论区或者[留言板](/messages-board){:target='_blank'}
+  效果可以参考所有博客最下方的评论区或者[留言板](/messages-board){:target='_blank' rel="noreferrer"}
 
 ### 集成不蒜子统计
 
