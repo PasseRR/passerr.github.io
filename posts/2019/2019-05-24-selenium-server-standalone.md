@@ -5,7 +5,7 @@ tags: [selenium, java, 自动化测试, 运维]
 
 ## 下载selenium服务端
 
-[下载](https://docs.seleniumhq.org/download/)
+[下载](https://docs.seleniumhq.org/download/){class="no-icon without-underline-animation" download}
 
 
 ## 下载浏览器驱动

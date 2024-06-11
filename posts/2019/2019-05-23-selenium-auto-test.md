@@ -120,7 +120,7 @@ driver.findElement(By.cssSelector("button.btn.btn_big.btn_submit"))
 
 ## Java代码
 1.驱动下载  
-[选择对应客户端浏览器版本的Chrome驱动](http://chromedriver.storage.googleapis.com/index.html)
+[选择对应客户端浏览器版本的Chrome驱动](http://chromedriver.storage.googleapis.com/index.html){class="no-icon without-underline-animation" download}
 
 2.驱动配置  
 

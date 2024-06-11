@@ -9,7 +9,7 @@ tags: [github, vercel, markdown, 其他]
 主站点的CNAME为`www.xiehai.win`
 
 ## 迁移过程
-### 1. 将所有站点从github[导入](2022-05-31-vercel-sites.md)**vercel**
+### 1. 将所有站点从github[导入](2022-05-31-vercel-sites.md){:target='_blank' rel="noreferrer"}**vercel**
 ### 2. [将vercel多个项目配置为一个域名](https://vercel.com/support/articles/how-can-i-serve-multiple-projects-under-a-single-domain)，在主站点根目录添加`vercel.json`
 
 ```js

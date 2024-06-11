@@ -154,7 +154,7 @@ confluence只能设置一个基础url，当confluence通过内网或外网ip访�
 CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤如下
 
 1. 关闭confluence
-2. 下载[cve-2021-26084-update.sh](https://www.xiehai.zone/assets/2022/05-10/cve-2021-26084-update.sh){:target='_blank' download}脚本
+2. 下载[cve-2021-26084-update.sh](https://www.xiehai.zone/assets/2022/05-10/cve-2021-26084-update.sh){class="no-icon without-underline-animation" download}脚本
 3. 修改脚本中的`INSTALLATION_DIRECTORY`为你的confluence安装目录并保存
 4. 修改脚本执行权限
 

@@ -50,7 +50,7 @@ tags: [java, centos, windows, 运维]
 
 #### 1. 下载windows版本的webrtc-streamer
 
-[点击下载v0.6.5](https://github.com/mpromonet/webrtc-streamer/releases/download/v0.6.5/webrtc-streamer-v0.6.5-Windows-AMD64-Release.tar.gz)，
+[点击下载v0.6.5](https://github.com/mpromonet/webrtc-streamer/releases/download/v0.6.5/webrtc-streamer-v0.6.5-Windows-AMD64-Release.tar.gz){class="no-icon without-underline-animation" download}，
 其他版本下载启动后转流就自动停止，暂时未做问题分析。
 
 #### 2. 启动服务
@@ -64,7 +64,7 @@ tags: [java, centos, windows, 运维]
 
 #### 1. 下载linux版本的webrtc-streamer
 
-[点击下载v0.8.0](https://github.com/mpromonet/webrtc-streamer/releases/download/v0.8.0/webrtc-streamer-v0.8.0-Linux-x86_64-Release.tar.gz)
+[点击下载v0.8.0](https://github.com/mpromonet/webrtc-streamer/releases/download/v0.8.0/webrtc-streamer-v0.8.0-Linux-x86_64-Release.tar.gz){class="no-icon without-underline-animation" download}
 
 ```bash
 wget https://github.com/mpromonet/webrtc-streamer/releases/download/v0.8.0/webrtc-streamer-v0.8.0-Linux-x86_64-Release.tar.gz
@@ -127,7 +127,7 @@ yum install -y libXcomposite libXrandr.x86_64 libXtst libX11 libXext libXdamage 
 ldd --version
 ```
 
-参考[CentOs升级gcc及glibc](2023-05-24-centos-gcc-glibc-upgrade.md)，升级过程会比较漫长。
+参考[CentOs升级gcc及glibc](2023-05-24-centos-gcc-glibc-upgrade.md){:target='_blank' rel="noreferrer"}，升级过程会比较漫长。
 
 #### 4.启动服务
 

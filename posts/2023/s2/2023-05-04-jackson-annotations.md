@@ -15,11 +15,11 @@ Jackson的注解主要在[jackson-annotations](https://github.com/FasterXML/jack
 | 仅反序列化注解    | 仅影响json反序列化对象过程                | @JonsSetter、@JsonCreator  | 
 | 元注解        | 用于将多个注解组合为一个容器注解的元注解或仅有标记作用的注解 | @JacksonAnnotationsInside |
 
-### 序列化、反序列化注解
+## 序列化、反序列化注解
 
 序列化、反序列化注解有的是一个注解就同时影响序列化与反序列化，有的是一对注解分别来分别控制。
 
-#### @JsonAnyGetter/@JsonAnySetter
+### @JsonAnyGetter/@JsonAnySetter
 
 - [@JsonAnyGetter](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonAnyGetter.java)：将带有JsonAnyGetter注解的方法返回map序列化为json的其他属性(平铺)
     - 一个bean中`只能有一个属性/方法`带有@JsonAnyGetter注解，多个会报错
@@ -79,7 +79,7 @@ Test.Bean(name=test, map={attr2=false, attr1=1, attr3=attribute})
 
 :::
 
-#### @JsonAutoDetect
+### @JsonAutoDetect
 
 [@JsonAutoDetect](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonAutoDetect.java)可以在序列化、反序列化时包含不可访问的属性，即使没有getter、setter，**需要bean有默认构造方法**。
 
@@ -130,7 +130,7 @@ Test.Bean(name=张三, age=1)
 
 :::
 
-#### @JsonValue/@JsonCreator
+### @JsonValue/@JsonCreator
 
 - [@JsonValue](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonValue.java)：使用单个方法/字段序列化对象
     - 一个bean中`只能有一个属性/方法`带有@JsonValue注解，多个会报错
@@ -186,7 +186,7 @@ Test.Bean(name=张三, age=1, sex=MALE)
 
 :::
 
-#### @JsonFormat
+### @JsonFormat
 
 [@JsonFormat](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonFormat.java)用于指定任意类型序列化和反序列化格式，常用于日期(Date**不是java8的time**)、枚举。
 
@@ -262,7 +262,7 @@ Test.Bean(name=张三, age=1, sex=MALE, state=ENABLE, birthDate=Fri May 19 08:00
 
 :::
 
-#### @JsonGetter/@JsonSetter
+### @JsonGetter/@JsonSetter
 
 - [@JsonGetter](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonGetter.java): 指定一个非静态、无参、返回值非void的方法为序列化的getter方法
 - [@JsonSetter](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonSetter.java): 指定一个非静态、单个参数的方法为反序列化的setter方法
@@ -321,7 +321,7 @@ Test.Bean(name=张三, age=10)
 
 :::
 
-#### @JsonIgnore
+### @JsonIgnore
 
 [@JsonIgnore](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonIgnore.java)用于忽略序列化及反序列化，可将注解放在字段、setter、getter上都可以达到忽略的目的。
 
@@ -369,7 +369,7 @@ Test.Bean(name=null, age=null, sex=null)
 
 :::
 
-#### @JsonIgnoreProperties
+### @JsonIgnoreProperties
 
 [@JsonIgnoreProperties](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonIgnoreProperties.java)作用于class用于忽略多个字段的序列化与反序列化
 
@@ -411,7 +411,7 @@ Test.Bean(name=null, age=10, sex=male)
 
 :::
 
-#### @JsonIgnoreType
+### @JsonIgnoreType
 
 [@JsonIgnoreType](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonIgnoreType.java)用于标记某个类型忽略其序列化与反序列化
 
@@ -456,7 +456,7 @@ Test.Bean(name=张三, age=1, sex=null)
 
 :::
 
-#### @JsonProperty
+### @JsonProperty
 
 [@JsonProperty](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonProperty.java)
 用于标记非静态方法、字段作为json属性
@@ -517,7 +517,7 @@ Test.Bean(name=张三, age=1, sex=MALE)
 
 :::
 
-#### @JsonUnwrapped
+### @JsonUnwrapped
 
 [@JsonUnwrapped](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonUnwrapped.java)
 在序列化时将嵌套对象属性放到父对象，反序列化时将父对象属性解析到嵌套对象属性，支持属性的前缀、后缀，但扩展的前缀不支持驼峰
@@ -564,7 +564,7 @@ Test.Bean(name=Test.Name(firstName=张, lastName=三), age=1)
 
 :::
 
-#### @JsonSerialize/@JsonDeserialize
+### @JsonSerialize/@JsonDeserialize
 
 - [@JsonSerialize](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/annotation/JsonSerialize.java)用于自定义序列化，针对特定类型作为属性、map的key、map的value定义
 - [@JsonDeserialize](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/annotation/JsonDeserialize.java)用于自定义反序列化，针对特定类型作为属性、map的key、map的value定义
@@ -634,9 +634,9 @@ Test.Bean(name=张三, age=18, birthDate=Fri Jun 02 00:00:00 CST 2023)
 
 :::
 
-### 仅序列化注解
+## 仅序列化注解
 
-#### @JsonInclude
+### @JsonInclude
 
 [@JsonInclude](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonInclude.java)
 用与在序列化时排除一些具有`NULL`/`EMPTY`/`DEFAULT`/自定义条件的属性
@@ -683,7 +683,7 @@ public class Test {
 
 :::
 
-#### @JsonIncludeProperties
+### @JsonIncludeProperties
 
 [@JsonIncludeProperties](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonIncludeProperties.java)
 用于一个类型序列化时仅包含给定的属性
@@ -732,7 +732,7 @@ public class Test {
 
 :::
 
-#### @JsonKey
+### @JsonKey
 
 [@JsonKey](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonKey.java)
 用于当对象作为map的key时，使用标记的字段作为key
@@ -782,7 +782,7 @@ public class Test {
 
 :::
 
-#### @JsonPropertyOrder
+### @JsonPropertyOrder
 
 [@JsonPropertyOrder](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonPropertyOrder.java)
 用于控制序列化时属性顺序
@@ -824,7 +824,7 @@ public class Test {
 
 :::
 
-#### @JsonRawValue
+### @JsonRawValue
 
 [@JsonRawValue](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonRawValue.java)
 按照属性原始值直接序列化，不做任何改变
@@ -866,9 +866,9 @@ public class Test {
 
 :::
 
-### 仅反序列化注解
+## 仅反序列化注解
 
-#### @JsonAlias
+### @JsonAlias
 
 [@JsonAlias](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonAlias.java)
 用于一个属性可以使用一个或多个别名反序列化，若json中存在多个别名属性，按照json读取顺序覆盖，即使是null
@@ -903,7 +903,7 @@ Test.Bean(age=11, name=张小三)
 
 :::
 
-#### @JsonMerge
+### @JsonMerge
 
 [@JsonMerge](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonMerge.java)
 用于在反序列化时，若属性本身非空，将json字符串的值和已有值做合并
@@ -953,7 +953,7 @@ Test.Bean(map={a=A, b=b, c=c}, list=[3, 2, 1, 0], array=[1, 2, 3, -1], name=n)
 
 :::
 
-#### @JsonPOJOBuilder
+### @JsonPOJOBuilder
 
 [@JsonPOJOBuilder](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/annotation/JsonPOJOBuilder.java)
 用于序列化时使用构造器来实例化，lombok的[`@Jacksonized`](https://projectlombok.org/features/experimental/Jacksonized)注解就是通过这个注解实现的
@@ -1027,11 +1027,11 @@ Test.Bean(name=张三, age=18)
 
 :::
 
-### 特殊注解
+## 特殊注解
 
 一般不常用或需要搭配[ObjectMapper](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/ObjectMapper.java)配置使用，也可能需要多个注解搭配使用。
 
-#### @JsonEnumDefaultValue
+### @JsonEnumDefaultValue
 
 [@JsonEnumDefaultValue](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonEnumDefaultValue.java)
 用于反序列化枚举时值未知时，使用标记的枚举实例作为默认值
@@ -1074,7 +1074,7 @@ Test.Bean(age=11, name=张三, sex=UNKNOWN)
 
 :::
 
-#### @JacksonInject
+### @JacksonInject
 
 [@JacksonInject](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JacksonInject.java)
 用于在反序列化时注入属性值，值来源并非json
@@ -1127,7 +1127,7 @@ Test.Bean(name=张三, age=18, major=1, minor=20, revision=2)
 
 :::
 
-#### @JsonManagedReference、@JsonBackReference
+### @JsonManagedReference、@JsonBackReference
 
 用于解决属性与属性之间相互依赖，避免出现序列化死循环导致SOE(StackOverflowError)
 - [@JsonManagedReference](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonManagedReference.java)用于标记引用父对象
@@ -1191,7 +1191,7 @@ public class Test {
 
 :::
 
-#### @JsonClassDescription、@JsonPropertyDescription
+### @JsonClassDescription、@JsonPropertyDescription
 
 用于描述json schema，非用于json的序列化与反序列化
 - [@JsonClassDescription](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonClassDescription.java)类型描述（字面意思，实际好像并未生效）
@@ -1243,7 +1243,7 @@ public class Test {
 
 :::
 
-#### @JsonFilter
+### @JsonFilter
 
 [@JsonFilter](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonFilter.java)
 用于属性过滤自定义过滤器，参考[SimpleBeanPropertyFilter](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/ser/impl/SimpleBeanPropertyFilter.java)
@@ -1285,7 +1285,7 @@ public class Test {
 
 :::
 
-#### @JsonIdentityInfo、@JsonIdentityReference
+### @JsonIdentityInfo、@JsonIdentityReference
 
 若同一个对象重复出现时使用指定的属性来序列化对象，而不是序列化整个对象，一般需要两个注解配合使用。
 
@@ -1373,7 +1373,7 @@ public class Test {
 
 :::
 
-#### @JsonRootName
+### @JsonRootName
 [@JsonRootName](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonRootName.java)
 在序列化时添加根节点，只能在类型上添加。
 
@@ -1422,7 +1422,7 @@ Test.Address(detail=四川省成都市金牛区, province=四川省, city=成都
 :::
 
 
-#### @JsonAppend
+### @JsonAppend
 
 [@JsonAppend](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/annotation/JsonAppend.java)
 在序列化时增加额外属性，可以自定义增加，或由mapper序列化时追加
@@ -1486,7 +1486,7 @@ public class Test {
 
 :::
 
-#### @JsonNaming
+### @JsonNaming
 
 [@JsonNaming](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/annotation/JsonNaming.java)
 用于在序列化及反序列化时指定命名方式，支持LOWER_CAMEL_CASE、UPPER_CAMEL_CASE、SNAKE_CASE、LOWER_CASE、KEBAB_CASE、LOWER_DOT_CASE
@@ -1531,7 +1531,7 @@ Test.Address(detail=四川省成都市金牛区, province=四川省, city=成都
 
 :::
 
-#### @JsonTypeId、@JsonTypeInfo、@JsonSubTypes、@JsonTypeName
+### @JsonTypeId、@JsonTypeInfo、@JsonSubTypes、@JsonTypeName
 
 实现反序列化时通过父类反序列化为子类即反序列化的多态，可以通过属性、包装属性或者推断的方式实现
 
@@ -1625,7 +1625,7 @@ Test.Rectangle(width=2.0, height=5.0)
 :::
 
 
-#### @JsonView
+### @JsonView
 
 [@JsonView](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JsonView.java)
 用于序列化分组，按照不同的组序列化不同结果，类似hibernate validator的group
@@ -1683,21 +1683,21 @@ Test.Address(detail=null, province=四川省, city=null, country=null)
 
 :::
 
-### 元注解
+## 元注解
 
 主要用于标记注解或类为jackson实现，或自定义组合注解
 
-#### @JacksonAnnotation
+### @JacksonAnnotation
 
 [@JacksonAnnotation](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JacksonAnnotation.java)
 仅用来标记注解是jackson注解，将来可能会用来传递其他泛型注解配置，表名标记的注解是jackson注解的一部分
 
-#### @JacksonStdImpl
+### @JacksonStdImpl
 
 [@JacksonStdImpl](https://github.com/FasterXML/jackson-databind/blob/2.16/src/main/java/com/fasterxml/jackson/databind/annotation/JacksonStdImpl.java)
 仅用来标记实现类(序列化器、反序列化器等)是jackson官方标准实现
 
-#### @JacksonAnnotationsInside
+### @JacksonAnnotationsInside
 
 [@JacksonAnnotationsInside](https://github.com/FasterXML/jackson-annotations/blob/2.16/src/main/java/com/fasterxml/jackson/annotation/JacksonAnnotationsInside.java)
 用于将多个jackson注解组合成一个jackson识别的用户自定义注解。

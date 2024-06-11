@@ -54,7 +54,7 @@ windows主要基于[winsw](https://github.com/winsw/winsw)做jar的服务化，�
 ```
 
 ## Linux(CentOs 7)
-[关于服务配置](./2022-03-20-centos-7-systemd.md){:target='_blank'}
+[关于服务配置](./2022-03-20-centos-7-systemd.md){:target='_blank' rel="noreferrer"}
 
 基于systemd做centos的服务化，每次ci根据参数配置服务并更新，然后重启服务。
 

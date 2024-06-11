@@ -578,4 +578,4 @@ public class Application {
 
 - swagger对自定义枚举的友好展示
 
-    可以参考[Swagger统一应答类型处理](2022-07-04-swagger-common-response.md)实现
+    可以参考[Swagger统一应答类型处理](2022-07-04-swagger-common-response.md){:target='_blank' rel="noreferrer"}实现

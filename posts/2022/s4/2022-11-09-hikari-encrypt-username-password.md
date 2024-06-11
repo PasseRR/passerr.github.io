@@ -105,7 +105,7 @@ public Connection getConnection() throws SQLException
  }
 ```
    
-通过代码我们可以知道，若在初始化HikariDataSource的时候设[置了dataSource](https://github.com/brettwooldridge/HikariCP/blob/da838d36fa/src/main/java/com/zaxxer/hikari/HikariConfig.java#L95)，则连接池会直接使用设置的数据源初始化连接。
+通过代码我们可以知道，若在初始化HikariDataSource的时候[设置了dataSource](https://github.com/brettwooldridge/HikariCP/blob/da838d36fa/src/main/java/com/zaxxer/hikari/HikariConfig.java#L95)，则连接池会直接使用设置的数据源初始化连接。
 
 ### 3. [DriverDataSource](https://github.com/brettwooldridge/HikariCP/blob/da838d36fa/src/main/java/com/zaxxer/hikari/util/DriverDataSource.java)
 根据HikariDataSource配置实现获取连接的方法

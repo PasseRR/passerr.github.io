@@ -36,9 +36,9 @@ ssh-keygen
 
 ### Windows下安装
 
-[64位下载](https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-amd64.exe)
+[64位下载](https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-amd64.exe){class="no-icon without-underline-animation" download}
 
-[32位下载](https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-386.exe)
+[32位下载](https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-386.exe){class="no-icon without-underline-animation" download}
 
 ```
 # 以默认用户安装

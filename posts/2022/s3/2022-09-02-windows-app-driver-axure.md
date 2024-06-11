@@ -15,7 +15,7 @@ tags: [axure, java, 其他]
 做过web自动化的应该都知道Selenium，WinAppDriver其实是一个类似Selenium的UI自动化驱动服务框架。
 因为Axure没有提供命令行方式，所以我就想到了通过自动化测试方式来模拟实现rp文件转换。
 
-### 1. [下载](https://github.com/microsoft/WinAppDriver/releases)最新的驱动安装
+### 1. 前往[下载](https://github.com/microsoft/WinAppDriver/releases)最新的驱动安装
 ### 2. 设置开发者模式
 
 ![p2][2]
