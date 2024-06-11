@@ -472,10 +472,45 @@ sequenceDiagram
     Alice ->> John: visit the website!!
 ```
 
+## 序号
+
+支持将序列图序号添加到每个序列的开始位置，这个特性需要在初始化mermaid的时候设置。
+
+```javascript
+mermaid.initialize({sequence: { showSequenceNumbers: true }});
+```
+
+```mmd{2}
+sequenceDiagram
+    autonumber
+    Alice->>John: Hello John, how are you?
+    loop HealthCheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts!
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
+```
+
+```mermaid
+sequenceDiagram
+    autonumber
+    Alice->>John: Hello John, how are you?
+    loop HealthCheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts!
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
+```
+
 ## [综合示例](https://mermaid-js.github.io/mermaid/#/examples?id=sequencediagram-message-to-self-in-loop)
 
 ```mermaid
 sequenceDiagram
+    autonumber
     participant Alice
     participant Bob
     Alice->>John: Hello John, how are you?
