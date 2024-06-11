@@ -39,6 +39,7 @@
     text-decoration: none;
     position: relative;
     font-weight: 550 !important;
+    display: inline-block;
 }
 
 .content a[rel~='noreferrer']:not(.without-underline-animation)::before {
@@ -52,10 +53,12 @@
     background-color: var(--vp-c-brand-2);
     transform: scaleX(0);
     transition: transform 0.4s ease-in-out;
+    transform-origin: bottom right;
 }
 
 .content a[rel~='noreferrer']:not(.without-underline-animation):hover::before {
     transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 /* for aside start */
@@ -307,10 +310,12 @@
     left: 0;
     background-color: var(--vp-c-brand-2);
     transition: transform 0.4s ease-in-out;
+    transform-origin: bottom right;
 }
 
 .hover-underline-animation:hover::after, .vp-doc a[download]:hover::after {
     transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 /*附件下载链接样式 仅支持正文*/

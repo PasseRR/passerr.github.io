@@ -39,7 +39,7 @@ tags: [postgresql, 数据库]
 
 ## 窗口函数语法
 
-一般窗口函数只会用在`SELECT`子句中，`OVER`子句是窗口函数的核心部分，它定义了窗口分区规则、窗口范围和排序规则。  
+一般窗口函数只会用在`SELECT`子句中，`OVER`子句是窗口函数的核心部分，它定义了窗口分区规则、窗口范围和排序规则，
 参考[PostgreSQL Window Function Calls](https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS)。
 
 ```sql
