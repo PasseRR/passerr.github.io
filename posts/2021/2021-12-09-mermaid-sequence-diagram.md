@@ -472,6 +472,38 @@ sequenceDiagram
     Alice ->> John: visit the website!!
 ```
 
+## 激活状态
+
+可以激活/解除激活某个参与者。
+
+<table>
+<tr>
+<td width="40%">
+
+```mmd
+sequenceDiagram
+    Alice->>John: Hello John, how are you?
+    activate John # [!code error]
+    John-->>Alice: Great!
+    deactivate John # [!code error]
+```
+
+</td>
+
+<td>
+
+```mermaid
+sequenceDiagram
+    Alice->>John: Hello John, how are you?
+    activate John
+    John-->>Alice: Great!
+    deactivate John
+```
+
+</td>
+</tr>
+</table>
+
 ## 序号
 
 支持将序列图序号添加到每个序列的开始位置，这个特性需要在初始化mermaid的时候设置。
@@ -480,9 +512,9 @@ sequenceDiagram
 mermaid.initialize({sequence: { showSequenceNumbers: true }});
 ```
 
-```mmd{2}
+```mmd
 sequenceDiagram
-    autonumber
+    autonumber # [!code error]
     Alice->>John: Hello John, how are you?
     loop HealthCheck
         John->>John: Fight against hypochondria
