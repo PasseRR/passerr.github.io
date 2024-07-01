@@ -707,17 +707,18 @@ gradle task -Dorg.gradle.debug=true --no-daemon
 2. Service源码和class文件对比
 ![5][5] ![6][6]
 
-到此，完成了一个lombok的自定义注解扩展，其实这种方式的扩展是可以做到任意你想做的事情，但是，
+以上，完成了一个lombok的自定义注解扩展，其实这种方式的扩展是可以做到任意你想做的事情，但是，
 由于IDE环境无法识别你在编译过程中做了哪些改动，比如你添加了方法、字段，IDE是没法识别的，
 这也是为什么lombok需要IDE插件来支持才能友好的提示。
 
 当然，个人觉得，在不修改lombok IDE插件的前提做一定的扩展是挺酷的结果，如果还要修改插件才能实现的扩展就有点得不偿失了。
 
 
-## 参考
+## 参考资料
 
 1. [官网](https://projectlombok.org/contributing/contributing)
 2. [扩展你的lombok](https://bigbrotherlee.com/index.php/archives/327/)
+3. [lombok-pg](https://github.com/peichhorn/lombok-pg)
 
 [1]: /assets/2024/06-24/ext.png
 [2]: /assets/2024/06-24/dist.png
