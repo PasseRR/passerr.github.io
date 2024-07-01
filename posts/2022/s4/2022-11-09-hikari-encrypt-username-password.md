@@ -310,7 +310,7 @@ spring:
     url: jdbc:oracle:thin:@//localhost:1521/ORCL
     username: demo
     password: 1b52ea1954f984f2dfd51dfccff224c712788249decade70e8f307d9dcb15928
-
+# [!code ++:5]
 db:
   auth-secret-key: 你的对称加密密钥
   # 配置不做用户名加密

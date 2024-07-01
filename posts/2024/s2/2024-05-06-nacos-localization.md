@@ -182,6 +182,7 @@ JAVA_OPT="${JAVA_OPT} -Dloader.path=${BASE_DIR}/plugins,${BASE_DIR}/plugins/heal
     server.servlet.contextPath=/nacos
     server.error.include-message=ALWAYS
     server.port=8848
+    # [!code ++:18]
     # 1. 指定东方通授权证书路径
     server.tongweb.license.path=../conf/license.dat
     

@@ -402,7 +402,7 @@ spring:
     port: 6379
     password: 321b01bfb3e3af479989c4561d8ea01ab7a50c6b7be3a242a73da57b710075c0
     timeout: 10S
-
+# [!code ++:5]
 redis:
   auth-secret-key: 你的对称加密密钥
   # redis 6.0之后支持用户名
