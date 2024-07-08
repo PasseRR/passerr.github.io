@@ -7,11 +7,12 @@
           <a class="header-anchor" :href="'#'+frontmatter.title">​</a>
         </h1>
         <div class='post-info'>
-          <a v-if="frontmatter.tags" v-for="item in frontmatter.tags" :href="withBase(`/tags.html?tag=${item}`)" target="_blank">
-            <Badge type="tip"><span class="fa fa-tag"></span> {{item}}</Badge>
+          <a v-if="frontmatter.tags" v-for="item in frontmatter.tags" :href="withBase(`/tags.html?tag=${item}`)"
+             target="_blank">
+            <Badge type="tip"><span class="fa fa-tag"></span> {{ item }}</Badge>
           </a>
-          <Badge type="warning"><span class="fa fa-eye"></span> {{views}}</Badge>
-          <Badge type="info"><span class="fa fa-clock-o"></span> {{frontmatter.date}}</Badge>
+          <Badge type="warning"><span class="fa fa-eye"></span> {{ views }}</Badge>
+          <Badge type="info"><span class="fa fa-clock-o"></span> {{ frontmatter.date }}</Badge>
         </div>
       </div>
       <br/>
@@ -24,7 +25,7 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme'
 import NewGiscus from "./NewGiscus.vue"
-import {useData, withBase, useRoute} from "vitepress"
+import {useData, useRoute, withBase} from "vitepress"
 import {nextTick, onMounted, provide, ref, watch} from 'vue'
 
 const {Layout} = DefaultTheme
@@ -37,15 +38,19 @@ const init = () => {
     return
   }
 
+  let path = location.pathname
+  if (!path.endsWith(".html")) {
+    path = path + ".html"
+  }
+
   // 请求计数
   fetch(theme.value.kvUrl, {
     headers: {
       Authorization: `Bearer ${theme.value.kvToken}`,
     },
     method: 'POST',
-    body: `["ZINCRBY", "hits", "1", "${location.pathname + location.search}"]`,
-  }).then(res => res.json())
-      .then(res => views.value = res.result);
+    body: `["ZINCRBY", "hits", "1", "${path + location.search}"]`,
+  }).then(res => res.json()).then(res => views.value = res.result);
 };
 
 onMounted(() => init());
