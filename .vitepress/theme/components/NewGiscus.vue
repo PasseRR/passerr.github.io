@@ -8,7 +8,7 @@
       strict="0"
       reactions-enabled="1"
       emit-metadata="0"
-      input-position="bottom"
+      input-position="top"
       :theme="isDark ? 'dark': 'light'"
       lang="zh-CN"
       crossorigin="anonymous"
