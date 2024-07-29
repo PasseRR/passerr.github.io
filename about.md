@@ -47,7 +47,7 @@ I'm just a javaer.
 <ShieldsBadge label="Windows" color="0078D4" logo="windows" link="https://www.microsoft.com/en-us/windows?r=1" />
 <ShieldsBadge label="阿里云" color="6DB33F" logo="alibabacloud" link="https://www.aliyun.com/" />
 <ShieldsBadge label="华为云" color="FF0000" logo="huawei" link="https://www.huaweicloud.com/" />
-<ShieldsBadge label="腾讯云" color="006EFF" svg="tencent-cloud" link="https://cloud.tencent.com/" />
+<ShieldsBadge label="腾讯云" color="006EFF" svg="tencent_cloud" link="https://cloud.tencent.com/" />
 <p/>
 
 [//]: # (https://simpleicons.org)

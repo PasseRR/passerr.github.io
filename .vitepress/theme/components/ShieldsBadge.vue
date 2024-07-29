@@ -6,7 +6,22 @@
 </template>
 
 <script lang="ts" setup>
+import golang from './icons/golang.svg?raw'
+import java from './icons/java.svg?raw'
+import mysql from './icons/mysql.svg?raw'
+import sql from './icons/sql.svg?raw'
+import tencent_cloud from './icons/tencent-cloud.svg?raw'
+import undertow from './icons/undertow.svg?raw'
 import {computedAsync} from '@vueuse/core'
+
+const svgs = {
+  golang,
+  java,
+  mysql,
+  sql,
+  tencent_cloud,
+  undertow
+};
 
 const props = defineProps({
   label: String,
@@ -31,9 +46,7 @@ const props = defineProps({
 
 const actualLogo = computedAsync(() => {
   if (props.svg.length) {
-    return import(/* @vite-ignore */`./icons/${props.svg}.svg?raw`)
-        .then(it => it.default)
-        .then(it => `data:image/svg+xml;base64,${window.btoa(it)}`)
+    return `data:image/svg+xml;base64,${window.btoa(svgs[props.svg])}`
   }
 
   return props.logo
