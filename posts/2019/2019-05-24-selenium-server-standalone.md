@@ -1,6 +1,6 @@
 ---
 title:  "Selenium远程驱动服务搭建"
-tags: [selenium, java, 自动化测试, 运维]
+tags: [selenium, java, 测试, 自动化测试, 运维]
 ---
 
 ## 下载selenium服务端

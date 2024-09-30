@@ -1,6 +1,6 @@
 ---
 title:  "Java基于Selenium本地Chrome驱动自动化测试"
-tags: [selenium, java, 自动化测试, 运维]
+tags: [selenium, java, 测试, 自动化测试, 运维]
 ---
 
 

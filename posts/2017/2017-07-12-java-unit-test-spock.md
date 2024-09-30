@@ -1,6 +1,6 @@
 ---
 title:  "使用Spock完成单元测试"
-tags: [java, groovy, spock]
+tags: [java, groovy, spock, 测试, 单元测试]
 ---
 
 ## 前言
