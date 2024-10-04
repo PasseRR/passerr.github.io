@@ -2,6 +2,7 @@
 title: 关于
 description: 关于
 outline: false
+lastUpdated: false
 ---
 
 I'm just a javaer.

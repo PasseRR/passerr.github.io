@@ -252,6 +252,7 @@ sequenceDiagram
 参与者可以是`participant`或`actor`，可以通过`as`别名。
 
 <table>
+<tbody>
 <tr>
 <td width="37%">
 
@@ -276,12 +277,14 @@ sequenceDiagram
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ## 备注
 备注语法`note [right of | left of | over ] [Actor]`
 
 <table>
+<tbody>
 <tr>
 <td width="37%">
 
@@ -306,12 +309,14 @@ sequenceDiagram
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ## 抉择(alt)
 用来指明在两个或很多其它的消息序列之间的相互排斥的选择，相当于if..else..
 
 <table>
+<tbody>
 <tr>
 <td width="37%">
 
@@ -340,12 +345,14 @@ sequenceDiagram
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ## 选项(opt)
 表示一个可能或不可能发生的序列
 
 <table>
+<tbody>
 <tr>
 <td width="40%">
 
@@ -376,12 +383,14 @@ sequenceDiagram
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ## 循环(loop)
 片段反复一定次数。 能够在临界中指示片段反复的条件
 
 <table>
+<tbody>
 <tr>
 <td width="40%">
 
@@ -406,12 +415,14 @@ sequenceDiagram
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ## 并行(par)
 并行发生的序列
 
 <table>
+<tbody>
 <tr>
 <td width="40%">
 
@@ -448,6 +459,7 @@ sequenceDiagram
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ## 参与者菜单
@@ -477,6 +489,7 @@ sequenceDiagram
 可以激活/解除激活某个参与者。
 
 <table>
+<tbody>
 <tr>
 <td width="40%">
 
@@ -502,6 +515,7 @@ sequenceDiagram
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ## 序号

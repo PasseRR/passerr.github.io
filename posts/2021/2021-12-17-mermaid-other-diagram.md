@@ -19,6 +19,7 @@ ER图关键字`erDiagram`，E-R图也称实体-联系图(Entity Relationship Dia
 ### 示例
 
 <table>
+<tbody>
 <tr>
 <td width="40%">
 
@@ -65,6 +66,7 @@ erDiagram
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ## [甘特图](https://mermaid.js.org/syntax/gantt.html)

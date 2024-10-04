@@ -18,6 +18,7 @@ mermaid的gitGraph支持git的以下操作
 默认分支从左到到右展示，默认分支为`main`
 
 <table>
+<tbody>
 <tr>
 <td width="45%">
 
@@ -58,6 +59,7 @@ gitGraph
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ### commit
@@ -71,6 +73,7 @@ gitGraph
 | HIGHLIGHT | 高亮commit，用于凸显特定commit |
 
 <table>
+<tbody>
 <tr>
 <td>
 
@@ -101,6 +104,7 @@ gitGraph TB:
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ### branch、checkout
@@ -114,6 +118,7 @@ branch用于创建分支，checkout用于切换分支，`cherry-pick`功能有�
 - 在cherry-pick前当前分支至少有一个commit，否则出错
 
 <table>
+<tbody>
 <tr>
 <td width="45%">
 
@@ -156,6 +161,7 @@ gitGraph
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ### merge
@@ -163,6 +169,7 @@ gitGraph
 分支合并，指定要merge的分支名称，merge的分支不能是当前分支
 
 <table>
+<tbody>
 <tr>
 <td width="45%">
 
@@ -213,6 +220,7 @@ gitGraph
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ### 分支方向
@@ -220,6 +228,7 @@ gitGraph
 分支默认为从左到右(LR)，可以为从顶至底(TB)方向，添加方向后注意后面的冒号不能省略，这里以上面merge示例为例。
 
 <table>
+<tbody>
 <tr>
 <td width="45%">
 
@@ -270,6 +279,7 @@ gitGraph TB:
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ### 自定义配置

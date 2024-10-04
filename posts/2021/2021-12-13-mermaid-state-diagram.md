@@ -16,6 +16,7 @@ mermaid关键字`stateDiagram`或`stateDiagram-v2`
 ## 状态定义
 
 <table>
+<tbody>
 <tr>
 <td>简单状态</td>
 <td>
@@ -286,6 +287,7 @@ stateDiagram-v2
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ## 综合示例
@@ -293,6 +295,7 @@ stateDiagram-v2
 以java线程状态为例
 
 <table>
+<tbody>
 <tr>
 <td width="40%">
 
@@ -333,4 +336,5 @@ stateDiagram-v2
 
 </td>
 </tr>
+</tbody>
 </table>

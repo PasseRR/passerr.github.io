@@ -323,6 +323,7 @@ E -.->|箭头虚线| F
 #### 连续连接
 
 <table>
+<tbody>
 <tr><td width="65%">
 
 ```mmd
@@ -339,11 +340,13 @@ A --- B --文字--> C -.- D -.文字.- E === F ==文字==> G
 ```
 
 </td></tr>
+</tbody>
 </table>
 
 #### 相同线连接
 
 <table>
+<tbody>
 <tr>
 <td width="37%">
 
@@ -380,11 +383,13 @@ A & B--> C & D
 
 </td>
 </tr>
+</tbody>
 </table>
    
 ## 超链接
 
 <table>
+<tbody>
 <tr>
 <td>
 
@@ -407,12 +412,14 @@ flowchart LR
 
 </td>
 </tr>
+</tbody>
 </table>
 
 
 ## 子图
 
 <table>
+<tbody>
 <tr>
 <td>
 
@@ -455,4 +462,5 @@ flowchart LR
 
 </td>
 </tr>
+</tbody>
 </table>

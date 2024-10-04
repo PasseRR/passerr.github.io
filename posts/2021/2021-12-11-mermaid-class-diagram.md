@@ -24,6 +24,7 @@ mermaid关键字`classDiagram`
 | ~~  | 类型(字段类型、返回类型、class/interface等) | `泛型`               |
 
 <table>
+<tbody>
 <tr>
 <td>
 
@@ -74,6 +75,7 @@ classDiagram
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ## 类注释
@@ -87,6 +89,7 @@ classDiagram
 类注释语法如下:
 
 <table>
+<tbody>
 <tr>
 <td style="width: 45%">
 
@@ -132,6 +135,7 @@ Fly: +fly() void
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ## 方向
@@ -156,6 +160,7 @@ Fly: +fly() void
 ## 类关系
 
 <table>
+<thead>
 <tr>
 <th style="width: 8%">关系</th>
 <th style="width: 7%">左值</th>
@@ -164,7 +169,8 @@ Fly: +fly() void
 <th>代码</th>
 <th>效果</th>
 </tr>
-
+</thead>
+<tbody>
 <tr>
 <td>继承</td>
 <td>
@@ -408,6 +414,7 @@ Company "1" *-- "N" Dept
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ## 链接
@@ -415,6 +422,8 @@ Company "1" *-- "N" Dept
 点击类跳转链接
 
 <table>
+<tbody>
+<tr>
 <td style="width: 50%;">
 
 ```mmd
@@ -434,6 +443,8 @@ link Blog "https://www.xiehai.win" "This is a tooltip for a link"
 ```
 
 </td>
+</tr>
+</tbody>
 </table>
 
 ## 综合示例

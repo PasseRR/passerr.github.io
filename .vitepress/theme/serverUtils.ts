@@ -58,6 +58,7 @@ function generatePaginationPages(total, pageSize) {
             const page = `
 ---
 title: ${i === 1 ? '博客' : '博客第' + i + '页'}
+lastUpdated: false
 ---
 <script setup>
 import { useData } from "vitepress";

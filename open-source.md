@@ -1,5 +1,6 @@
 ---
 title: 开源
+lastUpdated: false
 ---
 
 [![PasseRR/idea-passerr-plugin](https://gitee.com/PasseRR/idea-passerr-plugin/widgets/widget_card.svg?colors=4183c4,ffffff,ffffff,e3e9ed,666666,9b9b9b){.data-unzoomable}](https://gitee.com/PasseRR/idea-passerr-plugin){class="no-icon without-underline-animation"}

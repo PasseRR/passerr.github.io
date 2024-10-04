@@ -19,6 +19,7 @@ tags: [markdown, mermaid, 其他]
 - 若相同层级前置空格数量不一致，会被mermaid处理成相同层级
 
 <table>
+<tbody>
 <tr>
 <td width="45%">
 
@@ -55,11 +56,13 @@ root[根节点]
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ### 节点形状
 
 <table>
+<tbody>
 <tr>
 <th>语法</th>
 <th>效果</th>
@@ -133,6 +136,7 @@ id{{六边形}}
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ### 图标
@@ -140,6 +144,7 @@ id{{六边形}}
 图标支持[Font Awesome](https://fontawesome.com/v4/icons/)、[Material Design](https://fonts.google.com/icons)
 
 <table>
+<tbody>
 <tr>
 <td width="45%">
 
@@ -168,6 +173,7 @@ ROOT
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ### 内嵌markdown语法
@@ -175,6 +181,7 @@ ROOT
 在双引号中加反引号字符串就可以表示为markdown语法，只支持加粗和斜体
 
 <table>
+<tbody>
 <tr>
 <td width="45%">
 
@@ -207,6 +214,7 @@ root["`**加粗的根节点**`"]
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ## 完整示例
