@@ -364,11 +364,11 @@ md文件中如果出现<span v-pre>{{</span>需要转义，否则你就将看到
 
 === span标签
 ````md
-This <span v-pre>{{ will be displayed as-is }}</span>
+<span v-pre>{{ This will be displayed as-is }}</span>
 ````
 输出
 ```md
-{{ will be displayed as-is }}
+{{ This will be displayed as-is }}
 ```
 
 ::: tip 提示
@@ -401,8 +401,8 @@ Hello {{ 1 + 1 }}
 
 输出
 
-```md
-Hello 2
+```md-vue
+Hello {{ 1 + 1 }}
 ```
 
 ### 自定义代码语法高亮
