@@ -665,7 +665,7 @@ call ant.bat %*
 
 ### lombok使用过程Debug
 
-在你的lombok项目中使用Remote JVM Debug连接到Maven/Gradle的远程端口，添加端点就可以正常调试的扩展模块逻辑了。
+在你的lombok项目中使用Remote JVM Debug连接到Maven/Gradle的远程端口，添加断点就可以正常调试的扩展模块逻辑了。
 
 ::: code-group
 ```shell[Maven]
