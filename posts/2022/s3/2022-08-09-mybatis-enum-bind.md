@@ -343,7 +343,7 @@ public class MybatisConfigurer {
         // 将所有自定义类型处理器注册到注册中心
         return
             config -> {
-                TypeHandlerRegistry typeHandlerRegistry = configuration.getTypeHandlerRegistry();
+                TypeHandlerRegistry typeHandlerRegistry = config.getTypeHandlerRegistry();
                 provider.ifAvailable(it -> it.forEach(s -> s.register(typeHandlerRegistry)));
             };
     }
