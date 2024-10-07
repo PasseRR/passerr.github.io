@@ -122,4 +122,13 @@ provide('toggle-appearance', async ({clientX: x, clientY: y}) => {
 .VPSwitchAppearance .check {
   transform: none !important;
 }
+
+.medium-zoom-overlay {
+  backdrop-filter: blur(5rem);
+}
+
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 999;
+}
 </style>

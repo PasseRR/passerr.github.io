@@ -6,8 +6,8 @@ import NewGiscus from './components/NewGiscus.vue'
 import NewLayout from "./components/NewLayout.vue"
 import ShieldsBadge from "./components/ShieldsBadge.vue"
 import {enhanceAppWithTabs} from 'vitepress-plugin-tabs/client'
-import {useRoute} from 'vitepress'
-import {nextTick, onMounted, watch} from 'vue'
+import {useRouter} from 'vitepress'
+import {onMounted} from 'vue'
 import mediumZoom from 'medium-zoom'
 import 'font-awesome/css/font-awesome.min.css'
 import './custom.css'
@@ -26,7 +26,7 @@ export default {
         app.component('ShieldsBadge', ShieldsBadge)
     },
     setup() {
-        const route = useRoute();
+        const router = useRouter();
         // zoom 初始化
         const initZoom = () => {
             // 带有data-zoomable class的图片可以放大
@@ -35,8 +35,8 @@ export default {
             mediumZoom('.main img:not(.data-unzoomable)', {background: 'var(--vp-c-bg)'});
         };
 
-        onMounted(() => initZoom());
+        onMounted(initZoom);
 
-        watch(() => route.path, () => nextTick(() => initZoom()));
+        router.onAfterRouteChanged = initZoom;
     }
 }
