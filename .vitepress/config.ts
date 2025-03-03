@@ -10,6 +10,7 @@ import Segment from 'segment'
 
 const segment = new Segment()
         // URL识别
+        // @ts-ignore
         .use('URLTokenizer')
         // 通配符，必须在标点符号识别之前
         .use('WildcardTokenizer')

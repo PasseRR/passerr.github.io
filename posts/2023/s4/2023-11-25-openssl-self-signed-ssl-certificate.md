@@ -33,13 +33,13 @@ openssl req -new -key server.key -out server.csr
 
 执行这条命令后，OpenSSL 会提示你输入一些信息来生成 CSR：
 
-Country Name (2 letter code): 例如 US 或 CN
-State or Province Name (full name): 例如 California
-Locality Name (eg, city): 例如 Los Angeles
-Organization Name (eg, company): 例如 My Company
-Organizational Unit Name (eg, section): 例如 IT
-Common Name (eg, fully qualified domain name): 例如 example.com
-Email Address: 例如 admin@example.com
+Country Name (2 letter code): 例如US或CN  
+State or Province Name (full name): 例如California  
+Locality Name (eg, city): 例如Los Angeles  
+Organization Name (eg, company): 例如My Company  
+Organizational Unit Name (eg, section): 例如IT  
+Common Name (eg, fully qualified domain name): 例如example.com  
+Email Address: 例如admin@example.com  
 其他字段可以留空，直接回车跳过。
 
 ## 生成自签名证书
