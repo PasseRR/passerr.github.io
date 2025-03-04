@@ -8,40 +8,8 @@ import {tabsMarkdownPlugin} from 'vitepress-plugin-tabs'
 import MiniSearch from 'minisearch'
 import Segment from 'segment'
 
-const segment = new Segment()
-        // URL识别
-        // @ts-ignore
-        .use('URLTokenizer')
-        // 通配符，必须在标点符号识别之前
-        .use('WildcardTokenizer')
-        // 词典识别
-        .use('DictTokenizer')
-        // 人名识别，建议在词典识别之后
-        .use('ChsNameTokenizer')
-        // 优化模块
-        // 邮箱地址识别
-        .use('EmailOptimizer')
-        // 人名识别优化
-        .use('ChsNameOptimizer')
-        // 词典识别优化
-        .use('DictOptimizer')
-        // 日期时间识别优化
-        .use('DatetimeOptimizer')
-        // 字典文件
-        // 盘古词典
-        .loadDict('dict.txt')
-        // 扩展词典（用于调整原盘古词典）
-        .loadDict('dict2.txt')
-        // 扩展词典（用于调整原盘古词典）
-        .loadDict('dict3.txt')
-        // 常见名词、人名
-        .loadDict('names.txt')
-        // 通配符
-        .loadDict('wildcard.txt', 'WILDCARD', true)
-        // 同义词
-        .loadSynonymDict('synonym.txt')
-        // 停止符
-        .loadStopwordDict('stopword.txt')
+// @ts-ignore
+const segment = new Segment().useDefault()
 
 // 所有博客列表、重写路径、博客映射
 const {posts, rewrites, mappings} = getPosts(site.pageSize)
