@@ -38,20 +38,19 @@ const data = site
   box-shadow: 0 4px 10px rgb(0 0 0 / 25%);
   background: rgba(128, 128, 128, 0.15);
   position: relative;
-  overflow: hidden;
 }
 
-.book-finished::before {
-  content: "";
+.book-finished::after {
+  content: '';
   position: absolute;
   top: 0;
   right: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 18px 18px 0;
-  border-color: transparent rgba(255, 0, 0, 0.7) transparent transparent;
-  filter: drop-shadow(-2px 2px 1px rgba(0,0,0,0.2));
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  clip-path: polygon(100px 0, 112px 0, 100% 28px, 100% 40px);
+  z-index: 1;
+  border-radius: 10px;
 }
 
 .book-info {
