@@ -47,7 +47,7 @@ const data = site
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.7);;
   clip-path: polygon(100px 0, 112px 0, 100% 28px, 100% 40px);
   z-index: 1;
   border-radius: 10px;
