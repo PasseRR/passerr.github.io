@@ -34,7 +34,7 @@ const data = site
   width: 140px;
   height: 200px;
   margin: 10px 20px 15px 20px;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 4px 10px rgb(0 0 0 / 25%);
   background: rgba(128, 128, 128, 0.15);
   position: relative;
@@ -59,7 +59,6 @@ const data = site
   font-size: 15px;
   font-weight: bold;
   padding-top: 75px;
-  /*color: #3fa757;*/
   word-break: break-word;
   color: var(--vp-c-text-1)
 }
