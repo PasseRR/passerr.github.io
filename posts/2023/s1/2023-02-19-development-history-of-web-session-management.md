@@ -240,7 +240,7 @@ n --> s
 #### Tomcat集群会话复制
 
 ::: code-group
-```nginx[nginx.conf]
+```nginx [nginx.conf]
 http {
     upstream backend {
         server backend1.example.com;

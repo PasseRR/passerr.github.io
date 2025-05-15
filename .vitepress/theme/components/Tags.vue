@@ -92,7 +92,7 @@ const selectTag = ref(''), pageNumber = ref(1), total = ref(0), articles = ref()
 // 标签切换
 const toggleTag = (tag: string, page: Number) => {
       selectTag.value = tag
-      pageNumber.value = page
+      pageNumber.value = Number(page)
       total.value = data.value[selectTag.value].length
       articles.value = data.value[selectTag.value].slice((page - 1) * pageSize, page * pageSize)
     },

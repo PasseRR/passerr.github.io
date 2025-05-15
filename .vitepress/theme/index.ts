@@ -10,6 +10,7 @@ import {useRouter} from 'vitepress'
 import {onMounted} from 'vue'
 import mediumZoom from 'medium-zoom'
 import 'font-awesome/css/font-awesome.min.css'
+import 'virtual:group-icons.css'
 import './custom.css'
 
 export default {

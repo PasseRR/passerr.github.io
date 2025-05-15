@@ -1,6 +1,6 @@
 ---
-title:  MyBatis枚举类型绑定
-tags: [mybatis, java]
+title: MyBatis枚举类型绑定
+tags: [ mybatis, enum, java ]
 ---
 
 ## 前言
@@ -83,7 +83,7 @@ public class DayOfWeekTypeHandler extends BaseTypeHandler<DayOfWeek> {
 
 ::: code-group
 
-```java [打卡实体]
+```java [打卡实体.java]
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @Table(name = "t_clock_in_out")
@@ -98,7 +98,7 @@ public class ClockInOut {
 }
 ```
 
-```java [打卡Mapper]
+```java [打卡Mapper.java]
 public interface ClockInOutMapper extends BaseMapper<ClockInOut> {
 }
 ```
@@ -374,7 +374,7 @@ EnumTypeSupplier来自动注入。
 
 ::: code-group
 
-~~~java [@EnumScan]
+~~~java [@EnumScan.java]
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Documented
@@ -389,7 +389,7 @@ public @interface EnumScan {
 }
 ~~~
 
-~~~java [@EnumScans]
+~~~java [@EnumScans.java]
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Documented
@@ -405,7 +405,7 @@ public @interface EnumScans {
 
 ::: code-group
 
-~~~java [EnumScannerRegistrar]
+~~~java [EnumScannerRegistrar.java]
 class EnumScannerRegistrar implements ImportBeanDefinitionRegistrar {
     @Override
     public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry registry) {
@@ -448,7 +448,7 @@ class EnumScannerRegistrar implements ImportBeanDefinitionRegistrar {
 }
 ~~~
 
-~~~java [EnumScannersRegistrar]
+~~~java [EnumScannersRegistrar.java]
 class EnumScannersRegistrar extends EnumScannerRegistrar {
     @Override
     public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry registry) {
@@ -473,7 +473,7 @@ class EnumScannersRegistrar extends EnumScannerRegistrar {
 
 ::: code-group
 
-```java [ClassPathEnumScanner]
+```java [ClassPathEnumScanner.java]
 class ClassPathEnumScanner extends ClassPathBeanDefinitionScanner {
     ClassPathEnumScanner(BeanDefinitionRegistry registry) {
         super(registry, false);
@@ -532,7 +532,7 @@ class ClassPathEnumScanner extends ClassPathBeanDefinitionScanner {
 }
 ```
 
-~~~java [ScannedEnumTypeSupplier]
+~~~java [ScannedEnumTypeSupplier.java]
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 class ScannedEnumTypeSupplier<T extends Enum<?> & Enumerable<?>> implements EnumTypeSupplier<T> {

@@ -228,7 +228,7 @@ FROM "t"
 
 ::: code-group
 
-```sql [排名查询]
+```sql [排名查询.sql]
 -- 总分排名
 SELECT "s3"."name" AS "studentName",
        "s1"."score",
@@ -253,7 +253,7 @@ WHERE "s1"."subject_id" = 1
     WINDOW "w" AS (ORDER BY "s1"."score" DESC)
 ```
 
-```sql [表定义]
+```sql [表定义.sql]
 -- 学生
 CREATE TABLE "student"
 (
@@ -278,7 +278,7 @@ CREATE TABLE "score"
 );
 ```
 
-```sql [数据]
+```sql [数据.sql]
 INSERT INTO "student"
 VALUES (1, '张三'),
        (2, '李四'),

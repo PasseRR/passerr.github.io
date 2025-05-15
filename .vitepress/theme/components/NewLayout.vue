@@ -6,6 +6,7 @@
           {{ frontmatter.title }}
           <a class="header-anchor" :href="'#'+frontmatter.title">​</a>
         </h1>
+        <p></p>
         <div class='post-info'>
           <a v-if="frontmatter.tags" v-for="item in frontmatter.tags" :href="withBase(`/tags.html?tag=${item}`)"
              target="_blank">
@@ -94,7 +95,6 @@ provide('toggle-appearance', async ({clientX: x, clientY: y}) => {
 <style>
 
 .post-info {
-  margin-top: 1em;
   float: right;
   font-size: .8em;
 }
