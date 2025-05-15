@@ -1,12 +1,12 @@
 <template>
   <div class="books">
     <a :href="site.main + book.url" v-for="(book, _) in data.books" class="no-icon hover-book" target="_blank">
-      <div class="book">
+      <div class="book" :class="book.finished && 'book-finished'">
         <div class="book-info">
           <span class="hover-title">{{ book.name }}</span>
         </div>
         <div class="book-date date">
-          <span class="fa fa-calendar"></span> {{ book.date }}
+          <span class="fa fa-clock-o"></span> {{ book.date }}
         </div>
       </div>
     </a>
@@ -37,6 +37,21 @@ const data = site
   border-radius: 10px;
   box-shadow: 0 4px 10px rgb(0 0 0 / 25%);
   background: rgba(128, 128, 128, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.book-finished::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 18px 18px 0;
+  border-color: transparent rgba(255, 0, 0, 0.7) transparent transparent;
+  filter: drop-shadow(-2px 2px 1px rgba(0,0,0,0.2));
 }
 
 .book-info {

@@ -23,13 +23,13 @@ const site = {
     kvUrl: 'https://amusing-foxhound-32120.upstash.io',
     kvToken: 'AX14ASQgMGUzN2YwODktMDlmMS00N2ZhLWE2NjYtOTliYzc0NjlhZWJmNDA3OTA5YWJkOWY4NDVkYWI4YzgyNjNmMTk1YjM2MzY=',
     books: [
-        {name: "设计模式", url: "/DesignPatterns", date: "2017-07-09"},
+        {name: "设计模式", url: "/DesignPatterns", date: "2017-07-09", finished: true},
         {name: "Jdk8源码阅读", url: "/Java-Example", date: "2017-09-22"},
         {name: "Java版LeetCode", url: "/JavaLeetCode", date: "2018-05-01"},
         {name: "Jdk各版本特性", url: "/jdk-features", date: "2020-01-24"},
-        {name: "Arthas手册", url: "/arthas", date: "2022-11-18"},
+        {name: "Arthas手册", url: "/arthas", date: "2022-11-18", finished: true},
         {name: "Nginx手册", url: "/nginx", date: "2023-08-10"},
-        {name: "实用开发工具", url: "/it-tools", date: "2024-04-02"},
+        {name: "实用开发工具", url: "/it-tools", date: "2024-04-02", finished: true},
     ],
     navs: [
         {text: '博客', link: '/', activeMatch: '/blogs/|^/$'},
@@ -48,4 +48,27 @@ const languages = [
     import('./language/log.tmLanguage.json'),
 ]
 
-export {site, languages};
+// 自定义vitepress-plugin-group-icons图标
+// https://icon-sets.iconify.design/vscode-icons/
+const customIcon = {
+    'bash': 'vscode-icons:file-type-shell',
+    '.bash': 'vscode-icons:file-type-shell',
+    'bat': 'vscode-icons:file-type-shell',
+    '.bat': 'vscode-icons:file-type-shell',
+    'powershell': 'vscode-icons:file-type-powershell',
+    '.powershell': 'vscode-icons:file-type-powershell',
+    '.cnf': 'vscode-icons:file-type-toml',
+    '.toml': 'vscode-icons:file-type-toml',
+    '.java': 'vscode-icons:file-type-java',
+    'xml': 'vscode-icons:file-type-xml',
+    '.xml': 'vscode-icons:file-type-xml',
+    'sql': 'vscode-icons:file-type-sql',
+    '.sql': 'vscode-icons:file-type-sql',
+    'rb': 'vscode-icons:file-type-ruby',
+    '.rb': 'vscode-icons:file-type-ruby',
+    'maven': 'vscode-icons:file-type-maven',
+    'gradle': 'vscode-icons:file-type-light-gradle',
+    'nginx.conf': 'vscode-icons:file-type-nginx',
+};
+
+export {site, languages, customIcon};

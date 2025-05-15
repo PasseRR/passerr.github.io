@@ -12,7 +12,6 @@ tags: [swagger, knife4j, java]
 ### 应答状态定义
 
 ```java
-
 @Getter
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -82,7 +81,6 @@ public enum RestState implements Stateful {
 ### 统一应答实体定义
 
 ```java
-
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder(access = AccessLevel.PROTECTED)
@@ -155,7 +153,6 @@ public class RestResponse<T> {
 ### 报文拦截定义
 
 ```java
-
 @RestControllerAdvice
 public class GlobalResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     /**
@@ -199,7 +196,6 @@ public class GlobalResponseBodyAdvice implements ResponseBodyAdvice<Object> {
 ### 模型提供插件
 
 ```java
-
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 public class FarioOperationModelsProviderPlugin implements OperationModelsProviderPlugin {
@@ -227,7 +223,6 @@ public class FarioOperationModelsProviderPlugin implements OperationModelsProvid
 ### Operation构建插件
 
 ```java
-
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 public class FarioOperationBuilderPlugin implements OperationBuilderPlugin {
@@ -288,7 +283,6 @@ public class FarioOperationBuilderPlugin implements OperationBuilderPlugin {
 ### 插件配置
 
 ```java
-
 @Configuration(proxyBeanMethods = false)
 class SwaggerPluginConfiguration {
     @Bean
@@ -317,7 +311,6 @@ class SwaggerPluginConfiguration {
 ### 接口代码
 
 ```java
-
 @RestController
 @RestController
 @RequestMapping("/test")

@@ -1,4 +1,4 @@
-import {languages, site} from './main'
+import {customIcon, languages, site} from './main'
 import {getPosts} from './theme/serverUtils'
 import {UserConfig, withMermaid} from 'vitepress-plugin-mermaid'
 import {resolve} from 'path'
@@ -7,7 +7,7 @@ import {ErrorLevel, SitemapIndexStream} from 'sitemap'
 import {tabsMarkdownPlugin} from 'vitepress-plugin-tabs'
 import MiniSearch from 'minisearch'
 import Segment from 'segment'
-import {groupIconMdPlugin, groupIconVitePlugin} from 'vitepress-plugin-group-icons'
+import {groupIconVitePlugin} from 'vitepress-plugin-group-icons'
 
 // @ts-ignore
 const segment = new Segment().useDefault()
@@ -24,30 +24,7 @@ export default withMermaid({
     rewrites: rewrites,
     vite: {
         publicDir: '.vitepress/public',
-        plugins: [
-            groupIconVitePlugin({
-                customIcon: {
-                    'bash': 'vscode-icons:file-type-shell',
-                    '.bash': 'vscode-icons:file-type-shell',
-                    'bat': 'vscode-icons:file-type-shell',
-                    '.bat': 'vscode-icons:file-type-shell',
-                    'powershell': 'vscode-icons:file-type-powershell',
-                    '.powershell': 'vscode-icons:file-type-powershell',
-                    '.cnf': 'vscode-icons:file-type-toml',
-                    '.toml': 'vscode-icons:file-type-toml',
-                    '.java': 'vscode-icons:file-type-java',
-                    'xml': 'vscode-icons:file-type-xml',
-                    '.xml': 'vscode-icons:file-type-xml',
-                    'sql': 'vscode-icons:file-type-sql',
-                    '.sql': 'vscode-icons:file-type-sql',
-                    'rb': 'vscode-icons:file-type-ruby',
-                    '.rb': 'vscode-icons:file-type-ruby',
-                    'maven': 'vscode-icons:file-type-maven',
-                    'gradle': 'vscode-icons:file-type-light-gradle',
-                    'nginx.conf': 'vscode-icons:file-type-nginx',
-                },
-            })
-        ]
+        plugins: [groupIconVitePlugin({customIcon})]
     },
     // sitemap_index文件生成
     async buildEnd(s) {
@@ -246,7 +223,6 @@ export default withMermaid({
         },
         config(md) {
             md.use(tabsMarkdownPlugin)
-            md.use(groupIconMdPlugin)
         },
         image: {
             lazyLoading: true
