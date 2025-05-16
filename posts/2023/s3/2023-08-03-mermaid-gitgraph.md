@@ -225,15 +225,15 @@ gitGraph
 
 ### 分支方向
 
-分支默认为从左到右(LR)，可以为从顶至底(TB)方向，添加方向后注意后面的冒号不能省略，这里以上面merge示例为例。
+分支默认为从顶至底(TB)，可以为从左到右(LR)方向，添加方向后注意后面的冒号不能省略，这里以上面merge示例为例。
 
 <table>
 <tbody>
 <tr>
-<td width="45%">
+<td width="20%">
 
 ```mmd
-gitGraph TB:
+gitGraph LR:
   commit
   branch dev
   checkout dev
@@ -254,10 +254,10 @@ gitGraph TB:
 ```
 
 </td>
-<td width="55%">
+<td>
 
 ```mermaid
-gitGraph TB:
+gitGraph LR:
   commit
   branch dev
   checkout dev
