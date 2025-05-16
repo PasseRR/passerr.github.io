@@ -1,9 +1,15 @@
 import DefaultTheme from 'vitepress/theme'
+// @ts-ignore
 import Tags from './components/Tags.vue'
+// @ts-ignore
 import Page from './components/Page.vue'
+// @ts-ignore
 import Ebook from './components/Ebook.vue'
+// @ts-ignore
 import NewGiscus from './components/NewGiscus.vue'
+// @ts-ignore
 import NewLayout from "./components/NewLayout.vue"
+// @ts-ignore
 import ShieldsBadge from "./components/ShieldsBadge.vue"
 import {enhanceAppWithTabs} from 'vitepress-plugin-tabs/client'
 import {useRouter} from 'vitepress'
@@ -38,6 +44,6 @@ export default {
 
         onMounted(initZoom);
 
-        router.onAfterRouteChanged = initZoom;
+        router.onAfterRouteChange = initZoom;
     }
 }
