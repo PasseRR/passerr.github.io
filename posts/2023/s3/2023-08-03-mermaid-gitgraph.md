@@ -357,6 +357,11 @@ gitGraph TB:
 
 ## 完整示例
 
+<table>
+<tbody>
+<tr>
+<td>
+
 ```mmd
 %%{
   init: {
@@ -401,6 +406,9 @@ gitGraph TB:
   commit
 ```
 
+</td>
+<td>
+
 ```mermaid
 %%{
   init: {
@@ -444,3 +452,8 @@ gitGraph TB:
   commit tag: "v2"
   commit
 ```
+
+</td>
+</tr>
+</tbody>
+</table>
