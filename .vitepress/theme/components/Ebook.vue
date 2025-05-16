@@ -35,9 +35,9 @@ const data = site
   height: 200px;
   margin: 10px 20px 15px 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgb(0 0 0 / 25%);
-  background: rgba(128, 128, 128, 0.15);
+  box-shadow: 0 4px 10px rgb(0 0 0 / .2);
   position: relative;
+  background: rgba(242, 227, 188, .2);
 }
 
 .book-finished::after {
@@ -47,10 +47,9 @@ const data = site
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 0, 0, 0.7);;
+  background-color: rgba(255, 0, 0, 0.75);
   clip-path: polygon(100px 0, 112px 0, 100% 28px, 100% 40px);
   z-index: 1;
-  border-radius: 10px;
 }
 
 .book-info {
