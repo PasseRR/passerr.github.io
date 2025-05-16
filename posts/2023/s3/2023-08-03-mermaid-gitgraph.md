@@ -15,7 +15,7 @@ mermaid的gitGraph支持git的以下操作
 
 ## 基本语法
 
-默认分支从左到到右展示，默认分支为`main`
+默认分支从顶至底(TB)展示，默认分支为`main`
 
 <table>
 <tbody>
@@ -127,11 +127,11 @@ gitGraph
   commit
   branch dev
   checkout dev order: 2
-  commit id: "cherry-pick"
+  commit id: "special-id"
   commit
   checkout main
   commit
-  cherry-pick id: "cherry-pick"
+  cherry-pick id: "special-id"
   commit
   branch feature order: 1
   checkout feature
@@ -147,11 +147,11 @@ gitGraph
   commit
   branch dev order: 2
   checkout dev
-  commit id: "cherry-pick"
+  commit id: "special-id"
   commit
   checkout main
   commit
-  cherry-pick id: "cherry-pick"
+  cherry-pick id: "special-id"
   commit
   branch feature order: 1
   checkout feature
