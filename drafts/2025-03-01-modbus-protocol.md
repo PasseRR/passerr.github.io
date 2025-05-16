@@ -1,6 +1,6 @@
 ---
 title: "基于PLC4J对接Modbus协议"
-tags: [ IoT,modbus,plc4j,java ]
+tags: [ IoT, modbus, plc4j, java ]
 ---
 
 [Modbus](https://www.modbus.org)是一种广泛应用于工业自动化领域的通信协议，主要用于设备之间的数据交换。
