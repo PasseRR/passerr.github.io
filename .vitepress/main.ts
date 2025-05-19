@@ -44,6 +44,7 @@ const site = {
 const languages = [
     import('./language/plantuml.tmLanguage.json'),
     import('./language/ftl.tmLanguage.json'),
+    import('./language/json5.tmLanguage.json'),
     import('./language/confluence-wiki.tmLanguage.json'),
     import('./language/log.tmLanguage.json'),
 ]
@@ -63,6 +64,8 @@ const customIcon = {
     '.java': 'vscode-icons:file-type-java',
     'xml': 'vscode-icons:file-type-xml',
     '.xml': 'vscode-icons:file-type-xml',
+    'json5': 'vscode-icons:file-type-light-json5',
+    '.json5': 'vscode-icons:file-type-light-json5',
     'sql': 'vscode-icons:file-type-sql',
     '.sql': 'vscode-icons:file-type-sql',
     'rb': 'vscode-icons:file-type-ruby',

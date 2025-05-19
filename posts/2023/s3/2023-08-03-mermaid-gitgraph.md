@@ -286,7 +286,7 @@ gitGraph LR:
 
 自定义配置主要通过在gitGraph关键字前加初始化配置的json，格式如下:
 
-```javascript
+```json5
 {
   // 不能有单引号 其他属性必须有单引号 感觉这个好扯淡
   init: {
