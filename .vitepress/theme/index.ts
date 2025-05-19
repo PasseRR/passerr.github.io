@@ -11,6 +11,8 @@ import NewGiscus from './components/NewGiscus.vue'
 import NewLayout from "./components/NewLayout.vue"
 // @ts-ignore
 import ShieldsBadge from "./components/ShieldsBadge.vue"
+// @ts-ignore
+import LinkCard from "./components/LinkCard.vue"
 import {enhanceAppWithTabs} from 'vitepress-plugin-tabs/client'
 import {useRouter} from 'vitepress'
 import {onMounted} from 'vue'
@@ -31,6 +33,7 @@ export default {
         app.component('Page', Page)
         app.component('Ebook', Ebook)
         app.component('ShieldsBadge', ShieldsBadge)
+        app.component('LinkCard', LinkCard)
     },
     setup() {
         const router = useRouter();

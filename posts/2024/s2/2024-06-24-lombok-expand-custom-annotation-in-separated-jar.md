@@ -1,6 +1,6 @@
 ---
-title:  "Lombok独立jar扩展自定义注解"
-tags: [java, lombok]
+title: "Lombok独立jar扩展自定义注解"
+tags: [ java, lombok ]
 ---
 
 相信只要用Java语言开发的人，无论是否使用[Lombok](https://projectlombok.org/)，都应该知道Lombok。
@@ -16,10 +16,13 @@ Lombok支持的编译器：
 ## 前提
 
 在Java日常开发过程中，会在项目中声明Configuration、Component、Service、Controller等，不借助lombok的话，我们可以使用@Autowire或构造方法注入，
-当注入bean很多时，构造方法参数列表就会很长不易维护，这时我们可以借助lombok的@AllArgsConstructor或@RequiredArgsConstructor， 一般我们会这样写：
+当注入bean很多时，构造方法参数列表就会很长不易维护，这时我们可以借助lombok的@AllArgsConstructor或@RequiredArgsConstructor，
+一般我们会这样写：
 
 ::: code-group
+
 ```java [SomeController.java]
+
 @RestController
 @RequestMapping("/path")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -28,9 +31,9 @@ Lombok支持的编译器：
 @Api(tags = "swagger文档标签")
 public class SomeController {
     SomeService someService;
-    
+
     @GetMapping
-    public String echo(){
+    public String echo() {
         return "echo";
     }
 
@@ -42,6 +45,7 @@ public class SomeController {
 ```
 
 ```java [SomeService.java]
+
 @Service
 @FieldsDefault(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
@@ -52,14 +56,15 @@ public class SomeService {
     public void doSomething() {
         this.myDao.doSomething();
     }
-    
-    public void doOtherThing(){
+
+    public void doOtherThing() {
         this.SomeComponent.doSomething();
     }
 }
 ```
 
 ```java [SomeComponent.java]
+
 @Component
 @FieldsDefault(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
@@ -73,6 +78,7 @@ public class SomeComponent {
 ```
 
 ```java [SomeConfiguration.java]
+
 @Configuration(proxyBeanMethods = false)
 @FieldsDefault(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
@@ -86,6 +92,7 @@ public class SomeConfiguration {
     }
 }
 ```
+
 :::
 
 如上，虽然这样写比较清晰、简单，但是每次需要加3个以上的注解还是觉得有点麻烦，本来也想了解下lombok的大概原理就想着，
@@ -103,7 +110,8 @@ public class SomeConfiguration {
 ::: info How to work on Project Lombok yourself
 Project Lombok is being developed via the [lombok git repository on github](https://github.com/projectlombok/lombok).
 If you want to start development on lombok, clone the repository and run `ant eclipse` or `ant intellij`,
-then open the working directory as a project in eclipse / intellij. Because the main contributors of lombok all use eclipse,
+then open the working directory as a project in eclipse / intellij. Because the main contributors of lombok all use
+eclipse,
 that'll probably work a little more smoothly.
 
 To produce a lombok jar, run `ant dist`; in general run `ant -p`; there's lots of stuff there,
@@ -114,14 +122,15 @@ including downloading various versions of java runtimes to run the test suite ag
 
 1. [Apache Ant](https://ant.apache.org/bindownload.cgi)下载安装，自行百度、谷歌
 2. 设置JDK版本11及以上
-3. 克隆lombok代码并导入开发工具，本文使用的是lombok [v1.18.32](https://github.com/projectlombok/lombok/releases/tag/v1.18.32)
+3.
+克隆lombok代码并导入开发工具，本文使用的是lombok [v1.18.32](https://github.com/projectlombok/lombok/releases/tag/v1.18.32)
 
-    ```shell
-    # idea环境执行
-    ant intellij
-    # eclipse环境执行
-    ant eclipse
-    ```
+ ```shell
+ # idea环境执行
+ ant intellij
+ # eclipse环境执行
+ ant eclipse
+ ```
 4. 环境验证
 
     ```shell
@@ -135,14 +144,19 @@ including downloading various versions of java runtimes to run the test suite ag
 ## 扩展lombok的开发
 
 ::: info Adding your own handlers and annotations to Lombok
-If you want to extend lombok, we advise that you fork lombok and add handlers directly into the same place and package that lombok's handlers are in (`lombok.javac.handlers` and `lombok.eclipse.handlers`) – 
-lombok does some fancy footwork to ensure various modular class loading systems don't interface with finding the lombok classes, 
+If you want to extend lombok, we advise that you fork lombok and add handlers directly into the same place and package
+that lombok's handlers are in (`lombok.javac.handlers` and `lombok.eclipse.handlers`) –
+lombok does some fancy footwork to ensure various modular class loading systems don't interface with finding the lombok
+classes,
 but that system is not (currently) easily expanded to include separate jars.
 :::
 
 参考[官网说明及建议](https://projectlombok.org/contributing/contributing)，lombok的注解支持都是通过Java SPI机制实现的，
-分别定义在`META-INF/services/lombok.javac.JavacAnnotationHandler`及`META-INF/services/lombok.eclipse.EclipseAnnotationHandler`，
-部分注解需要[lombok.javac.JavacASTVisitor](https://github.com/projectlombok/lombok/blob/v1.18.32/src/core/lombok/javac/JavacASTVisitor.java#L42)或[lombok.eclipse.EclipseASTVisitor](https://github.com/projectlombok/lombok/blob/v1.18.32/src/core/lombok/eclipse/EclipseASTVisitor.java#L54)来实现，比如@FieldDefaults、Val的实现。
+分别定义在`META-INF/services/lombok.javac.JavacAnnotationHandler`及
+`META-INF/services/lombok.eclipse.EclipseAnnotationHandler`，
+部分注解需要[lombok.javac.JavacASTVisitor](https://github.com/projectlombok/lombok/blob/v1.18.32/src/core/lombok/javac/JavacASTVisitor.java#L42)
+或[lombok.eclipse.EclipseASTVisitor](https://github.com/projectlombok/lombok/blob/v1.18.32/src/core/lombok/eclipse/EclipseASTVisitor.java#L54)
+来实现，比如@FieldDefaults、Val的实现。
 
 本文是基于idea做的lombok扩展开发。
 
@@ -166,7 +180,9 @@ idea无法识别被自定义注解标记的类型为Spring Bean，非强迫症�
 ### 注解定义
 
 ::: code-group
+
 ```java [LombokSpringRestController.java]
+
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.SOURCE)
 // RestController注解只是为了idea中显示bean声明、引用关系 非强迫症可以不需要
@@ -197,6 +213,7 @@ public @interface LombokSpringRestController {
 ```
 
 ```java [LombokSpringService.java]
+
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.SOURCE)
 // Service注解只是为了idea中显示bean声明、引用关系 非强迫症可以不需要
@@ -217,6 +234,7 @@ public @interface LombokSpringService {
 ```
 
 ```java [LombokSpringComponent.java]
+
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.SOURCE)
 // Component注解只是为了idea中显示bean声明、引用关系 非强迫症可以不需要
@@ -237,6 +255,7 @@ public @interface LombokSpringComponent {
 ```
 
 ```java [LombokSpringConfiguration.java]
+
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.SOURCE)
 // Configuration注解只是为了idea中显示bean声明、引用关系 非强迫症可以不需要
@@ -260,19 +279,26 @@ public @interface LombokSpringConfiguration {
     boolean proxyBeanMethods() default true;
 }
 ```
+
 :::
 
 ### 编译器处理器定义
 
-一个注解分别对应一个[JavacAnnotationHandler](https://github.com/projectlombok/lombok/blob/v1.18.32/src/core/lombok/javac/JavacAnnotationHandler.java#L43)及[EclipseAnnotationHandler](https://github.com/projectlombok/lombok/blob/v1.18.32/src/core/lombok/eclipse/EclipseAnnotationHandler.java#L38)处理器，
+一个注解分别对应一个[JavacAnnotationHandler](https://github.com/projectlombok/lombok/blob/v1.18.32/src/core/lombok/javac/JavacAnnotationHandler.java#L43)
+及[EclipseAnnotationHandler](https://github.com/projectlombok/lombok/blob/v1.18.32/src/core/lombok/eclipse/EclipseAnnotationHandler.java#L38)
+处理器，
 考虑当前环境只会使用javac编译器，未做出ejc编译器处理器定义实现，若有需要可以参考源码自行实现。
 
-::: danger 注意 
-- 处理器需要有[@Provides](https://github.com/projectlombok/lombok/blob/v1.18.32/src/spiProcessor/lombok/spi/Provides.java#L31)注解，否则编译打包时不会被扫描到，也不会生成spi services文件
+::: danger 注意
+
+-
+处理器需要有[@Provides](https://github.com/projectlombok/lombok/blob/v1.18.32/src/spiProcessor/lombok/spi/Provides.java#L31)
+注解，否则编译打包时不会被扫描到，也不会生成spi services文件
 - javac处理器包名必须为`lombok.javac.handlers`，ejc处理器包名必须为`lombok.eclipse.handlers`
-:::
+  :::
 
 ::: code-group
+
 ```java [HandleLombokSpringRestController.java]
 package lombok.javac.handlers;
 
@@ -291,7 +317,7 @@ import static lombok.javac.handlers.JavacHandlerUtil.createAnnotation;
 
 @Provides
 public class HandleLombokSpringRestController extends JavacAnnotationHandler<LombokSpringRestController> {
-    private final HandleConstructor.HandleRequiredArgsConstructor argsConstructor = 
+    private final HandleConstructor.HandleRequiredArgsConstructor argsConstructor =
         new HandleConstructor.HandleRequiredArgsConstructor();
     private final HandleFieldDefaults handleFieldDefaults = new HandleFieldDefaults();
 
@@ -310,8 +336,8 @@ public class HandleLombokSpringRestController extends JavacAnnotationHandler<Lom
         handleFieldDefaults.generateFieldDefaultsForType(typeNode, annotationNode, instance.level(), true, true);
         // 处理RequiredArgsConstructor注解
         argsConstructor.handle(
-            createAnnotation(RequiredArgsConstructor.class, annotationNode), 
-            ast, 
+            createAnnotation(RequiredArgsConstructor.class, annotationNode),
+            ast,
             annotationNode
         );
         JCTree.JCClassDecl td = (JCTree.JCClassDecl) typeNode.get();
@@ -386,7 +412,7 @@ import static lombok.javac.handlers.JavacHandlerUtil.createAnnotation;
 
 @Provides
 public class HandleLombokSpringService extends JavacAnnotationHandler<LombokSpringService> {
-    private final HandleConstructor.HandleRequiredArgsConstructor argsConstructor = 
+    private final HandleConstructor.HandleRequiredArgsConstructor argsConstructor =
         new HandleConstructor.HandleRequiredArgsConstructor();
     private final HandleFieldDefaults handleFieldDefaults = new HandleFieldDefaults();
 
@@ -405,8 +431,8 @@ public class HandleLombokSpringService extends JavacAnnotationHandler<LombokSpri
         handleFieldDefaults.generateFieldDefaultsForType(typeNode, annotationNode, instance.level(), true, true);
         // 处理RequiredArgsConstructor注解
         argsConstructor.handle(
-            createAnnotation(RequiredArgsConstructor.class, annotationNode), 
-            ast, 
+            createAnnotation(RequiredArgsConstructor.class, annotationNode),
+            ast,
             annotationNode
         );
 
@@ -441,7 +467,7 @@ import static lombok.javac.handlers.JavacHandlerUtil.createAnnotation;
 
 @Provides
 public class HandleLombokSpringComponent extends JavacAnnotationHandler<LombokSpringComponent> {
-    private final HandleConstructor.HandleRequiredArgsConstructor argsConstructor = 
+    private final HandleConstructor.HandleRequiredArgsConstructor argsConstructor =
         new HandleConstructor.HandleRequiredArgsConstructor();
     private final HandleFieldDefaults handleFieldDefaults = new HandleFieldDefaults();
 
@@ -464,7 +490,7 @@ public class HandleLombokSpringComponent extends JavacAnnotationHandler<LombokSp
             ast,
             annotationNode
         );
-        
+
         JavacTreeMaker maker = annotationNode.getTreeMaker();
         // 添加@Component注解
         String name = instance.name();
@@ -499,7 +525,7 @@ import static lombok.javac.handlers.JavacHandlerUtil.recursiveSetGeneratedBy;
 
 @Provides
 public class HandleLombokSpringConfiguration extends JavacAnnotationHandler<LombokSpringConfiguration> {
-    private final HandleConstructor.HandleRequiredArgsConstructor argsConstructor = 
+    private final HandleConstructor.HandleRequiredArgsConstructor argsConstructor =
         new HandleConstructor.HandleRequiredArgsConstructor();
     private final HandleFieldDefaults handleFieldDefaults = new HandleFieldDefaults();
 
@@ -522,7 +548,7 @@ public class HandleLombokSpringConfiguration extends JavacAnnotationHandler<Lomb
             ast,
             annotationNode
         );
-        
+
         JavacTreeMaker maker = annotationNode.getTreeMaker();
         JCTree.JCModifiers mods = ((JCTree.JCClassDecl) typeNode.get()).mods;
 
@@ -544,44 +570,52 @@ public class HandleLombokSpringConfiguration extends JavacAnnotationHandler<Lomb
     }
 }
 ```
+
 :::
 
 ### Ant配置修改
 
-文件[buildScripts/compile.ant.xml](https://github.com/projectlombok/lombok/blob/v1.18.32/buildScripts/compile.ant.xml)中，修改ant编译、打包的配置，将ext加入编译目标中，将ext打包为独立jar包。
+文件[buildScripts/compile.ant.xml](https://github.com/projectlombok/lombok/blob/v1.18.32/buildScripts/compile.ant.xml)
+中，修改ant编译、打包的配置，将ext加入编译目标中，将ext打包为独立jar包。
 
 #### compile target
 
 ```xml
+
 <project name="lombok.compile" default="dist" xmlns:ivy="antlib:com.zwitserloot.ivyplusplus" basedir="..">
-    <target name="compile" depends="version, deps, -setup.build, create.spiProcessor, create.mavenEcjBootstrapAgent" description="Compiles the code">
+    <target name="compile" depends="version, deps, -setup.build, create.spiProcessor, create.mavenEcjBootstrapAgent"
+            description="Compiles the code">
         <ivy:compile destdir="build/lombok-main" release="9">
-            <src path="src/core9" />
-            <compilerarg value="-Xlint:none" />
-            <classpath refid="cp.build" />
+            <src path="src/core9"/>
+            <compilerarg value="-Xlint:none"/>
+            <classpath refid="cp.build"/>
         </ivy:compile>
         <!-- [!code ++:15] -->
         <!-- 自定义ext模块编译 -->
         <ivy:compile destdir="build/lombok-ext" source="1.6" target="1.6" ecj="true" nowarn="true">
-            <bootclasspath path="${jdk6-rt.loc}" />
-            <src path="src/ext" />
-            <classpath path="build/lombok-utils:build/lombok-utils6:build/lombok-main:build/spiProcessor" />
-            <classpath refid="cp.javac6" />
-            <classpath refid="cp.eclipse-oxygen" />
-            <classpath refid="cp.ecj8" />
-            <classpath path="lib/org.springframework-spring-context.jar" />
-            <classpath path="lib/org.springframework-spring-web.jar" />
-            <annotationProcessor jar="dist/spiProcessor.jar" processor="lombok.spi.SpiProcessor" />
+            <bootclasspath path="${jdk6-rt.loc}"/>
+            <src path="src/ext"/>
+            <classpath path="build/lombok-utils:build/lombok-utils6:build/lombok-main:build/spiProcessor"/>
+            <classpath refid="cp.javac6"/>
+            <classpath refid="cp.eclipse-oxygen"/>
+            <classpath refid="cp.ecj8"/>
+            <classpath path="lib/org.springframework-spring-context.jar"/>
+            <classpath path="lib/org.springframework-spring-web.jar"/>
+            <annotationProcessor jar="dist/spiProcessor.jar" processor="lombok.spi.SpiProcessor"/>
         </ivy:compile>
         <!-- ext使用ShadowClassLoader加载 也是独立jar结合lombok的根本 -->
         <echo file="build/lombok-ext/META-INF/ShadowClassLoader">lombok</echo>
 
-        <mkdir dir="build/lombok-main/META-INF/services" />
-        <echo file="build/lombok-main/META-INF/services/javax.annotation.processing.Processor">lombok.launch.AnnotationProcessorHider$AnnotationProcessor
-            lombok.launch.AnnotationProcessorHider$ClaimingProcessor</echo>
-        <mkdir dir="build/lombok-main/META-INF/gradle" />
-        <echo file="build/lombok-main/META-INF/gradle/incremental.annotation.processors">lombok.launch.AnnotationProcessorHider$AnnotationProcessor,isolating
-            lombok.launch.AnnotationProcessorHider$ClaimingProcessor,isolating</echo>
+        <mkdir dir="build/lombok-main/META-INF/services"/>
+        <echo file="build/lombok-main/META-INF/services/javax.annotation.processing.Processor">
+            lombok.launch.AnnotationProcessorHider$AnnotationProcessor
+            lombok.launch.AnnotationProcessorHider$ClaimingProcessor
+        </echo>
+        <mkdir dir="build/lombok-main/META-INF/gradle"/>
+        <echo file="build/lombok-main/META-INF/gradle/incremental.annotation.processors">
+            lombok.launch.AnnotationProcessorHider$AnnotationProcessor,isolating
+            lombok.launch.AnnotationProcessorHider$ClaimingProcessor,isolating
+        </echo>
     </target>
 </project>
 ```
@@ -589,17 +623,19 @@ public class HandleLombokSpringConfiguration extends JavacAnnotationHandler<Lomb
 #### dist target
 
 ```xml
+
 <project name="lombok.compile" default="dist" xmlns:ivy="antlib:com.zwitserloot.ivyplusplus" basedir="..">
-    <target name="dist" depends="version, compile, latest-changes.build, mapstruct.compile, -deps.unpack" description="Builds the 'everything' lombok.jar">
+    <target name="dist" depends="version, compile, latest-changes.build, mapstruct.compile, -deps.unpack"
+            description="Builds the 'everything' lombok.jar">
         <!-- ... but manifest is not part of the ant zip task, so do that with the jar task -->
         <jar destfile="dist/lombok-${lombok.version}.jar" update="true">
             <manifest>
-                <attribute name="Premain-Class" value="lombok.launch.Agent" />
-                <attribute name="Agent-Class" value="lombok.launch.Agent" />
-                <attribute name="Can-Redefine-Classes" value="true" />
-                <attribute name="Main-Class" value="lombok.launch.Main" />
-                <attribute name="Lombok-Version" value="${lombok.version}" />
-                <attribute name="Automatic-Module-Name" value="lombok" />
+                <attribute name="Premain-Class" value="lombok.launch.Agent"/>
+                <attribute name="Agent-Class" value="lombok.launch.Agent"/>
+                <attribute name="Can-Redefine-Classes" value="true"/>
+                <attribute name="Main-Class" value="lombok.launch.Main"/>
+                <attribute name="Lombok-Version" value="${lombok.version}"/>
+                <attribute name="Automatic-Module-Name" value="lombok"/>
             </manifest>
         </jar>
         <!-- [!code ++:36] -->
@@ -607,15 +643,15 @@ public class HandleLombokSpringConfiguration extends JavacAnnotationHandler<Lomb
         <zip destfile="dist/lombok-ext-${lombok.version}.jar">
             <!-- 不需要重命名的class -->
             <patternset id="packing.ext.entrypoints">
-                <include name="lombok/*.class" />
-                <include name="META-INF/**" />
+                <include name="lombok/*.class"/>
+                <include name="META-INF/**"/>
                 <exclude name="lombok/javac/**"/>
                 <exclude name="lombok/eclipse/**"/>
             </patternset>
             <!-- 需要重名的class 上边定义取反 -->
             <patternset id="packing.ext.shadowed">
                 <invert>
-                    <patternset refid="packing.ext.entrypoints" />
+                    <patternset refid="packing.ext.entrypoints"/>
                 </invert>
             </patternset>
             <fileset dir="build/lombok-ext">
@@ -623,12 +659,12 @@ public class HandleLombokSpringConfiguration extends JavacAnnotationHandler<Lomb
             </fileset>
             <mappedresources>
                 <multirootfileset basedirs="build/lombok-ext">
-                    <patternset refid="packing.ext.shadowed" />
+                    <patternset refid="packing.ext.shadowed"/>
                 </multirootfileset>
                 <!-- 将注解处理器class文件重命名 -->
                 <firstmatchmapper>
-                    <globmapper from="*.class" to="SCL.lombok/*.SCL.lombok" />
-                    <identitymapper />
+                    <globmapper from="*.class" to="SCL.lombok/*.SCL.lombok"/>
+                    <identitymapper/>
                 </firstmatchmapper>
             </mappedresources>
         </zip>
@@ -639,9 +675,9 @@ public class HandleLombokSpringConfiguration extends JavacAnnotationHandler<Lomb
             </fileset>
         </zip>
 
-        <delete file="release-timestamp.txt" />
-        <copy overwrite="true" tofile="dist/lombok.jar" file="dist/lombok-${lombok.version}.jar" />
-        <property name="lombok.dist.built" value="true" />
+        <delete file="release-timestamp.txt"/>
+        <copy overwrite="true" tofile="dist/lombok.jar" file="dist/lombok-${lombok.version}.jar"/>
+        <property name="lombok.dist.built" value="true"/>
     </target>
 </project>
 ```
@@ -668,6 +704,7 @@ call ant.bat %*
 在你的lombok项目中使用Remote JVM Debug连接到Maven/Gradle的远程端口，添加断点就可以正常调试的扩展模块逻辑了。
 
 ::: code-group
+
 ```shell[Maven]
 # 默认debug端口为8000
 mvndebug clean compile
@@ -677,6 +714,7 @@ mvndebug clean compile
 # 默认debug端口为5005
 gradle task -Dorg.gradle.debug=true --no-daemon
 ```
+
 :::
 
 ## 使用效果
@@ -684,6 +722,7 @@ gradle task -Dorg.gradle.debug=true --no-daemon
 将lombok-ext.jar及lombok-ext-sources.jar传到仓库后，maven引入即可。
 
 ```xml
+
 <dependencies>
     <dependency>
         <groupId>org.projectlombok</groupId>
@@ -703,9 +742,9 @@ gradle task -Dorg.gradle.debug=true --no-daemon
 ```
 
 1. Controller源码和class文件对比
-![3][3] ![4][4]
+   ![3][3] ![4][4]
 2. Service源码和class文件对比
-![5][5] ![6][6]
+   ![5][5] ![6][6]
 
 以上，完成了一个lombok的自定义注解扩展，其实这种方式的扩展是可以做到任意你想做的事情，但是，
 由于IDE环境无法识别你在编译过程中做了哪些改动，比如你添加了方法、字段，IDE是没法识别的，
@@ -713,16 +752,40 @@ gradle task -Dorg.gradle.debug=true --no-daemon
 
 当然，个人觉得，在不修改lombok IDE插件的前提做一定的扩展是挺酷的结果，如果还要修改插件才能实现的扩展就有点得不偿失了。
 
-
 ## 参考资料
 
-1. [官网](https://projectlombok.org/contributing/contributing)
-2. [扩展你的lombok](https://bigbrotherlee.com/index.php/archives/327/)
-3. [lombok-pg](https://github.com/peichhorn/lombok-pg)
+<LinkCard
+  link='https://projectlombok.org/contributing/contributing/'
+  logo='https://projectlombok.org/favicon.ico'
+  title="Contributing to Project Lombok's development"
+  description="Project Lombok is being developed via the lombok git repository on github. If you want to start
+  development on lombok, clone the repository and run ant eclipse or ant intellij, then open the working directory as a
+  project in eclipse / intellij. Because the main contributors of lombok all use eclipse, that'll probably work a little
+  more smoothly."
+  />
+
+<LinkCard
+  link='https://bigbrotherlee.com/index.php/archives/327/'
+  logo='https://bigbrotherlee.com/usr/uploads/2023/12/3699598906.ico'
+  title="扩展你的lombok - 大家都叫我李哥"
+  description="扩展lombok是我一直想做的一件事。本文将浅浅介绍lombok原理着重介绍如何扩展lombok。本文前置知识是抽象语法树，不过没有也没关系。"
+  />
+
+<LinkCard
+  link='https://github.com/peichhorn/lombok-pg/'
+  logo='https://github.com/favicon.ico'
+  title="GitHub - peichhorn/lombok-pg: Collection of lombok extensions"
+  description="Collection of lombok extensions. Contribute to peichhorn/lombok-pg development by creating an account on GitHub."
+  />
 
 [1]: /assets/2024/06-24/ext.png
+
 [2]: /assets/2024/06-24/dist.png
+
 [3]: /assets/2024/06-24/controller-java.png
+
 [4]: /assets/2024/06-24/controller-class.png
+
 [5]: /assets/2024/06-24/service-java.png
+
 [6]: /assets/2024/06-24/service-class.png

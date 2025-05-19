@@ -30,7 +30,21 @@ tags: [jekyll, 其他]
 4. 添加的电子书内容，push到github坐等你的电子书生成吧
 
 ## 相关主题网站
-- [jamstackthemes.dev](https://jamstackthemes.dev/ssg/jekyll/)
-- [jekyllthemes.org](http://jekyllthemes.org/)
-- [jekyllthemes.io](https://jekyllthemes.io/)
-- [jekyll-themes.com](https://jekyll-themes.com/)
+
+<LinkCard link="https://jamstackthemes.dev/ssg/jekyll/"
+logo="https://jamstackthemes.dev/images/favicon/favicon-32x32.png"
+title="Jekyll - Jamstack Themes"
+description="Browse our list of Jekyll themes, starters and templates."
+/>
+
+<LinkCard link="https://jekyllthemes.io/"
+logo="https://jekyllthemes.io/siteicon.png"
+title="Jekyll Themes – a curated directory"
+description="Find the best Jekyll themes for your next project – a curated directory of themes, templates and resources for building Jekyll websites."
+/>
+
+<LinkCard link="https://jekyll-themes.com/"
+logo="https://jekyll-themes.com/favicon-32x32.png"
+title="Jekyll Themes"
+description="A collection of the best jekyll themes and templates that are free to download. Download free jekyll themes that suit your website, portfolio, resume or company website needs. Search jekyll themes by category and find what you are looking for."
+/>
