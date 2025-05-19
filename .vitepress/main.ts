@@ -59,6 +59,7 @@ const customIcon = {
     '.powershell': 'vscode-icons:file-type-powershell',
     '.cnf': 'vscode-icons:file-type-toml',
     '.toml': 'vscode-icons:file-type-toml',
+    '.ini': 'vscode-icons:file-type-light-ini',
     '.java': 'vscode-icons:file-type-java',
     'xml': 'vscode-icons:file-type-xml',
     '.xml': 'vscode-icons:file-type-xml',

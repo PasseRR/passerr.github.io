@@ -6,10 +6,10 @@ import {createWriteStream} from 'fs'
 import {ErrorLevel, SitemapIndexStream} from 'sitemap'
 import {tabsMarkdownPlugin} from 'vitepress-plugin-tabs'
 import MiniSearch from 'minisearch'
+// @ts-ignore
 import Segment from 'segment'
 import {groupIconVitePlugin} from 'vitepress-plugin-group-icons'
 
-// @ts-ignore
 const segment = new Segment().useDefault()
 
 // 所有博客列表、重写路径、博客映射

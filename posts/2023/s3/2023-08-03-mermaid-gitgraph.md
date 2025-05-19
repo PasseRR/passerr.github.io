@@ -23,7 +23,7 @@ mermaid的gitGraph支持git的以下操作
 <td width="45%">
 
 ```mmd
-gitGraph
+gitGraph TB:
   commit
   commit
   branch develop
@@ -42,7 +42,7 @@ gitGraph
 <td width="55%">
 
 ```mermaid
-gitGraph
+gitGraph TB:
   commit
   commit
   branch develop
@@ -120,10 +120,10 @@ branch用于创建分支，checkout用于切换分支，`cherry-pick`功能有�
 <table>
 <tbody>
 <tr>
-<td width="45%">
+<td width="30%">
 
 ```mmd
-gitGraph
+gitGraph LR:
   commit
   branch dev
   checkout dev order: 2
@@ -140,10 +140,10 @@ gitGraph
 ```
 
 </td>
-<td width="55%">
+<td width="70%">
 
 ```mermaid
-gitGraph
+gitGraph LR:
   commit
   branch dev order: 2
   checkout dev
@@ -171,10 +171,10 @@ gitGraph
 <table>
 <tbody>
 <tr>
-<td width="45%">
+<td width="20%">
 
 ```mmd
-gitGraph
+gitGraph LR:
   commit
   branch dev
   checkout dev
@@ -195,10 +195,10 @@ gitGraph
 ```
 
 </td>
-<td width="55%">
+<td width="80%">
 
 ```mermaid
-gitGraph
+gitGraph LR:
   commit
   branch dev
   checkout dev
