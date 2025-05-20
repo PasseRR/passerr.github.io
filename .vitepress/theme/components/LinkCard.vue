@@ -54,8 +54,8 @@ const props = defineProps({
 .link-card-img {
   margin-right: 12px;
   border-radius: 8px;
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
 }
 
 .link-card-title {
