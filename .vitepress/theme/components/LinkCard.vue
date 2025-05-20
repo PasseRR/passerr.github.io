@@ -47,15 +47,16 @@ const props = defineProps({
 }
 
 .link-card-container:hover {
-  background-color: var(--vp-code-copy-code-hover-border-color);
+  background-color: var(--vp-code-line-highlight-color);
   cursor: pointer;
 }
 
 .link-card-img {
   margin-right: 12px;
   border-radius: 8px;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--vp-c-gray-3);
 }
 
 .link-card-title {
@@ -83,7 +84,7 @@ const props = defineProps({
   opacity: 0.6;
   margin: 4px 0 0 0;
   font-weight: 400;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 14px;
 }
 </style>
