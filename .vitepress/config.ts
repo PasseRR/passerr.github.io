@@ -226,7 +226,8 @@ export default withMermaid({
         },
         image: {
             lazyLoading: true
-        }
+        },
+        linkify: false
     },
     mermaid: {},
     mermaidPlugin: {}
