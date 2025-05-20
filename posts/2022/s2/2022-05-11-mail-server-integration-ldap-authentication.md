@@ -309,6 +309,8 @@ chmod 700 /usr/local/vmail
     # 文件授权
     chown opendkim:opendkim -R /etc/opendkim/
     chmod -R 700 /etc/opendkim
+    # 密钥验证
+    opendkim-testkey -d abc.com -s default -vvv
     ```
 3. 设置开启启动并启动服务
     ```shell
