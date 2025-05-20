@@ -323,7 +323,7 @@ public class MessageService {
 </dependencies>
 ```
 
-```nginx [nginx配置]
+```nginx [nginx.conf]
 server {
     listen 8080;
     
