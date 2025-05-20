@@ -91,4 +91,10 @@ ldapadd -x -W -D "cn=ldapadm,dc=51cto,dc=com" -f base.ldif
 
 至此，LDAP安装配置完成
 
-> [引用自](https://blog.51cto.com/moerjinrong/2149584)
+## 参考资料
+
+<LinkCard link="https://blog.51cto.com/moerjinrong/2149584"
+    logo="https://blog.51cto.com/favicon.ico"
+    title="在CentOS 7 / RHEL 7配置OpenLDAP服务_51CTO博客_centos7 ssh服务开启"
+    description="在CentOS 7 / RHEL 7配置OpenLDAP服务，OpenLDAP是OpenLDAP项目开发的轻量级目录访问协议的开源实现。LDAP是一种Internet协议，电子邮件和其他程序用于从服务器查找联系人信息。它是在OpenLDAP公共许可下发布的;它适用于所有主要的Linux发行版,AIX,Android,HP-UX,OSX,Solaris,Windows和z/OS。它以某种方式用作关系数据库，可用于存储任何信息。LDAP不限于存储信息;它还用作“"
+</LinkCard>

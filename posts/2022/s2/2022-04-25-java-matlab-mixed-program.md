@@ -18,7 +18,7 @@ java -Dfile.encoding=utf-8 -Xms2G -Xmx2G -Xmn512M -Djava.library.path=C:\matlab\
 matlab runtime home目录为`/MATLAB/R2021a/`
 
 在CentOs中将jar包服务化，原service配置如下:
-```
+```ini
 [Unit]
 Description=GeologyToolServer service
 After=syslog.target
@@ -46,7 +46,7 @@ MATLAB Runtime version this component is attempting to use: 9.10.
 使用java -jar方式直接启动，正常运行，初步怀疑跟centos服务化加载环境变量有关。
 
 最后解决方案，将`LD_PRELOAD`和`LD_LIBRARY_PATH`配置在service文件中，重启服务，问题解决。附service配置文件。
-```
+```ini
 [Unit]
 Description=GeologyToolServer service
 After=syslog.target
