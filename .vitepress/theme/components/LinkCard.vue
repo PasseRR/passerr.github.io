@@ -1,13 +1,13 @@
 <template>
   <span class="link-card" style="display:block;">
-  <a class="link-card-link" :href="link" target="_blank">
+  <a class="link-card-link no-icon" :href="link" target="_blank">
     <span class="link-card-container">
-        <img class="link-card-img" :src="logo"/>
+        <img class="link-card-img" :src="logo" v-if="logo"/>
       <span class="text">
         <span class="link-card-title">
           {{ title }}
         </span>
-        <span class="link-card-description">
+        <span class="link-card-description" v-if="description">
           {{ description }}
         </span>
       </span>
@@ -17,10 +17,16 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps({
-  link: String,
+defineProps({
+  link: {
+    type: String,
+    required: true,
+  },
   logo: String,
-  title: String,
+  title: {
+    type: String,
+    required: true,
+  },
   description: String,
 })
 </script>
@@ -30,6 +36,7 @@ const props = defineProps({
   padding-top: 8px;
   padding-bottom: 8px;
 }
+
 .link-card-link {
   color: unset !important;
   display: block;

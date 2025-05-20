@@ -12,6 +12,7 @@ import mysql from './icons/mysql.svg?raw'
 import sql from './icons/sql.svg?raw'
 import tencent_cloud from './icons/tencent-cloud.svg?raw'
 import undertow from './icons/undertow.svg?raw'
+import sqlServer from './icons/sql-server.svg?raw'
 import {computedAsync} from '@vueuse/core'
 
 const svgs = {
@@ -20,26 +21,30 @@ const svgs = {
   mysql,
   sql,
   tencent_cloud,
-  undertow
+  undertow,
+  sqlServer
 };
 
 const props = defineProps({
-  label: String,
+  label: {
+    type: String,
+    required: true,
+  },
   logo: {
     type: String,
-    required: false,
     default: '',
   },
   color: String,
-  link: String,
+  link: {
+    type: String,
+    required: true,
+  },
   logoColor: {
     type: String,
-    required: false,
     default: 'FFF'
   },
   svg: {
     type: String,
-    required: false,
     default: '',
   },
 })

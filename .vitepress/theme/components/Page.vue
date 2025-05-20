@@ -54,7 +54,8 @@ import {
 } from 'radix-vue'
 
 const router = useRouter()
-const props = defineProps({
+
+defineProps({
   posts: Array,
   pageCurrent: Number,
   perPage: Number,

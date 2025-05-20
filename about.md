@@ -24,7 +24,7 @@ I'm just a javaer.
 <ShieldsBadge label="MariaDB" color="003545" logo="mariadb" link="https://mariadb.org/" />
 <ShieldsBadge label="Oracle" color="F80000" logo="Oracle" link="https://www.oracle.com/database/" />
 <ShieldsBadge label="PostgreSQL" color="4169E1" logo="PostgreSQL" link="https://www.postgresql.org/" />
-<ShieldsBadge label="Microsoft SQL Server" color="CC2927" logo="Microsoft-SQL-Server" link="https://www.microsoft.com/en-us/sql-server/sql-server-downloads" />
+<ShieldsBadge label="Microsoft SQL Server" color="CC2927" svg="sqlServer" link="https://www.microsoft.com/en-us/sql-server/sql-server-downloads" />
 <ShieldsBadge label="达梦" color="002878" logo="dm" link="https://intl.dameng.com/DM8.html" />
 <ShieldsBadge label="SQLite" color="003B57" logo="sqlite" link="https://www.sqlite.org/" />
 <ShieldsBadge label="Redis" color="DC382D" logo="Redis" link="https://redis.io/" />
