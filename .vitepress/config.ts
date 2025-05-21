@@ -5,7 +5,6 @@ import {resolve} from 'path'
 import {createWriteStream} from 'fs'
 import {ErrorLevel, SitemapIndexStream} from 'sitemap'
 import {tabsMarkdownPlugin} from 'vitepress-plugin-tabs'
-import MiniSearch from 'minisearch'
 // @ts-ignore
 import Segment from 'segment'
 import {groupIconVitePlugin} from 'vitepress-plugin-group-icons'
@@ -149,20 +148,11 @@ export default withMermaid({
                 },
                 miniSearch: {
                     options: {
-                        tokenize: (text, fieldName) => {
-                            let origin = MiniSearch.getDefault('tokenize')(text, fieldName);
-
-                            // 仅对标题中文分词
-                            if (fieldName.indexOf('title') >= 0) {
-                                return origin.concat(segment.doSegment(text, {simple: true, stripPunctuation: true}));
-
-                            }
-                            return origin
-                        }
+                        tokenize: (text) => segment.doSegment(text, {simple: true, stripPunctuation: true})
                     },
                     searchOptions: {
                         // 仅以空白字符
-                        tokenize: (string) => string.split(/\s+/)
+                        tokenize: (text) => text.split(/\s+/)
                     }
                 }
             }
