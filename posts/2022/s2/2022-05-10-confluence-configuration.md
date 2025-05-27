@@ -216,6 +216,40 @@ CVE-2021-26084漏洞会利用远程代码执行植入挖矿病毒，修复步骤
 
 [3]: /assets/2022/05-10/plugin.gif
 
+## 修改confluence会话时长
+
+[参考官方](https://support.atlassian.com/confluence/kb/how-to-adjust-the-session-timeout-for-confluence/)
+
+### 修改登录会话时长
+修改文件`<confluence-install>/confluence/WEB-INF/web.xml`中的session-config
+
+```xml
+<session-config>
+    <!-- 默认单位分钟 -->
+    <session-timeout>360</session-timeout> <!-- [!code highlight] -->
+    <tracking-mode>COOKIE</tracking-mode>
+</session-config>
+```
+
+### 修改记住我时长
+
+修改文件`<confluence-install>/confluence/WEB-INF/classes/seraph-config.xml`，添加init-param
+
+```xml
+<security-config>
+    <parameters>
+        <!-- 省略其他配置 -->
+        <!-- remember me age --> <!-- [!code ++] -->
+        <init-param> <!-- [!code ++] -->
+            <param-name>autologin.cookie.age</param-name> <!-- [!code ++] -->
+            <param-value>172800</param-value> <!-- [!code ++] -->
+        </init-param> <!-- [!code ++] -->
+    </parameters>
+</security-config>
+```
+
+
+
 <!--
 [agent](/assets/2022/05-10/atlassian-agent.jar)
 
