@@ -122,8 +122,7 @@ including downloading various versions of java runtimes to run the test suite ag
 
 1. [Apache Ant](https://ant.apache.org/bindownload.cgi)下载安装，自行百度、谷歌
 2. 设置JDK版本11及以上
-3.
-克隆lombok代码并导入开发工具，本文使用的是lombok [v1.18.32](https://github.com/projectlombok/lombok/releases/tag/v1.18.32)
+3. 克隆lombok代码并导入开发工具，本文使用的是lombok [v1.18.32](https://github.com/projectlombok/lombok/releases/tag/v1.18.32)
 
  ```shell
  # idea环境执行
@@ -291,9 +290,7 @@ public @interface LombokSpringConfiguration {
 
 ::: danger 注意
 
--
-处理器需要有[@Provides](https://github.com/projectlombok/lombok/blob/v1.18.32/src/spiProcessor/lombok/spi/Provides.java#L31)
-注解，否则编译打包时不会被扫描到，也不会生成spi services文件
+- 处理器需要有[@Provides](https://github.com/projectlombok/lombok/blob/v1.18.32/src/spiProcessor/lombok/spi/Provides.java#L31)注解，否则编译打包时不会被扫描到，也不会生成spi services文件
 - javac处理器包名必须为`lombok.javac.handlers`，ejc处理器包名必须为`lombok.eclipse.handlers`
   :::
 
