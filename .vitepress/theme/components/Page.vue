@@ -2,7 +2,8 @@
   <ol>
     <li v-for="(article, index) in posts" :key="index" class="post-list">
       <div class="post-title">
-        <a :href="withBase(article.regularPath) + '.html'" class="hover-underline-animation">{{ article.frontMatter.title }}
+        <a :href="withBase(article.regularPath) + '.html'" class="hover-underline-animation" target="_blank">
+          {{ article.frontMatter.title }}
           <span class="date"><span class="fa fa-clock-o"></span>{{ article.frontMatter.date }}</span>
         </a>
       </div>
