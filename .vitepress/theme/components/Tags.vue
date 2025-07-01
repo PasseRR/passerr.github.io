@@ -7,7 +7,7 @@
         <a :href="withBase(article.regularPath)+'.html'" :key="index"
            class="hover-underline-animation no-icon" target="_blank">
           {{ article.frontMatter.title }}
-          <span class="date"><span class="fa fa-clock-o"></span>{{ article.frontMatter.date }}</span>
+          <Badge type="info"><span class="fa fa-clock-o">&nbsp;{{ article.frontMatter.date }}</span></Badge>
         </a>
       </li>
     </div>
@@ -116,6 +116,11 @@ const pageUpdate = (num) => toggleTag(selectTag.value, num)
 
 const chartOptions = computed(() => {
   return {
+    plotOptions: {
+      series: {
+        cursor: 'pointer'
+      }
+    },
     series: [{
       type: 'wordcloud',
       rotation: {

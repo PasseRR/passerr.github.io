@@ -4,7 +4,7 @@
       <div class="post-title">
         <a :href="withBase(article.regularPath) + '.html'" class="hover-underline-animation no-icon" target="_blank">
           {{ article.frontMatter.title }}
-          <span class="date"><span class="fa fa-clock-o"></span>{{ article.frontMatter.date }}</span>
+          <Badge type="info"><span class="fa fa-clock-o">&nbsp;{{ article.frontMatter.date }}</span></Badge>
         </a>
       </div>
     </li>

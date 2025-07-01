@@ -133,6 +133,7 @@ export default withMermaid({
         kvUrl: site.kvUrl,
         kvToken: site.kvToken,
         posts: posts,
+        mappings: mappings,
         nav: site.navs,
         sidebar: [],
         search: {

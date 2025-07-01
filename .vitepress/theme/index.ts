@@ -2,6 +2,10 @@ import DefaultTheme from 'vitepress/theme'
 // @ts-ignore
 import Tags from './components/Tags.vue'
 // @ts-ignore
+import Archives from './components/Archives.vue'
+// @ts-ignore
+import Ranks from './components/Ranks.vue'
+// @ts-ignore
 import Page from './components/Page.vue'
 // @ts-ignore
 import Ebook from './components/Ebook.vue'
@@ -34,6 +38,8 @@ export default {
         app.component('Ebook', Ebook)
         app.component('ShieldsBadge', ShieldsBadge)
         app.component('LinkCard', LinkCard)
+        app.component('Archives', Archives)
+        app.component('Ranks', Ranks)
     },
     setup() {
         const router = useRouter();
