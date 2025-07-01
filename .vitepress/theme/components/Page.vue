@@ -102,4 +102,8 @@ const pageUpdate = (num) => {
     width: 17rem;
   }
 }
+
+.vp-doc li + li {
+  margin-top: 7px;
+}
 </style>
