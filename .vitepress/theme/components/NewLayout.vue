@@ -34,9 +34,15 @@ const {frontmatter, page, isDark, theme, params} = useData(), route = useRoute()
 const views = ref(1);
 
 const init = () => {
+  console.info(page.value);
   // 开发环境忽略访问计数
   if (import.meta.env.DEV) {
     return
+  }
+
+  // 404页面不做页面统计
+  if (page.value.isNotFound) {
+    return;
   }
 
   let path = location.pathname
