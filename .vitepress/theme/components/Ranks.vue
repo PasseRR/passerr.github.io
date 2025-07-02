@@ -1,12 +1,16 @@
 <template>
-  <ol>
+  <ol class="rank-list">
     <li v-for="(article, index) in posts" :key="index" class="post-list">
       <div class="post-title">
         <a :href="withBase(article.regularPath) + '.html'" class="hover-underline-animation no-icon" target="_blank">
-          <span v-if="index === 0" class="rank-icon gold">🥇</span>
-          <span v-else-if="index === 1" class="rank-icon silver">🥈</span>
-          <span v-else-if="index === 2" class="rank-icon bronze">🥉</span>
-          {{ article.frontMatter.title }}
+          <span :class="{ 'rank-label': index >= 5 }">
+            <template v-if="index === 0">🥇</template>
+            <template v-else-if="index === 1">🥈</template>
+            <template v-else-if="index === 2">🥉</template>
+            <template v-else-if="index === 3 || index === 4">🔥</template>
+            <template v-else>{{ index + 1 }}</template>
+          </span>
+          <span class="rank-title">{{ article.frontMatter.title }}</span>
           <Badge type="info"><span class="fa fa-eye">&nbsp;{{ article.views }}</span></Badge>
         </a>
       </div>
@@ -56,3 +60,36 @@ const doRank = (result) => {
   }
 };
 </script>
+<style scoped>
+.rank-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rank-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  margin-bottom: 0.5em;
+  font-size: 16px;
+}
+
+.rank-label {
+  min-width: 3.5em;
+  text-align: right;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.rank-label::after {
+  content: ".";
+}
+
+.rank-title {
+  padding-left: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+</style>

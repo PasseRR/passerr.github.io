@@ -1,8 +1,9 @@
 <template>
-  <ol>
+  <ol class="rank-list">
     <li v-for="(article, index) in posts" :key="index" class="post-list">
       <div class="post-title">
         <a :href="withBase(article.regularPath) + '.html'" class="hover-underline-animation no-icon" target="_blank">
+          <span class="rank-label">{{ index + 1 }}</span>
           {{ article.frontMatter.title }}
           <Badge type="info"><span class="fa fa-clock-o">&nbsp;{{ article.frontMatter.date }}</span></Badge>
         </a>
@@ -105,5 +106,30 @@ const pageUpdate = (num) => {
 
 .vp-doc li + li {
   margin-top: 7px;
+}
+
+.rank-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rank-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  margin-bottom: 0.5em;
+  font-size: 16px;
+}
+
+.rank-label {
+  min-width: 3.5em;
+  text-align: right;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.rank-label::after {
+  content: ".";
 }
 </style>
