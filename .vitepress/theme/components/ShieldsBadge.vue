@@ -13,6 +13,8 @@ import sql from './icons/sql.svg?raw'
 import tencent_cloud from './icons/tencent-cloud.svg?raw'
 import undertow from './icons/undertow.svg?raw'
 import sqlServer from './icons/sql-server.svg?raw'
+import oracle from './icons/oracle.svg?raw'
+import windows from './icons/windows.svg?raw'
 import {computedAsync} from '@vueuse/core'
 
 const svgs = {
@@ -22,7 +24,9 @@ const svgs = {
   sql,
   tencent_cloud,
   undertow,
-  sqlServer
+  sqlServer,
+  oracle,
+  windows
 };
 
 const props = defineProps({

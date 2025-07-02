@@ -16,13 +16,14 @@ I'm just a javaer.
 <ShieldsBadge label="Shell" color="cc2229" logo="shell" link="https://en.wikipedia.org/wiki/Shell_script" />
 <ShieldsBadge label="JavaScript" color="99DD00" logo="javascript" link="https://en.wikipedia.org/wiki/JavaScript" />
 <ShieldsBadge label="Node.js" color="5FA04E" logo="nodedotjs" link="https://nodejs.org/en" />
-<ShieldsBadge label="CSS" color="264de4" logo="css3" link="https://en.wikipedia.org/wiki/CSS" />
+<ShieldsBadge label="TypeScript" color="3178C6" logo="typescript" link="https://www.typescriptlang.org/" />
+<ShieldsBadge label="CSS" color="663399" logo="css" link="https://en.wikipedia.org/wiki/CSS" />
 <ShieldsBadge label="Markdown" color="A9A9A9" logo="markdown" link="https://www.markdownguide.org/" />
 <p/>
 
 <ShieldsBadge label="MySQL" color="4479A1" svg="mysql" link="https://www.mysql.com/" />
 <ShieldsBadge label="MariaDB" color="003545" logo="mariadb" link="https://mariadb.org/" />
-<ShieldsBadge label="Oracle" color="F80000" logo="Oracle" link="https://www.oracle.com/database/" />
+<ShieldsBadge label="Oracle" color="e30613" svg="oracle" link="https://www.oracle.com/database/" />
 <ShieldsBadge label="PostgreSQL" color="4169E1" logo="PostgreSQL" link="https://www.postgresql.org/" />
 <ShieldsBadge label="Microsoft SQL Server" color="CC2927" svg="sqlServer" link="https://www.microsoft.com/en-us/sql-server/sql-server-downloads" />
 <ShieldsBadge label="达梦" color="002878" logo="dm" link="https://intl.dameng.com/DM8.html" />
@@ -45,7 +46,7 @@ I'm just a javaer.
 
 <ShieldsBadge label="CentOS" color="262577" logo="centos" link="https://www.centos.org/" />
 <ShieldsBadge label="Ubuntu" color="E95420" logo="ubuntu" link="https://ubuntu.com/" />
-<ShieldsBadge label="Windows" color="0078D4" logo="windows" link="https://www.microsoft.com/en-us/windows?r=1" />
+<ShieldsBadge label="Windows" color="0078D4" svg="windows" link="https://www.microsoft.com/en-us/windows?r=1" />
 <ShieldsBadge label="阿里云" color="6DB33F" logo="alibabacloud" link="https://www.aliyun.com/" />
 <ShieldsBadge label="华为云" color="FF0000" logo="huawei" link="https://www.huaweicloud.com/" />
 <ShieldsBadge label="腾讯云" color="006EFF" svg="tencent_cloud" link="https://cloud.tencent.com/" />
