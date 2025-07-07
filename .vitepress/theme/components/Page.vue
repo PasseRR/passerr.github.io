@@ -73,39 +73,8 @@ const pageUpdate = (num) => {
 </script>
 
 <style scoped>
-.post-list {
-  border-bottom: 1px dashed var(--vp-c-divider-light);
-  padding: 3px 0 3px 0;
-}
-
-.post-info span {
-  display: inline-block;
-  padding: 0 8px;
-  background-color: var(--vp-c-bg-alt);
-  margin-right: 10px;
-  transition: 0.4s;
-  border-radius: 2px;
-  color: var(--vp-c-text-1);
-}
-
-@media screen and (max-width: 768px) {
-  .post-list {
-    padding: 4px 0 4px 0;
-  }
-
-  .post-title {
-    font-size: 1.0625rem;
-    font-weight: 400;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    width: 17rem;
-  }
-}
-
 .vp-doc li + li {
-  margin-top: 7px;
+  margin-top: 9px;
 }
 
 .rank-list {

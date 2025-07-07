@@ -2,7 +2,7 @@ const site = {
     main: 'https://www.xiehai.zone',
     logo: '/logo.jpg',
     // 博客分页大小
-    pageSize: 17,
+    pageSize: 20,
     // 标题
     title: "PasseRR's Blog",
     // 描述
