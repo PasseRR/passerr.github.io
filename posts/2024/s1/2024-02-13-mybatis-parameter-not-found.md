@@ -123,7 +123,7 @@ Mybatis正是利用这个特性，来辅助获取参数名称的。
 不支持`-parameters`编译参数，所以需要`@Param`注解指定的参数名，否则会按照param1、param2、param3等作为默认参数。
 
 ::: code-group
-```java [MapperMethod.java]{25-31,43-50}
+```java [MapperMethod.java]{25-31,43-49}
 public class MapperMethod {
     public static class MethodSignature {
         public MethodSignature(Configuration configuration, Method method) {
@@ -284,7 +284,7 @@ public class ParamNameResolver {
 ```
 :::
 
-## 总结
+## 结论
 
 - 问题1：为什么会出现`Parameter 'arg0' not found`
 
