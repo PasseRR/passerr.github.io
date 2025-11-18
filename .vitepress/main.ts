@@ -49,6 +49,7 @@ const languages = [
     import('./language/json5.tmLanguage.json'),
     import('./language/confluence-wiki.tmLanguage.json'),
     import('./language/log.tmLanguage.json'),
+    import('./language/mermaid.tmLanguage.json'),
 ]
 
 // 自定义vitepress-plugin-group-icons图标
