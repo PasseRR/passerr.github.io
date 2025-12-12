@@ -1,7 +1,7 @@
 import {customIcon, languages, site} from './main'
 import {getPosts} from './theme/serverUtils'
 import {UserConfig, withMermaid} from 'vitepress-plugin-mermaid'
-import {resolve} from 'path'
+import path, {resolve} from 'path'
 import {createWriteStream} from 'fs'
 import {ErrorLevel, SitemapIndexStream} from 'sitemap'
 import {tabsMarkdownPlugin} from 'vitepress-plugin-tabs'
@@ -23,7 +23,14 @@ export default withMermaid({
     rewrites: rewrites,
     vite: {
         publicDir: '.vitepress/public',
-        plugins: [groupIconVitePlugin({customIcon})]
+        plugins: [groupIconVitePlugin({customIcon})],
+        resolve: {
+            alias: {
+                // 强制使用 ESM 版本，否则 CommonJS 会导致 CancellationToken 无法命名导出
+                'vscode-jsonrpc/lib/common/cancellation.js': path.resolve(__dirname, './patch.js'),
+                'vscode-jsonrpc/lib/common/events.js': path.resolve(__dirname, './patch.js')
+            }
+        }
     },
     // sitemap_index文件生成
     async buildEnd(s) {

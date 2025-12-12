@@ -5,7 +5,7 @@ tags: [mybatis, java]
 
 报错信息：
 
-```txt
+```log
 org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'arg0' not found. Available parameters are [sequence, newTableName, oldTableName, param3, param1, param2]
     at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:97)
     at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:439)

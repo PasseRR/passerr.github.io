@@ -8,7 +8,6 @@ tags: [运维, confluence]
 设置 -> 自定义HTML -> BODY尾部中添加如下代码。
 
 ```html
-
 <script type="text/javascript">
     //<![CDATA[
     AJS.toInit(function () {
@@ -124,21 +123,21 @@ tags: [运维, confluence]
   创建页面 -> 插入更多内容 -> 其他宏 -> 导航 -> Easy Heading Free
 - 配置参数说明
 
-  |参数名|默认值|描述|
-  |:---|:---|:---|
-  |enabled|true|是否启用宏|
-  |selector|h1,h2,h3|从h1到h6，标题选择器，逗号分隔|
-  |titleExpandClickable|false|点击标题自动展开目录|
-  |headingIndent|20|内容标题缩进像素|
-  |expandOption|expand-all-by-default|内容标题展开方式，可选值expand-all-by-default、collapse-all-by-default、collapse-all-but-headings-1、collapse-all-but-headings-1-2、collapse-all-but-headings-1-3、collapse-all-but-headings-1-4、disable-expand-collapse|
-  |useNavigation|true|是否浮动目录|
-  |useNavigationHiddenMode|false|首次进入目录是否隐藏|
-  |wrapNavigationText|false|若标题超过限定长度是否自动截断，false截断，true不截断|
-  |navigationTitle|Table of Content|目录名称|
-  |navigationWidth|230|目录宽度像素|
-  |navigationIndent|10|标题目录不同级别的缩进像素|
-  |navigationExpandOption|expand-all-by-default|导航目录展开方式，可选值expand-all-by-default、collapse-all-by-default、collapse-all-but-headings-1、collapse-all-but-headings-1-2、collapse-all-but-headings-1-3、collapse-all-but-headings-1-4、disable-expand-collapse|
-  |disableNavLinksUnder|0|当标题少于多少个时目录不可用|
+  | 参数名                     | 默认值                   | 描述                                                                                                                                                                                                      |
+  |:------------------------|:----------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | enabled                 | true                  | 是否启用宏                                                                                                                                                                                                   |
+  | selector                | h1,h2,h3              | 从h1到h6，标题选择器，逗号分隔                                                                                                                                                                                       |
+  | titleExpandClickable    | false                 | 点击标题自动展开目录                                                                                                                                                                                              |
+  | headingIndent           | 20                    | 内容标题缩进像素                                                                                                                                                                                                |
+  | expandOption            | expand-all-by-default | 内容标题展开方式，可选值expand-all-by-default、collapse-all-by-default、collapse-all-but-headings-1、collapse-all-but-headings-1-2、collapse-all-but-headings-1-3、collapse-all-but-headings-1-4、disable-expand-collapse |
+  | useNavigation           | true                  | 是否浮动目录                                                                                                                                                                                                  |
+  | useNavigationHiddenMode | false                 | 首次进入目录是否隐藏                                                                                                                                                                                              |
+  | wrapNavigationText      | false                 | 若标题超过限定长度是否自动截断，false截断，true不截断                                                                                                                                                                         |
+  | navigationTitle         | Table of Content      | 目录名称                                                                                                                                                                                                    |
+  | navigationWidth         | 230                   | 目录宽度像素                                                                                                                                                                                                  |
+  | navigationIndent        | 10                    | 标题目录不同级别的缩进像素                                                                                                                                                                                           |
+  | navigationExpandOption  | expand-all-by-default | 导航目录展开方式，可选值expand-all-by-default、collapse-all-by-default、collapse-all-but-headings-1、collapse-all-but-headings-1-2、collapse-all-but-headings-1-3、collapse-all-but-headings-1-4、disable-expand-collapse |
+  | disableNavLinksUnder    | 0                     | 当标题少于多少个时目录不可用                                                                                                                                                                                          |
 
 ![3][3]
 
