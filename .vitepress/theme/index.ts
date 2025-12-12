@@ -18,9 +18,11 @@ import ShieldsBadge from "./components/ShieldsBadge.vue"
 // @ts-ignore
 import LinkCard from "./components/LinkCard.vue"
 import {enhanceAppWithTabs} from 'vitepress-plugin-tabs/client'
-import {useRouter} from 'vitepress'
-import {onMounted} from 'vue'
+import {useData, useRouter} from 'vitepress'
+import {onMounted, watch} from 'vue'
 import mediumZoom from 'medium-zoom'
+// @ts-ignore
+import mermaid from "mermaid"
 import 'font-awesome/css/font-awesome.min.css'
 import 'virtual:group-icons.css'
 import './custom.css'
@@ -42,7 +44,7 @@ export default {
         app.component('Ranks', Ranks)
     },
     setup() {
-        const router = useRouter();
+        const router = useRouter(), {isDark} = useData()
         // zoom 初始化
         const initZoom = () => {
             // 带有data-zoomable class的图片可以放大
@@ -51,8 +53,20 @@ export default {
             mediumZoom('.main img:not(.data-unzoomable)', {background: 'var(--vp-c-bg)'});
         };
 
+        const applyMermaidTheme = () => {
+            mermaid.initialize({
+                theme: isDark.value ? 'dark' : 'default'
+            })
+        }
+
         onMounted(initZoom);
 
         router.onAfterRouteChange = initZoom;
+
+        onMounted(() => {
+            applyMermaidTheme()
+        })
+
+        watch(() => isDark.value, () => applyMermaidTheme())
     }
 }
