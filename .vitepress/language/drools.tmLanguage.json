@@ -1,0 +1,77 @@
+{
+  "name": "drl",
+  "scopeName": "source.drools",
+  "fileTypes": [
+    "drl"
+  ],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#variables"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#types"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "match": "//.*",
+          "name": "comment.line.double-slash.drools"
+        },
+        {
+          "begin": "/\\*",
+          "end": "\\*/",
+          "name": "comment.block.drools"
+        }
+      ]
+    },
+    "keywords": {
+      "match": "\\b(lock-on-active|date-effective|date-expires|no-loop|auto-focus|activation-group|agenda-group|ruleflow-group|entry-point|duration|package|import|dialect|salience|enabled|attributes|rule|extends|when|then|template|query|declare|function|global|eval|not|in|or|and|exists|forall|accumulate|collect|from|end|over|calendars|init|action|reverse|result|new)\\b",
+      "name": "keyword.control.drools"
+    },
+    "functions": {
+      "match": "\\b(insert|insertLogical|delete|modify|update|halt)\\b",
+      "name": "entity.name.function.drools"
+    },
+    "variables": {
+      "match": "\\$[A-Za-z][A-Za-z0-9_]*",
+      "name": "variable.other.drools"
+    },
+    "operators": {
+      "match": "(==|!=|<=|>=|<|>|\\.)",
+      "name": "keyword.operator.drools"
+    },
+    "strings": {
+      "begin": "\"",
+      "end": "\"",
+      "name": "string.quoted.double.drools"
+    },
+    "numbers": {
+      "match": "\\b\\d+(\\.\\d+)?\\b",
+      "name": "constant.numeric.drools"
+    },
+    "types": {
+      "match": "\\b[A-Z][A-Za-z0-9_]*\\b",
+      "name": "support.type.java.drools"
+    }
+  }
+}

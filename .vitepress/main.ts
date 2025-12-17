@@ -50,6 +50,7 @@ const languages = [
     import('./language/confluence-wiki.tmLanguage.json'),
     import('./language/log.tmLanguage.json'),
     import('./language/mermaid.tmLanguage.json'),
+    import('./language/drools.tmLanguage.json'),
 ]
 
 // 自定义vitepress-plugin-group-icons图标
@@ -76,6 +77,8 @@ const customIcon = {
     'maven': 'vscode-icons:file-type-maven',
     'gradle': 'vscode-icons:file-type-light-gradle',
     'nginx.conf': 'vscode-icons:file-type-nginx',
+    'drl': 'vscode-icons:file-type-drools',
+    '.drl': 'vscode-icons:file-type-drools',
 };
 
 export {site, languages, customIcon};
