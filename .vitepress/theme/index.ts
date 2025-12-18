@@ -18,9 +18,11 @@ import ShieldsBadge from "./components/ShieldsBadge.vue"
 // @ts-ignore
 import LinkCard from "./components/LinkCard.vue"
 import {enhanceAppWithTabs} from 'vitepress-plugin-tabs/client'
-import {useData, useRouter} from 'vitepress'
+import {useData, useRouter, useRoute} from 'vitepress'
 import {onMounted, watch} from 'vue'
 import mediumZoom from 'medium-zoom'
+import codeblocksFold from 'vitepress-plugin-codeblocks-fold'
+import 'vitepress-plugin-codeblocks-fold/style/index.css'
 // @ts-ignore
 import mermaid from "mermaid"
 import 'font-awesome/css/font-awesome.min.css'
@@ -44,7 +46,8 @@ export default {
         app.component('Ranks', Ranks)
     },
     setup() {
-        const router = useRouter(), {isDark} = useData()
+        const router = useRouter(), {isDark, frontmatter} = useData(), route = useRoute()
+        codeblocksFold({route, frontmatter}, true, 550)
         // zoom 初始化
         const initZoom = () => {
             // 带有data-zoomable class的图片可以放大

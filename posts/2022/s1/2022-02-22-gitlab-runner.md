@@ -1,6 +1,7 @@
 ---
 title:  Gitlab Runner介绍
 tags: [gitlab-runner, ci/cd]
+cbf: false
 ---
 
 ## Gitlab Runner 安装

@@ -1,6 +1,7 @@
 ---
 title:  "使用Spock完成单元测试"
 tags: [java, groovy, spock, 测试, 单元测试]
+cbf: false
 ---
 
 ## 前言

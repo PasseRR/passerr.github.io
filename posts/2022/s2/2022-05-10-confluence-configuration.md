@@ -1,6 +1,7 @@
 ---
 title:  Confluence常用配置
 tags: [运维, confluence]
+cbf: false
 ---
 
 ## Confluence页面添加返回顶部

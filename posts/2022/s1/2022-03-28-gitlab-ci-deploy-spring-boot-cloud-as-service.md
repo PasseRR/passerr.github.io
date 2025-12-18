@@ -1,6 +1,7 @@
 ---
 title:  Gitlab CI以服务化的方式部署SpringBoot/SpringCloud
 tags: [gitlab, gitlab-runner, springboot, ci/cd, 运维]
+cbf: false
 ---
 
 在使用gitlab ci的时候，在部署windows或者Linux的时候希望以服务化的方式部署，

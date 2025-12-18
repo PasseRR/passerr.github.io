@@ -220,7 +220,6 @@ public class Object {
 按照前面类加载机制所讲的流程，要打破自定义的ClassLoader的双亲委派，只需重写`loadClass`方法，使其不向上委派即可。
 Arthas的[agent](https://github.com/alibaba/arthas/blob/master/agent/src/main/java/com/taobao/arthas/agent/ArthasClassloader.java)和[attach agent](https://github.com/alibaba/arthas/blob/master/arthas-agent-attach/src/main/java/com/taobao/arthas/agent/attach/AttachArthasClassloader.java)通过重写loadClass方法实现类加载隔离。
 
-::: details 代码示例
 ~~~java
 public class ArthasClassloader extends URLClassLoader {
     public ArthasClassloader(URL[] urls) {
@@ -252,7 +251,6 @@ public class ArthasClassloader extends URLClassLoader {
 }
 ~~~
 
-:::
 
 ### 案例二 JDBC驱动加载
 
@@ -947,7 +945,6 @@ Tomcat在[Bootstrap](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache
   - 热部署实现
     
     Tomcat在修改资源文件、classes、lib后，可以不用重启就可以热加载变化，就是通过实现生命周期实现的，热加载就是stop后再start。
-    ::: details 源码分析
     
     ```java
     /**
@@ -1058,7 +1055,6 @@ Tomcat在[Bootstrap](https://github.com/apache/tomcat/blob/9.0.x/java/org/apache
     }
     ```
     
-    :::
     
 <!-- 双亲委派模型 https://blog.csdn.net/u013490280/article/details/107993822 -->
 <!-- Tomcat为什么要JAVA破坏双亲委派机制 https://www.zhihu.com/question/466696410 -->

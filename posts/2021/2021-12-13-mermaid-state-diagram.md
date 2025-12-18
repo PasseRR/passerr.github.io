@@ -140,7 +140,7 @@ state First {
 ```mmd
 stateDiagram-v2
     %% 关键语法
-    state if_state &lt;&lt;choice>>
+    state if_state <<choice>>
     [*] --> IsPositive
     IsPositive --> if_state
     if_state --> False: if n < 0
@@ -154,7 +154,7 @@ stateDiagram-v2
 
 ```mermaid
 stateDiagram-v2
-    state if &lt;&lt;choice>>
+    state if <<choice>>
     [*] --> IsPositive
     IsPositive --> if
     if --> False: if n < 0
@@ -172,13 +172,13 @@ stateDiagram-v2
 
 ```mmd
 stateDiagram-v2
-    state fork_state &lt;&lt;fork>>
+    state fork_state <<fork>>
     %% fork语法
     [*] --> fork_state
     fork_state --> State2
     fork_state --> State3
     %% join语法
-    state join_state &lt;&lt;join>>
+    state join_state <<join>>
     State2 --> join_state
     State3 --> join_state
     join_state --> State4
@@ -190,13 +190,13 @@ stateDiagram-v2
 
 ```mermaid
 stateDiagram-v2
-    state fork_state &lt;&lt;fork>>
+    state fork_state <<fork>>
     %% fork语法
     [*] --> fork_state
     fork_state --> State2
     fork_state --> State3
     %% join语法
-    state join_state &lt;&lt;join>>
+    state join_state <<join>>
     State2 --> join_state
     State3 --> join_state
     join_state --> State4

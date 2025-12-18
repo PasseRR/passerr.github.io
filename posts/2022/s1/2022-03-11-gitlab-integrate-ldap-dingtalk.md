@@ -1,6 +1,7 @@
 ---
 title:  Gitlab集成ldap登录及钉钉扫码登录
 tags: [gitlab, gitlab-runner, 运维]
+cbf: false
 ---
 
 ## 集成LDAP

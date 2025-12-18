@@ -3,18 +3,15 @@ title:  OGNL语法介绍
 tags: [ognl, java]
 ---
 
-## 什么是OGNL?
+OGNL(Object-Graph Navigation Language)是对象导航图语言，是一种用于java对象get、set属性以及其他额外的投影、选择过滤、lambda表达式的的表达式语言。
+
+OGNL读为`orthogonal`[ɔ:'θɒgənl]。
 
 ::: tip [**来源官方**](https://commons.apache.org/proper/commons-ognl/index.html)
-
 OGNL stands for Object-Graph Navigation Language; it is an expression language for getting and setting properties of
 Java objects,
 plus other extras such as list projection and selection and lambda expressions.
 :::
-
-OGNL(Object-Graph Navigation Language)是对象导航图语言，是一种用于java对象get、set属性以及其他额外的投影、选择过滤、lambda表达式的的表达式语言。
-
-OGNL读为`orthogonal`[ɔ:'θɒgənl]。
 
 ## Java中有哪些常见的框架/项目使用了OGNL?
 

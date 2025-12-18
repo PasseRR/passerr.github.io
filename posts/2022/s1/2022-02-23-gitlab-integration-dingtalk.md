@@ -1,6 +1,7 @@
 ---
 title:  Gitlab CI/CD集成钉钉消息通知模板
 tags: [gitlab, gitlab-runner, ci/cd]
+cbf: false
 ---
 
 在使用Gitlab进行CI/CD的时候，希望在任务开始/结束(成功或失败)的时候能有对应的消息通知机制，

@@ -1,6 +1,7 @@
 ---
 title: "如何消除if-elseif-else语句"
 tags: [ java ]
+cbf: false
 ---
 
 `if-elseif-else`语句是一种常见的控制结构，用于根据不同的条件执行不同的代码块。然而，当if-elseif-else语句分支较多或者嵌套过多时，代码会变得复杂难读，只能跑不能改，难以维护。
@@ -14,7 +15,7 @@ tags: [ java ]
 
 以下是一个示例代码：
 
-```java
+```java {fold}
 public BigDecimal calcShippingFee(Order order) {
     // 防御：订单不能为空（应在方法开头直接 throw）
     if (order != null) {

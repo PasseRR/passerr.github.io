@@ -1,6 +1,7 @@
 ---
 title:  CentOs升级Git版本
 tags: [centos, git, 运维]
+cbf: false
 ---
 
 ## gitlab-ci报错

@@ -578,7 +578,6 @@ public class HandleLombokSpringConfiguration extends JavacAnnotationHandler<Lomb
 #### compile target
 
 ```xml
-
 <project name="lombok.compile" default="dist" xmlns:ivy="antlib:com.zwitserloot.ivyplusplus" basedir="..">
     <target name="compile" depends="version, deps, -setup.build, create.spiProcessor, create.mavenEcjBootstrapAgent"
             description="Compiles the code">
