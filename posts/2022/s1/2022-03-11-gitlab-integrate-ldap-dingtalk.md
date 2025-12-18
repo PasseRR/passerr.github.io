@@ -74,7 +74,7 @@ gitlab_rails['omniauth_providers'] = [
 ### 已有LDAP扫码登录
 
 需要配置ldap中uid为钉钉用户API中的`userId`，非LDAP用户需要自行扫码绑定钉钉帐号，
-但是这样配置后不支持帐号密码登录了，[222323](https://gitlab.com/gitlab-org/gitlab/-/issues/222323)，
+但是这样配置后不支持帐号密码登录了，[LDAP login with multiple attributes](https://gitlab.com/gitlab-org/gitlab/-/issues/222323)，
 截止这篇博客完成，gitlab也未支持ldap中的uid多个值。
 
 ### 将已有用户和ldap用户绑定
