@@ -198,7 +198,6 @@ public enum UserType {
 ::: code-group
 
 ```java [ShippingFeeCalculator.java]
-
 @Component
 public class ShippingFeeCalculator {
     final Map<String, ShippingFeeStrategy> strategyMap = new HashMap<>(4);
@@ -239,7 +238,6 @@ public interface ShippingFeeStrategy {
 ```
 
 ```java [NormalShippingFeeStrategy.java]
-
 @Component
 public class NormalShippingFeeStrategy implements ShippingFeeStrategy {
     @Override
@@ -261,7 +259,6 @@ public class NormalShippingFeeStrategy implements ShippingFeeStrategy {
 ```
 
 ```java [VipShippingFeeStrategy.java]
-
 @Component
 public class VipShippingFeeStrategy implements ShippingFeeStrategy {
     @Override
