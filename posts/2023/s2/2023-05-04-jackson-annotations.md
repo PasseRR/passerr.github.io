@@ -3,8 +3,6 @@ title:  Jackson注解
 tags: [jackson, java]
 ---
 
-## 注解分类
-
 Jackson的注解主要在[jackson-annotations](https://github.com/FasterXML/jackson-annotations)
 及[jackson-databind](https://github.com/FasterXML/jackson-databind)中，主要分为以下几种类型
 
