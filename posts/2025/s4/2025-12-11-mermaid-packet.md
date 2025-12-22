@@ -9,7 +9,7 @@ tags: [ markdown, mermaid, 其他 ]
 
 [mermaid packet文档](https://mermaid.js.org/syntax/packet.html)
 
-mermaid关键字`packet`，需要mermaid至少`11.0.0`版本以上才支持。
+mermaid关键字`packet`，需要mermaid至少`v11.0.0`版本以上才支持。
 
 ## 基本语法
 
@@ -77,7 +77,7 @@ title 数据包
 
 ## 配置
 
-必须在init/packet中，[json schema](https://mermaid.js.org/schemas/config.schema.json#/$defs/PacketDiagramConfig)
+配置语法参考[Mermaid自定义配置](/2024-12-08-mermaid-configuration){:target='_blank' rel="noreferrer"}
 
 |    属性名     | 默认值  |    描述    |
 |:----------:|:----:|:--------:|
@@ -91,16 +91,15 @@ title 数据包
 配置一个每行16字节，宽度、高度比默认大一倍的数据包图。
 
 ```mmd
-%%{
-  init: {
-    'theme': 'forest',
-    'packet': {
-      'bitsPerRow': 16,
-      'rowHeight': 64,
-      'bitWidth': 64
-    }
-  }
-}%%
+---
+title: 数据包图
+config:
+  theme: 'forest'
+  packet: 
+    bitsPerRow: 16
+    rowHeight: 64
+    bitWidth: 64
+---
 
 packet
 +1: "Single-bit" %% Single-bit block
@@ -109,16 +108,15 @@ packet
 ```
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'forest',
-    'packet': {
-      'bitsPerRow': 16,
-      'rowHeight': 64,
-      'bitWidth': 64
-    }
-  }
-}%%
+---
+title: 数据包图
+config:
+  theme: 'forest'
+  packet: 
+    bitsPerRow: 16
+    rowHeight: 64
+    bitWidth: 64
+---
 
 packet
 +1: "Single-bit" %% Single-bit block

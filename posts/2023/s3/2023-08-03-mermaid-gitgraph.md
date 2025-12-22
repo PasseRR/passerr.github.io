@@ -282,77 +282,66 @@ gitGraph LR:
 </tbody>
 </table>
 
-### 自定义配置
+## 自定义配置
 
-自定义配置主要通过在gitGraph关键字前加初始化配置的json，格式如下:
+[自定义配置](https://mermaid.js.org/syntax/gitgraph.html#customizing-branch-label-colors)主要通过在gitGraph关键字前加前言配置的yaml，配置语法参考[Mermaid自定义配置](/2024-12-08-mermaid-configuration){:target='_blank' rel="noreferrer"}，格式如下:
 
-```json5
-{
-  // 不能有单引号 其他属性必须有单引号 感觉这个好扯淡
-  init: {
-    // 日志
-    'logLevel': "debug",
-    // 主题 可选值base、forest、dark、default、neutral
-    'theme': 'default',
-    // 主题变量
-    'themeVariables': {
-      // 自定义分支颜色 最多设置8条
-      'git0': '#ff0000',
-      'git1': '#00ff00',
-      'git2': '#0000ff',
-      'git3': '#ff00ff',
-      'git4': '#00ffff',
-      'git5': '#ffff00',
-      'git6': '#ff00ff',
-      'git7': '#00ffff',
-      // 分支名称颜色 按照分支顺序
-      'gitBranchLabel0': '#ffffff',
-      'gitBranchLabel1': '#ffffff',
-      'gitBranchLabel2': '#ffffff',
-      'gitBranchLabel3': '#ffffff',
-      'gitBranchLabel4': '#ffffff',
-      'gitBranchLabel5': '#ffffff',
-      'gitBranchLabel6': '#ffffff',
-      'gitBranchLabel7': '#ffffff',
-      'gitBranchLabel8': '#ffffff',
-      'gitBranchLabel9': '#ffffff',
-      // 高亮commit颜色
-      'gitInv0': '#ff0000',
-      'gitInv1': '#ff0000',
-      'gitInv2': '#ff0000',
-      'gitInv3': '#ff0000',
-      'gitInv4': '#ff0000',
-      'gitInv5': '#ff0000',
-      'gitInv6': '#ff0000',
-      'gitInv7': '#ff0000',
-      // commit label颜色
-      'commitLabelColor': '#ff0000',
-      // commit背景色
-      'commitLabelBackground': '#00ff00',
-      // commit字体大小
-      'commitLabelFontSize': '16px',
-      // tag label颜色
-      'tagLabelColor': '#ff0000',
-      // tag背景色
-      'tagLabelBackground': '#00ff00',
-      // tag 边框颜色
-      'tagLabelBorder': '#0000ff',
-      // tag字体大小
-      'tagLabelFontSize': '16px'
-    },
-    // 图相关配置
-    'gitGraph': {
-      // 是否展示分支名称
-      'showBranches': true,
-      // 是否展示commit label
-      'showCommitLabel': true,
-      // commit label展示方向 默认是垂直方向 改为false是水平
-      'rotateCommitLabel': true,
-      // main分支名称 默认是main
-      'mainBranchName': 'main'
-    }
-  }
-}
+```yaml
+config:
+    logLevel: debug
+    theme: default
+    themeVariables:
+        # 自定义分支颜色（最多 8 条）
+        git0: "#ff0000"
+        git1: "#00ff00"
+        git2: "#0000ff"
+        git3: "#ff00ff"
+        git4: "#00ffff"
+        git5: "#ffff00"
+        git6: "#ff00ff"
+        git7: "#00ffff"
+        
+        # 分支名称颜色（按分支顺序）
+        gitBranchLabel0: "#ffffff"
+        gitBranchLabel1: "#ffffff"
+        gitBranchLabel2: "#ffffff"
+        gitBranchLabel3: "#ffffff"
+        gitBranchLabel4: "#ffffff"
+        gitBranchLabel5: "#ffffff"
+        gitBranchLabel6: "#ffffff"
+        gitBranchLabel7: "#ffffff"
+        gitBranchLabel8: "#ffffff"
+        gitBranchLabel9: "#ffffff"
+        
+        # 高亮 commit 颜色
+        gitInv0: "#ff0000"
+        gitInv1: "#ff0000"
+        gitInv2: "#ff0000"
+        gitInv3: "#ff0000"
+        gitInv4: "#ff0000"
+        gitInv5: "#ff0000"
+        gitInv6: "#ff0000"
+        gitInv7: "#ff0000"
+        
+        # commit 样式
+        commitLabelColor: "#ff0000"
+        commitLabelBackground: "#00ff00"
+        commitLabelFontSize: "16px"
+        
+        # tag 样式
+        tagLabelColor: "#ff0000"
+        tagLabelBackground: "#00ff00"
+        tagLabelBorder: "#0000ff"
+        tagLabelFontSize: "16px"
+    gitGraph:
+        # 是否展示分支名称
+        showBranches: true
+        # 是否展示 commit label
+        showCommitLabel: true
+        # commit label 展示方向（true=水平 / false=垂直）
+        rotateCommitLabel: true
+        # main 分支名称
+        mainBranchName: main
 ```
 
 ## 完整示例
@@ -363,31 +352,34 @@ gitGraph LR:
 <td>
 
 ```mmd
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'git0': 'orange',
-      'git1': 'blue',
-      'git2': 'purple',
-      'gitBranchLabel0': 'white',
-      'gitBranchLabel1': 'red',
-      'gitBranchLabel2': 'black',
-      'gitInv0': 'pink',
-      'commitLabelColor': 'black',
-      'commitLabelBackground': '#gray',
-      'commitLabelFontSize': '10px',
-      'tagLabelColor': 'white',
-      'tagLabelBackground': '#00ff00',
-      'tagLabelBorder': '#0000ff',
-      'tagLabelFontSize': '16px'
-    },
-    'gitGraph': {
-      'rotateCommitLabel': false,
-      'mainBranchName': 'master'
-    }
-  }
-}%%
+---
+config:
+    theme: base
+    themeVariables:
+        git0: orange
+        git1: blue
+        git2: purple
+    
+        gitBranchLabel0: white
+        gitBranchLabel1: red
+        gitBranchLabel2: black
+    
+        gitInv0: pink
+    
+        commitLabelColor: black
+        commitLabelBackground: "#gray"
+        commitLabelFontSize: "10px"
+    
+        tagLabelColor: white
+        tagLabelBackground: "#00ff00"
+        tagLabelBorder: "#0000ff"
+        tagLabelFontSize: "16px"
+    
+    gitGraph:
+        rotateCommitLabel: false
+        mainBranchName: master
+---
+
 gitGraph TB:
   commit
   commit type: HIGHLIGHT
@@ -410,31 +402,33 @@ gitGraph TB:
 <td>
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'git0': 'orange',
-      'git1': 'blue',
-      'git2': 'purple',
-      'gitBranchLabel0': 'white',
-      'gitBranchLabel1': 'red',
-      'gitBranchLabel2': 'black',
-      'gitInv0': 'pink',
-      'commitLabelColor': 'black',
-      'commitLabelBackground': '#gray',
-      'commitLabelFontSize': '10px',
-      'tagLabelColor': 'white',
-      'tagLabelBackground': '#00ff00',
-      'tagLabelBorder': '#0000ff',
-      'tagLabelFontSize': '16px'
-    },
-    'gitGraph': {
-      'rotateCommitLabel': false,
-      'mainBranchName': 'master'
-    }
-  }
-}%%
+---
+config:
+    theme: base
+    themeVariables:
+        git0: orange
+        git1: blue
+        git2: purple
+    
+        gitBranchLabel0: white
+        gitBranchLabel1: red
+        gitBranchLabel2: black
+    
+        gitInv0: pink
+    
+        commitLabelColor: black
+        commitLabelBackground: "#gray"
+        commitLabelFontSize: "10px"
+    
+        tagLabelColor: white
+        tagLabelBackground: "#00ff00"
+        tagLabelBorder: "#0000ff"
+        tagLabelFontSize: "16px"
+    
+    gitGraph:
+        rotateCommitLabel: false
+        mainBranchName: master
+---
 gitGraph TB:
   commit
   commit type: HIGHLIGHT
