@@ -36,14 +36,20 @@ import Highcharts from 'highcharts'
 import wordcloud from 'highcharts/modules/wordcloud'
 import {PaginationEllipsis, PaginationList, PaginationListItem, PaginationRoot} from 'radix-vue'
 
-const dark = {
+const darColors = [
+  '#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
+  '#eeaaee', '#55BF3B', '#DF5353', '#aaeeee'
+], lightColors = [
+  '#67B9EE', '#CEEDA5', '#9F6AE1', '#FEA26E', '#6BA48F', '#EA3535',
+  '#8D96B7', '#ECCA15', '#20AA09', '#E0C3E4'
+], dark = {
   plotOptions: {
     // 自动分配不同颜色
     bar: {
-      colors: [
-        '#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
-        '#eeaaee', '#55BF3B', '#DF5353', '#aaeeee'
-      ]
+      colors: darColors,
+    },
+    column: {
+      colors: darColors,
     }
   },
   tooltip: {
@@ -53,10 +59,10 @@ const dark = {
   plotOptions: {
     // 自动分配不同颜色
     bar: {
-      colors: [
-        '#67B9EE', '#CEEDA5', '#9F6AE1', '#FEA26E', '#6BA48F', '#EA3535',
-        '#8D96B7', '#ECCA15', '#20AA09', '#E0C3E4'
-      ],
+      colors: lightColors,
+    },
+    column: {
+      colors: lightColors,
     }
   },
   tooltip: {
@@ -146,9 +152,9 @@ const chartOptions = computed(() => {
           style: {
             // 适配深浅主题
             color: 'var(--vp-c-text-1)',
-            // fontSize: '12px',
+            fontSize: '12px',
             // 强烈建议关掉
-            textOutline: 'none'
+            textOutline: 'none',
           }
         }
       },
