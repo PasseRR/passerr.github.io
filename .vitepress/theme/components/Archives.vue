@@ -116,91 +116,120 @@ const toggleYear = (year: string, page: Number) => {
 const pageUpdate = (num) => toggleYear(selectYear.value, num)
 
 const chartOptions = computed(() => {
+  const plotBands = keys.map((year, index) => ({
+    from: index - 0.5,
+    to: index + 0.5,
+    color: 'rgba(0,0,0,0)',
+    events: {
+      click: () => {
+        history.pushState({}, '', `/archives.html?year=${year}`)
+        toggleYear(year, 1)
+      }
+    }
+  }))
+
   return {
     chart: {
-      type: 'bar',
+      type: 'column', // ✅ PC 默认 column
       backgroundColor: 'var(--vp-c-bg)'
     },
+
     plotOptions: {
       series: {
         borderWidth: 0,
+        cursor: 'pointer',
         dataLabels: {
           enabled: true,
-          inside: false,
-          align: 'high',
-          formatter: function () {
-            return this.y;
+          formatter() {
+            return this.y
+          },
+          style: {
+            // 适配深浅主题
+            color: 'var(--vp-c-text-1)',
+            // fontSize: '12px',
+            // 强烈建议关掉
+            textOutline: 'none'
           }
-        },
-        cursor: 'pointer'
+        }
       },
       bar: {
-        colorByPoint: true,
+        colorByPoint: true
+      },
+      column: {
+        colorByPoint: true
       }
     },
+
     xAxis: {
       categories: keys,
+      plotBands,
       crosshair: true,
       labels: {
         format: '{value}年',
         style: {color: 'var(--vp-c-text-1)'}
       },
       lineColor: 'var(--vp-c-text-1)',
-      tickColor: 'var(--vp-c-text-1)',
+      tickColor: 'var(--vp-c-text-1',
       gridLineColor: 'var(--vp-c-default-1)'
     },
+
     yAxis: {
       min: 0,
       labels: {style: {color: 'var(--vp-c-text-1)'}},
       title: {
-        style: {color: 'var(--vp-c-text-1)'},
         text: '数量',
         align: 'low',
         y: -20,
-        x: -40
+        x: -40,
+        style: {color: 'var(--vp-c-text-1)'}
       },
-      lineColor: 'var(--vp-c-text-1)',
-      tickColor: 'var(--vp-c-text-1)',
       gridLineColor: 'var(--vp-c-default-1)'
     },
+
     tooltip: {
       shared: true,
       followPointer: true,
-      positioner: function (labelWidth, labelHeight, pointer) {
-        return {
-          x: pointer.plotX + 5 + labelWidth, // 鼠标右侧偏移
-          y: pointer.plotY // 垂直居中
-        };
-      },
-      style: {
-        color: 'var(--vp-c-text-1)'
-      }
+      style: {color: 'var(--vp-c-text-1)'}
     },
+
     series: [{
       data: keys.map(it => data.value[it].length),
+      showInLegend: false,
       events: {
         click: (e) => {
-          // 修改浏览器地址
-          history.pushState({}, null, `/archives.html?year=${e.point.category}`)
+          history.pushState({}, '', `/archives.html?year=${e.point.category}`)
           toggleYear(e.point.category, 1)
         }
       },
       tooltip: {
         headerFormat: '',
-        pointFormat: '<span style="color:{point.color}">●</span> {point.category}年: <b>{point.options.y}</b><br/>'
-      },
-      showInLegend: false
+        pointFormat:
+            '<span style="color:{point.color}">●</span> {point.category}年: <b>{point.y}</b><br/>'
+      }
     }],
-    // 隐藏highcharts.com链接
-    credits: {
-      enabled: false
+    // 响应式切换
+    responsive: {
+      rules: [{
+        condition: {
+          // 手机最大宽度
+          maxWidth: 768
+        },
+        chartOptions: {
+          chart: {
+            type: 'bar'
+          },
+          xAxis: {
+            labels: {
+              format: '{value}年'
+            }
+          }
+        }
+      }]
     },
-    title: {
-      text: ''
-    },
-    accessibility: {
-      enabled: false,
-    }
+
+    credits: {enabled: false},
+    title: {text: ''},
+    accessibility: {enabled: false}
   }
 })
 
@@ -219,5 +248,10 @@ onMounted(() => {
   .date {
     display: none;
   }
+}
+
+/* 整个系列范围 hover 手型 */
+:deep(.highcharts-plot-band) {
+  cursor: pointer;
 }
 </style>
